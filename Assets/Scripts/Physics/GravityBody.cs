@@ -105,18 +105,4 @@ public class GravityBody : MonoBehaviour
             GravityManager.Instance.UnregisterBody(this);
     }
 
-
-
-    /*
-
-    public void UpdateVelocity(Vector3 acceleration)
-    {
-        velocity += acceleration * Time.fixedDeltaTime;
-    }
-
-    public void UpdatePosition()
-    {
-        rb.MovePosition(rb.position + velocity * Time.fixedDeltaTime);
-
-    }*/
 }

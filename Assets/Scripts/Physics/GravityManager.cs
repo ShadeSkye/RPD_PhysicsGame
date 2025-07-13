@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 [DefaultExecutionOrder(-1000)]
+
 public class GravityManager : MonoBehaviour
 {
     public static GravityManager Instance { get; private set; }
@@ -40,7 +41,6 @@ public class GravityManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Debug.Log("GravityManager running");
         ApplyGravity();
 
         /*foreach (var body in bodies)
