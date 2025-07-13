@@ -76,10 +76,27 @@ public class GravityBody : MonoBehaviour
         // calculate velocity
         float velocityMagnitude = Mathf.Sqrt(GravityManager.Instance.gravitationalConstant * orbitTarget.rb.mass / orbitalRadius);
         Vector3 directionToTarget = (rb.position - orbitTarget.rb.position).normalized;
-        Vector3 orbitDirection = Vector3.Cross(directionToTarget, Vector3.up).normalized;
+
+        // calculate direction
+        Vector3 orbitalPlane = CalculateOrbitalPlane();
+        Vector3 orbitDirection = Vector3.Cross(directionToTarget, orbitalPlane).normalized;
 
         // apply velocity
         rb.velocity = orbitDirection * velocityMagnitude;
+    }
+
+    private Vector3 CalculateOrbitalPlane()
+    {
+        float r = UnityEngine.Random.value;
+
+        if (r <= GravityManager.Instance.alignedOrbitChance) // chance of being normal
+        {
+            return  Vector3.up;
+        }
+        else
+        {
+            return UnityEngine.Random.onUnitSphere;
+        }
     }
 
     private void OnDestroy()

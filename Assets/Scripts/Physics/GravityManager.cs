@@ -11,6 +11,10 @@ public class GravityManager : MonoBehaviour
     private List<GravityBody> bodies = new List<GravityBody>();
     public List<GravityBody> GetBodies() => bodies;
 
+    [Header("Orbit Settings")]
+    [SerializeField, Range(0f, 100f)] private float alignedOrbitPercentage = 60f;
+    public float alignedOrbitChance => alignedOrbitPercentage / 100f;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
