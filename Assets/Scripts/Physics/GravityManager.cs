@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 [DefaultExecutionOrder(-1000)]
 public class GravityManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GravityManager : MonoBehaviour
     public List<GravityBody> GetBodies() => bodies;
 
     [Header("Orbit Settings")]
+    [SerializeField] private bool simplifiedSimulation = true; // if its off its like nbody if its on its just the strongest
     [SerializeField, Range(0f, 100f)] private float alignedOrbitPercentage = 60f;
     public float alignedOrbitChance => alignedOrbitPercentage / 100f;
 
@@ -59,37 +61,78 @@ public class GravityManager : MonoBehaviour
 
             Vector3 totalForce = Vector3.zero;
 
-            for (int y = 0; y < bodies.Count; y++) // for each body that affects it
+            if (!simplifiedSimulation)
             {
-                if(x != y)
+                for (int y = 0; y < bodies.Count; y++) // for each body that affects it
                 {
-
-                    GravityBody b = bodies[y];
-
-                    Vector3 offset = b.rb.position - a.rb.position;
-                    float distance = offset.magnitude;
-                    Vector3 direction = offset.normalized;
-
-                    if(distance <= 0) 
+                    if (x != y)
                     {
-                        distance = 0.1f;
+
+                        GravityBody b = bodies[y];
+
+                        totalForce += CalculateGravity(a, b);
+
                     }
 
-                    float forceMagnitude = gravitationalConstant * (a.rb.mass * b.rb.mass) / (distance * distance);
-                    totalForce += direction * forceMagnitude;
-
-                    /*float accelerationMagnitude = gravitationalConstant * b.rb.mass / (distance * distance);
-                    totalForce += direction * accelerationMagnitude; */
-
                 }
-
+            }
+            else
+            {
+                GravityBody strongest = GetStrongestGravitySource(a);
+                if (strongest != null)
+                {
+                    totalForce += CalculateGravity(a, strongest);
+                }
             }
 
-            a.rb.AddForce(totalForce);
 
 
-            //UnityEngine.Debug.Log($"Moving {a.gameObject} to position {a.transform.position}");
-            //a.UpdateVelocity(acceleration);
+                a.rb.AddForce(totalForce);
         }
+    }
+
+    private Vector3 CalculateGravity(GravityBody a, GravityBody b)
+    {
+        Vector3 offset = b.rb.position - a.rb.position;
+        float distance = offset.magnitude;
+
+        if (distance <= 0)
+        {
+            distance = 0.1f;
+        }
+
+        float forceMagnitude = gravitationalConstant * (a.rb.mass * b.rb.mass) / (distance * distance);
+
+        Vector3 direction = offset.normalized;
+
+        return direction * forceMagnitude;
+    }
+
+    private GravityBody GetStrongestGravitySource(GravityBody a)
+    {
+        GravityBody strongestBody = null;
+        float strongestForce = 0;
+
+        foreach(GravityBody body in bodies)
+        {
+            if (body == a || !body.rb.isKinematic) continue;
+
+            float distance = Vector3.Distance(a.rb.position, body.rb.position);
+
+            if (distance <= 0)
+            {
+                distance = 0.1f;
+            }
+
+            float force = body.rb.mass / (distance * distance);
+
+            if (force > strongestForce)
+            {
+                strongestForce = force;
+                strongestBody = body;
+            }
+        }
+
+        return strongestBody;
     }
 }

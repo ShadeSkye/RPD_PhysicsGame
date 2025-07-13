@@ -503,6 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravitationalConstant: 0.001
+  simplifiedSimulation: 1
   alignedOrbitPercentage: 60
 --- !u!114 &745306671
 MonoBehaviour:
