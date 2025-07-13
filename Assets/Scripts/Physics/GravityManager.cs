@@ -34,7 +34,7 @@ public class GravityManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("GravityManager running");
+        // Debug.Log("GravityManager running");
         ApplyGravity();
 
         /*foreach (var body in bodies)
