@@ -581,6 +581,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 333382946757176730, guid: 3f34526642aea5e44b22b7e616ff0f8a, type: 3}
+      propertyPath: localGravity
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4296076029860136472, guid: 3f34526642aea5e44b22b7e616ff0f8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1026,6 +1030,7 @@ MonoBehaviour:
   isGravitySource: 0
   localGravity: 1
   radius: 1
+  orbitDistance: 0
   orbitTarget: {fileID: 0}
   initialVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &1405870835
@@ -1236,6 +1241,10 @@ PrefabInstance:
       propertyPath: orbitTarget
       value: 
       objectReference: {fileID: 142209075}
+    - target: {fileID: 333382946757176730, guid: 3f34526642aea5e44b22b7e616ff0f8a, type: 3}
+      propertyPath: orbitDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 333382946757176730, guid: 3f34526642aea5e44b22b7e616ff0f8a, type: 3}
       propertyPath: isGravitySource
       value: 0

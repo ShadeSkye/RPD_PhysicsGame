@@ -11,10 +11,17 @@ public class GravityBody : MonoBehaviour
     public float radius;
 
     [Header("Orbit Settings")]
+    public float orbitDistance;
     public GravityBody orbitTarget;
     public Vector3 initialVelocity;
 
     //public Vector3 velocity;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.isKinematic = isGravitySource;
+        rb.useGravity = false;
+    }
 
     private void OnValidate()
     {
@@ -23,9 +30,6 @@ public class GravityBody : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.isKinematic = isGravitySource;
-        rb.useGravity = false;
 
         GravityManager.Instance.RegisterBody(this);
 
@@ -40,6 +44,7 @@ public class GravityBody : MonoBehaviour
 
         if (isGravitySource) return;
 
+        if (orbitTarget != null) CalculateInitialVelocity();
         rb.velocity = initialVelocity;
     }
 
@@ -48,6 +53,17 @@ public class GravityBody : MonoBehaviour
         // set size using radius
         radius = radius == 0 ? 1f : radius;
         transform.localScale = Vector3.one * radius * 2;
+    }
+
+    private void CalculateInitialVelocity()
+    {
+        float orbitalRadius = Vector3.Distance(rb.transform.position, orbitTarget.rb.transform.position) + orbitDistance;
+
+        float velocityMagnitude = Mathf.Sqrt(GravityManager.Instance.gravitationalConstant * orbitTarget.rb.mass / orbitalRadius);
+        Vector3 directionToTarget = (rb.position - orbitTarget.rb.position).normalized;
+        Vector3 orbitDirection = Vector3.Cross(directionToTarget, Vector3.up).normalized;
+
+        rb.velocity = orbitDirection * velocityMagnitude;
     }
 
     private void OnDestroy()
