@@ -51,7 +51,7 @@ public class GravityManager : MonoBehaviour
         {
             GravityBody a = bodies[x];
 
-            if (a.rb.isKinematic) continue; // skip if it is planet
+            if (a.rb.isKinematic || !a.isInitialised) continue; // skip if it is planet
 
             Vector3 totalForce = Vector3.zero;
 
@@ -82,6 +82,9 @@ public class GravityManager : MonoBehaviour
             }
 
             a.rb.AddForce(totalForce);
+
+
+            //UnityEngine.Debug.Log($"Moving {a.gameObject} to position {a.transform.position}");
             //a.UpdateVelocity(acceleration);
         }
     }

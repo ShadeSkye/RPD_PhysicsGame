@@ -1,9 +1,12 @@
 using System;
+using System.Diagnostics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
+    [HideInInspector] public bool isInitialised;
+
     [Header("Gravity Settings")]
     public Rigidbody rb;
 
@@ -37,14 +40,17 @@ public class GravityBody : MonoBehaviour
         UpdateBodySize();
     }
 
-    private void Start()
+    private void LateUpdate()
     {
-        GravityManager.Instance.RegisterBody(this);
+        if (isInitialised) return;
 
-        if (!isGravitySource && !gameObject.CompareTag("Player") && orbitTarget != null)
+        if (orbitTarget != null && !isGravitySource)
         {
             CalculateInitialVelocity();
         }
+
+        GravityManager.Instance.RegisterBody(this);
+        isInitialised = true;
     }
 
     private void UpdateBodySize()
@@ -59,12 +65,13 @@ public class GravityBody : MonoBehaviour
         Vector3 directionFromTarget = Vector3.right;
 
         // set initial position
-        float totalDistance = orbitTarget.radius + orbitDistance;
-        Vector3 startPosition = orbitTarget.transform.position + directionFromTarget * totalDistance;
-        transform.position = startPosition;
+        float orbitalRadius = orbitTarget.radius + orbitDistance;
+        Vector3 startPosition = orbitTarget.transform.position + directionFromTarget * orbitalRadius;
+        
+        //transform.position = startPosition;
+        rb.MovePosition(startPosition);
 
-        // calculate orbital radius
-        float orbitalRadius = Vector3.Distance(rb.transform.position, orbitTarget.rb.transform.position);
+        //UnityEngine.Debug.Log($"Setting {this.gameObject} to position {startPosition}");
 
         // calculate velocity
         float velocityMagnitude = Mathf.Sqrt(GravityManager.Instance.gravitationalConstant * orbitTarget.rb.mass / orbitalRadius);
