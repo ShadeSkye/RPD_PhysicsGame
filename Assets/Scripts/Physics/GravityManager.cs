@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+[DefaultExecutionOrder(-1000)]
 public class GravityManager : MonoBehaviour
 {
     public static GravityManager Instance { get; private set; }
