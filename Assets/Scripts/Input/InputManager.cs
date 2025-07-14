@@ -32,6 +32,10 @@ public class InputManager : MonoBehaviour
     private bool isBoosting = false;
     private Coroutine boostCoroutine;
 
+    // Beam
+    public bool IsBeamHeld => controls.Flight.Magnetise.ReadValue<float>() > 0;
+    public bool IsEjectPressed => controls.Flight.Release.triggered;
+
     private void Awake()
     {
         // singleton

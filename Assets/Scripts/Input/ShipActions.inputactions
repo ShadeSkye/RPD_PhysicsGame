@@ -52,12 +52,12 @@
                 },
                 {
                     "name": "Magnetise",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "fe0ac97f-efda-4b5d-8b88-7bfaa876a491",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Release",

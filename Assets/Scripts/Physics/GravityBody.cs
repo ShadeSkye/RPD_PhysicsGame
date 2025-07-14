@@ -20,6 +20,8 @@ public class GravityBody : MonoBehaviour
 
     private Vector3 initialVelocity;
 
+    public bool isGravityAffected => !isGravitySource && isInitialised;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
