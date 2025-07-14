@@ -20,6 +20,7 @@ public class GravityBody : MonoBehaviour
     [SerializeField] private GravityBody orbitTarget;
 
     private Vector3 initialVelocity;
+    public float lastReleasedTime;
 
     public bool isGravityAffected => !isGravitySource && isInitialised && !isLocked;
 

@@ -359,7 +359,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""id"": ""03def8f0-7088-4d65-9ef9-cd4c1823971a"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=2,y=2)"",
+                    ""processors"": ""ScaleVector2(x=10,y=10)"",
                     ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": true,

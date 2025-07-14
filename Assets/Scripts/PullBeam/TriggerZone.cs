@@ -28,14 +28,15 @@ public class TriggerZone : MonoBehaviour
         {
             case ZoneType.Pull:
                 pullBeam.ApplyPull(body);
-                Debug.Log($"Pulling {body}");
+                //Debug.Log($"Pulling {body}");
                 break;
 
             case ZoneType.Hold:
                 pullBeam.LockBody(body);
-                Debug.Log($"Holding {body}");
+                //Debug.Log($"Holding {body}");
                 break;
 
         }
     }
+
 }
