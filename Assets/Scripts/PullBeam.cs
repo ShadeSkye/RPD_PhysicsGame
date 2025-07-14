@@ -4,13 +4,16 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PullBeam : MonoBehaviour
-{
+public class PullBeam : MonoBehaviour 
+{ 
+
+
     [Header("Beam Settings")]
     [SerializeField] private Transform leftHolder;
     [SerializeField] private Transform rightHolder;
     [SerializeField] private float maxBeamDistance;
     [SerializeField, Range(0f, 1f)] private float viewWidth = 0.95f;
+    [SerializeField, Range(0f, 100f)] private float beamStrength = 100f;
 
     private List<GravityBody> bodiesInBeam = new List<GravityBody>();
 
@@ -44,9 +47,23 @@ public class PullBeam : MonoBehaviour
 
     private void ApplyPull()
     {
-        foreach (GravityBody body in bodiesInBeam)
+        foreach (GravityBody target in bodiesInBeam)
         {
-            Debug.Log(body);
+            Vector3 offset = transform.position - target.rb.position;
+            float distance = offset.magnitude;
+
+            if (distance <= 0)
+            {
+                distance = 0.1f;
+            }
+
+            float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength*100000) * target.rb.mass) / (distance * distance);
+
+            Vector3 direction = offset.normalized;
+
+            target.rb.AddForce(direction * forceMagnitude);
+            Debug.Log($"Pulling {target} by {forceMagnitude}");
+
         }
     }
 
