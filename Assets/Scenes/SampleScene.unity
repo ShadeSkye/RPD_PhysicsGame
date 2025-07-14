@@ -254,8 +254,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceship: {fileID: 1158661944}
   movementForce: 50
-  rollForce: 1
-  rotationSensitivity: 0.1
+  rollForce: 2
+  rotationSensitivity: 0.5
   invertPitch: 1
   invertRoll: 0
   invertYaw: 0
