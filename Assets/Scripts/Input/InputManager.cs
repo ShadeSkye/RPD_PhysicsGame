@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
 
     private ShipActions controls;
     private Rigidbody rb;
+    private PullBeam pb;
 
     [SerializeField] public GameObject spaceship;
 
@@ -32,6 +33,8 @@ public class InputManager : MonoBehaviour
     private bool isBoosting = false;
     private Coroutine boostCoroutine;
 
+    
+
     private void Awake()
     {
         // singleton
@@ -46,6 +49,7 @@ public class InputManager : MonoBehaviour
         // get references
         controls = new ShipActions();
         rb = spaceship.GetComponent<Rigidbody>();
+        pb = spaceship.GetComponentInChildren<PullBeam>();
 
         if (rb == null)
         {
@@ -77,6 +81,8 @@ public class InputManager : MonoBehaviour
         }
 
         lookInput = controls.Flight.Look.ReadValue<Vector2>();
+
+        HandlePullBeam();
     }
     private void FixedUpdate()
     {
@@ -102,6 +108,20 @@ public class InputManager : MonoBehaviour
 
         Vector3 torqueVector = new Vector3(pitchInput, yawInput, rollInput);
         rb.AddRelativeTorque(torqueVector, ForceMode.Force);
+    }
+
+    private void HandlePullBeam()
+    {
+        pb.isPulling = controls.Flight.Magnetise.ReadValue<float>() > 0;
+
+        //if (pb.isPulling) Debug.Log("Is pulling");
+
+        bool isEjectPressed = controls.Flight.Release.triggered;
+
+        if (isEjectPressed && pb.HeldBody != null)
+        {
+            pb.EjectBody(pb.HeldBody);
+        }
     }
 
     private IEnumerator GetBoost()

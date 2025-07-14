@@ -57,7 +57,7 @@ public class GravityManager : MonoBehaviour
         {
             GravityBody a = bodies[x];
 
-            if (a.rb.isKinematic || !a.isInitialised) continue; // skip if it is planet
+            if (!a.isGravityAffected) continue; // skip if it is planet
 
             Vector3 totalForce = Vector3.zero;
 

@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
-    [HideInInspector] public bool isInitialised;
+    [HideInInspector] public bool isInitialised; 
+    [HideInInspector] public bool isLocked;
 
     [Header("Gravity Settings")]
     public Rigidbody rb;
@@ -19,6 +20,9 @@ public class GravityBody : MonoBehaviour
     [SerializeField] private GravityBody orbitTarget;
 
     private Vector3 initialVelocity;
+    public float lastReleasedTime;
+
+    public bool isGravityAffected => !isGravitySource && isInitialised && !isLocked;
 
     private void Awake()
     {
