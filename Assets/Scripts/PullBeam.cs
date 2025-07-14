@@ -1,16 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PullBeam : MonoBehaviour 
-{ 
-
-
+public class PullBeam : MonoBehaviour
+{
     [Header("Beam Settings")]
-    [SerializeField] private Transform leftHolder;
-    [SerializeField] private Transform rightHolder;
     [SerializeField] private float maxBeamDistance;
     [SerializeField, Range(0f, 1f)] private float viewWidth = 0.95f;
     [SerializeField, Range(0f, 100f)] private float beamStrength = 100f;
@@ -30,7 +27,7 @@ public class PullBeam : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(transform.position, maxBeamDistance);
         //Debug.Log($"Overlap sphere found {hits.Length-1} objects in range");
 
-        foreach (Collider hit in hits) 
+        foreach (Collider hit in hits)
         {
             GravityBody body = hit.GetComponent<GravityBody>();
 
@@ -42,7 +39,7 @@ public class PullBeam : MonoBehaviour
 
 
         }
-        
+
     }
 
     private void ApplyPull()
@@ -57,7 +54,7 @@ public class PullBeam : MonoBehaviour
                 distance = 0.1f;
             }
 
-            float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength*100000) * target.rb.mass) / (distance * distance);
+            float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 100000) * target.rb.mass) / (distance * distance);
 
             Vector3 direction = offset.normalized;
 
@@ -74,6 +71,16 @@ public class PullBeam : MonoBehaviour
         float dot = Vector3.Dot(transform.forward, directionToTarget);
 
         return (dot > viewWidth);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GravityBody body = other.GetComponent<GravityBody>();
+        if (body != null && !bodiesInBeam.Contains(body))
+        {
+            bodiesInBeam.Add(body);
+            Debug.Log($"{body.name} entered hold zone");
+        }
     }
 
     private void OnDrawGizmos()
