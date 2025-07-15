@@ -1,5 +1,5 @@
-
-using Unity.VisualScripting;
+using System;
+using System.Diagnostics;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,8 +15,6 @@ public class GravityBody : MonoBehaviour
     [SerializeField] private float localGravity = 1f;
     public float radius = 1f;
 
-    [SerializeField] private bool overrideRb = true;
-
     [Header("Orbit Settings")]
     [SerializeField] private float orbitDistance;
     [SerializeField] private GravityBody orbitTarget;
@@ -26,14 +24,13 @@ public class GravityBody : MonoBehaviour
 
     public bool isGravityAffected => !isGravitySource && isInitialised && !isLocked;
 
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = isGravitySource;
         rb.useGravity = false;
 
-        if (!gameObject.CompareTag("Player") && !overrideRb)
+        if (!gameObject.CompareTag("Player"))
         {
             localGravity = localGravity == 0 ? 1f : localGravity;
             radius = radius == 0 ? 1f : radius;

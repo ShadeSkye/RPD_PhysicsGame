@@ -33,6 +33,8 @@ public class InputManager : MonoBehaviour
     private bool isBoosting = false;
     private Coroutine boostCoroutine;
 
+    
+
     private void Awake()
     {
         // singleton

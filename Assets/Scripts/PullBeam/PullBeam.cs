@@ -4,8 +4,8 @@ using UnityEngine;
 public class PullBeam : MonoBehaviour
 {
     [Header("Beam Settings")]
-    [SerializeField] private float beamStrength = 5000;
-    [SerializeField] private float maxPullSpeed = 5000;
+    [SerializeField] private float beamStrength = 500;
+    [SerializeField] private float maxPullSpeed = 500;
 
     [Header("Zone Settings")]
     [SerializeField] private Collider pullZone;
