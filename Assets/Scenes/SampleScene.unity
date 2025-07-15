@@ -2206,9 +2206,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1072710105220968721, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
-      propertyPath: m_Material
-      value: 
+    - target: {fileID: 1136796322056611501, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: maxPullSpeed
+      value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 3591860017299949350, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2248,14 +2248,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3591860017299949350, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4821823370256672829, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5050887212126733247, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
-      propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5943344323793404352, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}

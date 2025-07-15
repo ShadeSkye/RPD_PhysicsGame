@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -13,6 +14,8 @@ public class GravityBody : MonoBehaviour
     [SerializeField] private bool isGravitySource;
     [SerializeField] private float localGravity = 1f;
     public float radius = 1f;
+
+    [SerializeField] private bool overrideRb = true;
 
     [Header("Orbit Settings")]
     [SerializeField] private float orbitDistance;
@@ -30,7 +33,7 @@ public class GravityBody : MonoBehaviour
         rb.isKinematic = isGravitySource;
         rb.useGravity = false;
 
-        if (!gameObject.CompareTag("Player"))
+        if (!gameObject.CompareTag("Player") && !overrideRb)
         {
             localGravity = localGravity == 0 ? 1f : localGravity;
             radius = radius == 0 ? 1f : radius;
