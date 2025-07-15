@@ -7,6 +7,7 @@ public class GravityBody : MonoBehaviour
 {
     [HideInInspector] public bool isInitialised; 
     [HideInInspector] public bool isLocked;
+    public string bodyName;
 
     [Header("Gravity Settings")]
     public Rigidbody rb;
@@ -40,6 +41,7 @@ public class GravityBody : MonoBehaviour
         else if (TryGetComponent<Cargo>(out Cargo cargo))
         {
             rb.mass = Mathf.Clamp(cargo.weight, 1f, 15f);
+            bodyName = cargo.cargoName;
         }
     }
 

@@ -93,7 +93,13 @@ public class PullBeam : MonoBehaviour
 
             heldBody = body;
 
+            bodiesInBeam.Remove(body);
             Debug.Log($"Picked up {body}");
+
+            if (body.gameObject.TryGetComponent<Cargo>(out Cargo cargo))
+            {
+                CarryingDisplay.Instance.UpdateCarrying(cargo);
+            }
         }
     }
 
@@ -110,6 +116,8 @@ public class PullBeam : MonoBehaviour
             GravityManager.Instance.RegisterBody(body);
 
             heldBody = null;
+
+            CarryingDisplay.Instance.ClearCarrying();
         }
     }
 
