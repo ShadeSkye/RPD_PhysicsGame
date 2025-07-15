@@ -12,7 +12,7 @@ public class Cargo : MonoBehaviour
     public float CurrentValue => baseValue * (1f - damagePercent);
 
     [Header("Damage")]
-    private float damagePercent = 0;
+    public float damagePercent = 0;
     [SerializeField] private float minImpact = 5f;
     [Range(0f, 0.01f)][SerializeField] private float damageMultiplier = 0.001f;
 
