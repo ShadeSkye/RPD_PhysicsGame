@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PullBeam : MonoBehaviour
 {
     [Header("Beam Settings")]
-    [SerializeField] private float beamStrength = 10000;
-    [SerializeField] private float maxPullSpeed = 10000;
+    [SerializeField] private float beamStrength = 5000;
+    [SerializeField] private float maxPullSpeed = 5000;
 
     [Header("Zone Settings")]
     [SerializeField] private Collider pullZone;
@@ -15,17 +16,22 @@ public class PullBeam : MonoBehaviour
     public GravityBody HeldBody => heldBody;
     [SerializeField] private float radiusPadding = 1f;
     [SerializeField] private float ejectForce;
-    private Vector3 targetWorldPos;
+
+    private Vector3 heldPosition;
+    private Quaternion heldRotation;
 
     public bool isPulling;
     private float lockCooldown = 1f;
+    private List<GravityBody> bodiesInBeam = new List<GravityBody>();
 
     private void FixedUpdate()
     {
         if (heldBody != null)
         {
-            Vector3 targetWorldPos = holdZone.transform.position + holdZone.transform.forward * (heldBody.radius + radiusPadding);
-            heldBody.rb.MovePosition(targetWorldPos);
+            heldPosition = holdZone.transform.position + holdZone.transform.forward * (heldBody.radius + radiusPadding);
+            heldBody.rb.MovePosition(heldPosition);
+            heldRotation = holdZone.transform.rotation;
+            heldBody.rb.MoveRotation(heldRotation);
 
             if (heldBody.rb.velocity.magnitude > maxPullSpeed)
             {
@@ -38,8 +44,14 @@ public class PullBeam : MonoBehaviour
     {
         if (isPulling)
         {
+            Debug.Log($"Attempting pull {target}");
+
             if (target != null && target.isGravityAffected && !target.CompareTag("Player"))
             {
+                Debug.Log($"Successful pull {target}");
+
+                if (!bodiesInBeam.Contains(target)) bodiesInBeam.Add(target);
+
                 Vector3 offset = transform.position - target.rb.position;
                 float distance = offset.magnitude;
 
@@ -48,7 +60,7 @@ public class PullBeam : MonoBehaviour
                     distance = 0.1f;
                 }
 
-                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 1000) * target.rb.mass) / (distance * distance);
+                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 10000) * target.rb.mass) / (distance * distance);
 
                 Vector3 direction = offset.normalized;
 
@@ -59,6 +71,7 @@ public class PullBeam : MonoBehaviour
 
     internal void LockBody(GravityBody body)
     {
+        if (!bodiesInBeam.Contains(body)) return;
 
         if (body != null && body.isGravityAffected && !body.CompareTag("Player") && heldBody == null)
         {
