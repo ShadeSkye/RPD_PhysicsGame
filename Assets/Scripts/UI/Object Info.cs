@@ -7,9 +7,16 @@ using UnityEngine.UI;
 public class ObjectInfo : MonoBehaviour
 {
     [Header("Plug in text")]
-    [SerializeField] TextMeshProUGUI objectName;
-    [SerializeField] TextMeshProUGUI distance;
-    [SerializeField] GameObject objectInfoUI;
+    [SerializeField] TextMeshProUGUI ObjectName;
+    [SerializeField] TextMeshProUGUI Distance;
+    [SerializeField] GameObject ObjectInfoUI;
+
+    ObjectInfo instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     /// <summary>
     /// Simple if statement changing if the UI should be active based on what showUI returns (True to set active, False to deactivate)
@@ -19,11 +26,11 @@ public class ObjectInfo : MonoBehaviour
     {
         if (showUI)
         {
-            objectInfoUI.SetActive(true);
+            ObjectInfoUI.SetActive(true);
         }
         else if (!showUI)
         {
-            objectInfoUI.SetActive(false);
+            ObjectInfoUI.SetActive(false);
         }
     }
 
@@ -33,7 +40,7 @@ public class ObjectInfo : MonoBehaviour
     /// <param name="name"></param>
     private void DisplayObjectName(string name)
     {
-        objectName.text = name;
+        ObjectName.text = name;
     }
 
     /// <summary>
@@ -43,6 +50,6 @@ public class ObjectInfo : MonoBehaviour
     private void DisplayObjectDistance(float dist)
     {
         dist = Mathf.RoundToInt(dist);
-        distance.text = $"Distance: {dist} M";
+        Distance.text = $"Distance: {dist}m";
     }
 }
