@@ -2196,14 +2196,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4757909653608122630, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757909653608122630, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4757909653608122630, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5899803369233917838, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: m_Name
       value: Crate
       objectReference: {fileID: 0}
     - target: {fileID: 6637785797072382225, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: radius
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6637785797072382225, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: orbitTarget
       value: 
       objectReference: {fileID: 142209075}
+    - target: {fileID: 6637785797072382225, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: localGravity
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.041669663
@@ -2246,15 +2278,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7508509102753157062, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: m_Size.x
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7508509102753157062, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: m_Size.y
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7508509102753157062, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: m_Size.z
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2275,8 +2307,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1136796322056611501, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: beamStrength
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136796322056611501, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
       propertyPath: maxPullSpeed
       value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 1136796322056611501, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: radiusPadding
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3591860017299949350, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
       propertyPath: m_LocalPosition.x
