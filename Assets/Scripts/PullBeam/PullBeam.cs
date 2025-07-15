@@ -60,7 +60,7 @@ public class PullBeam : MonoBehaviour
                     distance = 0.1f;
                 }
 
-                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 100) * target.rb.mass) / (distance * distance);
+                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 1000) * target.rb.mass) / (distance * distance);
 
                 Vector3 direction = offset.normalized;
 

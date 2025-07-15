@@ -2306,6 +2306,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1072710105220968721, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: m_Center.z
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1136796322056611501, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
       propertyPath: beamStrength
       value: 1000
@@ -2357,6 +2361,10 @@ PrefabInstance:
     - target: {fileID: 3591860017299949350, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050887212126733247, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: m_Mass
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5943344323793404352, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
       propertyPath: m_Name
