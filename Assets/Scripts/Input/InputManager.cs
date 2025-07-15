@@ -70,10 +70,12 @@ public class InputManager : MonoBehaviour
 
         if (isBoosting && boostCoroutine == null)
         {
+            AudioManager.instance.PlayShipSFX(1);
             boostCoroutine = StartCoroutine(GetBoost());
         }
         else if (!isBoosting && boostCoroutine != null)
         {
+            AudioManager.instance.PlayShipSFX(0);
             StopCoroutine(boostCoroutine);
             boostCoroutine = null;
             currentBoost = 1f;
