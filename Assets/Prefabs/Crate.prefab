@@ -118,6 +118,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa627ae5d2d45e4c852b684692ad88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cargoName: Tadpole Crate
+  weight: 5
+  baseValue: 200
+  minImpact: 5
+  fragility: 0
 --- !u!1 &7631677033180626010
 GameObject:
   m_ObjectHideFlags: 0
