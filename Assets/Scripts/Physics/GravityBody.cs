@@ -1,5 +1,4 @@
-using System;
-using System.Diagnostics;
+
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -23,6 +22,7 @@ public class GravityBody : MonoBehaviour
     public float lastReleasedTime;
 
     public bool isGravityAffected => !isGravitySource && isInitialised && !isLocked;
+
 
     private void Awake()
     {
