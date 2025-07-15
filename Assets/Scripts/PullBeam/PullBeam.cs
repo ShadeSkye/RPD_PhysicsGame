@@ -44,11 +44,11 @@ public class PullBeam : MonoBehaviour
     {
         if (isPulling)
         {
-            Debug.Log($"Attempting pull {target}");
+            //Debug.Log($"Attempting pull {target}");
 
             if (target != null && target.isGravityAffected && !target.CompareTag("Player"))
             {
-                Debug.Log($"Successful pull {target}");
+                //Debug.Log($"Successful pull {target}");
 
                 if (!bodiesInBeam.Contains(target)) bodiesInBeam.Add(target);
 
@@ -93,14 +93,6 @@ public class PullBeam : MonoBehaviour
             heldBody = body;
 
             Debug.Log($"Picked up {body}");
-/*
-            // try to counteract force
-            Rigidbody shipRb = GetComponentInParent<Rigidbody>();
-            if (shipRb != null && !shipRb.isKinematic)
-            {
-
-                shipRb.velocity *= 0.1f;
-            }*/
         }
     }
 
@@ -130,4 +122,5 @@ public class PullBeam : MonoBehaviour
         UnlockBody(body);
         body.rb.AddForce(transform.forward * ejectForce, ForceMode.Impulse);
     }
+
 }

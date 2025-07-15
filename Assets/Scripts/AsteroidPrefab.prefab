@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2382456349070850475}
   - component: {fileID: 6190659132977714612}
   - component: {fileID: 333382946757176730}
+  - component: {fileID: 42303357082113059}
   m_Layer: 0
   m_Name: AsteroidPrefab
   m_TagString: Untagged
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 20, y: 20, z: 20}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -117,7 +118,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -146,9 +147,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f04bcf7cc64a46f44b92f9499454a5ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInitialised: 0
+  isLocked: 0
   rb: {fileID: 0}
-  isGravitySource: 1
+  isGravitySource: 0
   localGravity: 0.1
-  radius: 10
+  radius: 2
+  orbitDistance: 10
   orbitTarget: {fileID: 0}
-  initialVelocity: {x: 0, y: 0, z: 0}
+  lastReleasedTime: 0
+--- !u!114 &42303357082113059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7764371135497951066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa627ae5d2d45e4c852b684692ad88c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
