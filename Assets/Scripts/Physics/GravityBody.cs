@@ -39,8 +39,7 @@ public class GravityBody : MonoBehaviour
         }
         else if (TryGetComponent<Cargo>(out Cargo cargo))
         {
-            rb.mass = cargo.weight;
-
+            rb.mass = Mathf.Clamp(cargo.weight, 1f, 15f);
         }
     }
 

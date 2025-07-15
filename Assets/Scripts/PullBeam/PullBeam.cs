@@ -80,10 +80,11 @@ public class PullBeam : MonoBehaviour
         {
             if (Time.time - body.lastReleasedTime < lockCooldown) return;
 
-            body.isLocked = true;
+
             body.rb.velocity = Vector3.zero;
             body.rb.angularVelocity = Vector3.zero;
 
+            body.isLocked = true;
             body.rb.isKinematic = true;
 
             GravityManager.Instance.UnregisterBody(body);
@@ -104,10 +105,9 @@ public class PullBeam : MonoBehaviour
 
             body.isLocked = false;
             body.rb.isKinematic = false;
+            body.transform.SetParent(null);
 
             GravityManager.Instance.RegisterBody(body);
-
-            body.transform.SetParent(null);
 
             heldBody = null;
         }

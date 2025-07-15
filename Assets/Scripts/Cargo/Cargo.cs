@@ -6,7 +6,7 @@ public class Cargo : MonoBehaviour
 {
     [Header("Properties")]
     public string cargoName;
-    public float weight;
+    [Range(1f, 15f)] public float weight;
 
     public float baseValue;
     public float CurrentValue => baseValue * (1f - damagePercent);
