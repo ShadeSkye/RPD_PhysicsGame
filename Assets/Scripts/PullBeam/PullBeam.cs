@@ -60,12 +60,15 @@ public class PullBeam : MonoBehaviour
                     distance = 0.1f;
                 }
 
-                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 10000) * target.rb.mass) / (distance * distance);
+                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 100) * target.rb.mass) / (distance * distance);
 
                 Vector3 direction = offset.normalized;
 
                 target.rb.AddForce(direction * forceMagnitude);
+
+               
             }
+
         }
     }
 
@@ -90,6 +93,14 @@ public class PullBeam : MonoBehaviour
             heldBody = body;
 
             Debug.Log($"Picked up {body}");
+/*
+            // try to counteract force
+            Rigidbody shipRb = GetComponentInParent<Rigidbody>();
+            if (shipRb != null && !shipRb.isKinematic)
+            {
+
+                shipRb.velocity *= 0.1f;
+            }*/
         }
     }
 
