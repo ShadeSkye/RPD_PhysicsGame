@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304617a7d33e36144be8d8238196d0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beamStrength: 500
-  maxPullSpeed: 500
+  beamStrength: 1000
+  maxPullSpeed: 750
   pullZone: {fileID: 2242552500403060824}
   holdZone: {fileID: 4268097466598882234}
   radiusPadding: 4
@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 5050887212126733247}
   - component: {fileID: 9074750042522903660}
   - component: {fileID: 1072710105220968721}
+  - component: {fileID: 5892273644521031504}
   m_Layer: 3
   m_Name: Spaceship
   m_TagString: Player
@@ -286,7 +287,6 @@ MonoBehaviour:
   isGravitySource: 0
   localGravity: 1
   radius: 1
-  overrideRb: 0
   orbitDistance: 0
   orbitTarget: {fileID: 0}
   lastReleasedTime: 0
@@ -303,7 +303,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -312,7 +312,20 @@ CapsuleCollider:
   m_Radius: 1.75
   m_Height: 6.5
   m_Direction: 0
-  m_Center: {x: 0, y: 0, z: -0.75}
+  m_Center: {x: 0, y: 0, z: -1}
+--- !u!114 &5892273644521031504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943344323793404352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cf16c12e485b78499044705324637ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minImpact: 5
 --- !u!1 &6680201173472253479
 GameObject:
   m_ObjectHideFlags: 0
