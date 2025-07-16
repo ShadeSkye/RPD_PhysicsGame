@@ -5,6 +5,7 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
     public float ThrustAmount;
+    public float RotationAmount => rb.angularVelocity.magnitude;
 
     private ShipActions controls;
     private Rigidbody rb;
@@ -116,6 +117,8 @@ public class InputManager : MonoBehaviour
 
         Vector3 torqueVector = new Vector3(pitchInput, yawInput, rollInput);
         rb.AddRelativeTorque(torqueVector, ForceMode.Force);
+
+        AudioManager.Instance.UpdateRotateSFX(RotationAmount);
     }
 
     private void HandlePullBeam()

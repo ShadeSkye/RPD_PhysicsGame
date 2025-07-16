@@ -12,9 +12,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource rotateSFXSource;
     [SerializeField] private AudioSource thrusterSFXSource;
     [SerializeField] private AudioSource boostSFXSource;
-    [SerializeField] private AudioSource magnetizeSFXSource;
     [SerializeField] private AudioSource buttonSFXSource;
 
     public List<AudioClip> SFX = new List<AudioClip>();
@@ -24,6 +24,8 @@ public class AudioManager : MonoBehaviour
 
     private float targetThrusterVolume = 0f;
     private float targetBoosterVolume = 0f;
+    private float targetRotationVolume = 0f;
+
     private float previousBoosterVolume = 0f;
     [SerializeField] private float fadeSpeed = 3f;
     private void Awake()
@@ -48,6 +50,12 @@ public class AudioManager : MonoBehaviour
             targetBoosterVolume,
             fadeSpeed * Time.deltaTime
         );
+
+        rotateSFXSource.volume = Mathf.MoveTowards(
+            rotateSFXSource.volume,
+            targetRotationVolume,
+            fadeSpeed * Time.deltaTime
+        );
     }
 
     public void PlayMusic()
@@ -58,27 +66,36 @@ public class AudioManager : MonoBehaviour
 
     public void StartLoopingFX()
     {
-
         thrusterSFXSource.clip = SFX[0];
         boostSFXSource.clip = SFX[1];
+        rotateSFXSource.clip = SFX[4];
 
         thrusterSFXSource.Play();
         boostSFXSource.Play();
+        rotateSFXSource.Play();
 
         thrusterSFXSource.volume = 0;
         boostSFXSource.volume = 0;
+        rotateSFXSource.volume = 0;
     }
 
     public void UpdateThrusterSFX(float intensity)
     {
-        float volume = Mathf.Clamp01(intensity) * maxVolume;
+        float volume = Mathf.Clamp(intensity, 0f, 1f) * maxVolume;
         Debug.Log($"[SFX] Thruster intensity {intensity} converted to volume {volume}");
         targetThrusterVolume = volume;
     }
 
+    public void UpdateRotateSFX(float intensity)
+    {
+        float volume = Mathf.Clamp(intensity, 0.2f, 1f) * maxVolume;
+        Debug.Log($"[SFX] Rotate intensity {intensity} converted to volume {volume}");
+        targetRotationVolume = volume;
+    }
+
     public void UpdateBoosterSFX(float intensity)
     {
-        float volume = Mathf.Clamp01(intensity) * maxVolume;
+        float volume = Mathf.Clamp(intensity, 0f, 1f) * maxVolume;
         Debug.Log($"[SFX] Booster intensity {intensity} converted to volume {volume}");
 
         if (volume > 0f && previousBoosterVolume == 0f)
@@ -93,26 +110,14 @@ public class AudioManager : MonoBehaviour
         previousBoosterVolume = volume;
     }
 
+    public void PlaySFX(int I)
+    {
+        StopSFX();
+        sfxSource.clip = SFX[I];
+        sfxSource.Play();
+    }
 
-
-
-    /*
-
-        public void PlayShipSFX(int I)
-        {
-            StopShipSFX();
-            shipSFXSource.clip = SFX[I];
-            shipSFXSource.Play();
-        }
-
-        public void PlayMagnetizeSFX(int I)
-        {
-            StopMagnetizeSFX();
-            magnetizeSFXSource.clip = SFX[I];
-            magnetizeSFXSource.Play();
-        }*/
-
-        public void PlayButtonSFX(int I)
+    public void PlayButtonSFX(int I)
         {
             StopButtonSFX();
             buttonSFXSource.clip = SFX[I];
@@ -120,9 +125,13 @@ public class AudioManager : MonoBehaviour
         }
 
     public void StopMusic() => musicSource.Stop();
-    public void StopSFX() => sfxSource.Stop();
-    //public void StopShipSFX() => shipSFXSource.Stop();
-    public void StopMagnetizeSFX() => magnetizeSFXSource.Stop();
+    public void StopSFX()
+    {
+        sfxSource.Stop();
+        thrusterSFXSource.Stop();
+        boostSFXSource.Stop();
+        rotateSFXSource.Stop();
+    }
     public void StopButtonSFX() => buttonSFXSource.Stop();
 
     internal float GetSFXClipLength(int I)
