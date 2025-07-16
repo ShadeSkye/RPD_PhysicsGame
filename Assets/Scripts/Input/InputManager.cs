@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     [Header("Settings")]
     public float movementForce = 20f;
     public float rollForce = 10f;
-    public float rotationSensitivity = 5f;
+    public float rotationSensitivity = 2f;
 
     [Header("Controls")]
     public bool invertPitch;
