@@ -34,7 +34,8 @@ public class InputManager : MonoBehaviour
     private bool isBoosting = false;
     private Coroutine boostCoroutine;
     private float boostTimer;
-    private float boostDuration;
+    private float boostDuration; 
+    private bool previouslyBoosting = false;
 
     private void Awake()
     {
@@ -72,12 +73,13 @@ public class InputManager : MonoBehaviour
         bool boostInput = controls.Flight.Boost.ReadValue<float>() > 0.1f;
         lookInput = controls.Flight.Look.ReadValue<Vector2>();
 
-        if (boostInput && !isBoosting && boostCoroutine == null)
+        if (boostInput && !previouslyBoosting && !isBoosting && boostCoroutine == null)
         {
             isBoosting = true;
             boostCoroutine = StartCoroutine(GetBoost());
         }
 
+        previouslyBoosting = boostInput;
         HandlePullBeam();
     }
 

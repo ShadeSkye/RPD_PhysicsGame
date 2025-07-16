@@ -22,8 +22,10 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private float maxVolume = 1f;
 
+    private float targetThrusterVolume = 0f;
+    private float targetBoosterVolume = 0f;
     private float previousBoosterVolume = 0f;
-
+    [SerializeField] private float fadeSpeed = 3f;
     private void Awake()
     {
         Instance = this;
@@ -32,6 +34,20 @@ public class AudioManager : MonoBehaviour
         StartLoopingFX();
 
         DontDestroyOnLoad(gameObject);
+    }
+    private void Update()
+    {
+        thrusterSFXSource.volume = Mathf.MoveTowards(
+            thrusterSFXSource.volume,
+            targetThrusterVolume,
+            fadeSpeed * Time.deltaTime
+        );
+
+        boostSFXSource.volume = Mathf.MoveTowards(
+            boostSFXSource.volume,
+            targetBoosterVolume,
+            fadeSpeed * Time.deltaTime
+        );
     }
 
     public void PlayMusic()
@@ -57,7 +73,7 @@ public class AudioManager : MonoBehaviour
     {
         float volume = Mathf.Clamp01(intensity) * maxVolume;
         Debug.Log($"[SFX] Thruster intensity {intensity} converted to volume {volume}");
-        thrusterSFXSource.volume = volume;
+        targetThrusterVolume = volume;
     }
 
     public void UpdateBoosterSFX(float intensity)
@@ -72,7 +88,7 @@ public class AudioManager : MonoBehaviour
         }
 
         Debug.Log($"[SFX] Booster intensity {intensity} converted to volume {volume}");
-        boostSFXSource.volume = volume;
+        targetBoosterVolume = volume;
 
         previousBoosterVolume = volume;
     }
