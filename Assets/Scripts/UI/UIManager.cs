@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour
     public void NewGame()
     {
         AudioManager.Instance.PlayButtonSFX(UISFX.Button);
-        SceneManager.LoadSceneAsync(2);
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void GoToControls()
