@@ -281,9 +281,8 @@ MonoBehaviour:
   isLocked: 0
   bodyName: Cargo Depot
   rb: {fileID: 0}
-  dontPullPlayer: 1
   isGravitySource: 1
-  localGravity: 0.01
+  localGravity: 0.001
   radius: 1000
   orbitDistance: 0
   orbitTarget: {fileID: 0}

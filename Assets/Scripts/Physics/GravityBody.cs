@@ -11,7 +11,6 @@ public class GravityBody : MonoBehaviour
 
     [Header("Gravity Settings")]
     public Rigidbody rb;
-    public bool dontPullPlayer;
 
     [SerializeField] private bool isGravitySource;
     [SerializeField] private float localGravity = 1f;

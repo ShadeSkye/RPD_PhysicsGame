@@ -37,7 +37,7 @@ public class ShipSensor : MonoBehaviour
         int mask = ~(1 << 2);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask, QueryTriggerInteraction.Collide))
         {
-            //Debug.Log("Hit: " + hit.collider.name);
+            Debug.Log("Hit: " + hit.collider.name);
 
             if (hit.collider.TryGetComponent<GravityBody>(out GravityBody body))
             {
