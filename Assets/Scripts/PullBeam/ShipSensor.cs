@@ -34,7 +34,8 @@ public class ShipSensor : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+        int mask = ~(1 << 2);
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, mask, QueryTriggerInteraction.Collide))
         {
             Debug.Log("Hit: " + hit.collider.name);
 
@@ -43,8 +44,6 @@ public class ShipSensor : MonoBehaviour
                 float distance = Vector3.Distance(transform.position, body.transform.position);
                 LookAtDisplay.Instance.UpdateLookAtObject(body.bodyName, distance);
             }
-
-
 
         }
         else

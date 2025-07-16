@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6637785797072382225}
   - component: {fileID: 7508509102753157062}
   - component: {fileID: 1810708578277166706}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Crate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInitialised: 0
   isLocked: 0
+  bodyName: 
   rb: {fileID: 0}
   isGravitySource: 0
   localGravity: 0.1
@@ -121,8 +122,9 @@ MonoBehaviour:
   cargoName: Tadpole Crate
   weight: 5
   baseValue: 200
+  damagePercent: 0
   minImpact: 5
-  fragility: 0
+  damageMultiplier: 0.005
 --- !u!1 &7631677033180626010
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +136,7 @@ GameObject:
   - component: {fileID: 2960783100443919810}
   - component: {fileID: 6843092633519486422}
   - component: {fileID: 7856645671228292970}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Details
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +219,7 @@ GameObject:
   - component: {fileID: 104131286053310605}
   - component: {fileID: 8394829498394830731}
   - component: {fileID: 8620643170599385355}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
