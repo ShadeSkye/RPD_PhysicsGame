@@ -6,6 +6,8 @@
       "source": "builtin",
       "dependencies": {}
     },
+ Menu
+=======
     "com.unity.burst": {
       "version": "1.8.19",
       "depth": 1,
@@ -16,6 +18,7 @@
       },
       "url": "https://packages.unity.com"
     },
+ main
     "com.unity.cinemachine": {
       "version": "2.10.4",
       "depth": 0,
