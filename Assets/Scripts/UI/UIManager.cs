@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
 
     public void NewGame()
     {
-        AudioManager.instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         SceneManager.sceneLoaded += OnGameLoaded;
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
     }
@@ -38,28 +38,28 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame()
     {
-        AudioManager.instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         HUD.SetActive(false);
         pauseScreen.SetActive(true);
     }
 
     public void ResumeGame()
     {
-        AudioManager.instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         HUD.SetActive(true);
         pauseScreen.SetActive(false);
     }
 
     public void GoToControls()
     {
-        AudioManager.instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         settingsScreen.SetActive(false);
         controlsScreen.SetActive(true);
     }
 
     public void GoToSettings()
     {
-        AudioManager.instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         controlsScreen.SetActive(false);
         settingsScreen.SetActive(true);
     }
@@ -84,7 +84,7 @@ public class UIManager : MonoBehaviour
 
     public void QuitGame()
     {
-        AudioManager.instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         Application.Quit();
     }
 
