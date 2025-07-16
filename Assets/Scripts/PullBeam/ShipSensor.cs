@@ -6,7 +6,7 @@ using UnityEngine;
 public class ShipSensor : MonoBehaviour
 {
     PullBeam pullBeam;
-    [SerializeField] private float minImpact = 5f;
+    [SerializeField] private float minImpactDrop = 5f;
 
     private GravityBody lookingAtBody;
     private GravityBody holdingBody;
@@ -23,10 +23,16 @@ public class ShipSensor : MonoBehaviour
         //Debug.LogWarning($"Hit {collision.gameObject} for {impactAmount} force");
 
         // if above amount then eject
-        if (impactAmount >= minImpact && pullBeam?.HeldBody != null)
+        if (impactAmount >= minImpactDrop)
         {
-            pullBeam.UnlockBody(pullBeam.HeldBody);
+            if ( pullBeam?.HeldBody != null)
+            {
+                pullBeam.UnlockBody(pullBeam.HeldBody);
+            }
+
+            AudioManager.Instance.PlaySFX(OneShotSFX.Crash);
         }
+
     }
 
     void Update()

@@ -2410,6 +2410,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 59edf2f9445dc1646892f23a186a07fa, type: 3}
   - {fileID: 8300000, guid: c3ea1903a85feeb4e8ed8294c16c5089, type: 3}
   - {fileID: 8300000, guid: a93a946d38f9d954da12cafc3cc6d92c, type: 3}
+  - {fileID: 8300000, guid: 5fcc7a0c540a00b4c9d8b66c4f2ca174, type: 3}
+  - {fileID: 8300000, guid: a7aadea5f3cacec4e8972f7cdc23f922, type: 3}
   uiSFX:
   - {fileID: 8300000, guid: 0a19fbb39da033f47b667bdc30935038, type: 3}
   musicClips:

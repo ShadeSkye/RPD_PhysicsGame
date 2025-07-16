@@ -8097,10 +8097,6 @@ PrefabInstance:
       propertyPath: invertPitch
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2702932616620917597, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
-      propertyPath: rotationSensitivity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3591860017299949350, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.8
