@@ -59,7 +59,7 @@ public class InputManager : MonoBehaviour
             Debug.Log("Rigidbody for spaceship is null");
         }
 
-        boostDuration = AudioManager.Instance.GetSFXClipLength(1);
+        boostDuration = AudioManager.Instance.continuousSFX[(int)ContinuousSFX.Boost].length;
     }
 
     private void OnEnable() => controls.Enable();
@@ -124,10 +124,7 @@ public class InputManager : MonoBehaviour
     private void HandlePullBeam()
     {
         pb.isPulling = controls.Flight.Magnetise.ReadValue<float>() > 0;
-
-        //if (pb.isPulling) AudioManager.instance.PlayMagnetizeSFX(1);
-
-        //if (pb.isPulling) Debug.Log("Is pulling");
+        AudioManager.Instance.UpdateMagnetizeSFX(pb.isPulling);
 
         bool isEjectPressed = controls.Flight.Release.triggered;
 
@@ -149,7 +146,8 @@ public class InputManager : MonoBehaviour
                 boostTimer += Time.deltaTime;
 
                 // stop if its too long
-                if (boostTimer >= boostDuration)
+                bool boostInput = controls.Flight.Boost.ReadValue<float>() > 0.1f;
+                if (boostTimer >= boostDuration || !boostInput)
                 {
                     Debug.Log("end boost");
                     break;

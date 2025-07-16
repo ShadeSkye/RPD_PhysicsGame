@@ -2143,16 +2143,22 @@ MonoBehaviour:
   musicSource: {fileID: 631541200}
   rotateSFXSource: {fileID: 60921151}
   thrusterSFXSource: {fileID: 1017595770}
+  magnetizeSource: {fileID: 95447735}
   boostSFXSource: {fileID: 598830095}
   buttonSFXSource: {fileID: 208864791}
-  SFX:
+  continuousSFX:
   - {fileID: 8300000, guid: 622a4fb17c3d77f4c8c70f9cc0bdf667, type: 3}
   - {fileID: 8300000, guid: 078ba840fecd8034983bdfa7a082a925, type: 3}
-  - {fileID: 8300000, guid: 5366f2681b7148b42958fd1aa4b88535, type: 3}
-  - {fileID: 8300000, guid: 0a19fbb39da033f47b667bdc30935038, type: 3}
   - {fileID: 8300000, guid: 503cadabaab3e9141a92f0f7b41b98d1, type: 3}
+  - {fileID: 8300000, guid: 4d3732cc4e797474db0194b443bc30b4, type: 3}
+  oneShotSFX:
   - {fileID: 8300000, guid: f3e12227991f69549882c70eac7e9fbf, type: 3}
-  Music:
+  - {fileID: 8300000, guid: 59edf2f9445dc1646892f23a186a07fa, type: 3}
+  - {fileID: 8300000, guid: c3ea1903a85feeb4e8ed8294c16c5089, type: 3}
+  - {fileID: 8300000, guid: a93a946d38f9d954da12cafc3cc6d92c, type: 3}
+  uiSFX:
+  - {fileID: 8300000, guid: 0a19fbb39da033f47b667bdc30935038, type: 3}
+  musicClips:
   - {fileID: 8300000, guid: 276390b566ce4af44b26b2efb525af47, type: 3}
   maxVolume: 1
   fadeSpeed: 3

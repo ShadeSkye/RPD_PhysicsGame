@@ -19,27 +19,27 @@ public class UIManager : MonoBehaviour
 
     public void NewGame()
     {
-        AudioManager.Instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         SceneManager.LoadSceneAsync(1);
     }
 
     public void GoToControls()
     {
-        AudioManager.Instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         settingsScreen.SetActive(false);
         controlsScreen.SetActive(true);
     }
 
     public void GoToSettings()
     {
-        AudioManager.Instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         controlsScreen.SetActive(false);
         settingsScreen.SetActive(true);
     }
 
     public void QuitGame()
     {
-        AudioManager.Instance.PlayButtonSFX(3);
+        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
         Application.Quit();
     }
 }
