@@ -256,8 +256,8 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""LeftStick"",
-                    ""id"": ""3edf7c90-d42b-466f-9382-a4cf29fb6140"",
+                    ""name"": ""Bumpers"",
+                    ""id"": ""e0ab6193-be60-4088-a91e-6bee7a1d642c"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -268,8 +268,8 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""c1439937-4946-402a-9044-794af9d93067"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""id"": ""a97a0809-c741-42c2-9e4b-f2b63a67b537"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -279,8 +279,8 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""afa7d435-ee0d-497a-a7a0-af249305a299"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""id"": ""0cff4c07-a8f6-4df3-9d64-6b8ec7ced1dd"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -359,7 +359,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""id"": ""03def8f0-7088-4d65-9ef9-cd4c1823971a"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=30,y=30)"",
+                    ""processors"": ""ScaleVector2(x=15,y=15)"",
                     ""groups"": """",
                     ""action"": ""Look"",
                     ""isComposite"": true,
@@ -443,8 +443,8 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Bumpers"",
-                    ""id"": ""e0ab6193-be60-4088-a91e-6bee7a1d642c"",
+                    ""name"": ""LeftStick"",
+                    ""id"": ""3edf7c90-d42b-466f-9382-a4cf29fb6140"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -455,8 +455,8 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""a97a0809-c741-42c2-9e4b-f2b63a67b537"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""id"": ""c1439937-4946-402a-9044-794af9d93067"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -466,8 +466,8 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""0cff4c07-a8f6-4df3-9d64-6b8ec7ced1dd"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""id"": ""afa7d435-ee0d-497a-a7a0-af249305a299"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -499,17 +499,6 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""826536ec-a1e7-46ad-b317-1a5d7376f6c3"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Boost"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""be6fab3a-494d-4fc5-8efd-e759778a515c"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -522,7 +511,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6c6995e0-14fe-4562-b490-156be6f180f6"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -544,7 +533,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1556cd38-3c00-42ed-91cf-6e8f9b0fa57d"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
