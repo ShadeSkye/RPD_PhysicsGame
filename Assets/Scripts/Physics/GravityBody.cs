@@ -18,8 +18,8 @@ public class GravityBody : MonoBehaviour
     public float radius = 1f;
 
     [Header("Orbit Settings")]
-    [SerializeField] private float orbitDistance;
-    [SerializeField] private GravityBody orbitTarget;
+    [SerializeField] public float orbitDistance;
+    [SerializeField] public GravityBody orbitTarget;
 
     private Vector3 initialVelocity;
     public float lastReleasedTime;

@@ -149,7 +149,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInitialised: 0
   isLocked: 0
+  bodyName: 
   rb: {fileID: 0}
+  dontPullPlayer: 0
   isGravitySource: 0
   localGravity: 0.1
   radius: 2
@@ -169,7 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cargoName: 
-  weight: 0
+  weight: 1
   baseValue: 0
+  damagePercent: 0
   minImpact: 5
   damageMultiplier: 0.001
