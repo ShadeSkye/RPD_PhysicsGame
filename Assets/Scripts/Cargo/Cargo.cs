@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Cargo : MonoBehaviour
 {
+    private AudioSource audioSource;
+
     [Header("Properties")]
     public string cargoName;
     [Range(1f, 15f)] public float weight;
@@ -16,6 +19,26 @@ public class Cargo : MonoBehaviour
     [SerializeField] private float minImpact = 5f;
     [Range(0f, 0.01f)][SerializeField] private float damageMultiplier = 0.001f;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        if(audioSource != null)
+        {
+            audioSource.spatialBlend = 1f;
+            audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+        }
+
+    }
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PlayCrateHitSound();
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         // get hit amount
@@ -26,7 +49,9 @@ public class Cargo : MonoBehaviour
             damagePercent += ((impactAmount - minImpact) * damageMultiplier);
             damagePercent = Mathf.Clamp01(damagePercent);
 
-            Debug.Log($"{cargoName} hit for {impactAmount} force: damage now at {damagePercent * 100f:F1}% and value reduced to ${CurrentValue}");
+            PlayCrateHitSound();
+            //AudioManager.Instance.PlaySFX(OneShotSFX.CrateHit);
+            //Debug.Log($"{cargoName} hit for {impactAmount} force: damage now at {damagePercent * 100f:F1}% and value reduced to ${CurrentValue}");
         }
     }
 
@@ -38,7 +63,18 @@ public class Cargo : MonoBehaviour
             CarryingDisplay.Instance.UpdateEarnings();
             CarryingDisplay.Instance.ClearCarrying();
 
+            AudioManager.Instance.PlaySFX(OneShotSFX.Deposited);
+            
             Destroy(gameObject);
+        }
+    }
+
+    public void PlayCrateHitSound()
+    {
+        if (audioSource != null)
+        {
+            AudioClip clip = AudioManager.Instance.oneShotSFX[(int)OneShotSFX.CrateHit];
+            audioSource.PlayOneShot(clip);
         }
     }
 }
