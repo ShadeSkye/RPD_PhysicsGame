@@ -12,6 +12,7 @@ public class CarryingDisplay : MonoBehaviour
     [SerializeField] TextMeshProUGUI CarryingValue;
     [SerializeField] TextMeshProUGUI CarryingDamage;
 
+    public float totalEarnings = 0;
     [SerializeField] TextMeshProUGUI TotalMoney;
 
     private void Awake()
@@ -24,6 +25,8 @@ public class CarryingDisplay : MonoBehaviour
         Instance = this;
 
         ClearCarrying();
+        totalEarnings = 0;
+        UpdateEarnings();
     }
 
     public void UpdateCarrying(Cargo cargo)
@@ -40,8 +43,9 @@ public class CarryingDisplay : MonoBehaviour
         CarryingDamage.text = "";
     }
 
-    public void UpdateEarnings(float money)
+    public void UpdateEarnings()
     {
-        TotalMoney.text = $"Total Earnings: {money.ToString("C2")}";
+        TotalMoney.text = $"Total Earnings: {totalEarnings.ToString("C2")}";
     }
 }
+

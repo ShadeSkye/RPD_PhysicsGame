@@ -30,8 +30,15 @@ public class Cargo : MonoBehaviour
         }
     }
 
-   /* private void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"{cargoName} damage:{damagePercent * 100f:F1}% and value: ${CurrentValue}");
-    }*/
+        if (other.gameObject.CompareTag("Depot"))
+        {
+            CarryingDisplay.Instance.totalEarnings += CurrentValue;
+            CarryingDisplay.Instance.UpdateEarnings();
+            CarryingDisplay.Instance.ClearCarrying();
+
+            Destroy(gameObject);
+        }
+    }
 }
