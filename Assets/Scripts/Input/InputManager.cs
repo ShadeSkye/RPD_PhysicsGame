@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
     [Header("Settings")]
     public float movementForce = 20f;
     public float rollForce = 10f;
-    public float rotationSensitivity = 2f;
+    public float rotationSensitivity => 5f * UIManager.instance.sensFromSlider;
 
     [Header("Controls")]
     public bool invertPitch;
@@ -37,6 +37,11 @@ public class InputManager : MonoBehaviour
     private float boostTimer;
     private float boostDuration;
     private bool previouslyBoosting = false;
+
+    [Header("Brake")]
+    public float brakeForce = 50f;
+    public bool isBraking;
+    private bool previouslyBraking;
 
     private void Awake()
     {
@@ -71,6 +76,7 @@ public class InputManager : MonoBehaviour
     }
     private void Update()
     {
+        // boost
         bool boostInput = controls.Flight.Boost.ReadValue<float>() > 0.1f;
         lookInput = controls.Flight.Look.ReadValue<Vector2>();
 
@@ -81,6 +87,14 @@ public class InputManager : MonoBehaviour
         }
 
         previouslyBoosting = boostInput;
+
+        // brake
+        isBraking = controls.Flight.Brake.ReadValue<float>() > 0.1f;
+        HandleBraking();
+        if(!previouslyBraking && isBraking) AudioManager.Instance.PlaySFX(OneShotSFX.Brake);
+        previouslyBraking = isBraking;
+
+
         HandlePullBeam();
     }
 
@@ -131,6 +145,15 @@ public class InputManager : MonoBehaviour
         if (isEjectPressed && pb.HeldBody != null)
         {
             pb.EjectBody(pb.HeldBody);
+        }
+    }
+
+    private void HandleBraking()
+    {
+        if (isBraking && rb.velocity.magnitude > 0.1f)
+        {
+            Vector3 brakingForce = -rb.velocity.normalized * brakeForce;
+            rb.AddForce(brakingForce, ForceMode.Force);
         }
     }
 

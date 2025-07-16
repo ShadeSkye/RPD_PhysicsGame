@@ -19,7 +19,9 @@ public enum OneShotSFX
     Lock,
     Eject,
     CrateHit,
-    Deposited
+    Deposited,
+    Brake,
+    Crash
 }
 
 public enum UISFX
