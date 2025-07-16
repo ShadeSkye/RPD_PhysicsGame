@@ -52,7 +52,7 @@ public class UIManager : MonoBehaviour
 
     public void SensitivityFromSlider()
     {
-        Debug.Log(sensSlider.value);
+        //Debug.Log(sensSlider.value);
         sensFromSlider = sensSlider.value;
     }
 }
