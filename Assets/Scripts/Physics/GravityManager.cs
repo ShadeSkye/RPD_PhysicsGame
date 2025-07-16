@@ -14,7 +14,7 @@ public class GravityManager : MonoBehaviour
     public List<GravityBody> GetBodies() => bodies;
 
     [Header("Orbit Settings")]
-    [SerializeField] private bool simplifiedSimulation = true; // if its off its like nbody if its on its just the strongest
+    private bool simplifiedSimulation = true; // if its off its like nbody if its on its just the strongest
     [SerializeField, Range(0f, 100f)] private float alignedOrbitPercentage = 60f;
     public float alignedOrbitChance => alignedOrbitPercentage / 100f;
 
@@ -42,13 +42,6 @@ public class GravityManager : MonoBehaviour
     private void FixedUpdate()
     {
         ApplyGravity();
-
-        /*foreach (var body in bodies)
-        {
-            if (!body.rb.isKinematic)
-                body.UpdatePosition();
-
-        }*/
     }
 
     private void ApplyGravity()
@@ -67,7 +60,6 @@ public class GravityManager : MonoBehaviour
                 {
                     if (x != y)
                     {
-
                         GravityBody b = bodies[y];
 
                         totalForce += CalculateGravity(a, b);
@@ -81,13 +73,17 @@ public class GravityManager : MonoBehaviour
                 GravityBody strongest = GetStrongestGravitySource(a);
                 if (strongest != null)
                 {
+                    if (a.CompareTag("Player") && strongest.dontPullPlayer)
+                    {
+                        //Debug.Log($"Skipping gravity from {strongest.name} to Player due to dontPullPlayer");
+                        continue;
+                    }
+
                     totalForce += CalculateGravity(a, strongest);
                 }
             }
 
-
-
-                a.rb.AddForce(totalForce);
+            a.rb.AddForce(totalForce);
         }
     }
 
@@ -113,7 +109,7 @@ public class GravityManager : MonoBehaviour
         GravityBody strongestBody = null;
         float strongestForce = 0;
 
-        foreach(GravityBody body in bodies)
+        foreach (GravityBody body in bodies)
         {
             if (body == a || !body.rb.isKinematic) continue;
 
