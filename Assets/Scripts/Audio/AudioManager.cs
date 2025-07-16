@@ -12,7 +12,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource shipSFXSource;
     [SerializeField] private AudioSource magnetizeSFXSource;
-    [SerializeField] private AudioSource buttonSFXSource;
 
     public List<AudioClip> SFX = new List<AudioClip>();
     public List<AudioClip> Music = new List<AudioClip>();
@@ -20,7 +19,6 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        DontDestroyOnLoad(gameObject);
         musicSource.clip = Music[0];
         PlayMusic();
     }
@@ -44,16 +42,8 @@ public class AudioManager : MonoBehaviour
         magnetizeSFXSource.Play();
     }
 
-    public void PlayButtonSFX(int I)
-    {
-        StopButtonSFX();
-        buttonSFXSource.clip = SFX[I];
-        buttonSFXSource.Play();
-    }
-
     public void StopMusic() => musicSource.Stop();
     public void StopSFX() => sfxSource.Stop();
     public void StopShipSFX() => shipSFXSource.Stop();
     public void StopMagnetizeSFX() => magnetizeSFXSource.Stop();
-    public void StopButtonSFX() => buttonSFXSource.Stop();
 }
