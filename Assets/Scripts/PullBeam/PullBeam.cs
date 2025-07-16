@@ -44,11 +44,11 @@ public class PullBeam : MonoBehaviour
     {
         if (isPulling)
         {
-            Debug.Log($"Attempting pull {target}");
+            //Debug.Log($"Attempting pull {target}");
 
             if (target != null && target.isGravityAffected && !target.CompareTag("Player"))
             {
-                Debug.Log($"Successful pull {target}");
+                //Debug.Log($"Successful pull {target}");
 
                 if (!bodiesInBeam.Contains(target)) bodiesInBeam.Add(target);
 
@@ -60,7 +60,7 @@ public class PullBeam : MonoBehaviour
                     distance = 0.1f;
                 }
 
-                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 100) * target.rb.mass) / (distance * distance);
+                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 1000) * target.rb.mass) / (distance * distance);
 
                 Vector3 direction = offset.normalized;
 
@@ -80,10 +80,11 @@ public class PullBeam : MonoBehaviour
         {
             if (Time.time - body.lastReleasedTime < lockCooldown) return;
 
-            body.isLocked = true;
+
             body.rb.velocity = Vector3.zero;
             body.rb.angularVelocity = Vector3.zero;
 
+            body.isLocked = true;
             body.rb.isKinematic = true;
 
             GravityManager.Instance.UnregisterBody(body);
@@ -92,15 +93,13 @@ public class PullBeam : MonoBehaviour
 
             heldBody = body;
 
+            bodiesInBeam.Remove(body);
             Debug.Log($"Picked up {body}");
-/*
-            // try to counteract force
-            Rigidbody shipRb = GetComponentInParent<Rigidbody>();
-            if (shipRb != null && !shipRb.isKinematic)
-            {
 
-                shipRb.velocity *= 0.1f;
-            }*/
+            if (body.gameObject.TryGetComponent<Cargo>(out Cargo cargo))
+            {
+                CarryingDisplay.Instance.UpdateCarrying(cargo);
+            }
         }
     }
 
@@ -112,12 +111,13 @@ public class PullBeam : MonoBehaviour
 
             body.isLocked = false;
             body.rb.isKinematic = false;
+            body.transform.SetParent(null);
 
             GravityManager.Instance.RegisterBody(body);
 
-            body.transform.SetParent(null);
-
             heldBody = null;
+
+            CarryingDisplay.Instance.ClearCarrying();
         }
     }
 
@@ -130,4 +130,5 @@ public class PullBeam : MonoBehaviour
         UnlockBody(body);
         body.rb.AddForce(transform.forward * ejectForce, ForceMode.Impulse);
     }
+
 }

@@ -7,6 +7,7 @@ public class GravityBody : MonoBehaviour
 {
     [HideInInspector] public bool isInitialised; 
     [HideInInspector] public bool isLocked;
+    public string bodyName;
 
     [Header("Gravity Settings")]
     public Rigidbody rb;
@@ -30,12 +31,17 @@ public class GravityBody : MonoBehaviour
         rb.isKinematic = isGravitySource;
         rb.useGravity = false;
 
-        if (!gameObject.CompareTag("Player"))
+        if (isGravitySource) // generate mas from gravity and radius
         {
             localGravity = localGravity == 0 ? 1f : localGravity;
             radius = radius == 0 ? 1f : radius;
             rb.mass = (localGravity * radius * radius) / GravityManager.Instance.gravitationalConstant;
             transform.localScale = Vector3.one * radius * 2;
+        }
+        else if (TryGetComponent<Cargo>(out Cargo cargo))
+        {
+            rb.mass = Mathf.Clamp(cargo.weight, 1f, 15f);
+            bodyName = cargo.cargoName;
         }
     }
 
