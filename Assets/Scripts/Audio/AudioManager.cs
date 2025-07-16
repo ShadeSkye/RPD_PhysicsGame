@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,8 +75,6 @@ public class AudioManager : MonoBehaviour
         boostSFXSource.volume = volume;
 
         previousBoosterVolume = volume;
-
-        boostSFXSource.volume = volume;
     }
 
 
@@ -109,4 +108,9 @@ public class AudioManager : MonoBehaviour
     //public void StopShipSFX() => shipSFXSource.Stop();
     public void StopMagnetizeSFX() => magnetizeSFXSource.Stop();
     public void StopButtonSFX() => buttonSFXSource.Stop();
+
+    internal float GetSFXClipLength(int I)
+    {
+        return SFX[I].length;
+    }
 }

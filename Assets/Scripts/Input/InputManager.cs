@@ -33,6 +33,9 @@ public class InputManager : MonoBehaviour
     private float currentBoost;
     private bool isBoosting = false;
     private Coroutine boostCoroutine;
+    private float boostTimer;
+    private float boostDuration;
+
     private void Awake()
     {
         // singleton
@@ -53,6 +56,8 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("Rigidbody for spaceship is null");
         }
+
+        boostDuration = AudioManager.Instance.GetSFXClipLength(1);
     }
 
     private void OnEnable() => controls.Enable();
@@ -64,27 +69,18 @@ public class InputManager : MonoBehaviour
     }
     private void Update()
     {
-        isBoosting = controls.Flight.Boost.ReadValue<float>() > 0.1f;
+        bool boostInput = controls.Flight.Boost.ReadValue<float>() > 0.1f;
+        lookInput = controls.Flight.Look.ReadValue<Vector2>();
 
-        if (isBoosting && boostCoroutine == null)
+        if (boostInput && !isBoosting && boostCoroutine == null)
         {
-            //AudioManager.instance.PlayShipSFX(1);
+            isBoosting = true;
             boostCoroutine = StartCoroutine(GetBoost());
         }
-        else if (!isBoosting && boostCoroutine != null)
-        {
-            //AudioManager.instance.PlayShipSFX(0);
-            StopCoroutine(boostCoroutine);
-            boostCoroutine = null;
-            currentBoost = 1f;
-            CameraManager.Instance.SetBoostAmount(0f); // reset camera
-            AudioManager.Instance.UpdateBoosterSFX(0f);
-        }
-
-        lookInput = controls.Flight.Look.ReadValue<Vector2>();
 
         HandlePullBeam();
     }
+
     private void FixedUpdate()
     {
         HandleMovement();
@@ -138,20 +134,45 @@ public class InputManager : MonoBehaviour
 
     private IEnumerator GetBoost()
     {
+        boostTimer = 0f;
+
         while (true)
         {
             if (ThrustAmount > 0)
             {
+                // update timer
+                boostTimer += Time.deltaTime;
+
+                // stop if its too long
+                if (boostTimer >= boostDuration)
+                {
+                    Debug.Log("end boost");
+                    break;
+                }
+
+                // increase power
                 currentBoost += boostRate * Time.deltaTime;
                 currentBoost = Mathf.Clamp(currentBoost, 1f, maxBoost);
-
-                float normalizedBoost = (currentBoost - 1f) / (maxBoost - 1f);
-                normalizedBoost = Mathf.Clamp01(normalizedBoost);
-
-                CameraManager.Instance.SetBoostAmount(normalizedBoost);
-                AudioManager.Instance.UpdateBoosterSFX(normalizedBoost);
             }
+            else
+            {
+                // fade out
+                currentBoost = Mathf.MoveTowards(currentBoost, 1f, boostRate * Time.deltaTime);
+            }
+            
+            float normalized = Mathf.InverseLerp(1f, maxBoost, currentBoost);
+            CameraManager.Instance.SetBoostAmount(normalized);
+            AudioManager.Instance.UpdateBoosterSFX(normalized);
+
             yield return null;
         }
+
+        // end boost
+        isBoosting = false;
+        boostCoroutine = null;
+        currentBoost = 1f;
+
+        CameraManager.Instance.SetBoostAmount(0f);
+        AudioManager.Instance.UpdateBoosterSFX(0f);
     }
 }
