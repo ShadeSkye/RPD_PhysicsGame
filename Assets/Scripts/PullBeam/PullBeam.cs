@@ -95,7 +95,6 @@ public class PullBeam : MonoBehaviour
 
             bodiesInBeam.Remove(body);
             Debug.Log($"Picked up {body}");
-            AudioManager.Instance.PlaySFX(OneShotSFX.Lock);
 
             if (body.gameObject.TryGetComponent<Cargo>(out Cargo cargo))
             {
@@ -118,7 +117,6 @@ public class PullBeam : MonoBehaviour
 
             heldBody = null;
 
-            AudioManager.Instance.PlaySFX(OneShotSFX.Eject);
             CarryingDisplay.Instance.ClearCarrying();
         }
     }
