@@ -3074,7 +3074,7 @@ GameObject:
   - component: {fileID: 778802332}
   - component: {fileID: 778802333}
   m_Layer: 0
-  m_Name: AsteroidManager
+  m_Name: LevelGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
