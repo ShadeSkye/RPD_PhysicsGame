@@ -22,10 +22,21 @@ public class Cargo : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.spatialBlend = 1f;
-        audioSource.minDistance = 1f;
-        audioSource.maxDistance = 15f;
-        audioSource.volume = 0.1f;
+        if(audioSource != null)
+        {
+            audioSource.spatialBlend = 1f;
+            audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+        }
+
+    }
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            PlayCrateHitSound();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -38,8 +49,9 @@ public class Cargo : MonoBehaviour
             damagePercent += ((impactAmount - minImpact) * damageMultiplier);
             damagePercent = Mathf.Clamp01(damagePercent);
 
-            AudioManager.Instance.PlaySFX(OneShotSFX.CrateHit);
-            Debug.Log($"{cargoName} hit for {impactAmount} force: damage now at {damagePercent * 100f:F1}% and value reduced to ${CurrentValue}");
+            PlayCrateHitSound();
+            //AudioManager.Instance.PlaySFX(OneShotSFX.CrateHit);
+            //Debug.Log($"{cargoName} hit for {impactAmount} force: damage now at {damagePercent * 100f:F1}% and value reduced to ${CurrentValue}");
         }
     }
 
@@ -52,13 +64,17 @@ public class Cargo : MonoBehaviour
             CarryingDisplay.Instance.ClearCarrying();
 
             AudioManager.Instance.PlaySFX(OneShotSFX.Deposited);
+            
             Destroy(gameObject);
         }
     }
 
     public void PlayCrateHitSound()
     {
-        AudioClip clip = AudioManager.Instance.oneShotSFX[(int)OneShotSFX.CrateHit];
-        audioSource.PlayOneShot(clip);
+        if (audioSource != null)
+        {
+            AudioClip clip = AudioManager.Instance.oneShotSFX[(int)OneShotSFX.CrateHit];
+            audioSource.PlayOneShot(clip);
+        }
     }
 }

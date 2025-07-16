@@ -81,6 +81,7 @@ MonoBehaviour:
   isLocked: 0
   bodyName: 
   rb: {fileID: 0}
+  dontPullPlayer: 0
   isGravitySource: 0
   localGravity: 0.1
   radius: 0.2
@@ -135,7 +136,7 @@ AudioSource:
   m_GameObject: {fileID: 5899803369233917838}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 4057791503563824702, guid: be51724ba3e3e7f408386242dea02a7f, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

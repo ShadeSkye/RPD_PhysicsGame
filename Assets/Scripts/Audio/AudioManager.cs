@@ -40,6 +40,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioSource musicSource;
+
+    [SerializeField] private AudioSource onsShotSFXSource;
     [SerializeField] private AudioSource rotateSFXSource;
     [SerializeField] private AudioSource thrusterSFXSource;
     [SerializeField] private AudioSource magnetizeSource;
@@ -171,8 +173,8 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(OneShotSFX sfx)
     {
         StopSFX();
-        sfxSource.clip = oneShotSFX[(int)sfx];
-        sfxSource.Play();
+        onsShotSFXSource.clip = oneShotSFX[(int)sfx];
+        onsShotSFXSource.Play();
     }
 
     public void PlayButtonSFX(UISFX uisfx)
@@ -183,13 +185,17 @@ public class AudioManager : MonoBehaviour
     }
 
     public void StopMusic() => musicSource.Stop();
-    public void StopSFX()
+    public void StopAllSFX()
     {
         sfxSource.Stop();
         thrusterSFXSource.Stop();
         boostSFXSource.Stop();
         rotateSFXSource.Stop();
         magnetizeSource.Stop();
+    }
+    public void StopSFX()
+    {
+        onsShotSFXSource.Stop();
     }
     public void StopButtonSFX() => buttonSFXSource.Stop();
 
