@@ -4,6 +4,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
+    public float ThrustAmount;
 
     private ShipActions controls;
     private Rigidbody rb;
@@ -32,9 +33,6 @@ public class InputManager : MonoBehaviour
     private float currentBoost;
     private bool isBoosting = false;
     private Coroutine boostCoroutine;
-
-    
-
     private void Awake()
     {
         // singleton
@@ -70,16 +68,17 @@ public class InputManager : MonoBehaviour
 
         if (isBoosting && boostCoroutine == null)
         {
-            AudioManager.instance.PlayShipSFX(1);
+            //AudioManager.instance.PlayShipSFX(1);
             boostCoroutine = StartCoroutine(GetBoost());
         }
         else if (!isBoosting && boostCoroutine != null)
         {
-            AudioManager.instance.PlayShipSFX(0);
+            //AudioManager.instance.PlayShipSFX(0);
             StopCoroutine(boostCoroutine);
             boostCoroutine = null;
             currentBoost = 1f;
             CameraManager.Instance.SetBoostAmount(0f); // reset camera
+            AudioManager.Instance.UpdateBoosterSFX(0f);
         }
 
         lookInput = controls.Flight.Look.ReadValue<Vector2>();
@@ -95,10 +94,19 @@ public class InputManager : MonoBehaviour
     private void HandleMovement()
     {
         float thrustInput = controls.Flight.Thrust.ReadValue<float>();
-        rb.AddForce(spaceship.transform.forward * thrustInput * movementForce * (isBoosting ? currentBoost : 1f));
-
         float strafeInput = controls.Flight.Strafe.ReadValue<float>();
+
+        float boostFactor = isBoosting ? currentBoost : 1f;
+
+        // apply forces
+        rb.AddForce(spaceship.transform.forward * thrustInput * movementForce * boostFactor);
         rb.AddForce(spaceship.transform.right * strafeInput * movementForce);
+
+        // calculate and store thrust amount
+        ThrustAmount = (Mathf.Abs(thrustInput) + Mathf.Abs(strafeInput)) * movementForce * boostFactor;
+
+        // use for audio
+        AudioManager.Instance.UpdateThrusterSFX(ThrustAmount);
     }
 
 
@@ -116,6 +124,8 @@ public class InputManager : MonoBehaviour
     {
         pb.isPulling = controls.Flight.Magnetise.ReadValue<float>() > 0;
 
+        //if (pb.isPulling) AudioManager.instance.PlayMagnetizeSFX(1);
+
         //if (pb.isPulling) Debug.Log("Is pulling");
 
         bool isEjectPressed = controls.Flight.Release.triggered;
@@ -130,13 +140,17 @@ public class InputManager : MonoBehaviour
     {
         while (true)
         {
-            currentBoost += boostRate * Time.deltaTime;
-            currentBoost = Mathf.Clamp(currentBoost, 1f, maxBoost);
+            if (ThrustAmount > 0)
+            {
+                currentBoost += boostRate * Time.deltaTime;
+                currentBoost = Mathf.Clamp(currentBoost, 1f, maxBoost);
 
-            float normalizedBoost = (currentBoost - 1f) / (maxBoost - 1f);
-            normalizedBoost = Mathf.Clamp01(normalizedBoost);
-            CameraManager.Instance.SetBoostAmount(normalizedBoost); // update camera
+                float normalizedBoost = (currentBoost - 1f) / (maxBoost - 1f);
+                normalizedBoost = Mathf.Clamp01(normalizedBoost);
 
+                CameraManager.Instance.SetBoostAmount(normalizedBoost);
+                AudioManager.Instance.UpdateBoosterSFX(normalizedBoost);
+            }
             yield return null;
         }
     }
