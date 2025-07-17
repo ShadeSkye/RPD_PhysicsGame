@@ -162,6 +162,15 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c9612d4-e6cd-4e89-b6d8-108eca192d91"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -564,11 +573,33 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7c47c5be-f0e2-4ccc-a621-b712e05eaee2"",
-                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e49a18b5-8798-471c-b088-c9a0abfd0075"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cabe2d6e-74f1-43b8-b934-315f1591a2ce"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -587,6 +618,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         m_Flight_Magnetise = m_Flight.FindAction("Magnetise", throwIfNotFound: true);
         m_Flight_Release = m_Flight.FindAction("Release", throwIfNotFound: true);
         m_Flight_Brake = m_Flight.FindAction("Brake", throwIfNotFound: true);
+        m_Flight_Pause = m_Flight.FindAction("Pause", throwIfNotFound: true);
     }
 
     ~@ShipActions()
@@ -675,6 +707,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Flight_Magnetise;
     private readonly InputAction m_Flight_Release;
     private readonly InputAction m_Flight_Brake;
+    private readonly InputAction m_Flight_Pause;
     /// <summary>
     /// Provides access to input actions defined in input action map "Flight".
     /// </summary>
@@ -718,6 +751,10 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Flight/Brake".
         /// </summary>
         public InputAction @Brake => m_Wrapper.m_Flight_Brake;
+        /// <summary>
+        /// Provides access to the underlying input action "Flight/Pause".
+        /// </summary>
+        public InputAction @Pause => m_Wrapper.m_Flight_Pause;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -768,6 +805,9 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
             @Brake.started += instance.OnBrake;
             @Brake.performed += instance.OnBrake;
             @Brake.canceled += instance.OnBrake;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         /// <summary>
@@ -803,6 +843,9 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
             @Brake.started -= instance.OnBrake;
             @Brake.performed -= instance.OnBrake;
             @Brake.canceled -= instance.OnBrake;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         /// <summary>
@@ -899,5 +942,12 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBrake(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPause(InputAction.CallbackContext context);
     }
 }

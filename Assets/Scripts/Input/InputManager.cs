@@ -10,13 +10,14 @@ public class InputManager : MonoBehaviour
     private ShipActions controls;
     private Rigidbody rb;
     private PullBeam pb;
+    private bool gamePaused = false;
 
     [SerializeField] public GameObject spaceship;
 
     [Header("Settings")]
     public float movementForce = 20f;
     public float rollForce = 10f;
-    public float rotationSensitivity => 5f * UIManager.instance.sensFromSlider;
+    public float rotationSensitivity => 1f * UIManager.instance.sensFromSlider;
 
     [Header("Controls")]
     public bool invertPitch;
@@ -86,7 +87,16 @@ public class InputManager : MonoBehaviour
             boostCoroutine = StartCoroutine(GetBoost());
         }
 
-        previouslyBoosting = boostInput;
+        if (controls.Flight.Pause.IsPressed() && !gamePaused)
+        {
+            UIManager.instance.PauseGame();
+        }
+        else if (controls.Flight.Pause.IsPressed() && gamePaused)
+        {
+            UIManager.instance.ResumeGame();
+        }
+
+            previouslyBoosting = boostInput;
 
         // brake
         isBraking = controls.Flight.Brake.ReadValue<float>() > 0.1f;
