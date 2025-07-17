@@ -153,6 +153,15 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""Button"",
+                    ""id"": ""80f8eff5-0b4d-4007-8654-3607cd3debc1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -540,6 +549,28 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""action"": ""Release"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""630d0b84-e2a6-49f6-8e01-db65bda6b3b9"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7c47c5be-f0e2-4ccc-a621-b712e05eaee2"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -555,6 +586,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         m_Flight_Boost = m_Flight.FindAction("Boost", throwIfNotFound: true);
         m_Flight_Magnetise = m_Flight.FindAction("Magnetise", throwIfNotFound: true);
         m_Flight_Release = m_Flight.FindAction("Release", throwIfNotFound: true);
+        m_Flight_Brake = m_Flight.FindAction("Brake", throwIfNotFound: true);
     }
 
     ~@ShipActions()
@@ -642,6 +674,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Flight_Boost;
     private readonly InputAction m_Flight_Magnetise;
     private readonly InputAction m_Flight_Release;
+    private readonly InputAction m_Flight_Brake;
     /// <summary>
     /// Provides access to input actions defined in input action map "Flight".
     /// </summary>
@@ -681,6 +714,10 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Flight/Release".
         /// </summary>
         public InputAction @Release => m_Wrapper.m_Flight_Release;
+        /// <summary>
+        /// Provides access to the underlying input action "Flight/Brake".
+        /// </summary>
+        public InputAction @Brake => m_Wrapper.m_Flight_Brake;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -728,6 +765,9 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
             @Release.started += instance.OnRelease;
             @Release.performed += instance.OnRelease;
             @Release.canceled += instance.OnRelease;
+            @Brake.started += instance.OnBrake;
+            @Brake.performed += instance.OnBrake;
+            @Brake.canceled += instance.OnBrake;
         }
 
         /// <summary>
@@ -760,6 +800,9 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
             @Release.started -= instance.OnRelease;
             @Release.performed -= instance.OnRelease;
             @Release.canceled -= instance.OnRelease;
+            @Brake.started -= instance.OnBrake;
+            @Brake.performed -= instance.OnBrake;
+            @Brake.canceled -= instance.OnBrake;
         }
 
         /// <summary>
@@ -849,5 +892,12 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRelease(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Brake" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBrake(InputAction.CallbackContext context);
     }
 }
