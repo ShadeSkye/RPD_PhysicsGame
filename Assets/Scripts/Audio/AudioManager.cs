@@ -66,6 +66,7 @@ public class AudioManager : MonoBehaviour
 
     private float previousBoosterVolume = 0f;
     [SerializeField] private float fadeSpeed = 3f;
+
     private void Awake()
     {
         Instance = this;
@@ -184,6 +185,16 @@ public class AudioManager : MonoBehaviour
         StopButtonSFX();
         buttonSFXSource.clip = uiSFX[(int)uisfx];
         buttonSFXSource.Play();
+    }
+
+    public void PauseSFX()
+    {
+        audioMixer.SetFloat("sfx", -80f);
+    }
+
+    public void ResumeSFX()
+    {
+        audioMixer.SetFloat("sfx", 0f);
     }
 
     public void StopMusic() => musicSource.Stop();
