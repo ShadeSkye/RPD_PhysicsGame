@@ -30,7 +30,7 @@ public class ShipSensor : MonoBehaviour
                 pullBeam.UnlockBody(pullBeam.HeldBody);
             }
 
-            AudioManager.Instance.PlaySFX(OneShotSFX.Crash);
+            AudioManager.Instance.PlayOneShot("Crash");
         }
 
     }

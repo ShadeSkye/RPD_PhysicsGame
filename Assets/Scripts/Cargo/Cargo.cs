@@ -63,7 +63,7 @@ public class Cargo : MonoBehaviour
             CarryingDisplay.Instance.UpdateEarnings();
             CarryingDisplay.Instance.ClearCarrying();
 
-            AudioManager.Instance.PlaySFX(OneShotSFX.Deposited);
+            AudioManager.Instance.PlayOneShot("Deposited");
             
             Destroy(gameObject);
         }
@@ -71,10 +71,9 @@ public class Cargo : MonoBehaviour
 
     public void PlayCrateHitSound()
     {
-        if (audioSource != null)
+        if (audioSource != null && AudioManager.Instance.audioLookup.TryGetValue("CrateHit", out var sound))
         {
-            AudioClip clip = AudioManager.Instance.oneShotSFX[(int)OneShotSFX.CrateHit];
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(sound.clip);
         }
     }
 }

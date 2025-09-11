@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
             Debug.Log("Rigidbody for spaceship is null");
         }
 
-        boostDuration = AudioManager.Instance.continuousSFX[(int)ContinuousSFX.Boost].length;
+        boostDuration = AudioManager.Instance.audioLookup["Boost"].clip.length;
     }
 
     private void OnEnable() => controls.Enable();
@@ -101,7 +101,7 @@ public class InputManager : MonoBehaviour
         // brake
         isBraking = controls.Flight.Brake.ReadValue<float>() > 0.1f;
         HandleBraking();
-        if(!previouslyBraking && isBraking) AudioManager.Instance.PlaySFX(OneShotSFX.Brake);
+        if (!previouslyBraking && isBraking) AudioManager.Instance.PlayOneShot("Brake");
         previouslyBraking = isBraking;
 
 
@@ -129,7 +129,7 @@ public class InputManager : MonoBehaviour
         ThrustAmount = (Mathf.Abs(thrustInput) + Mathf.Abs(strafeInput)) * movementForce * boostFactor;
 
         // use for audio
-        AudioManager.Instance.UpdateThrusterSFX(ThrustAmount);
+        AudioManager.Instance.UpdateContinuous("Thrust", ThrustAmount);
     }
 
 
@@ -142,13 +142,13 @@ public class InputManager : MonoBehaviour
         Vector3 torqueVector = new Vector3(pitchInput, yawInput, rollInput);
         rb.AddRelativeTorque(torqueVector, ForceMode.Force);
 
-        AudioManager.Instance.UpdateRotateSFX(RotationAmount);
+        AudioManager.Instance.UpdateContinuous("Rotation", RotationAmount);
     }
 
     private void HandlePullBeam()
     {
         pb.isPulling = controls.Flight.Magnetise.ReadValue<float>() > 0;
-        AudioManager.Instance.UpdateMagnetizeSFX(pb.isPulling);
+        AudioManager.Instance.UpdateContinuous("Magnetise", pb.isPulling? 1 : 0);
 
         bool isEjectPressed = controls.Flight.Release.triggered;
 
@@ -198,7 +198,7 @@ public class InputManager : MonoBehaviour
 
             float normalized = Mathf.InverseLerp(1f, maxBoost, currentBoost);
             CameraManager.Instance.SetBoostAmount(normalized);
-            AudioManager.Instance.UpdateBoosterSFX(normalized);
+            AudioManager.Instance.UpdateContinuous("Boost", normalized);
 
             yield return null;
         }
@@ -209,6 +209,6 @@ public class InputManager : MonoBehaviour
         currentBoost = 1f;
 
         CameraManager.Instance.SetBoostAmount(0f);
-        AudioManager.Instance.UpdateBoosterSFX(0f);
+        AudioManager.Instance.UpdateContinuous("Boost", 0f);
     }
 }
