@@ -42,15 +42,16 @@ public class AudioManager : MonoBehaviour
             AudioSource source = gameObject.AddComponent<AudioSource>();
             source.clip = sound.clip;
             source.playOnAwake = false;
-            source.loop = (sound.audioType == AudioType.Continuous || sound.audioType == AudioType.Music);
-            source.volume = (sound.audioType == AudioType.Music) ? defaultVolume : 0f;
-
+            source.loop = (sound is ContinuousAudio);
+            source.volume = (sound is OneShotAudio || sound.mixerGroup.name == "Music") ? 1f : 0f;
             source.outputAudioMixerGroup = sound.mixerGroup;
             sound.source = source;
 
-            audioLookup[sound.id.name] = sound;
+            audioLookup[sound.name] = sound;
 
-            if (sound.audioType == AudioType.Continuous || sound.audioType == AudioType.Music)
+            Debug.Log(sound.mixerGroup.name);
+
+            if (sound is ContinuousAudio)
                 source.Play();
         }
     }
@@ -70,15 +71,17 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        float volume = Mathf.Clamp(intensity, 0f, 1f) * (sound.maxVolume - sound.minVolume) + sound.minVolume;
+        if (sound is not ContinuousAudio csound) return;
 
-        if (sound.restartOnActivation && volume > 0f && sound.source.volume == 0f)
+        float volume = Mathf.Clamp(intensity, 0f, 1f) * (csound.maxVolume - csound.minVolume) + csound.minVolume;
+
+        if (csound.restartOnActivation && volume > 0f && csound.source.volume == 0f)
         {
-            sound.source.Stop();
-            sound.source.Play();
+            csound.source.Stop();
+            csound.source.Play();
         }
 
-        targetVolumes[sound] = volume;
+        targetVolumes[csound] = volume;
     }
 
     public void PlayOneShot(string soundName)

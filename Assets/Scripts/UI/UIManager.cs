@@ -69,6 +69,7 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame()
     {
+        AudioManager.Instance.PlayOneShot("Button");
         AudioManager.Instance.PauseSFX();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -79,6 +80,7 @@ public class UIManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        AudioManager.Instance.PlayOneShot("Button");
         AudioManager.Instance.ResumeSFX();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

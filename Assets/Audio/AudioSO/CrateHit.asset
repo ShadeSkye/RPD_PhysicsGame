@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44a4dd267399c2e4f9d6c1c542a27ebe, type: 3}
+  m_Name: CrateHit
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 2130947796719358961, guid: be51724ba3e3e7f408386242dea02a7f, type: 2}
+  clip: {fileID: 8300000, guid: c3ea1903a85feeb4e8ed8294c16c5089, type: 3}
+  source: {fileID: 0}
