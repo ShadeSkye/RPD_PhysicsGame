@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a7f6a592ca7da408b09aae03e83035, type: 3}
+  m_Name: Magnetise
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 832789883986060108, guid: be51724ba3e3e7f408386242dea02a7f, type: 2}
+  clip: {fileID: 8300000, guid: 4d3732cc4e797474db0194b443bc30b4, type: 3}
+  source: {fileID: 0}
+  minVolume: 0
+  maxVolume: 1
+  restartOnActivation: 0

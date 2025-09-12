@@ -4,201 +4,104 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
-
-public enum ContinuousSFX
-{
-    Thrust,
-    Boost,
-    Rotation,
-    Magnetize
-
-}
-
-public enum OneShotSFX
-{
-    Lock,
-    Eject,
-    CrateHit,
-    Deposited,
-    Brake,
-    Crash
-}
-
-public enum UISFX
-{
-    Button
-
-}
-
-public enum MusicClips
-{
-    Main
-}
-
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance;
 
     [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioSource musicSource;
 
-    [SerializeField] private AudioSource onsShotSFXSource;
-    [SerializeField] private AudioSource rotateSFXSource;
-    [SerializeField] private AudioSource thrusterSFXSource;
-    [SerializeField] private AudioSource magnetizeSource;
-    [SerializeField] private AudioSource boostSFXSource;
-    [SerializeField] private AudioSource buttonSFXSource;
+    [SerializeField] private List<AudioData> sounds;
 
-
-    [Header("Assign Clips")]
-    public AudioClip[] continuousSFX;
-    public AudioClip[] oneShotSFX;
-    public AudioClip[] uiSFX;
-    public AudioClip[] musicClips;
-
+    [SerializeField] private float defaultVolume = 1f;
     [SerializeField] private float maxVolume = 1f;
 
-    private float targetThrusterVolume = 0f;
-    private float targetBoosterVolume = 0f;
-    private float targetRotationVolume = 0f;
-    private float targetMagnetizeSource = 0f;
-
-    private float previousBoosterVolume = 0f;
     [SerializeField] private float fadeSpeed = 3f;
+
+    private Dictionary<AudioData, float> targetVolumes = new Dictionary<AudioData, float>();
+
+    public Dictionary<string, AudioData> audioLookup = new Dictionary<string, AudioData>(); 
+
     private void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
         Instance = this;
 
-        PlayMusic();
-        StartLoopingFX();
-
         DontDestroyOnLoad(gameObject);
+
+        AudioSetup();
+    }
+    private void AudioSetup()
+    {
+        foreach (AudioData sound in sounds)
+        {
+            AudioSource source = gameObject.AddComponent<AudioSource>();
+            source.clip = sound.clip;
+            source.playOnAwake = false;
+            source.loop = (sound is ContinuousAudio);
+            source.volume = (sound is OneShotAudio || sound.mixerGroup.name == "Music") ? 1f : 0f;
+            source.outputAudioMixerGroup = sound.mixerGroup;
+            sound.source = source;
+
+            audioLookup[sound.name] = sound;
+
+            Debug.Log(sound.mixerGroup.name);
+
+            if (sound is ContinuousAudio)
+                source.Play();
+        }
     }
     private void Update()
     {
-        thrusterSFXSource.volume = Mathf.MoveTowards(
-            thrusterSFXSource.volume,
-            targetThrusterVolume,
-            fadeSpeed * Time.deltaTime
-        );
-
-        boostSFXSource.volume = Mathf.MoveTowards(
-            boostSFXSource.volume,
-            targetBoosterVolume,
-            fadeSpeed * Time.deltaTime
-        );
-
-        rotateSFXSource.volume = Mathf.MoveTowards(
-            rotateSFXSource.volume,
-            targetRotationVolume,
-            fadeSpeed * Time.deltaTime
-        );
-
-        magnetizeSource.volume = Mathf.MoveTowards(
-            magnetizeSource.volume,
-            targetMagnetizeSource,
-            fadeSpeed * Time.deltaTime
-        );
-    }
-
-    public void PlayMusic()
-    {
-        musicSource.clip = musicClips[(int)MusicClips.Main];
-        musicSource.Play();
-    }
-
-    public void StartLoopingFX()
-    {
-        thrusterSFXSource.clip = continuousSFX[(int)ContinuousSFX.Thrust];
-        boostSFXSource.clip = continuousSFX[(int)ContinuousSFX.Boost];
-        rotateSFXSource.clip = continuousSFX[(int)ContinuousSFX.Rotation];
-        magnetizeSource.clip = continuousSFX[(int)ContinuousSFX.Magnetize];
-
-        thrusterSFXSource.Play();
-        boostSFXSource.Play();
-        rotateSFXSource.Play();
-        magnetizeSource.Play();
-
-        thrusterSFXSource.volume = 0;
-        boostSFXSource.volume = 0;
-        rotateSFXSource.volume = 0;
-        magnetizeSource.volume = 0;
-    }
-
-    public void UpdateThrusterSFX(float intensity)
-    {
-        float volume = Mathf.Clamp(intensity, 0f, 1f) * maxVolume;
-        //Debug.Log($"[SFX] Thruster intensity {intensity} converted to volume {volume}");
-        targetThrusterVolume = volume;
-    }
-
-    public void UpdateRotateSFX(float intensity)
-    {
-        float volume = Mathf.Clamp(intensity, 0.2f, 1f) * maxVolume;
-        //Debug.Log($"[SFX] Rotate intensity {intensity} converted to volume {volume}");
-        targetRotationVolume = volume;
-    }
-    public void UpdateMagnetizeSFX(bool isPulling)
-    {
-        float volume;
-        if (isPulling)
+        foreach (var kvp in targetVolumes)
         {
-            volume = maxVolume;
+            kvp.Key.source.volume = Mathf.MoveTowards(kvp.Key.source.volume, kvp.Value, fadeSpeed * Time.deltaTime);
         }
-        else
+    }
+
+    public void UpdateContinuous(string soundName, float intensity)
+    {
+        if (!audioLookup.TryGetValue(soundName, out AudioData sound))
         {
-            volume = 0f;
+            Debug.LogWarning($"Audio key not found: {soundName}");
+            return;
         }
 
-        bool isPlayingAlready = (magnetizeSource.isPlaying && magnetizeSource.clip == continuousSFX[(int)ContinuousSFX.Magnetize]);
-        // Debug.Log($"[SFX] Beam is playing? {isPulling} converted to volume {volume}");
-        targetMagnetizeSource = volume;
-    }
+        if (sound is not ContinuousAudio csound) return;
 
-    public void UpdateBoosterSFX(float intensity)
-    {
-        float volume = Mathf.Clamp(intensity, 0f, 1f) * maxVolume;
+        float volume = Mathf.Clamp(intensity, 0f, 1f) * (csound.maxVolume - csound.minVolume) + csound.minVolume;
 
-        if (volume > 0f && previousBoosterVolume == 0f)
+        if (csound.restartOnActivation && volume > 0f && csound.source.volume == 0f)
         {
-            boostSFXSource.Stop();
-            boostSFXSource.Play();
+            csound.source.Stop();
+            csound.source.Play();
         }
 
-        //Debug.Log($"[SFX] Booster intensity {intensity} converted to volume {volume}");
-        targetBoosterVolume = volume;
-
-        previousBoosterVolume = volume;
+        targetVolumes[csound] = volume;
     }
 
-    public void PlaySFX(OneShotSFX sfx)
+    public void PlayOneShot(string soundName)
     {
-        StopSFX();
-        onsShotSFXSource.clip = oneShotSFX[(int)sfx];
-        onsShotSFXSource.Play();
+        if (!audioLookup.TryGetValue(soundName, out AudioData sound))
+        {
+            Debug.LogWarning($"Audio key not found: {soundName}");
+            return;
+        }
+
+        sound.source.PlayOneShot(sound.clip);
     }
 
-    public void PlayButtonSFX(UISFX uisfx)
+    public void PauseSFX()
     {
-        StopButtonSFX();
-        buttonSFXSource.clip = uiSFX[(int)uisfx];
-        buttonSFXSource.Play();
+        audioMixer.SetFloat("sfx", -80f);
     }
 
-    public void StopMusic() => musicSource.Stop();
-    public void StopAllSFX()
+    public void ResumeSFX()
     {
-        sfxSource.Stop();
-        thrusterSFXSource.Stop();
-        boostSFXSource.Stop();
-        rotateSFXSource.Stop();
-        magnetizeSource.Stop();
+        audioMixer.SetFloat("sfx", 0f);
     }
-    public void StopSFX()
-    {
-        onsShotSFXSource.Stop();
-    }
-    public void StopButtonSFX() => buttonSFXSource.Stop();
-
 }

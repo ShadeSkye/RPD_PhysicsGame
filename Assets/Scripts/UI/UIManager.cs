@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
 
     public void NewGame()
     {
-        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
+        AudioManager.Instance.PlayOneShot("Button");
         SceneManager.sceneLoaded += OnGameLoaded;
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
     }
@@ -49,26 +49,28 @@ public class UIManager : MonoBehaviour
 
     public void GoToControls()
     {
-        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
+        AudioManager.Instance.PlayOneShot("Button");
         settingsScreen.SetActive(false);
         controlsScreen.SetActive(true);
     }
 
     public void GoToSettings()
     {
-        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
+        AudioManager.Instance.PlayOneShot("Button");
         controlsScreen.SetActive(false);
         settingsScreen.SetActive(true);
     }
 
     public void QuitGame()
     {
-        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
+        AudioManager.Instance.PlayOneShot("Button");
         Application.Quit();
     }
 
     public void PauseGame()
     {
+        AudioManager.Instance.PlayOneShot("Button");
+        AudioManager.Instance.PauseSFX();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         pauseScreen.SetActive(true);
@@ -78,6 +80,8 @@ public class UIManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        AudioManager.Instance.PlayOneShot("Button");
+        AudioManager.Instance.ResumeSFX();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseScreen.SetActive(false);
@@ -89,7 +93,7 @@ public class UIManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        AudioManager.Instance.PlayButtonSFX(UISFX.Button);
+        AudioManager.Instance.PlayOneShot("Button");
         SceneManager.sceneLoaded += OnMainMenuLoaded;
         SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
     }

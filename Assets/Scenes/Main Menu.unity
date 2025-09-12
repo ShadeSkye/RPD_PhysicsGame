@@ -2146,6 +2146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsScreen: {fileID: 421603968}
   controlsScreen: {fileID: 776078239}
+  pauseScreen: {fileID: 0}
 --- !u!1 &421603968
 GameObject:
   m_ObjectHideFlags: 0
