@@ -165,7 +165,8 @@ GameObject:
   - component: {fileID: 5050887212126733247}
   - component: {fileID: 9074750042522903660}
   - component: {fileID: 1072710105220968721}
-  - component: {fileID: 5892273644521031504}
+  - component: {fileID: 6495744394902352691}
+  - component: {fileID: 2579048552607548282}
   m_Layer: 2
   m_Name: Spaceship
   m_TagString: Player
@@ -290,6 +291,7 @@ MonoBehaviour:
   isLocked: 0
   bodyName: 
   rb: {fileID: 0}
+  dontPullPlayer: 0
   isGravitySource: 0
   localGravity: 1
   radius: 1
@@ -319,7 +321,7 @@ CapsuleCollider:
   m_Height: 6.5
   m_Direction: 0
   m_Center: {x: 0, y: 0, z: -1}
---- !u!114 &5892273644521031504
+--- !u!114 &6495744394902352691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,10 +330,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 5943344323793404352}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cf16c12e485b78499044705324637ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 169062bd6d45d7343968df22874b2c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagePercent: 0
   minImpact: 5
+  damageMultiplier: 0.00565
+  hitSFX: CrateHit
+--- !u!114 &2579048552607548282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943344323793404352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d9b939d2ad2c749aa75b2313c73ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minImpactDrop: 5
 --- !u!1 &6680201173472253479
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,15 +394,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e80caffbc854a42ad60aa21f1c1f50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThrustAmount: 0
   spaceship: {fileID: 5943344323793404352}
   movementForce: 100
   rollForce: 50
-  rotationSensitivity: 5
   invertPitch: 1
   invertRoll: 0
   invertYaw: 0
   maxBoost: 3
   boostRate: 0.5
+  brakeForce: 50
+  isBraking: 0
 --- !u!1 &6861292984938239723
 GameObject:
   m_ObjectHideFlags: 0

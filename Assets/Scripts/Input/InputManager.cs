@@ -87,16 +87,16 @@ public class InputManager : MonoBehaviour
             boostCoroutine = StartCoroutine(GetBoost());
         }
 
-        if (controls.Flight.Pause.IsPressed() && !gamePaused)
+        if (controls.Flight.Pause.WasPressedThisFrame() && !gamePaused)
         {
             UIManager.instance.PauseGame();
         }
-        else if (controls.Flight.Pause.IsPressed() && gamePaused)
+        else if (controls.Flight.Pause.WasPressedThisFrame() && gamePaused)
         {
             UIManager.instance.ResumeGame();
         }
 
-            previouslyBoosting = boostInput;
+        previouslyBoosting = boostInput;
 
         // brake
         isBraking = controls.Flight.Brake.ReadValue<float>() > 0.1f;

@@ -49,8 +49,6 @@ public class AudioManager : MonoBehaviour
 
             audioLookup[sound.name] = sound;
 
-            Debug.Log(sound.mixerGroup.name);
-
             if (sound is ContinuousAudio)
                 source.Play();
         }
