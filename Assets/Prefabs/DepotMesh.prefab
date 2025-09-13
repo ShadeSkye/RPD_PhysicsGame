@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 7425195953701503121}
   - component: {fileID: 3579112726477942388}
   - component: {fileID: 8087968696521809509}
+  - component: {fileID: 2163406709849676497}
   m_Layer: 0
   m_Name: DepotMesh
   m_TagString: Depot
@@ -311,6 +312,20 @@ CapsuleCollider:
   m_Height: 0.01
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2163406709849676497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402046588626367666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8af0815a3aa6f047a8098f2330ebe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorCode: 2
+  displayName: Depot
 --- !u!1 &2493898966785969176
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ public class CarryingDisplay : MonoBehaviour
     public float totalEarnings = 0;
     [SerializeField] TextMeshProUGUI TotalMoney;
 
+    public Cargo CurrentCargo;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -29,15 +31,29 @@ public class CarryingDisplay : MonoBehaviour
         UpdateEarnings();
     }
 
-    public void UpdateCarrying(Cargo cargo)
+    public void SetCarrying(Cargo cargo)
     {
-        CarryingName.text = $"[{cargo.cargoName.ToUpper()}]";
-        CarryingValue.text = $"Value: {cargo.CurrentValue.ToString("C2")}";
-        CarryingDamage.text = $"Damage: {cargo.damagePercent.ToString("P0")}";
+        CurrentCargo = cargo;
+        UpdateCarrying();
+    }
+
+    public void UpdateCarrying()
+    {
+        if (CurrentCargo != null)
+        {
+            CarryingName.text = $"[{CurrentCargo.cargoName.ToUpper()}]";
+            CarryingValue.text = $"Value: {CurrentCargo.CurrentValue.ToString("C2")}";
+            CarryingDamage.text = $"Damage: {CurrentCargo.damagePercent.ToString("P0")}";
+        }
+        else
+        {
+            ClearCarrying();
+        }
     }
 
     public void ClearCarrying()
     {
+        CurrentCargo = null;
         CarryingName.text = "[No Cargo]";
         CarryingValue.text = "";
         CarryingDamage.text = "";

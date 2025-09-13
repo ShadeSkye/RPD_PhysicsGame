@@ -20,4 +20,10 @@ public class Damageable : MonoBehaviour
             damagePercent = Mathf.Clamp01(damagePercent);
         }
     }
+
+    public void ApplyDamage(float damageAmount)
+    {
+        damagePercent += damageAmount / 100f;
+        damagePercent = Mathf.Clamp01(damagePercent);
+    }
 }

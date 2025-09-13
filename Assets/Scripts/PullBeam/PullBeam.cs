@@ -99,7 +99,7 @@ public class PullBeam : MonoBehaviour
 
             if (body.gameObject.TryGetComponent<Cargo>(out Cargo cargo))
             {
-                CarryingDisplay.Instance.UpdateCarrying(cargo);
+                CarryingDisplay.Instance.SetCarrying(cargo);
             }
         }
     }
