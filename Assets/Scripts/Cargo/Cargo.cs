@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(Damageable), typeof(AudioSource), typeof(LookAtTarget))]
 public class Cargo : MonoBehaviour
 {
     private AudioSource audioSource;
+    private Damageable dmg;
+    private LookAtTarget lookAt;
+
+    public float damagePercent
+    {
+        get => dmg.damagePercent;
+        set => dmg.damagePercent = value;
+    }
 
     [Header("Properties")]
     public string cargoName;
@@ -14,46 +23,19 @@ public class Cargo : MonoBehaviour
     public float baseValue;
     public float CurrentValue => baseValue * (1f - damagePercent);
 
-    [Header("Damage")]
-    public float damagePercent = 0;
-    [SerializeField] private float minImpact = 5f;
-    [Range(0f, 0.01f)][SerializeField] private float damageMultiplier = 0.001f;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-        if(audioSource != null)
-        {
-            audioSource.spatialBlend = 1f;
-            audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
-        }
+        dmg = GetComponent<Damageable>();
+        lookAt = GetComponent<LookAtTarget>();
+
+        audioSource.spatialBlend = 1f;
+        audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+        lookAt.displayName = cargoName;
 
     }
 
-    private void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            PlayCrateHitSound();
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // get hit amount
-        float impactAmount = collision.relativeVelocity.magnitude;
-
-        if (impactAmount > minImpact)
-        {
-            damagePercent += ((impactAmount - minImpact) * damageMultiplier);
-            damagePercent = Mathf.Clamp01(damagePercent);
-
-            PlayCrateHitSound();
-            //AudioManager.Instance.PlaySFX(OneShotSFX.CrateHit);
-            //Debug.Log($"{cargoName} hit for {impactAmount} force: damage now at {damagePercent * 100f:F1}% and value reduced to ${CurrentValue}");
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -69,9 +51,19 @@ public class Cargo : MonoBehaviour
         }
     }
 
-    public void PlayCrateHitSound()
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (audioSource != null && AudioManager.Instance.audioLookup.TryGetValue("CrateHit", out var sound))
+        float impactAmount = collision.relativeVelocity.magnitude;
+        dmg.ApplyImpact(impactAmount);
+
+        CollisionDamage(collision);
+    }
+
+    protected virtual void CollisionDamage(Collision collision)
+    {
+
+        if (AudioManager.Instance.audioLookup.TryGetValue("CrateHit", out var sound))
         {
             audioSource.PlayOneShot(sound.clip);
         }

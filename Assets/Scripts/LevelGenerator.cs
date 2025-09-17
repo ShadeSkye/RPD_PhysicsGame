@@ -69,7 +69,7 @@ public class LevelGenerator : MonoBehaviour
 
             cargo.cargoName = $"Crate {i}";
             cargo.weight = Random.Range(5f, 15f);
-            cargo.baseValue = Random.Range(50f, 150f);
+            cargo.baseValue = Random.Range(50, 151);
         }
     }
 }

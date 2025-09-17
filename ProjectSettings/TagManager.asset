@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Depot
+  - CollisionIgnore
   layers:
   - Default
   - TransparentFX

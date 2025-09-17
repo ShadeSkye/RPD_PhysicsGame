@@ -17,4 +17,4 @@ MonoBehaviour:
   source: {fileID: 0}
   minVolume: 0
   maxVolume: 1
-  restartOnActivation: 0
+  restartOnActivation: 1
