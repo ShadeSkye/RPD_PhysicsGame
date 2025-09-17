@@ -12,6 +12,13 @@ public class Bomb : Cargo
     [SerializeField] private float torque = 100f;
 
     private Vector3 center;
+
+    protected override void CollisionDamage(Collision collision)
+    {
+        Debug.Log(damagePercent);
+        if (damagePercent > 0.001) Explode();
+
+    }
     protected void Explode()
     {
         center = transform.position;

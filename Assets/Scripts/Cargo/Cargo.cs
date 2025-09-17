@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(Damageable), typeof(AudioSource))]
+[RequireComponent(typeof(Damageable), typeof(AudioSource), typeof(LookAtTarget))]
 public class Cargo : MonoBehaviour
 {
     private AudioSource audioSource;
@@ -55,13 +55,17 @@ public class Cargo : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         float impactAmount = collision.relativeVelocity.magnitude;
-
         dmg.ApplyImpact(impactAmount);
+
+        CollisionDamage(collision);
+    }
+
+    protected virtual void CollisionDamage(Collision collision)
+    {
 
         if (AudioManager.Instance.audioLookup.TryGetValue("CrateHit", out var sound))
         {
             audioSource.PlayOneShot(sound.clip);
         }
-
     }
 }
