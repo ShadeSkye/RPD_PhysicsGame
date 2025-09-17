@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UnstableBomb : Bomb
 {
+    [Header("Proximity Trigger")]
     private Coroutine triggerRoutine;
     [SerializeField] private float triggerTime = 1f;
     [SerializeField] private float triggerRadius = 5f;
