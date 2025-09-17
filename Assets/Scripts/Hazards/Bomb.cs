@@ -21,6 +21,8 @@ public class Bomb : Cargo
 
         foreach (Collider hit in objectsInRange)
         {
+            if (hit.CompareTag("Player")) CameraManager.Instance.OneShotShake();
+
             Damageable dmg = hit.GetComponent<Damageable>();
             if (dmg != null)
             {

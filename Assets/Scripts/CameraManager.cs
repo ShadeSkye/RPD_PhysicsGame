@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 public class CameraManager : MonoBehaviour
 {
@@ -41,6 +42,25 @@ public class CameraManager : MonoBehaviour
             noise.m_AmplitudeGain = Mathf.Lerp(minShake, maxShake, boostAmount); 
             noise.m_FrequencyGain = Mathf.Lerp(minFreq, maxFreq, boostAmount);
         }
+    }
+
+    public void OneShotShake(float shakeAmount = 2f, float duration = 2f)
+    {
+        StartCoroutine(OneShotShakeRoutine(shakeAmount, duration));
+    }
+
+    private IEnumerator OneShotShakeRoutine(float shakeAmount , float duration)
+    {
+        float originalAmplitude = noise.m_AmplitudeGain;
+        float originalFrequency = noise.m_FrequencyGain;
+
+        noise.m_AmplitudeGain = shakeAmount;
+        noise.m_FrequencyGain = Mathf.Lerp(minFreq, maxFreq, shakeAmount) * 0.5f;
+
+        yield return new WaitForSeconds(duration);
+
+        noise.m_AmplitudeGain = originalAmplitude;
+        noise.m_FrequencyGain = originalFrequency;
     }
 
 }
