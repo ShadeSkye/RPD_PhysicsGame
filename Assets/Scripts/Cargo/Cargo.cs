@@ -8,6 +8,7 @@ public class Cargo : MonoBehaviour
 {
     private AudioSource audioSource;
     private Damageable dmg;
+    private LookAtTarget lookAt;
 
     public float damagePercent
     {
@@ -23,14 +24,15 @@ public class Cargo : MonoBehaviour
     public float CurrentValue => baseValue * (1f - damagePercent);
 
 
-
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         dmg = GetComponent<Damageable>();
+        lookAt = GetComponent<LookAtTarget>();
 
         audioSource.spatialBlend = 1f;
         audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+        lookAt.displayName = cargoName;
 
     }
 

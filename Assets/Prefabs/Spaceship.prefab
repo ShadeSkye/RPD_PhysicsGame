@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7617590210246913353}
   m_Layer: 2
   m_Name: HoldZone
-  m_TagString: Untagged
+  m_TagString: CollisionIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1136796322056611501}
   m_Layer: 3
   m_Name: CargoHolder
-  m_TagString: Untagged
+  m_TagString: CollisionIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 511670829961031531}
   m_Layer: 2
   m_Name: PullZone
-  m_TagString: Untagged
+  m_TagString: CollisionIgnore
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
