@@ -29,7 +29,6 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-
     private void OnCollisionEnter(Collision collision)
     {
         // get hit amount

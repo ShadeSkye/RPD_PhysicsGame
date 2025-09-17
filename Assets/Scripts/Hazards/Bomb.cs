@@ -24,6 +24,7 @@ public class Bomb : Cargo
             Damageable dmg = hit.GetComponent<Damageable>();
             if (dmg != null)
             {
+                Debug.Log($"Applying damage {damage} to {hit.name}");
                 dmg.ApplyDamage(damage);
             }
 
@@ -37,5 +38,7 @@ public class Bomb : Cargo
                 rb.AddTorque(randomTorque * torque, ForceMode.Impulse);
             }
         }
+
+        Destroy(gameObject);
     }
 }
