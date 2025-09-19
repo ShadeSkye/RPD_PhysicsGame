@@ -54,6 +54,8 @@ public class Cargo : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (dmg == null) return;
+
         float impactAmount = collision.relativeVelocity.magnitude;
         dmg.ApplyImpact(impactAmount);
 
