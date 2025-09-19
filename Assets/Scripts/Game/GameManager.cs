@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Image fadeImage;
     private float fadeDuration = 0.5f;
 
+    public bool GamePaused = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;
+        GamePaused = true;
     }
 
     public void Play()
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
+        GamePaused = false;
     }
 
     public void LoadScene(SceneIndex scene)

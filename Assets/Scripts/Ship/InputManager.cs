@@ -10,7 +10,6 @@ public class InputManager : MonoBehaviour
     private ShipActions controls;
     private Rigidbody rb;
     private PullBeam pb;
-    private bool gamePaused = false;
 
     [SerializeField] public GameObject spaceship;
 
@@ -96,11 +95,15 @@ public class InputManager : MonoBehaviour
             boostCoroutine = StartCoroutine(GetBoost());
         }
 
-        if (controls.Flight.Pause.WasPressedThisFrame() && !gamePaused)
+        if (controls.Flight.PauseMenu.WasPressedThisFrame() && !GameManager.Instance.GamePaused)
         {
-            UIManager.Instance.PauseGame();
+            UIManager.Instance.PauseGame(UIManager.PrimaryUIState.PauseMenu);
         }
-        else if (controls.Flight.Pause.WasPressedThisFrame() && gamePaused)
+        else if (controls.Flight.MissionMenu.WasPressedThisFrame() && !GameManager.Instance.GamePaused)
+        {
+            UIManager.Instance.PauseGame(UIManager.PrimaryUIState.MissionMenu);
+        }
+        else if (controls.Flight.PauseMenu.WasPressedThisFrame() && GameManager.Instance.GamePaused)
         {
             UIManager.Instance.ResumeGame();
         }

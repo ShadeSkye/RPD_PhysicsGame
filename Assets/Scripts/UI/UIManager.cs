@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [Header("Primary Screens")]
     [SerializeField] private GameObject homeScreen;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject missionScreen;
     [SerializeField] private GameObject HUD;
 
     [Header("Secondary Screens")]
@@ -30,7 +31,8 @@ public class UIManager : MonoBehaviour
     {
         None,
         Home,
-        Pause,
+        PauseMenu,
+        MissionMenu,
         HUD
     }
 
@@ -60,7 +62,8 @@ public class UIManager : MonoBehaviour
         primaryScreens = new Dictionary<PrimaryUIState, GameObject>
         {
             { PrimaryUIState.Home, homeScreen },
-            { PrimaryUIState.Pause, pauseScreen },
+            { PrimaryUIState.PauseMenu, pauseScreen },
+            { PrimaryUIState.MissionMenu, missionScreen },
             { PrimaryUIState.HUD, HUD }
         };
 
@@ -130,14 +133,14 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void PauseGame()
+    public void PauseGame(PrimaryUIState menuType)
     {
         GameManager.Instance.Pause();
 
         AudioManager.Instance.PlayOneShot("Button");
         AudioManager.Instance.PauseSFX();
         
-        SetPrimary(PrimaryUIState.Pause);
+        SetPrimary(menuType);
     }
 
     public void ResumeGame()

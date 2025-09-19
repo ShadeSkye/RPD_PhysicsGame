@@ -78,9 +78,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pause",
+                    "name": "PauseMenu",
                     "type": "Button",
                     "id": "6c9612d4-e6cd-4e89-b6d8-108eca192d91",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MissionMenu",
+                    "type": "Button",
+                    "id": "4e21cdc4-013e-41cb-81ad-859ab4366f85",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -502,7 +511,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pause",
+                    "action": "PauseMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -513,7 +522,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pause",
+                    "action": "PauseMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2696e996-e87b-4ffe-9927-158a504bb116",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MissionMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ccfbb0c-706a-420c-9668-f0ecde3165bd",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MissionMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
