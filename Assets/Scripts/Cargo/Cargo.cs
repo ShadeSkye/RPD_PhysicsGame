@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public enum CargoType
+{
+    Any,
+    Crate,
+    Bomb
+}
+
 [RequireComponent(typeof(Damageable), typeof(AudioSource), typeof(LookAtTarget))]
 public class Cargo : MonoBehaviour
 {
@@ -19,6 +26,7 @@ public class Cargo : MonoBehaviour
     [Header("Properties")]
     public string cargoName;
     [Range(1f, 15f)] public float weight;
+    public CargoType type;
 
     public float baseValue;
     public float CurrentValue => baseValue * (1f - damagePercent);
@@ -46,6 +54,8 @@ public class Cargo : MonoBehaviour
             CarryingDisplay.Instance.ClearCarrying();
 
             AudioManager.Instance.PlayOneShot("Deposited");
+
+            if(LevelManager.Instance != null) LevelManager.Instance.OnCargoDelivered(this);
             
             Destroy(gameObject);
         }

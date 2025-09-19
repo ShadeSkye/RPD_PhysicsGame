@@ -64,8 +64,6 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("Rigidbody for spaceship is null");
         }
-
-        boostDuration = AudioManager.Instance.audioLookup["Boost"].clip.length;
     }
 
     private void OnEnable()
@@ -81,6 +79,8 @@ public class InputManager : MonoBehaviour
     }
     void Start()
     {
+        boostDuration = AudioManager.Instance.audioLookup["Boost"].clip.length;
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }

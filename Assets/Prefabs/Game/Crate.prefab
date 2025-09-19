@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cargoName: Tadpole Crate
   weight: 5
+  type: 1
   baseValue: 200
 --- !u!114 &1357827858788274234
 MonoBehaviour:
