@@ -10,7 +10,11 @@ public class ShipHealth : MonoBehaviour
 
     void Update()
     {
-        float percent = PlayerManager.Instance.damagePercent * 100;
-        healthDisplay.text = $"SHIP DAMAGE: {percent:F0}%";
+        if(PlayerManager.Instance != null)
+        {
+
+            float percent = PlayerManager.Instance.damagePercent * 100;
+            healthDisplay.text = $"SHIP DAMAGE: {percent:F0}%";
+        }
     }
 }

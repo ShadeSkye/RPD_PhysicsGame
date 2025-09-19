@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class LookAtDisplay : MonoBehaviour
 {
-
     private Camera mainCamera;
     public static LookAtDisplay Instance { get; private set; }
 

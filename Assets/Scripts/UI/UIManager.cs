@@ -1,64 +1,169 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject homeScreen;
-    [SerializeField] private GameObject controlsScreen;
-    [SerializeField] private GameObject settingsScreen;
-    [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private GameObject HUD;
+    public static UIManager Instance;
 
-    public static UIManager instance;
-
+    [Header("Sensitivity")]
     public Slider sensSlider;
     public float sensFromSlider;
 
+    private PrimaryUIState primaryState;
+    private SecondaryUIState secondaryState;
+
+    [Header("Primary Screens")]
+    [SerializeField] private GameObject homeScreen;
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject HUD;
+
+    [Header("Secondary Screens")]
+    [SerializeField] private GameObject settingsScreen;
+    [SerializeField] private GameObject controlsScreen;
+
+    private Dictionary<PrimaryUIState, GameObject> primaryScreens;
+    private Dictionary<SecondaryUIState, GameObject> secondaryScreens;
+    public enum PrimaryUIState
+    {
+        None,
+        Home,
+        Pause,
+        HUD
+    }
+
+    public enum SecondaryUIState
+    {
+        None,
+        Settings,
+        Controls
+    }
+
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+
+        //DontDestroyOnLoad(gameObject);
+
+        Initialize();
     }
 
-    private void Start()
+
+    private void Initialize()
     {
-        UIInitialization.instance.InitializeUI();
+        primaryScreens = new Dictionary<PrimaryUIState, GameObject>
+        {
+            { PrimaryUIState.Home, homeScreen },
+            { PrimaryUIState.Pause, pauseScreen },
+            { PrimaryUIState.HUD, HUD }
+        };
+
+        secondaryScreens = new Dictionary<SecondaryUIState, GameObject>
+        {
+            { SecondaryUIState.Settings, settingsScreen },
+            { SecondaryUIState.Controls, controlsScreen }
+        };
+    }
+
+    private void SceneInitialize()
+    {
         GetSensitivitySlider();
-        GetMenuReferences();
+        //GetMenuReferences();
     }
 
-    public void NewGame()
+
+    void Start()
     {
-        AudioManager.Instance.PlayOneShot("Button");
-        SceneManager.sceneLoaded += OnGameLoaded;
-        SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        SceneInitialize();
+        SetPrimary(PrimaryUIState.Home);
+        SetSecondary(SecondaryUIState.None);
+    }
+
+    public void SetPrimary(PrimaryUIState newState)
+    {
+        Debug.Log($"Setting Primary UI Screen to {newState}");
+
+        if (primaryState == newState) return;
+        primaryState = newState;
+
+        foreach (var kvp in primaryScreens)
+        {
+            kvp.Value.SetActive(false);
+            Debug.Log($"Setting {kvp.Value} to false", kvp.Value);
+        }
+            
+
+        if (primaryScreens.TryGetValue(primaryState, out var screen))
+        {
+            screen.SetActive(true);
+            Debug.Log($"Setting {screen} to true", screen);
+        }
+            
+
+        if (newState == PrimaryUIState.Pause)
+        {
+            SetSecondary(SecondaryUIState.None);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Time.timeScale = 0;
+        }
+        else if (newState == PrimaryUIState.HUD)
+        {
+            SetSecondary(SecondaryUIState.None);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Time.timeScale = 1;
+        }
+    }
+
+    public void SetSecondary(SecondaryUIState newState)
+    {
+        Debug.Log($"Setting Secindary UI Screen to {newState}");
+
+        if (secondaryState == newState) return;
+        secondaryState = newState;
+
+        foreach (var kvp in secondaryScreens)
+            kvp.Value.SetActive(false);
+
+        if (secondaryScreens.TryGetValue(secondaryState, out var screen))
+            screen.SetActive(true);
     }
 
     public void OnGameLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex == 1)
         {
-            UIInitialization.instance.InitializeUI();
-            VolumeSettings.instance.GetReferences();
-            GetSensitivitySlider();
-            GetGameReferences();
+            UIManager.Instance.GetSensitivitySlider();
+            //UIManager.Instance.GetGameReferences();
         }
         SceneManager.sceneLoaded -= OnGameLoaded;
     }
-
+    public void NewGame()
+    {
+        AudioManager.Instance.PlayOneShot("Button");
+        SceneManager.sceneLoaded += OnGameLoaded;
+        SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+        SetPrimary(PrimaryUIState.HUD);
+    }
     public void GoToControls()
     {
         AudioManager.Instance.PlayOneShot("Button");
-        settingsScreen.SetActive(false);
-        controlsScreen.SetActive(true);
+        SetSecondary(SecondaryUIState.Controls);
     }
 
     public void GoToSettings()
     {
         AudioManager.Instance.PlayOneShot("Button");
-        controlsScreen.SetActive(false);
-        settingsScreen.SetActive(true);
+        SetSecondary(SecondaryUIState.Settings);
     }
 
     public void QuitGame()
@@ -73,8 +178,7 @@ public class UIManager : MonoBehaviour
         AudioManager.Instance.PauseSFX();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        pauseScreen.SetActive(true);
-        HUD.SetActive(false);
+        SetPrimary(PrimaryUIState.Pause);
         Time.timeScale = 0;
     }
 
@@ -84,10 +188,7 @@ public class UIManager : MonoBehaviour
         AudioManager.Instance.ResumeSFX();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        pauseScreen.SetActive(false);
-        controlsScreen.SetActive(false);
-        settingsScreen.SetActive(false);
-        HUD.SetActive(true);
+        SetPrimary(PrimaryUIState.HUD);
         Time.timeScale = 1;
     }
 
@@ -102,10 +203,7 @@ public class UIManager : MonoBehaviour
     {
         if (scene.buildIndex == 0)
         {
-            UIInitialization.instance.InitializeUI();
-            VolumeSettings.instance.GetReferences();
             GetSensitivitySlider();
-            GetMenuReferences();
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Time.timeScale = 1;
@@ -144,31 +242,6 @@ public class UIManager : MonoBehaviour
             sensFromSlider = sensSlider.value;
             PlayerPrefs.SetFloat("sensitivity", sensFromSlider);
         }
-    }
-
-    public void GetMenuReferences()
-    {
-        homeScreen = GameObject.Find("HomeScreen");
-
-        controlsScreen = GameObject.Find("ControlsScreen");
-        controlsScreen.SetActive(false);
-
-        settingsScreen = GameObject.Find("SettingsScreen");
-        settingsScreen.SetActive(false);
-    }
-
-    public void GetGameReferences()
-    {
-        controlsScreen = GameObject.Find("ControlsScreen");
-        controlsScreen.SetActive(false);
-
-        settingsScreen = GameObject.Find("SettingsScreen");
-        settingsScreen.SetActive(false);
-
-        pauseScreen = GameObject.Find("PauseScreen");
-        pauseScreen.SetActive(false);
-
-        HUD = GameObject.Find("HUD");
     }
 
     public void GetSensitivitySlider()

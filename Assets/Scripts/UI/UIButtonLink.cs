@@ -19,32 +19,32 @@ public class UIButtonLink : MonoBehaviour
 
     private Button button;
 
-    private void Awake()
+    private void Start()
     {
         button = GetComponent<Button>();
 
-        if (UIManager.instance == null)
+        if (UIManager.Instance  == null)
         {
-            Debug.LogError("UIManager not found!");
+            Debug.Log("UIManager not found!");
             return;
         }
 
         switch (action)
         {
             case UIButtonAction.Resume:
-                button.onClick.AddListener(UIManager.instance.ResumeGame);
+                button.onClick.AddListener(UIManager.Instance.ResumeGame);
                 break;
             case UIButtonAction.GoToSettings:
-                button.onClick.AddListener(UIManager.instance.GoToSettings);
+                button.onClick.AddListener(UIManager.Instance.GoToSettings);
                 break;
             case UIButtonAction.GoToControls:
-                button.onClick.AddListener(UIManager.instance.GoToControls);
+                button.onClick.AddListener(UIManager.Instance.GoToControls);
                 break;
             case UIButtonAction.QuitGame:
-                button.onClick.AddListener(UIManager.instance.QuitGame);
+                button.onClick.AddListener(UIManager.Instance.QuitGame);
                 break;
             case UIButtonAction.GoToMainMenu:
-                button.onClick.AddListener(UIManager.instance.GoToMainMenu);
+                button.onClick.AddListener(UIManager.Instance.GoToMainMenu);
                 break;
             default:
                 Debug.LogWarning("UIButtonLink: Unhandled action on " + gameObject.name);
