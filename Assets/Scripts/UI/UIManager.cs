@@ -70,7 +70,8 @@ public class UIManager : MonoBehaviour
             { SecondaryUIState.Controls, controlsScreen }
         };
 
-        GetSensitivitySlider();
+        LoadSensitivity();
+        sensSlider.onValueChanged.AddListener((v) => SensitivityFromSlider());
     }
 
     void Start()
@@ -81,81 +82,34 @@ public class UIManager : MonoBehaviour
 
     public void SetPrimary(PrimaryUIState newState)
     {
-        //Debug.Log($"Setting Primary UI Screen to {newState}");
 
         if (primaryState == newState && primaryState != PrimaryUIState.None) return;
         primaryState = newState;
 
-        foreach (var kvp in primaryScreens)
-        {
-            kvp.Value.SetActive(false);
-            //Debug.Log($"Setting {kvp.Value} to false", kvp.Value);
-        }
-            
+        foreach (var kvp in primaryScreens) kvp.Value.SetActive(false);
 
-        if (primaryScreens.TryGetValue(primaryState, out var screen))
-        {
-            screen.SetActive(true);
-            //Debug.Log($"Setting {screen} to true", screen);
-        }
-            
+        if (primaryScreens.TryGetValue(primaryState, out var screen)) screen.SetActive(true);
 
-        if (newState == PrimaryUIState.Pause)
-        {
-            SetSecondary(SecondaryUIState.None);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 0;
-        }
-        else if (newState == PrimaryUIState.HUD)
-        {
-            SetSecondary(SecondaryUIState.None);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-            Time.timeScale = 1;
-        }
+        SetSecondary(SecondaryUIState.None);
     }
 
     public void SetSecondary(SecondaryUIState newState)
     {
-        //Debug.Log($"Setting Secondary UI Screen to {newState}");
-
         if (secondaryState == newState && secondaryState != SecondaryUIState.None) return;
         secondaryState = newState;
 
-        foreach (var kvp in secondaryScreens)
-        {
-            kvp.Value.SetActive(false);
-            //Debug.Log($"Setting {kvp.Value} to false", kvp.Value);
-        }
+        foreach (var kvp in secondaryScreens) kvp.Value.SetActive(false);
 
         if (secondaryScreens.TryGetValue(secondaryState, out var screen))
             screen.SetActive(true);
     }
-
-    public void OnGameLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.buildIndex == 1)
-        {
-            UIManager.Instance.GetSensitivitySlider();
-            //UIManager.Instance.GetGameReferences();
-        }
-        SceneManager.sceneLoaded -= OnGameLoaded;
-    }
-    public void NewGame()
-    {
-        AudioManager.Instance.PlayOneShot("Button");
-        SceneManager.sceneLoaded += OnGameLoaded;
-        SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-        SetPrimary(PrimaryUIState.HUD);
-    }
-    public void GoToControls()
+    public void OpenControls()
     {
         AudioManager.Instance.PlayOneShot("Button");
         SetSecondary(SecondaryUIState.Controls);
     }
 
-    public void GoToSettings()
+    public void OpenSettings()
     {
         AudioManager.Instance.PlayOneShot("Button");
         SetSecondary(SecondaryUIState.Settings);
@@ -169,43 +123,37 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame()
     {
+        GameManager.Instance.Pause();
+
         AudioManager.Instance.PlayOneShot("Button");
         AudioManager.Instance.PauseSFX();
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        
         SetPrimary(PrimaryUIState.Pause);
-        Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
+        GameManager.Instance.Play();
+
         AudioManager.Instance.PlayOneShot("Button");
         AudioManager.Instance.ResumeSFX();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
         SetPrimary(PrimaryUIState.HUD);
-        Time.timeScale = 1;
     }
 
-    public void GoToMainMenu()
+    public void MainMenu()
     {
+        GameManager.Instance.LoadScene(SceneIndex.MainMenu);
+
         AudioManager.Instance.PlayOneShot("Button");
-        SceneManager.sceneLoaded += OnMainMenuLoaded;
-        SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
-        SetPrimary(PrimaryUIState.Home);
     }
 
-    public void OnMainMenuLoaded(Scene scene, LoadSceneMode mode)
+    public void NewGame()
     {
-        if (scene.buildIndex == 0)
-        {
-            GetSensitivitySlider();
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 1;
-        }
+        GameManager.Instance.LoadScene(SceneIndex.Game);
 
-        SceneManager.sceneLoaded -= OnMainMenuLoaded;
+        AudioManager.Instance.PlayOneShot("Button");
+
     }
 
     public void SensitivityFromSlider()
@@ -238,24 +186,5 @@ public class UIManager : MonoBehaviour
             sensFromSlider = sensSlider.value;
             PlayerPrefs.SetFloat("sensitivity", sensFromSlider);
         }
-    }
-
-    public void GetSensitivitySlider()
-    {
-        var allSliders = Resources.FindObjectsOfTypeAll<Slider>();
-        foreach (var slider in allSliders)
-        {
-            if (slider.name == "SensitivitySlider")
-            {
-                sensSlider = slider;
-                sensSlider.onValueChanged.RemoveAllListeners();
-                sensSlider.onValueChanged.AddListener((v) => SensitivityFromSlider());
-
-                LoadSensitivity(); // Load PlayerPrefs into slider.value
-                return;
-            }
-        }
-
-        Debug.LogWarning("Sensitivity slider NOT found in scene!");
     }
 }
