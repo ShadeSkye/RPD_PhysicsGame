@@ -68,8 +68,17 @@ public class InputManager : MonoBehaviour
         boostDuration = AudioManager.Instance.audioLookup["Boost"].clip.length;
     }
 
-    private void OnEnable() => controls.Enable();
-    private void OnDisable() => controls.Disable();
+    private void OnEnable()
+    {
+        if (controls != null)
+            controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (controls != null)
+            controls.Disable();
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

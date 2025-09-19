@@ -51,8 +51,6 @@ public class UIManager : MonoBehaviour
 
         Instance = this;
 
-        //DontDestroyOnLoad(gameObject);
-
         Initialize();
     }
 
@@ -71,40 +69,34 @@ public class UIManager : MonoBehaviour
             { SecondaryUIState.Settings, settingsScreen },
             { SecondaryUIState.Controls, controlsScreen }
         };
-    }
 
-    private void SceneInitialize()
-    {
         GetSensitivitySlider();
-        //GetMenuReferences();
     }
-
 
     void Start()
     {
-        SceneInitialize();
         SetPrimary(PrimaryUIState.Home);
         SetSecondary(SecondaryUIState.None);
     }
 
     public void SetPrimary(PrimaryUIState newState)
     {
-        Debug.Log($"Setting Primary UI Screen to {newState}");
+        //Debug.Log($"Setting Primary UI Screen to {newState}");
 
-        if (primaryState == newState) return;
+        if (primaryState == newState && primaryState != PrimaryUIState.None) return;
         primaryState = newState;
 
         foreach (var kvp in primaryScreens)
         {
             kvp.Value.SetActive(false);
-            Debug.Log($"Setting {kvp.Value} to false", kvp.Value);
+            //Debug.Log($"Setting {kvp.Value} to false", kvp.Value);
         }
             
 
         if (primaryScreens.TryGetValue(primaryState, out var screen))
         {
             screen.SetActive(true);
-            Debug.Log($"Setting {screen} to true", screen);
+            //Debug.Log($"Setting {screen} to true", screen);
         }
             
 
@@ -126,13 +118,16 @@ public class UIManager : MonoBehaviour
 
     public void SetSecondary(SecondaryUIState newState)
     {
-        Debug.Log($"Setting Secindary UI Screen to {newState}");
+        //Debug.Log($"Setting Secondary UI Screen to {newState}");
 
-        if (secondaryState == newState) return;
+        if (secondaryState == newState && secondaryState != SecondaryUIState.None) return;
         secondaryState = newState;
 
         foreach (var kvp in secondaryScreens)
+        {
             kvp.Value.SetActive(false);
+            //Debug.Log($"Setting {kvp.Value} to false", kvp.Value);
+        }
 
         if (secondaryScreens.TryGetValue(secondaryState, out var screen))
             screen.SetActive(true);
@@ -197,6 +192,7 @@ public class UIManager : MonoBehaviour
         AudioManager.Instance.PlayOneShot("Button");
         SceneManager.sceneLoaded += OnMainMenuLoaded;
         SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
+        SetPrimary(PrimaryUIState.Home);
     }
 
     public void OnMainMenuLoaded(Scene scene, LoadSceneMode mode)

@@ -12,8 +12,8 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private List<AudioData> sounds;
 
-    [SerializeField] private float defaultVolume = 1f;
-    [SerializeField] private float maxVolume = 1f;
+    //[SerializeField] private float defaultVolume = 1f;
+    //[SerializeField] private float maxVolume = 1f;
 
     [SerializeField] private float fadeSpeed = 3f;
 
