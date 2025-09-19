@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
     [Header("Settings")]
     public float movementForce = 20f;
     public float rollForce = 10f;
-    public float rotationSensitivity => 1f * UIManager.instance.sensFromSlider;
+    public float rotationSensitivity => 1f * UIManager.Instance.sensFromSlider;
 
     [Header("Controls")]
     public bool invertPitch;
@@ -68,8 +68,17 @@ public class InputManager : MonoBehaviour
         boostDuration = AudioManager.Instance.audioLookup["Boost"].clip.length;
     }
 
-    private void OnEnable() => controls.Enable();
-    private void OnDisable() => controls.Disable();
+    private void OnEnable()
+    {
+        if (controls != null)
+            controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        if (controls != null)
+            controls.Disable();
+    }
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -89,11 +98,11 @@ public class InputManager : MonoBehaviour
 
         if (controls.Flight.Pause.WasPressedThisFrame() && !gamePaused)
         {
-            UIManager.instance.PauseGame();
+            UIManager.Instance.PauseGame();
         }
         else if (controls.Flight.Pause.WasPressedThisFrame() && gamePaused)
         {
-            UIManager.instance.ResumeGame();
+            UIManager.Instance.ResumeGame();
         }
 
         previouslyBoosting = boostInput;

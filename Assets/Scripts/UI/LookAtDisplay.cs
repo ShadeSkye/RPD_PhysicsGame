@@ -8,8 +8,6 @@ using UnityEngine.UI;
 
 public class LookAtDisplay : MonoBehaviour
 {
-
-    private Camera mainCamera;
     public static LookAtDisplay Instance { get; private set; }
 
     [SerializeField] TextMeshProUGUI ObjectName;
@@ -23,12 +21,10 @@ public class LookAtDisplay : MonoBehaviour
             return;
         }
         Instance = this;
-
-        mainCamera = Camera.main;
     }
     void Update()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         int mask = ~(1 << 2);

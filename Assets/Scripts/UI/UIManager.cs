@@ -1,64 +1,118 @@
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject homeScreen;
-    [SerializeField] private GameObject controlsScreen;
-    [SerializeField] private GameObject settingsScreen;
-    [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private GameObject HUD;
+    public static UIManager Instance;
 
-    public static UIManager instance;
-
+    [Header("Sensitivity")]
     public Slider sensSlider;
     public float sensFromSlider;
 
+    private PrimaryUIState primaryState;
+    private SecondaryUIState secondaryState;
+
+    [Header("Primary Screens")]
+    [SerializeField] private GameObject homeScreen;
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject HUD;
+
+    [Header("Secondary Screens")]
+    [SerializeField] private GameObject settingsScreen;
+    [SerializeField] private GameObject controlsScreen;
+
+    private Dictionary<PrimaryUIState, GameObject> primaryScreens;
+    private Dictionary<SecondaryUIState, GameObject> secondaryScreens;
+    public enum PrimaryUIState
+    {
+        None,
+        Home,
+        Pause,
+        HUD
+    }
+
+    public enum SecondaryUIState
+    {
+        None,
+        Settings,
+        Controls
+    }
+
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void Start()
-    {
-        UIInitialization.instance.InitializeUI();
-        GetSensitivitySlider();
-        GetMenuReferences();
-    }
-
-    public void NewGame()
-    {
-        AudioManager.Instance.PlayOneShot("Button");
-        SceneManager.sceneLoaded += OnGameLoaded;
-        SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-    }
-
-    public void OnGameLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.buildIndex == 1)
+        if (Instance != null && Instance != this)
         {
-            UIInitialization.instance.InitializeUI();
-            VolumeSettings.instance.GetReferences();
-            GetSensitivitySlider();
-            GetGameReferences();
+            Destroy(gameObject);
+            return;
         }
-        SceneManager.sceneLoaded -= OnGameLoaded;
+
+        Instance = this;
+
+        Initialize();
     }
 
-    public void GoToControls()
+
+    private void Initialize()
     {
-        AudioManager.Instance.PlayOneShot("Button");
-        settingsScreen.SetActive(false);
-        controlsScreen.SetActive(true);
+        primaryScreens = new Dictionary<PrimaryUIState, GameObject>
+        {
+            { PrimaryUIState.Home, homeScreen },
+            { PrimaryUIState.Pause, pauseScreen },
+            { PrimaryUIState.HUD, HUD }
+        };
+
+        secondaryScreens = new Dictionary<SecondaryUIState, GameObject>
+        {
+            { SecondaryUIState.Settings, settingsScreen },
+            { SecondaryUIState.Controls, controlsScreen }
+        };
+
+        LoadSensitivity();
+        sensSlider.onValueChanged.AddListener((v) => SensitivityFromSlider());
     }
 
-    public void GoToSettings()
+    void Start()
+    {
+        SetPrimary(PrimaryUIState.Home);
+        SetSecondary(SecondaryUIState.None);
+    }
+
+    public void SetPrimary(PrimaryUIState newState)
+    {
+
+        if (primaryState == newState && primaryState != PrimaryUIState.None) return;
+        primaryState = newState;
+
+        foreach (var kvp in primaryScreens) kvp.Value.SetActive(false);
+
+        if (primaryScreens.TryGetValue(primaryState, out var screen)) screen.SetActive(true);
+
+        SetSecondary(SecondaryUIState.None);
+    }
+
+    public void SetSecondary(SecondaryUIState newState)
+    {
+        if (secondaryState == newState && secondaryState != SecondaryUIState.None) return;
+        secondaryState = newState;
+
+        foreach (var kvp in secondaryScreens) kvp.Value.SetActive(false);
+
+        if (secondaryScreens.TryGetValue(secondaryState, out var screen))
+            screen.SetActive(true);
+    }
+    public void OpenControls()
     {
         AudioManager.Instance.PlayOneShot("Button");
-        controlsScreen.SetActive(false);
-        settingsScreen.SetActive(true);
+        SetSecondary(SecondaryUIState.Controls);
+    }
+
+    public void OpenSettings()
+    {
+        AudioManager.Instance.PlayOneShot("Button");
+        SetSecondary(SecondaryUIState.Settings);
     }
 
     public void QuitGame()
@@ -69,49 +123,37 @@ public class UIManager : MonoBehaviour
 
     public void PauseGame()
     {
+        GameManager.Instance.Pause();
+
         AudioManager.Instance.PlayOneShot("Button");
         AudioManager.Instance.PauseSFX();
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        pauseScreen.SetActive(true);
-        HUD.SetActive(false);
-        Time.timeScale = 0;
+        
+        SetPrimary(PrimaryUIState.Pause);
     }
 
     public void ResumeGame()
     {
+        GameManager.Instance.Play();
+
         AudioManager.Instance.PlayOneShot("Button");
         AudioManager.Instance.ResumeSFX();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        pauseScreen.SetActive(false);
-        controlsScreen.SetActive(false);
-        settingsScreen.SetActive(false);
-        HUD.SetActive(true);
-        Time.timeScale = 1;
+
+        SetPrimary(PrimaryUIState.HUD);
     }
 
-    public void GoToMainMenu()
+    public void MainMenu()
     {
+        GameManager.Instance.LoadScene(SceneIndex.MainMenu);
+
         AudioManager.Instance.PlayOneShot("Button");
-        SceneManager.sceneLoaded += OnMainMenuLoaded;
-        SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
     }
 
-    public void OnMainMenuLoaded(Scene scene, LoadSceneMode mode)
+    public void NewGame()
     {
-        if (scene.buildIndex == 0)
-        {
-            UIInitialization.instance.InitializeUI();
-            VolumeSettings.instance.GetReferences();
-            GetSensitivitySlider();
-            GetMenuReferences();
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Time.timeScale = 1;
-        }
+        GameManager.Instance.LoadScene(SceneIndex.Game);
 
-        SceneManager.sceneLoaded -= OnMainMenuLoaded;
+        AudioManager.Instance.PlayOneShot("Button");
+
     }
 
     public void SensitivityFromSlider()
@@ -144,49 +186,5 @@ public class UIManager : MonoBehaviour
             sensFromSlider = sensSlider.value;
             PlayerPrefs.SetFloat("sensitivity", sensFromSlider);
         }
-    }
-
-    public void GetMenuReferences()
-    {
-        homeScreen = GameObject.Find("HomeScreen");
-
-        controlsScreen = GameObject.Find("ControlsScreen");
-        controlsScreen.SetActive(false);
-
-        settingsScreen = GameObject.Find("SettingsScreen");
-        settingsScreen.SetActive(false);
-    }
-
-    public void GetGameReferences()
-    {
-        controlsScreen = GameObject.Find("ControlsScreen");
-        controlsScreen.SetActive(false);
-
-        settingsScreen = GameObject.Find("SettingsScreen");
-        settingsScreen.SetActive(false);
-
-        pauseScreen = GameObject.Find("PauseScreen");
-        pauseScreen.SetActive(false);
-
-        HUD = GameObject.Find("HUD");
-    }
-
-    public void GetSensitivitySlider()
-    {
-        var allSliders = Resources.FindObjectsOfTypeAll<Slider>();
-        foreach (var slider in allSliders)
-        {
-            if (slider.name == "SensitivitySlider")
-            {
-                sensSlider = slider;
-                sensSlider.onValueChanged.RemoveAllListeners();
-                sensSlider.onValueChanged.AddListener((v) => SensitivityFromSlider());
-
-                LoadSensitivity(); // Load PlayerPrefs into slider.value
-                return;
-            }
-        }
-
-        Debug.LogWarning("Sensitivity slider NOT found in scene!");
     }
 }

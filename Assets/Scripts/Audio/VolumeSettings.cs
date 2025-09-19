@@ -12,18 +12,18 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterVolumeSlider;
 
-    public static VolumeSettings instance;
+    public static VolumeSettings Instance;
 
     private void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        Instance = this;
+        //DontDestroyOnLoad(gameObject);
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GetReferences();
+        //GetReferences();
 
         if (musicSlider != null)
         {
@@ -52,7 +52,7 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
-        GetReferences();
+        //GetReferences();
 
         if (PlayerPrefs.HasKey("musicVolume"))
         {
@@ -135,7 +135,7 @@ public class VolumeSettings : MonoBehaviour
         SetMasterVolume();
     }
 
-    public void GetReferences()
+    /*public void GetReferences()
     {
         var allSliders = Resources.FindObjectsOfTypeAll<Slider>();
         foreach (var slider in allSliders)
@@ -149,5 +149,5 @@ public class VolumeSettings : MonoBehaviour
             if (slider.name == "MasterVolumeSlider")
                 masterVolumeSlider = slider;
         }
-    }
+    }*/
 }

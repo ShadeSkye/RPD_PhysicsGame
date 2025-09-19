@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public enum UIButtonAction
 {
+    NewGame,
     Resume,
-    GoToSettings,
-    GoToControls,
+    OpenSettings,
+    OpenControls,
     QuitGame,
-    GoToMainMenu
+    MainMenu
 }
 
 public class UIButtonLink : MonoBehaviour
@@ -19,32 +20,35 @@ public class UIButtonLink : MonoBehaviour
 
     private Button button;
 
-    private void Awake()
+    private void Start()
     {
         button = GetComponent<Button>();
 
-        if (UIManager.instance == null)
+        if (UIManager.Instance  == null)
         {
-            Debug.LogError("UIManager not found!");
+            Debug.Log("UIManager not found!");
             return;
         }
 
         switch (action)
         {
+            case UIButtonAction.NewGame:
+                button.onClick.AddListener(UIManager.Instance.NewGame);
+                break;
             case UIButtonAction.Resume:
-                button.onClick.AddListener(UIManager.instance.ResumeGame);
+                button.onClick.AddListener(UIManager.Instance.ResumeGame);
                 break;
-            case UIButtonAction.GoToSettings:
-                button.onClick.AddListener(UIManager.instance.GoToSettings);
+            case UIButtonAction.OpenSettings:
+                button.onClick.AddListener(UIManager.Instance.OpenSettings);
                 break;
-            case UIButtonAction.GoToControls:
-                button.onClick.AddListener(UIManager.instance.GoToControls);
+            case UIButtonAction.OpenControls:
+                button.onClick.AddListener(UIManager.Instance.OpenControls);
                 break;
             case UIButtonAction.QuitGame:
-                button.onClick.AddListener(UIManager.instance.QuitGame);
+                button.onClick.AddListener(UIManager.Instance.QuitGame);
                 break;
-            case UIButtonAction.GoToMainMenu:
-                button.onClick.AddListener(UIManager.instance.GoToMainMenu);
+            case UIButtonAction.MainMenu:
+                button.onClick.AddListener(UIManager.Instance.MainMenu);
                 break;
             default:
                 Debug.LogWarning("UIButtonLink: Unhandled action on " + gameObject.name);
