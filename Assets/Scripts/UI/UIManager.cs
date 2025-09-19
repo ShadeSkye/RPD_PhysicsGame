@@ -138,7 +138,6 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.Pause();
 
         AudioManager.Instance.PlayOneShot("Button");
-        AudioManager.Instance.PauseSFX();
         
         SetPrimary(menuType);
     }
@@ -148,7 +147,6 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.Play();
 
         AudioManager.Instance.PlayOneShot("Button");
-        AudioManager.Instance.ResumeSFX();
 
         SetPrimary(PrimaryUIState.HUD);
     }
@@ -162,7 +160,7 @@ public class UIManager : MonoBehaviour
 
     public void NewGame()
     {
-        GameManager.Instance.LoadScene(SceneIndex.Game);
+        GameManager.Instance.LoadScene(SceneIndex.Level1);
 
         AudioManager.Instance.PlayOneShot("Button");
 

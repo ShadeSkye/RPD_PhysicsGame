@@ -194,7 +194,7 @@ public class InputManager : MonoBehaviour
                 bool boostInput = controls.Flight.Boost.ReadValue<float>() > 0.1f;
                 if (boostTimer >= boostDuration || !boostInput)
                 {
-                    Debug.Log("end boost");
+                    //Debug.Log("end boost");
                     break;
                 }
 

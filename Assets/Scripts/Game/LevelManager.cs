@@ -47,7 +47,8 @@ public class LevelManager : MonoBehaviour
 
     private void OnLevelComplete()
     {
-        Debug.LogError("Level completed!");
+        Debug.Log("Level completed!");
+        GameManager.Instance.LoadNextScene();
     }
 
 

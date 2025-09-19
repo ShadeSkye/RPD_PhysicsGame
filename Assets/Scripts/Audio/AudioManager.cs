@@ -102,4 +102,28 @@ public class AudioManager : MonoBehaviour
     {
         audioMixer.SetFloat("sfx", 0f);
     }
+
+    public void StopAllSFX()
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound is ContinuousAudio csound)
+            {
+                csound.source.Stop();
+
+            }
+        }
+    }
+
+    public void PlayAllSFX()
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound is ContinuousAudio csound)
+            {
+                if (!csound.source.isPlaying)
+                    csound.source.Play();
+            }
+        }
+    }
 }
