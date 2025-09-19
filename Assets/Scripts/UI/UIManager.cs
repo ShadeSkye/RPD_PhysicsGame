@@ -76,8 +76,17 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        SetPrimary(PrimaryUIState.Home);
-        SetSecondary(SecondaryUIState.None);
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        if ((SceneIndex)currentIndex == SceneIndex.MainMenu)
+        {
+            SetPrimary(PrimaryUIState.Home);
+            SetSecondary(SecondaryUIState.None);
+        }
+        else
+        {
+            SetPrimary(PrimaryUIState.HUD);
+            SetSecondary(SecondaryUIState.None);
+        }
     }
 
     public void SetPrimary(PrimaryUIState newState)
