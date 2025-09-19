@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(SceneIndex scene)
     {
-        StartCoroutine(FadeAndLoad(scene, false));
+        StartCoroutine(FadeAndLoad(scene, true));
     }
 
     public void LoadScene(SceneIndex scene, float duration)

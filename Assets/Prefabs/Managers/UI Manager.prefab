@@ -296,6 +296,7 @@ GameObject:
   - component: {fileID: 6831379554734806252}
   - component: {fileID: 6234560404200468659}
   - component: {fileID: 6780271127996173153}
+  - component: {fileID: 2356326473310646458}
   m_Layer: 5
   m_Name: Settings Button
   m_TagString: Untagged
@@ -404,19 +405,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6234560404200468659}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8417534558790104455}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GoToSettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &2356326473310646458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400219720140773447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: 2
 --- !u!1 &474853147015398819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,7 +1075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 1
+  action: 2
 --- !u!1 &910133941144671060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1532,6 +1534,7 @@ GameObject:
   - component: {fileID: 3155590987431597903}
   - component: {fileID: 7778715673455955128}
   - component: {fileID: 5866676823679009441}
+  - component: {fileID: 5875635049193312538}
   m_Layer: 5
   m_Name: Quit Game Button
   m_TagString: Untagged
@@ -1640,19 +1643,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7778715673455955128}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8417534558790104455}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: QuitGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &5875635049193312538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244670931742031705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: 4
 --- !u!1 &1287270156054788464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3908,6 +3912,7 @@ GameObject:
   - component: {fileID: 8603909717333440576}
   - component: {fileID: 4850579286787809334}
   - component: {fileID: 120666267550740937}
+  - component: {fileID: 7505566228646593418}
   m_Layer: 5
   m_Name: Controls Button
   m_TagString: Untagged
@@ -4016,19 +4021,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4850579286787809334}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8417534558790104455}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: GoToControls
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &7505566228646593418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3284218152896399971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: 3
 --- !u!1 &3353811726118260215
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,7 +4988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 3
+  action: 4
 --- !u!1 &4173527895180972682
 GameObject:
   m_ObjectHideFlags: 0
@@ -7461,7 +7467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 4
+  action: 5
 --- !u!1 &6584610245661554235
 GameObject:
   m_ObjectHideFlags: 0
@@ -8426,7 +8432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 2
+  action: 3
 --- !u!1 &7358081722382661691
 GameObject:
   m_ObjectHideFlags: 0
@@ -9056,7 +9062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: 0
+  action: 1
 --- !u!1 &7984481999380805176
 GameObject:
   m_ObjectHideFlags: 0
@@ -9810,6 +9816,7 @@ GameObject:
   - component: {fileID: 4545251037394449843}
   - component: {fileID: 6626712087582328181}
   - component: {fileID: 3013660706773679174}
+  - component: {fileID: 1087043179908309703}
   m_Layer: 5
   m_Name: New Game Button
   m_TagString: Untagged
@@ -9918,19 +9925,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6626712087582328181}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8417534558790104455}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: NewGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1087043179908309703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8937952743201100108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 355bddc7f5a38d940b7f68a6a733909a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: 0
 --- !u!1 &8948775189540582179
 GameObject:
   m_ObjectHideFlags: 0
