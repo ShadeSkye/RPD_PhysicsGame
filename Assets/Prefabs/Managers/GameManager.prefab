@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1526631528479787776}
+  GamePaused: 0
 --- !u!1001 &3258560537113026530
 PrefabInstance:
   m_ObjectHideFlags: 0

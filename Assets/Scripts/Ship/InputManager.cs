@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class InputManager : MonoBehaviour
     public float RotationAmount => rb.angularVelocity.magnitude;
 
     private ShipActions controls;
+
     private Rigidbody rb;
     private PullBeam pb;
 
@@ -54,8 +56,16 @@ public class InputManager : MonoBehaviour
 
         Instance = this;
 
+        if (controls == null)
+            controls = new ShipActions();
+
+        if (spaceship == null)
+        {
+            Debug.LogError("Spaceship is not assigned in InputManager!");
+            return; 
+        }
+
         // get references
-        controls = new ShipActions();
         rb = spaceship.GetComponent<Rigidbody>();
         pb = spaceship.GetComponentInChildren<PullBeam>();
 
@@ -76,6 +86,7 @@ public class InputManager : MonoBehaviour
         if (controls != null)
             controls.Disable();
     }
+
     void Start()
     {
         boostDuration = AudioManager.Instance.audioLookup["Boost"].clip.length;
