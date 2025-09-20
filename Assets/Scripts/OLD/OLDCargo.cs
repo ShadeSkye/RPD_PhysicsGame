@@ -1,28 +1,21 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+*//*
 public enum CargoType
 {
     Any,
     Crate,
     Bomb
-}
+}*//*
 
 [RequireComponent(typeof(Damageable), typeof(AudioSource))]
-public class Cargo : GravityBody
+public class OLDCargo : GravityBody
 {
     private AudioSource audioSource;
     protected Damageable dmg;
 
-    [HideInInspector] 
-    public bool IsLocked;
-    [HideInInspector]
-    public float LastReleasedTime;
-
-    [HideInInspector]
     public float DamagePercent
     {
         get
@@ -60,7 +53,6 @@ public class Cargo : GravityBody
     {
         if (dmg == null) dmg = GetComponent<Damageable>();
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
-        if (lookAt == null) lookAt = GetComponent<LookAtTarget>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -73,8 +65,8 @@ public class Cargo : GravityBody
 
             AudioManager.Instance.PlayOneShot("Deposited");
 
-            if (LevelManager.Instance != null) LevelManager.Instance.OnCargoDelivered(this);
-
+            if(LevelManager.Instance != null) LevelManager.Instance.OnCargoDelivered(this);
+            
             Destroy(gameObject);
         }
     }
@@ -98,4 +90,4 @@ public class Cargo : GravityBody
             audioSource.PlayOneShot(sound.clip);
         }
     }
-}
+}*/

@@ -9,8 +9,10 @@ public class UnstableBomb : Bomb
     [SerializeField] private float triggerRadius = 5f;
     private int objectsInTrigger = 0;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         TriggerUnstableBomb trigger = GetComponentInChildren<TriggerUnstableBomb>();
         if (trigger != null)
         {

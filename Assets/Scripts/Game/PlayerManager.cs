@@ -37,9 +37,9 @@ public class PlayerManager : MonoBehaviour
         // if above amount then eject
         if (impactAmount >= minImpactDrop)
         {
-            if (pullBeam?.HeldBody != null)
+            if (pullBeam?.HeldCargo != null)
             {
-                pullBeam.UnlockBody(pullBeam.HeldBody);
+                pullBeam.UnlockCargo(pullBeam.HeldCargo);
             }
 
         }

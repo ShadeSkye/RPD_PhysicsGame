@@ -148,8 +148,8 @@ MonoBehaviour:
   maxPullSpeed: 750
   pullZone: {fileID: 2242552500403060824}
   holdZone: {fileID: 4268097466598882234}
+  radiusPadding: 4
   ejectForce: 50
-  holdOffset: {x: 0, y: 0, z: 0}
   isPulling: 0
 --- !u!1 &5903450792061974923
 GameObject:
@@ -196,13 +196,12 @@ GameObject:
   - component: {fileID: 3812168064748505525}
   - component: {fileID: 5516551784809773726}
   - component: {fileID: 5050887212126733247}
+  - component: {fileID: 9074750042522903660}
   - component: {fileID: 1072710105220968721}
   - component: {fileID: 6495744394902352691}
   - component: {fileID: 2579048552607548282}
-  - component: {fileID: 5837636136545623320}
-  - component: {fileID: 9064533274790844372}
   m_Layer: 2
-  m_Name: Spaceship
+  m_Name: Spaceship 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -304,6 +303,29 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &9074750042522903660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943344323793404352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04bcf7cc64a46f44b92f9499454a5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitialised: 0
+  isLocked: 0
+  bodyName: 
+  rb: {fileID: 0}
+  dontPullPlayer: 0
+  isGravitySource: 0
+  localGravity: 1
+  radius: 1
+  orbitDistance: 0
+  orbitTarget: {fileID: 0}
+  lastReleasedTime: 0
 --- !u!136 &1072710105220968721
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -356,36 +378,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minImpactDrop: 5
---- !u!114 &5837636136545623320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5943344323793404352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8af0815a3aa6f047a8098f2330ebe6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  displayName: Unknown Object
---- !u!114 &9064533274790844372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5943344323793404352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf823534e51622c44b6f03a1068c449f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  objectName: Ship
-  IsInitialised: 0
-  orbitDistance: 0
-  orbitTarget: {fileID: 0}
 --- !u!1 &6021229833144340315
 GameObject:
   m_ObjectHideFlags: 0

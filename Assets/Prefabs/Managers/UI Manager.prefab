@@ -5449,6 +5449,7 @@ MonoBehaviour:
   HUD: {fileID: 2021324708765327740}
   settingsScreen: {fileID: 5035030125539250837}
   controlsScreen: {fileID: 9054563125559757894}
+  pullZoneIndicator: {fileID: 6920672729915891194}
 --- !u!1 &4184828790359193544
 GameObject:
   m_ObjectHideFlags: 0

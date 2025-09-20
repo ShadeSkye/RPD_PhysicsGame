@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 6945836034245232422}
   - component: {fileID: 4757909653608122630}
   - component: {fileID: 7508509102753157062}
+  - component: {fileID: 6637785797072382225}
+  - component: {fileID: 1810708578277166706}
   - component: {fileID: 1357827858788274234}
   - component: {fileID: 3528068491972194224}
   - component: {fileID: 5037835642705069890}
-  - component: {fileID: 15945241586667816}
   m_Layer: 3
-  m_Name: Crate
+  m_Name: Crate 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +88,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 7, y: 3, z: 11}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6637785797072382225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5899803369233917838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04bcf7cc64a46f44b92f9499454a5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitialised: 0
+  isLocked: 0
+  bodyName: 
+  rb: {fileID: 0}
+  dontPullPlayer: 0
+  isGravitySource: 0
+  localGravity: 0.1
+  radius: 0.2
+  orbitDistance: 5
+  orbitTarget: {fileID: 0}
+  lastReleasedTime: 0
+--- !u!114 &1810708578277166706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5899803369233917838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa627ae5d2d45e4c852b684692ad88c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cargoName: Tadpole Crate
+  weight: 5
+  type: 1
+  baseValue: 200
 --- !u!114 &1357827858788274234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,28 +252,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &15945241586667816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5899803369233917838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2344306b5d4dd44bbf736b1887e24ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  objectName: Crate
-  IsInitialised: 0
-  orbitDistance: 0
-  orbitTarget: {fileID: 0}
-  IsLocked: 0
-  LastReleasedTime: 0
-  weight: 1
-  type: 1
-  baseValue: 100
 --- !u!1 &7631677033180626010
 GameObject:
   m_ObjectHideFlags: 0

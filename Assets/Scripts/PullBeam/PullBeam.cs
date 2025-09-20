@@ -12,53 +12,50 @@ public class PullBeam : MonoBehaviour
     [SerializeField] private Collider holdZone;
 
     [Header("Hold Settings")]
-    private GravityBody heldBody;
-    public GravityBody HeldBody => heldBody;
-    [SerializeField] private float radiusPadding = 1f;
+    private Cargo heldCargo;
+    public Cargo HeldCargo => heldCargo;
     [SerializeField] private float ejectForce;
+    [SerializeField] private Vector3 holdOffset = Vector3.zero;
 
     private Vector3 heldPosition;
     private Quaternion heldRotation;
 
     public bool isPulling;
     private float lockCooldown = 1f;
-    private List<GravityBody> bodiesInBeam = new List<GravityBody>();
+    private List<Cargo> cargoInBeam = new List<Cargo>();
 
     private void FixedUpdate()
     {
-        if (heldBody != null)
+        if (heldCargo != null)
         {
-            heldPosition = holdZone.transform.position + holdZone.transform.forward * (heldBody.radius + radiusPadding);
-            heldBody.rb.MovePosition(heldPosition);
+            heldPosition = holdZone.transform.TransformPoint(holdOffset);
+            heldCargo.rb.MovePosition(heldPosition);
             heldRotation = holdZone.transform.rotation;
-            heldBody.rb.MoveRotation(heldRotation);
+            heldCargo.rb.MoveRotation(heldRotation);
 
-            if (heldBody.rb.velocity.magnitude > maxPullSpeed)
+            if (heldCargo.rb.velocity.magnitude > maxPullSpeed)
             {
-                heldBody.rb.velocity = heldBody.rb.velocity.normalized * maxPullSpeed;
+                heldCargo.rb.velocity = heldCargo.rb.velocity.normalized * maxPullSpeed;
             }
         }
     }
 
-    public void ApplyPull(GravityBody target)
+    public void ApplyPull(Cargo target)
     {
         if (isPulling)
         {
             //Debug.Log($"Attempting pull {target}");
 
-            if (target != null && target.isGravityAffected && !target.CompareTag("Player"))
+            if (target != null && !target.IsLocked && !target.CompareTag("Player"))
             {
                 //Debug.Log($"Successful pull {target}");
 
-                if (!bodiesInBeam.Contains(target)) bodiesInBeam.Add(target);
+                if (!cargoInBeam.Contains(target)) cargoInBeam.Add(target);
 
                 Vector3 offset = transform.position - target.rb.position;
                 float distance = offset.magnitude;
 
-                if (distance <= 0)
-                {
-                    distance = 0.1f;
-                }
+                if (distance <= 0) distance = 0.1f;
 
                 float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 1000) * target.rb.mass) / (distance * distance);
 
@@ -72,65 +69,91 @@ public class PullBeam : MonoBehaviour
         }
     }
 
-    internal void LockBody(GravityBody body)
+    internal void LockCargo(Cargo c)
     {
-        if (!bodiesInBeam.Contains(body)) return;
+        if (!cargoInBeam.Contains(c)) return;
 
-        if (body != null && body.isGravityAffected && !body.CompareTag("Player") && heldBody == null)
+        if (c != null && !c.IsLocked && !c.CompareTag("Player") && heldCargo == null)
         {
-            if (Time.time - body.lastReleasedTime < lockCooldown) return;
+            if (Time.time - c.LastReleasedTime < lockCooldown) return;
 
+            c.rb.velocity = Vector3.zero;
+            c.rb.angularVelocity = Vector3.zero;
 
-            body.rb.velocity = Vector3.zero;
-            body.rb.angularVelocity = Vector3.zero;
+            c.IsLocked = true;
+            c.rb.isKinematic = true;
 
-            body.isLocked = true;
-            body.rb.isKinematic = true;
+            GravityManager.Instance.UnregisterObject(c);
 
-            GravityManager.Instance.UnregisterBody(body);
+            c.transform.SetParent(holdZone.transform);
 
-            body.transform.SetParent(holdZone.transform);
+            heldCargo = c;
 
-            heldBody = body;
-
-            bodiesInBeam.Remove(body);
-            Debug.Log($"Picked up {body}");
+            cargoInBeam.Remove(c);
+            Debug.Log($"Picked up {c}");
             AudioManager.Instance.PlayOneShot("Lock");
 
-            if (body.gameObject.TryGetComponent<Cargo>(out Cargo cargo))
-            {
-                CarryingDisplay.Instance.SetCarrying(cargo);
-            }
+            CarryingDisplay.Instance.SetCarrying(c);
         }
     }
 
-    public void UnlockBody(GravityBody body)
+    public void UnlockCargo(Cargo c)
     {
-        if (body != null)
+        if (c != null)
         {
-            body.lastReleasedTime = Time.time;
+            c.LastReleasedTime = Time.time;
 
-            body.isLocked = false;
-            body.rb.isKinematic = false;
-            body.transform.SetParent(null);
+            c.IsLocked = false;
+            c.rb.isKinematic = false;
+            c.transform.SetParent(null);
 
-            GravityManager.Instance.RegisterBody(body);
+            GravityManager.Instance.RegisterObject(c);
 
-            heldBody = null;
+            heldCargo = null;
 
             AudioManager.Instance.PlayOneShot("Eject");
             CarryingDisplay.Instance.ClearCarrying();
         }
     }
 
-    public void EjectBody(GravityBody body)
+    public void EjectCargo(Cargo c)
     {
-        Debug.Log($"Ejected {body}");
+        Debug.Log($"Ejected {c}");
 
-        if (body.rb == null) return;
+        if (c.rb == null) return;
 
-        UnlockBody(body);
-        body.rb.AddForce(transform.forward * ejectForce, ForceMode.Impulse);
+        UnlockCargo(c);
+        c.rb.AddForce(transform.forward * ejectForce, ForceMode.Impulse);
+    }
+
+    public void OnPullZoneEnter(Cargo c)
+    {
+        if (!cargoInBeam.Contains(c))
+        {
+            cargoInBeam.Add(c);
+            UpdateCargoVisuals();
+        }
+    }
+
+    public void OnPullZoneStay(Cargo c)
+    {
+        ApplyPull(c);    
+    }
+
+    public void OnPullZoneExit(Cargo c)
+    {
+        cargoInBeam.Remove(c);
+        UpdateCargoVisuals();
+    }
+
+    public void OnHoldZoneEnter(Cargo c)
+    {
+        LockCargo(c);
+    }
+
+    private void UpdateCargoVisuals()
+    {
+        UIManager.Instance.CargoInRange(cargoInBeam.Count > 0);
     }
 
 }

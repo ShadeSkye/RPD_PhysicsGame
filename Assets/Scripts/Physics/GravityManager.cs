@@ -9,14 +9,16 @@ public class GravityManager : MonoBehaviour
 
     [Header("Gravity Settings")]
     public float gravitationalConstant = 0.001f;
-
-    private List<GravityBody> bodies = new List<GravityBody>();
-    public List<GravityBody> GetBodies() => bodies;
+    [SerializeField] private bool simplifiedSimulation = false;
 
     [Header("Orbit Settings")]
-    private bool simplifiedSimulation = true; // if its off its like nbody if its on its just the strongest
     [SerializeField, Range(0f, 100f)] private float alignedOrbitPercentage = 60f;
     public float alignedOrbitChance => alignedOrbitPercentage / 100f;
+
+    private List<GravityBody> bodies = new List<GravityBody>();
+    private List<GravitySource> sources = new List<GravitySource>();
+    public List<GravityBody> GetBodies() => bodies;
+    public List<GravitySource> GetSources() => sources;
 
     private void Awake()
     {
@@ -28,15 +30,30 @@ public class GravityManager : MonoBehaviour
         Instance = this;
     }
 
-    public void RegisterBody(GravityBody body)
+    public void RegisterObject(GravityObject obj)
     {
-        if (!bodies.Contains(body))
-            bodies.Add(body);
+        switch (obj)
+        {
+            case GravityBody body when !bodies.Contains(body):
+                bodies.Add(body);
+                break;
+            case GravitySource source when !sources.Contains(source):
+                sources.Add(source);
+                break;
+        }
     }
 
-    public void UnregisterBody(GravityBody body)
+    public void UnregisterObject(GravityObject obj)
     {
-        bodies.Remove(body);
+        switch (obj)
+        {
+            case GravityBody body:
+                bodies.Remove(body);
+                break;
+            case GravitySource source:
+                sources.Remove(source);
+                break;
+        }
     }
 
     private void FixedUpdate()
@@ -46,89 +63,63 @@ public class GravityManager : MonoBehaviour
 
     private void ApplyGravity()
     {
-        for (int x = 0; x < bodies.Count; x++) // for each body
+        foreach (var body in bodies)
         {
-            GravityBody a = bodies[x];
-
-            if (!a.isGravityAffected) continue; // skip if it is planet
+            if (body is Cargo cargo && cargo.IsLocked) continue;
 
             Vector3 totalForce = Vector3.zero;
 
             if (!simplifiedSimulation)
             {
-                for (int y = 0; y < bodies.Count; y++) // for each body that affects it
+                foreach (var source in sources)
                 {
-                    if (x != y)
-                    {
-                        GravityBody b = bodies[y];
+                    if (source == body) continue;
+                    if (body.CompareTag("Player") && source.DontPullPlayer) continue;
 
-                        totalForce += CalculateGravity(a, b);
-
-                    }
-
+                    totalForce += CalculateGravity(body, source);
                 }
             }
             else
             {
-                GravityBody strongest = GetStrongestGravitySource(a);
-                if (strongest != null)
+                GravitySource strongest = GetStrongestSource(body);
+                if (strongest != null && !(body.CompareTag("Player") && strongest.DontPullPlayer))
                 {
-                    if (a.CompareTag("Player") && strongest.dontPullPlayer)
-                    {
-                        //Debug.Log($"Skipping gravity from {strongest.name} to Player due to dontPullPlayer");
-                        continue;
-                    }
-
-                    totalForce += CalculateGravity(a, strongest);
+                    totalForce += CalculateGravity(body, strongest);
                 }
             }
 
-            a.rb.AddForce(totalForce);
+            body.rb.AddForce(totalForce);
         }
     }
 
-    private Vector3 CalculateGravity(GravityBody a, GravityBody b)
+    private Vector3 CalculateGravity(GravityBody body, GravitySource source)
     {
-        Vector3 offset = b.rb.position - a.rb.position;
-        float distance = offset.magnitude;
-
-        if (distance <= 0)
-        {
-            distance = 0.1f;
-        }
-
-        float forceMagnitude = gravitationalConstant * (a.rb.mass * b.rb.mass) / (distance * distance);
-
-        Vector3 direction = offset.normalized;
-
-        return direction * forceMagnitude;
+        Vector3 offset = source.rb.position - body.rb.position;
+        float distance = Mathf.Max(offset.magnitude, 0.1f);
+        float forceMagnitude = gravitationalConstant * (body.rb.mass * source.rb.mass) / (distance * distance);
+        return offset.normalized * forceMagnitude;
     }
 
-    private GravityBody GetStrongestGravitySource(GravityBody a)
+    private GravitySource GetStrongestSource(GravityBody body)
     {
-        GravityBody strongestBody = null;
-        float strongestForce = 0;
+        GravitySource strongest = null;
+        float maxForce = 0f;
 
-        foreach (GravityBody body in bodies)
+        foreach (var source in sources)
         {
-            if (body == a || !body.rb.isKinematic) continue;
+            if (source == body) continue;
 
-            float distance = Vector3.Distance(a.rb.position, body.rb.position);
+            float distance = Vector3.Distance(body.rb.position, source.rb.position);
+            distance = Mathf.Max(distance, 0.1f);
 
-            if (distance <= 0)
+            float force = source.rb.mass / (distance * distance);
+            if (force > maxForce)
             {
-                distance = 0.1f;
-            }
-
-            float force = body.rb.mass / (distance * distance);
-
-            if (force > strongestForce)
-            {
-                strongestForce = force;
-                strongestBody = body;
+                maxForce = force;
+                strongest = source;
             }
         }
 
-        return strongestBody;
+        return strongest;
     }
 }
