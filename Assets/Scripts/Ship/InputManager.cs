@@ -59,6 +59,7 @@ public class InputManager : MonoBehaviour
         if (controls == null)
             controls = new ShipActions();
 
+        spaceship = GameObject.FindGameObjectWithTag("Player");
         if (spaceship == null)
         {
             Debug.LogError("Spaceship is not assigned in InputManager!");
