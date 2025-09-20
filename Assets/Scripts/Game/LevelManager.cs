@@ -45,11 +45,10 @@ public class LevelManager : MonoBehaviour
 
     private void OnLevelComplete()
     {
-        Debug.Log($"Level {LevelData.LevelName} completed!");
+        Debug.Log($"{LevelData.LevelName} completed!");
         LevelSelect.Instance.OnLevelComplete(LevelData);
         
         GameManager.Instance.LoadNextScene();
     }
-
 
 }
