@@ -33,18 +33,6 @@ public class AudioManager : MonoBehaviour
     }
     private void AudioSetup()
     {
-        Debug.Log("Setting up audio in AudioSetup");
-        for (int i = 0; i < sounds.Count; i++)
-        {
-            if (sounds[i] == null)
-            {
-                Debug.LogError($"AudioData element at index {i} is null");
-            }
-            else
-            {
-                Debug.Log($"AudioData at index {i}: {sounds[i].name}");
-            }
-        }
 
         foreach (AudioData sound in sounds)
         {
@@ -62,9 +50,6 @@ public class AudioManager : MonoBehaviour
             if (sound is ContinuousAudio)
                 source.Play();
         }
-
-        Debug.Log($"AudioManager sounds count: {sounds.Count}");
-        foreach (var s in sounds) Debug.Log($"AudioData name: {s.name}");
 
     }
     private void Start()
