@@ -9,6 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8772619021254410781}
+  - component: {fileID: 7458571028207136170}
+  - component: {fileID: 3021417704727105765}
+  - component: {fileID: 5895787153790928716}
   m_Layer: 0
   m_Name: Depot
   m_TagString: Untagged
@@ -26,12 +29,69 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.4281006, y: 172.34592, z: 132.33759}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6958958668565264056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7458571028207136170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046421779781875794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8af0815a3aa6f047a8098f2330ebe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Depot
+--- !u!54 &3021417704727105765
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046421779781875794}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5895787153790928716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3046421779781875794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f11379c89e170b4c8a7a7ad9a96167a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  objectName: Depot
+  DontPullPlayer: 1
+  localGravity: 1
+  Radius: 100
 --- !u!1001 &5918724233907258260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42,15 +102,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3652622007570068780, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3652622007570068780, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3652622007570068780, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3652622007570068780, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -94,41 +154,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4178048466050396054, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
       propertyPath: m_Name
-      value: Depot
+      value: Mesh
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2180434124140251610, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
+    - {fileID: 7449489592787052108, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
+    - {fileID: 2658635753419395069, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4178048466050396054, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2630773655417944136}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
 --- !u!4 &6958958668565264056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3652622007570068780, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
   m_PrefabInstance: {fileID: 5918724233907258260}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &7771208158126894082 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4178048466050396054, guid: 3cc0158980fdfa64aae7afa3ff6ec36b, type: 3}
-  m_PrefabInstance: {fileID: 5918724233907258260}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2630773655417944136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7771208158126894082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f11379c89e170b4c8a7a7ad9a96167a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  objectName: Depot
-  DontPullPlayer: 0
-  localGravity: 1
-  Radius: 1

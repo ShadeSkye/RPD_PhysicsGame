@@ -30,6 +30,8 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
+
+        AudioSetup();
     }
     private void AudioSetup()
     {
@@ -51,10 +53,6 @@ public class AudioManager : MonoBehaviour
                 source.Play();
         }
 
-    }
-    private void Start()
-    {
-        AudioSetup();
     }
     private void Update()
     {

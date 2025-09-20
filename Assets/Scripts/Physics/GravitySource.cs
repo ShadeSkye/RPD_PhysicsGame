@@ -18,6 +18,8 @@ public class GravitySource : GravityObject
         Radius = Radius == 0 ? 1f : Radius;
         rb.mass = (localGravity * Radius * Radius) / GravityManager.Instance.gravitationalConstant;
         transform.localScale = Vector3.one * Radius * 2;
+
+        GravityManager.Instance.RegisterObject(this);
     }
 
     private void OnValidate()

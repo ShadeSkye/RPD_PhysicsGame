@@ -1,45 +1,95 @@
 using UnityEngine;
-
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
+using System.Collections.Generic;
 
 [ExecuteAlways]
-public class GravityGizmos : MonoBehaviour
+[RequireComponent(typeof(LineRenderer))]
+public class OrbitGizmoDrawer : MonoBehaviour
 {
-#if UNITY_EDITOR
+    [Header("Orbit Preview Settings")]
+    public Color orbitColor = Color.yellow;
+    public Color velocityColor = Color.cyan;
+    [Range(10, 1000)] public int steps = 300;
+    public float timeStep = 0.02f;
+    public bool drawOrbits = true;
+    public bool drawInGame = true;
+
+    private LineRenderer lr;
+
+    private void Awake()
+    {
+        lr = GetComponent<LineRenderer>();
+        lr.positionCount = 0;
+        lr.material = new Material(Shader.Find("Sprites/Default"));
+        lr.startColor = orbitColor;
+        lr.endColor = orbitColor;
+        lr.startWidth = 0.05f;
+        lr.endWidth = 0.05f;
+        lr.loop = false;
+        lr.enabled = drawInGame;
+    }
+
     private void OnDrawGizmos()
     {
-        // Draw orbits for all bodies in the scene
-        GravityBody[] bodies = FindObjectsOfType<GravityBody>();
+        if (!drawOrbits || GravityManager.Instance == null) return;
 
-        foreach (GravityBody body in bodies)
+        var bodies = GravityManager.Instance.GetBodies();
+        var sources = GravityManager.Instance.GetSources();
+
+        foreach (var body in bodies)
         {
-            if (body.OrbitTarget == null) continue;
+            if (body == null || body.rb == null || (body is Cargo cargo && cargo.IsLocked))
+                continue;
 
-            Vector3 center = body.OrbitTarget.transform.position;
-            float radius = body.OrbitTarget.Radius + body.OrbitDistance;
+            Vector3[] orbitPath = SimulateOrbit(body, sources);
 
-            // Choose color based on alignment chance
-            Gizmos.color = Color.Lerp(Color.yellow, Color.cyan, UnityEngine.Random.value);
+            // Draw Gizmos in Scene view
+            Gizmos.color = orbitColor;
+            for (int i = 1; i < orbitPath.Length; i++)
+                Gizmos.DrawLine(orbitPath[i - 1], orbitPath[i]);
 
-            // Draw a simple wire disc in the XY plane
-            DrawOrbit(body.transform, center, radius);
+            // Optional: draw velocity vector
+            Gizmos.color = velocityColor;
+            Gizmos.DrawLine(body.rb.position, body.rb.position + body.rb.velocity);
+
+            // Draw in Game view with LineRenderer
+            if (drawInGame && lr != null)
+            {
+                lr.positionCount = orbitPath.Length;
+                lr.SetPositions(orbitPath);
+            }
         }
     }
 
-    private void DrawOrbit(Transform bodyTransform, Vector3 center, float radius)
+    private Vector3[] SimulateOrbit(GravityBody target, List<GravitySource> sources)
     {
-        const int segments = 64;
-        Vector3 lastPoint = center + Vector3.right * radius;
+        List<Vector3> path = new List<Vector3>();
+        Vector3 simulatedPos = target.rb.position;
+        Vector3 simulatedVel = target.rb.velocity;
 
-        for (int i = 1; i <= segments; i++)
+        for (int step = 0; step < steps; step++)
         {
-            float angle = i * Mathf.PI * 2f / segments;
-            Vector3 nextPoint = center + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
-            Gizmos.DrawLine(lastPoint, nextPoint);
-            lastPoint = nextPoint;
+            Vector3 acceleration = Vector3.zero;
+
+            foreach (var source in sources)
+            {
+                if (source == null || source.rb == null) continue;
+
+                Vector3 offset = source.rb.position - simulatedPos;
+                float distance = Mathf.Max(offset.magnitude, 0.1f);
+                Vector3 direction = offset.normalized;
+
+                float accMagnitude = GravityManager.Instance.gravitationalConstant *
+                                     source.rb.mass / (distance * distance);
+
+                acceleration += direction * accMagnitude;
+            }
+
+            simulatedVel += acceleration * timeStep;
+            simulatedPos += simulatedVel * timeStep;
+
+            path.Add(simulatedPos);
         }
+
+        return path.ToArray();
     }
-#endif
 }
