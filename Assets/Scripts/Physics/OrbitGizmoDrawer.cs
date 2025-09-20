@@ -1,75 +1,45 @@
 using UnityEngine;
-using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [ExecuteAlways]
-public class OrbitGizmoDrawer : MonoBehaviour
+public class GravityGizmos : MonoBehaviour
 {
-    [Header("Orbit Preview Settings")]
-    public Color orbitColor = Color.yellow;
-    public Color velocityColor = Color.cyan;
-    [Range(10, 1000)] public int steps = 300;
-    public float timeStep = 0.02f;
-    public bool drawOrbits = true;
-
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
-        if (!drawOrbits || GravityManager.Instance == null) return;
+        // Draw orbits for all bodies in the scene
+        GravityBody[] bodies = FindObjectsOfType<GravityBody>();
 
-        var bodies = GravityManager.Instance.GetBodies();
-
-        foreach (var body in bodies)
+        foreach (GravityBody body in bodies)
         {
-            if (body == null || body.rb == null || body.rb.isKinematic)
-                continue;
+            if (body.OrbitTarget == null) continue;
 
-            Vector3[] orbitPath = SimulateOrbit(body, bodies);
-            Gizmos.color = orbitColor;
+            Vector3 center = body.OrbitTarget.transform.position;
+            float radius = body.OrbitTarget.Radius + body.OrbitDistance;
 
-            for (int i = 1; i < orbitPath.Length; i++)
-            {
-                Gizmos.DrawLine(orbitPath[i - 1], orbitPath[i]);
-            }
+            // Choose color based on alignment chance
+            Gizmos.color = Color.Lerp(Color.yellow, Color.cyan, UnityEngine.Random.value);
 
-            // Optional: draw velocity vector
-            Gizmos.color = velocityColor;
-            Gizmos.DrawLine(body.rb.position, body.rb.position + body.rb.velocity);
+            // Draw a simple wire disc in the XY plane
+            DrawOrbit(body.transform, center, radius);
         }
     }
 
-    private Vector3[] SimulateOrbit(GravityBody target, List<GravityBody> allBodies)
+    private void DrawOrbit(Transform bodyTransform, Vector3 center, float radius)
     {
-        List<Vector3> path = new List<Vector3>();
+        const int segments = 64;
+        Vector3 lastPoint = center + Vector3.right * radius;
 
-        // Start from current position and velocity
-        Vector3 simulatedPos = target.rb.position;
-        Vector3 simulatedVel = target.rb.velocity;
-
-        for (int step = 0; step < steps; step++)
+        for (int i = 1; i <= segments; i++)
         {
-            Vector3 acceleration = Vector3.zero;
-
-            foreach (var other in allBodies)
-            {
-                if (other == target || other == null || other.rb == null || !other.rb.isKinematic)
-                    continue;
-
-                Vector3 offset = other.rb.position - simulatedPos;
-                float distance = Mathf.Max(offset.magnitude, 0.1f);
-                Vector3 direction = offset.normalized;
-
-                float accMagnitude = GravityManager.Instance.gravitationalConstant *
-                                     other.rb.mass / (distance * distance);
-
-                acceleration += direction * accMagnitude;
-            }
-
-            // Update velocity and position
-            simulatedVel += acceleration * timeStep;
-            simulatedPos += simulatedVel * timeStep;
-
-            path.Add(simulatedPos);
+            float angle = i * Mathf.PI * 2f / segments;
+            Vector3 nextPoint = center + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+            Gizmos.DrawLine(lastPoint, nextPoint);
+            lastPoint = nextPoint;
         }
-
-        return path.ToArray();
     }
+#endif
 }

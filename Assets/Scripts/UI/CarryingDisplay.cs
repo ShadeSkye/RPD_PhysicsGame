@@ -41,8 +41,7 @@ public class CarryingDisplay : MonoBehaviour
     {
         if (CurrentCargo != null)
         {
-
-            CarryingName.text = $"[{CurrentCargo.cargoName.ToUpper()}]";
+            CarryingName.text = $"[{CurrentCargo.objectName.ToUpper()}]";
             CarryingValue.text = $"Value: {CurrentCargo.CurrentValue.ToString("C2")}";
             CarryingDamage.text = $"Damage: {CurrentCargo.DamagePercent.ToString("P0")}";
         }

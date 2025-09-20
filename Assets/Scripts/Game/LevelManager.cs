@@ -26,12 +26,12 @@ public class LevelManager : MonoBehaviour
         foreach (var obj in LevelData.objectives) obj.ResetObjective();
     }
 
-    public void OnCargoDelivered(Cargo cargo)
+    public void OnCargoDelivered(Cargo c)
     {
-        deliveredCargo.Add(cargo);
+        deliveredCargo.Add(c);
 
         foreach (var obj in LevelData.objectives)
-            obj.AddProgress(cargo);
+            obj.AddProgress(c);
 
         if (LevelData.objectives.All(o => o.isComplete))
             OnLevelComplete();

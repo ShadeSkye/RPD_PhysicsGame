@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -59,17 +59,18 @@ public class LevelGenerator : MonoBehaviour
 
             // instantiate
             GameObject newCargo = Instantiate(cargoPrefab, randomPlanet.transform.position, Quaternion.identity);
-            GravityBody body = newCargo.GetComponent<GravityBody>();
+            OLDGravityBody body = newCargo.GetComponent<OLDGravityBody>();
             Cargo cargo = newCargo.GetComponent<Cargo>();
 
             // set up body
             body.transform.localScale = Vector3.one * Random.Range(0.3f, 0.5f);
             body.orbitDistance = Random.Range(5f, 15f);
-            body.orbitTarget = randomPlanet.GetComponent<GravityBody>();
+            body.orbitTarget = randomPlanet.GetComponent<OLDGravityBody>();
 
-            cargo.cargoName = $"Crate {i}";
+            cargo.objectName = $"Crate {i}";
             cargo.weight = Random.Range(5f, 15f);
             cargo.baseValue = Random.Range(50, 151);
         }
     }
 }
+*/

@@ -175,9 +175,9 @@ public class InputManager : MonoBehaviour
 
         bool isEjectPressed = controls.Flight.Release.triggered;
 
-        if (isEjectPressed && pb.HeldBody != null)
+        if (isEjectPressed && pb.HeldCargo != null)
         {
-            pb.EjectBody(pb.HeldBody);
+            pb.EjectCargo(pb.HeldCargo);
         }
     }
 

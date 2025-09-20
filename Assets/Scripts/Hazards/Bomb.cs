@@ -18,6 +18,13 @@ public class Bomb : Cargo
 
     private Vector3 center;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        type = CargoType.Bomb;
+    }
+
     private void Update()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
