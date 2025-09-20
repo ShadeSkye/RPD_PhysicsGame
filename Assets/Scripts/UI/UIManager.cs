@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
 
     private Dictionary<PrimaryUIState, GameObject> primaryScreens;
     private Dictionary<SecondaryUIState, GameObject> secondaryScreens;
+
+    [SerializeField] private Image pullZoneIndicator;
     public enum PrimaryUIState
     {
         None,
@@ -206,5 +208,11 @@ public class UIManager : MonoBehaviour
             sensFromSlider = sensSlider.value;
             PlayerPrefs.SetFloat("sensitivity", sensFromSlider);
         }
+    }
+
+    public void CargoInRange(bool isInRange)
+    {
+        pullZoneIndicator.color = isInRange ? Color.yellow : Color.white;
+
     }
 }

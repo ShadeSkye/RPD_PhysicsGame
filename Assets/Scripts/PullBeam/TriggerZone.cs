@@ -21,12 +21,20 @@ public class TriggerZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (zoneType != ZoneType.Hold) return;
-
         GravityBody body = other.GetComponent<GravityBody>();
         if (body == null) return;
 
-        pullBeam.LockBody(body);
+        if (zoneType == ZoneType.Hold)
+        {
+
+            pullBeam.OnHoldZoneEnter(body);
+        }
+        else
+        {
+            pullBeam.OnPullZoneEnter(body);
+        }
+
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -36,7 +44,18 @@ public class TriggerZone : MonoBehaviour
         GravityBody body = other.GetComponent<GravityBody>();
         if (body == null) return;
 
-        pullBeam.ApplyPull(body);
+        pullBeam.OnPullZoneStay(body);
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (zoneType != ZoneType.Pull) return;
+
+        GravityBody body = other.GetComponent<GravityBody>();
+        if (body == null) return;
+
+        pullBeam.OnPullZoneExit(body);
+    }
+
 
 }

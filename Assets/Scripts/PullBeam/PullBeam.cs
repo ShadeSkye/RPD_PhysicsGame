@@ -133,4 +133,35 @@ public class PullBeam : MonoBehaviour
         body.rb.AddForce(transform.forward * ejectForce, ForceMode.Impulse);
     }
 
+    public void OnPullZoneEnter(GravityBody body)
+    {
+        if (!bodiesInBeam.Contains(body))
+        {
+            bodiesInBeam.Add(body);
+            UpdateCargoVisuals();
+        }
+    }
+
+    public void OnPullZoneStay(GravityBody body)
+    {
+        ApplyPull(body);    
+    }
+
+    public void OnPullZoneExit(GravityBody body)
+    {
+        bodiesInBeam.Remove(body);
+        UpdateCargoVisuals();
+    }
+
+    public void OnHoldZoneEnter(GravityBody body)
+    {
+        LockBody(body);
+    }
+
+    private void UpdateCargoVisuals()
+    {
+        //Debug.Log(bodiesInBeam.Count);
+        UIManager.Instance.CargoInRange(bodiesInBeam.Count > 0);
+    }
+
 }
