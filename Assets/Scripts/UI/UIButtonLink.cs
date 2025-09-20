@@ -8,6 +8,7 @@ public enum UIButtonAction
 {
     NewGame,
     Resume,
+    LoadGame,
     OpenSettings,
     OpenControls,
     QuitGame,
@@ -37,6 +38,9 @@ public class UIButtonLink : MonoBehaviour
                 break;
             case UIButtonAction.Resume:
                 button.onClick.AddListener(UIManager.Instance.ResumeGame);
+                break;
+            case UIButtonAction.LoadGame:
+                button.onClick.AddListener(UIManager.Instance.LoadGame);
                 break;
             case UIButtonAction.OpenSettings:
                 button.onClick.AddListener(UIManager.Instance.OpenSettings);

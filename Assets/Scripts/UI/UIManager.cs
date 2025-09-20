@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [Header("Primary Screens")]
     [SerializeField] private GameObject homeScreen;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject missionScreen;
     [SerializeField] private GameObject HUD;
 
     [Header("Secondary Screens")]
@@ -30,7 +31,8 @@ public class UIManager : MonoBehaviour
     {
         None,
         Home,
-        Pause,
+        PauseMenu,
+        MissionMenu,
         HUD
     }
 
@@ -60,7 +62,8 @@ public class UIManager : MonoBehaviour
         primaryScreens = new Dictionary<PrimaryUIState, GameObject>
         {
             { PrimaryUIState.Home, homeScreen },
-            { PrimaryUIState.Pause, pauseScreen },
+            { PrimaryUIState.PauseMenu, pauseScreen },
+            { PrimaryUIState.MissionMenu, missionScreen },
             { PrimaryUIState.HUD, HUD }
         };
 
@@ -81,6 +84,7 @@ public class UIManager : MonoBehaviour
         {
             SetPrimary(PrimaryUIState.Home);
             SetSecondary(SecondaryUIState.None);
+            SaveManager.Instance.UpdateMainMenu();
         }
         else
         {
@@ -130,14 +134,13 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void PauseGame()
+    public void PauseGame(PrimaryUIState menuType)
     {
         GameManager.Instance.Pause();
 
         AudioManager.Instance.PlayOneShot("Button");
-        AudioManager.Instance.PauseSFX();
         
-        SetPrimary(PrimaryUIState.Pause);
+        SetPrimary(menuType);
     }
 
     public void ResumeGame()
@@ -145,13 +148,13 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.Play();
 
         AudioManager.Instance.PlayOneShot("Button");
-        AudioManager.Instance.ResumeSFX();
 
         SetPrimary(PrimaryUIState.HUD);
     }
 
     public void MainMenu()
     {
+        Debug.Log("Going to main menu");
         GameManager.Instance.LoadScene(SceneIndex.MainMenu);
 
         AudioManager.Instance.PlayOneShot("Button");
@@ -159,7 +162,15 @@ public class UIManager : MonoBehaviour
 
     public void NewGame()
     {
-        GameManager.Instance.LoadScene(SceneIndex.Game);
+        GameManager.Instance.LoadScene(SceneIndex.Level1);
+
+        AudioManager.Instance.PlayOneShot("Button");
+
+    }
+
+    public void LoadGame()
+    {
+        GameManager.Instance.LoadScene(SaveManager.Instance.LoadLastCompletedLevel());
 
         AudioManager.Instance.PlayOneShot("Button");
 

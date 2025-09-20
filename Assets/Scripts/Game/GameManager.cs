@@ -10,8 +10,10 @@ using static UIManager;
 
 public enum SceneIndex
 {
-    MainMenu = 0,
-    Game = 1,
+    MainMenu,
+    Level1,
+    Level2,
+    Level3
 }
 
 public class GameManager : MonoBehaviour
@@ -21,6 +23,8 @@ public class GameManager : MonoBehaviour
     [Header("Load Transition")]
     [SerializeField] private Image fadeImage;
     private float fadeDuration = 0.5f;
+
+    public bool GamePaused = false;
 
     private void Awake()
     {
@@ -37,20 +41,41 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
+        AudioManager.Instance.PauseSFX();
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;
+        GamePaused = true;
     }
 
     public void Play()
     {
+        AudioManager.Instance.ResumeSFX();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
+        GamePaused = false;
+    }
+
+    public void LoadNextScene()
+    {
+        int current = SceneManager.GetActiveScene().buildIndex;
+        int next = current + 1;
+
+        if (next < SceneManager.sceneCountInBuildSettings)
+        {
+            LoadScene((SceneIndex)next);
+        }
+        else
+        {
+            LoadScene((int)SceneIndex.MainMenu);
+        }
     }
 
     public void LoadScene(SceneIndex scene)
     {
+        AudioManager.Instance.StopAllSFX();
+
         StartCoroutine(FadeAndLoad(scene, true));
     }
 
@@ -94,19 +119,18 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoad(SceneIndex scene)
     {
+        AudioManager.Instance.PlayAllSFX();
+
         switch (scene)
         {
             case SceneIndex.MainMenu:
+                SaveManager.Instance.UpdateMainMenu();
                 UIManager.Instance.SetPrimary(PrimaryUIState.Home);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                Time.timeScale = 1;
+                Pause();
                 break;
-            case SceneIndex.Game:
+            default:
                 UIManager.Instance.SetPrimary(PrimaryUIState.HUD);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                Time.timeScale = 1;
+                Play();
                 break;
 
         }

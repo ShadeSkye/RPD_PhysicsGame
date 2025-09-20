@@ -30,15 +30,13 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
-
-        //DontDestroyOnLoad(gameObject);
-
-        AudioSetup();
     }
     private void AudioSetup()
     {
+
         foreach (AudioData sound in sounds)
         {
+
             AudioSource source = gameObject.AddComponent<AudioSource>();
             source.clip = sound.clip;
             source.playOnAwake = false;
@@ -52,6 +50,11 @@ public class AudioManager : MonoBehaviour
             if (sound is ContinuousAudio)
                 source.Play();
         }
+
+    }
+    private void Start()
+    {
+        AudioSetup();
     }
     private void Update()
     {
@@ -101,5 +104,29 @@ public class AudioManager : MonoBehaviour
     public void ResumeSFX()
     {
         audioMixer.SetFloat("sfx", 0f);
+    }
+
+    public void StopAllSFX()
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound is ContinuousAudio csound)
+            {
+                csound.source.Stop();
+
+            }
+        }
+    }
+
+    public void PlayAllSFX()
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound is ContinuousAudio csound)
+            {
+                if (!csound.source.isPlaying)
+                    csound.source.Play();
+            }
+        }
     }
 }

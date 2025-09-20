@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
@@ -8,9 +9,9 @@ public class InputManager : MonoBehaviour
     public float RotationAmount => rb.angularVelocity.magnitude;
 
     private ShipActions controls;
+
     private Rigidbody rb;
     private PullBeam pb;
-    private bool gamePaused = false;
 
     [SerializeField] public GameObject spaceship;
 
@@ -55,8 +56,16 @@ public class InputManager : MonoBehaviour
 
         Instance = this;
 
+        if (controls == null)
+            controls = new ShipActions();
+
+        if (spaceship == null)
+        {
+            Debug.LogError("Spaceship is not assigned in InputManager!");
+            return; 
+        }
+
         // get references
-        controls = new ShipActions();
         rb = spaceship.GetComponent<Rigidbody>();
         pb = spaceship.GetComponentInChildren<PullBeam>();
 
@@ -77,6 +86,7 @@ public class InputManager : MonoBehaviour
         if (controls != null)
             controls.Disable();
     }
+
     void Start()
     {
         boostDuration = AudioManager.Instance.audioLookup["Boost"].clip.length;
@@ -96,11 +106,15 @@ public class InputManager : MonoBehaviour
             boostCoroutine = StartCoroutine(GetBoost());
         }
 
-        if (controls.Flight.Pause.WasPressedThisFrame() && !gamePaused)
+        if (controls.Flight.PauseMenu.WasPressedThisFrame() && !GameManager.Instance.GamePaused)
         {
-            UIManager.Instance.PauseGame();
+            UIManager.Instance.PauseGame(UIManager.PrimaryUIState.PauseMenu);
         }
-        else if (controls.Flight.Pause.WasPressedThisFrame() && gamePaused)
+        else if (controls.Flight.MissionMenu.WasPressedThisFrame() && !GameManager.Instance.GamePaused)
+        {
+            UIManager.Instance.PauseGame(UIManager.PrimaryUIState.MissionMenu);
+        }
+        else if (controls.Flight.PauseMenu.WasPressedThisFrame() && GameManager.Instance.GamePaused)
         {
             UIManager.Instance.ResumeGame();
         }
@@ -191,7 +205,7 @@ public class InputManager : MonoBehaviour
                 bool boostInput = controls.Flight.Boost.ReadValue<float>() > 0.1f;
                 if (boostTimer >= boostDuration || !boostInput)
                 {
-                    Debug.Log("end boost");
+                    //Debug.Log("end boost");
                     break;
                 }
 
