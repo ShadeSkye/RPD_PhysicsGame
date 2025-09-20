@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour
         {
             SetPrimary(PrimaryUIState.Home);
             SetSecondary(SecondaryUIState.None);
+            SaveManager.Instance.UpdateMainMenu();
         }
         else
         {
@@ -153,6 +154,7 @@ public class UIManager : MonoBehaviour
 
     public void MainMenu()
     {
+        Debug.Log("Going to main menu");
         GameManager.Instance.LoadScene(SceneIndex.MainMenu);
 
         AudioManager.Instance.PlayOneShot("Button");
@@ -161,6 +163,14 @@ public class UIManager : MonoBehaviour
     public void NewGame()
     {
         GameManager.Instance.LoadScene(SceneIndex.Level1);
+
+        AudioManager.Instance.PlayOneShot("Button");
+
+    }
+
+    public void LoadGame()
+    {
+        GameManager.Instance.LoadScene(SaveManager.Instance.LoadLastCompletedLevel());
 
         AudioManager.Instance.PlayOneShot("Button");
 

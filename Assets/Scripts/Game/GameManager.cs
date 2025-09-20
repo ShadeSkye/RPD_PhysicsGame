@@ -124,6 +124,7 @@ public class GameManager : MonoBehaviour
         switch (scene)
         {
             case SceneIndex.MainMenu:
+                SaveManager.Instance.UpdateMainMenu();
                 UIManager.Instance.SetPrimary(PrimaryUIState.Home);
                 Pause();
                 break;

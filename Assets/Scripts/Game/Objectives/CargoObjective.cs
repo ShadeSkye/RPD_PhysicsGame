@@ -17,7 +17,7 @@ public class CargoObjective : BaseObjective
 
         if (!cargoValid) return;
 
-        Debug.Log("Adding cargo to cargo counter objective");
+        //Debug.Log("Adding cargo to cargo counter objective");
 
         currentAmount++;
         if (currentAmount >= requiredAmount)

@@ -29,12 +29,21 @@ public class LevelSelect : MonoBehaviour
 
     void Start()
     {
+        int lastCompletedIndex = (int)SaveManager.Instance.LoadLastCompletedLevel();
+
         foreach (LevelData l in levels)
         {
             LevelSelectButton button = Instantiate(buttonPrefab, layoutGroupParent);
             button.Setup(l);
             buttons.Add(button);
+
+            if(SaveManager.Instance.IsGameInProgress() && (int)l.SceneIndex <= lastCompletedIndex)
+            {
+                completedLevels.Add(l);
+            }
         }
+
+        RefreshButtons();
     }
 
     public void RefreshButtons()
@@ -47,6 +56,7 @@ public class LevelSelect : MonoBehaviour
 
     internal void OnLevelComplete(LevelData levelData)
     {
+        SaveManager.Instance.SaveLastCompletedLevel((int)levelData.SceneIndex);
         completedLevels.Add(levelData);
         RefreshButtons();
     }
