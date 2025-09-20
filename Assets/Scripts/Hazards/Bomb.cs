@@ -5,6 +5,11 @@ using UnityEngine.UIElements;
 
 public class Bomb : Cargo
 {
+    [Header("Trigger")]
+
+    [SerializeField] private float impactDamage = 0.05f;
+    [SerializeField] private float maxSafeSpeed = 300f;
+
     [Header("Explosion")]
     [SerializeField] private float radius = 10f;
     [SerializeField] private float damage = 25f;
@@ -13,14 +18,28 @@ public class Bomb : Cargo
 
     private Vector3 center;
 
+    private void Update()
+    {
+        Rigidbody rb = GetComponent<Rigidbody>();
+        float speed = rb.velocity.magnitude;
+
+        if (speed > maxSafeSpeed)
+        {
+            Explode();
+        }
+    }
+
     protected override void CollisionDamage(Collision collision)
     {
-        Debug.Log(damagePercent);
-        if (damagePercent > 0.001) Explode();
+        Debug.Log(DamagePercent);
+        if (DamagePercent > impactDamage) Explode();
 
     }
     protected void Explode()
     {
+        if(CarryingDisplay.Instance.CurrentCargo == this)
+            CarryingDisplay.Instance.ClearCarrying(); 
+
         center = transform.position;
 
         Debug.Log("EXPLODE");

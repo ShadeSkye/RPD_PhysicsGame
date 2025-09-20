@@ -14,13 +14,21 @@ public enum CargoType
 public class Cargo : MonoBehaviour
 {
     private AudioSource audioSource;
-    private Damageable dmg;
+    protected Damageable dmg;
     private LookAtTarget lookAt;
 
-    public float damagePercent
+    public float DamagePercent
     {
-        get => dmg.damagePercent;
-        set => dmg.damagePercent = value;
+        get
+        {
+            ConnectReferences();
+            return dmg ? dmg.damagePercent : 0f;
+        }
+        set
+        {
+            ConnectReferences();
+            if (dmg) dmg.damagePercent = value;
+        }
     }
 
     [Header("Properties")]
@@ -29,21 +37,24 @@ public class Cargo : MonoBehaviour
     public CargoType type;
 
     public float baseValue;
-    public float CurrentValue => baseValue * (1f - damagePercent);
+    public float CurrentValue => baseValue * (1f - DamagePercent);
 
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        dmg = GetComponent<Damageable>();
-        lookAt = GetComponent<LookAtTarget>();
+        ConnectReferences();
 
         audioSource.spatialBlend = 1f;
         audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
         lookAt.displayName = cargoName;
 
     }
-
+    private void ConnectReferences()
+    {
+        if (dmg == null) dmg = GetComponent<Damageable>();
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        if (lookAt == null) lookAt = GetComponent<LookAtTarget>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
