@@ -16,8 +16,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] public GameObject spaceship;
 
     [Header("Settings")]
-    public float movementForce = 20f;
-    public float rollForce = 10f;
+    [HideInInspector] public float movementForce;
+    public float defaultMovementForce = 50f;
+    [HideInInspector] public float rollForce;
+    public float defaultRollForce = 30f;
     public float rotationSensitivity => 1f * UIManager.Instance.sensFromSlider;
 
     [Header("Controls")]
@@ -31,8 +33,11 @@ public class InputManager : MonoBehaviour
     private Vector2 lookInput;
 
     [Header("Boost")]
-    public float maxBoost;
-    public float boostRate;
+    public float maxBoost = 3f;
+
+    [HideInInspector] public float boostRate;
+    public float defaultBoostRate = 0.5f;
+
     private float currentBoost;
     private bool isBoosting = false;
     private Coroutine boostCoroutine;
@@ -41,16 +46,17 @@ public class InputManager : MonoBehaviour
     private bool previouslyBoosting = false;
 
     [Header("Brake")]
-    public float brakeForce = 50f;
+    [HideInInspector] public float brakeForce;
+    public float defaultBrakeForce = 0.5f;
+
     public bool isBraking;
     private bool previouslyBraking;
 
     private void Awake()
     {
-        // singleton
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // optional: enforce singleton
+            Destroy(gameObject);
             return;
         }
 
@@ -184,10 +190,10 @@ public class InputManager : MonoBehaviour
 
     private void HandleBraking()
     {
-        if (isBraking && rb.velocity.magnitude > 0.1f)
+        if (isBraking)
         {
-            Vector3 brakingForce = -rb.velocity.normalized * brakeForce;
-            rb.AddForce(brakingForce, ForceMode.Force);
+            Vector3 brakingForce = -rb.velocity.normalized * rb.velocity.magnitude * brakeForce * Time.fixedDeltaTime;
+            rb.AddForce(brakingForce, ForceMode.VelocityChange);
         }
     }
 

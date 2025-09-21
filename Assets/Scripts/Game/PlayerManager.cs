@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     private Damageable dmg;
     private PullBeam pullBeam;
 
-    [SerializeField] private float minImpactDrop = 5f;
+    [SerializeField] private float minImpactDrop = 1f;
     public float damagePercent
     {
         get => dmg.damagePercent;
@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
         float impactAmount = collision.relativeVelocity.magnitude;
 
         // if above amount then eject
-        if (impactAmount >= minImpactDrop)
+        if (impactAmount >= (minImpactDrop))
         {
             if (pullBeam?.HeldCargo != null)
             {
