@@ -67,8 +67,8 @@ public class Cargo : GravityBody
     {
         if (other.gameObject.CompareTag("Depot"))
         {
-            CarryingDisplay.Instance.totalEarnings += CurrentValue;
-            CarryingDisplay.Instance.UpdateEarnings();
+            CurrencyManager.Instance.AddEarnings(CurrentValue);
+
             CarryingDisplay.Instance.ClearCarrying();
 
             AudioManager.Instance.PlayOneShot("Deposited");

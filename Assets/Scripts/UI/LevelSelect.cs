@@ -12,8 +12,8 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] private LevelSelectButton buttonPrefab;
 
     public List<LevelData> levels = new();
-    public List<LevelSelectButton> buttons = new();
-    public HashSet<LevelData> completedLevels = new HashSet<LevelData>();
+    [HideInInspector] public List<LevelSelectButton> buttons = new();
+    [HideInInspector] public HashSet<LevelData> completedLevels = new HashSet<LevelData>();
 
     private void Awake()
     {
@@ -50,7 +50,7 @@ public class LevelSelect : MonoBehaviour
     {
         foreach (var b in buttons)
         {
-            b.UpdateLevelButton();
+            b.UpdateButtonValidity();
         }
     }
 

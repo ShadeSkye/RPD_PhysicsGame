@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: BetterShip
   m_EditorClassIdentifier: 
   shipName: Explorer
+  shipCost: 200
   speed: 2.5
   handling: 2.5
   acidDamageResistance: 0.5
   impactDamageResistance: 0.5
-  beamStrength: 0
-  holdStrength: 0

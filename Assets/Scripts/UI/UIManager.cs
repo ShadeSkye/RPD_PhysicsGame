@@ -164,7 +164,7 @@ public class UIManager : MonoBehaviour
 
     public void NewGame()
     {
-        GameManager.Instance.LoadScene(SceneIndex.Level1);
+        GameManager.Instance.NewGame();
 
         AudioManager.Instance.PlayOneShot("Button");
 
@@ -172,7 +172,7 @@ public class UIManager : MonoBehaviour
 
     public void LoadGame()
     {
-        GameManager.Instance.LoadScene(SaveManager.Instance.LoadLastCompletedLevel());
+        GameManager.Instance.LoadGame();
 
         AudioManager.Instance.PlayOneShot("Button");
 

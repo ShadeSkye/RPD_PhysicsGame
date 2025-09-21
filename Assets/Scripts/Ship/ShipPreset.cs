@@ -6,6 +6,7 @@ public class ShipPreset : ScriptableObject
 {
     [Header("Info")]
     public string shipName;
+    public float shipCost;
 
     [Header("Movement")]
     public float speed = 1; // multiplier for movement force and boost acceleration

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Burst;
@@ -8,6 +9,9 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance;
 
     private string LastCompletedKey = "LastCompletedLevel";
+    private string CreditsKey = "Credits";
+    private string EquippedShipKey = "EquippedShip";
+    private string OwnedShipsKey = "OwnedShips";
 
     [SerializeField] private GameObject loadGameButton;
 
@@ -26,12 +30,64 @@ public class SaveManager : MonoBehaviour
     public void SaveLastCompletedLevel(int levelIndex)
     {
         PlayerPrefs.SetInt(LastCompletedKey, levelIndex);
+
         PlayerPrefs.Save();
     }
 
     public SceneIndex LoadLastCompletedLevel()
     {
         return (SceneIndex)PlayerPrefs.GetInt(LastCompletedKey, -1);
+    }
+
+    public void SaveCredits(float amount)
+    {
+        PlayerPrefs.SetFloat(CreditsKey, amount);
+        PlayerPrefs.Save();
+    }
+
+    public float LoadCredits()
+    {
+        return PlayerPrefs.GetFloat(CreditsKey, 0f);
+    }
+
+    public void SaveOwnedShips(List<ShipPreset> ownedShips)
+    {
+        List<int> ownedShipIDs = new List<int>();
+
+        foreach (ShipPreset s in ownedShips)
+        {
+            int id = GameManager.Instance.Ships.IndexOf(s);
+            if (id != -1)
+                ownedShipIDs.Add(id);
+            else
+                Debug.LogWarning("ShipPreset not found in GameManager.Ships!");
+        }
+
+        string data = string.Join(",", ownedShipIDs);
+
+        PlayerPrefs.SetString(OwnedShipsKey, data);
+        PlayerPrefs.Save();
+    }
+
+    public List<ShipPreset> LoadOwnedShips()
+    {
+        string data = PlayerPrefs.GetString(OwnedShipsKey, "0");
+
+        List<ShipPreset> ownedShips = new List<ShipPreset>();
+
+        foreach (var s in data.Split(','))
+        {
+            if (int.TryParse(s, out int id))
+            {
+                if (id >= 0 && id < GameManager.Instance.Ships.Count)
+                    ownedShips.Add(GameManager.Instance.Ships[id]);
+                else
+                    Debug.LogWarning($"Saved ship index {id} is invalid!");
+            }
+                
+        }
+
+        return ownedShips;
     }
 
     public bool IsGameInProgress()
@@ -42,5 +98,22 @@ public class SaveManager : MonoBehaviour
     public void UpdateMainMenu()
     {
         loadGameButton.SetActive(IsGameInProgress());
+    }
+
+    public void ResetProgress()
+    {
+        CurrencyManager.Instance.ClearCredits();
+        ShipManager.Instance.ClearShips();
+
+        PlayerPrefs.DeleteKey(LastCompletedKey);
+        PlayerPrefs.DeleteKey(CreditsKey);
+        PlayerPrefs.DeleteKey(EquippedShipKey);
+        PlayerPrefs.DeleteKey(OwnedShipsKey);
+        PlayerPrefs.Save();
+    }
+
+    internal void LoadProgress()
+    {
+        CurrencyManager.Instance.LoadCredits();
     }
 }

@@ -30,10 +30,10 @@ public class LevelSelectButton : MonoBehaviour
             OnButtonClicked();
         });
 
-        UpdateLevelButton();
+        UpdateButtonValidity();
     }
 
-    public void UpdateLevelButton()
+    public void UpdateButtonValidity()
     {
 
         if (buttonImage != null)
