@@ -29,6 +29,14 @@ public class CurrencyManager : MonoBehaviour
 
     public bool CanAfford(float value) => CurrentBalance >= value;
 
+    public void ClearCredits()
+    {
+        CurrentBalance = 0;
+        CarryingDisplay.Instance.UpdateEarnings();
+
+        ShipSelect.Instance.RefreshButtons();
+    }
+
     public void LoadCredits()
     {
         CurrentBalance = SaveManager.Instance.LoadCredits();

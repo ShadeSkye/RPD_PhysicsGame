@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4795527120429060649}
   - component: {fileID: 5972020850601202408}
   - component: {fileID: 1182477246093089744}
+  - component: {fileID: 3319716365420740407}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -80,6 +81,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentBalance: 0
+--- !u!114 &3319716365420740407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4400915656362875387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527e9c7cae9fc1f449e6c7c7007c37e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OwnedShips: []
+  preset: {fileID: 11400000, guid: 062660b3d9544994dae75fb5d14783be, type: 2}
 --- !u!1001 &3258560537113026530
 PrefabInstance:
   m_ObjectHideFlags: 0

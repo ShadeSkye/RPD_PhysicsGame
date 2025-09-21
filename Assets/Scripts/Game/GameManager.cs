@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -139,4 +140,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void NewGame()
+    {
+        SaveManager.Instance.ResetProgress();
+        LoadScene(SceneIndex.Level1);
+    }
+
+    public void LoadGame()
+    {
+        SaveManager.Instance.LoadProgress();
+        LoadScene(SaveManager.Instance.LoadLastCompletedLevel());
+    }
 }

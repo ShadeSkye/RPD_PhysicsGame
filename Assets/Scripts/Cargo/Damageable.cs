@@ -39,10 +39,10 @@ public class Damageable : MonoBehaviour
             switch (type)
             {
                 case DamageType.Impact:
-                    multiplier = 1f - ShipStats.Instance.ImpactDamageResistance;
+                    multiplier = 1f - ShipManager.Instance.ImpactDamageResistance;
                     break;
                 case DamageType.Acid:
-                    multiplier = 1f - ShipStats.Instance.AcidDamageResistance;
+                    multiplier = 1f - ShipManager.Instance.AcidDamageResistance;
                     break;
             }
         }

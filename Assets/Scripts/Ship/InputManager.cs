@@ -17,9 +17,9 @@ public class InputManager : MonoBehaviour
     [SerializeField] public GameObject spaceship;
 
     //[Header("Settings")]
-    [HideInInspector] public float movementForce => 50f * (ShipStats.Instance?.Speed ?? 1f);
-    [HideInInspector] public float rollForce => 30f * (ShipStats.Instance?.Handling ?? 1f);
-    public float rotationSensitivity => (UIManager.Instance?.sensFromSlider ?? 1f) * (1.5f * Mathf.Sqrt(ShipStats.Instance?.Handling ?? 1f));
+    [HideInInspector] public float movementForce => 50f * (ShipManager.Instance?.Speed ?? 1f);
+    [HideInInspector] public float rollForce => 30f * (ShipManager.Instance?.Handling ?? 1f);
+    public float rotationSensitivity => (UIManager.Instance?.sensFromSlider ?? 1f) * (1.5f * Mathf.Sqrt(ShipManager.Instance?.Handling ?? 1f));
 
     [Header("Controls")]
     public bool invertPitch;
@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour
 
     [Header("Boost")]
     public float maxBoost = 3f;
-    [HideInInspector] public float boostRate => 0.5f * (ShipStats.Instance?.Speed ?? 1f);
+    [HideInInspector] public float boostRate => 0.5f * (ShipManager.Instance?.Speed ?? 1f);
 
     private float currentBoost;
     private bool isBoosting = false;
@@ -43,7 +43,7 @@ public class InputManager : MonoBehaviour
     private bool previouslyBoosting = false;
 
     //[Header("Brake")]
-    [HideInInspector] public float brakeForce => 0.5f * (ShipStats.Instance?.Handling ?? 1f);
+    [HideInInspector] public float brakeForce => 0.5f * (ShipManager.Instance?.Handling ?? 1f);
 
     public bool isBraking;
     private bool previouslyBraking;

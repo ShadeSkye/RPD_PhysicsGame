@@ -164,9 +164,7 @@ public class UIManager : MonoBehaviour
 
     public void NewGame()
     {
-        SaveManager.Instance.ResetProgress();
-
-        GameManager.Instance.LoadScene(SceneIndex.Level1);
+        GameManager.Instance.NewGame();
 
         AudioManager.Instance.PlayOneShot("Button");
 
@@ -174,9 +172,7 @@ public class UIManager : MonoBehaviour
 
     public void LoadGame()
     {
-        GameManager.Instance.LoadScene(SaveManager.Instance.LoadLastCompletedLevel());
-
-        CurrencyManager.Instance.LoadCredits();
+        GameManager.Instance.LoadGame();
 
         AudioManager.Instance.PlayOneShot("Button");
 

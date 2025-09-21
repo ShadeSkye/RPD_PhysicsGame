@@ -12,6 +12,7 @@ public class ShipSelect : MonoBehaviour
     [SerializeField] private RectTransform layoutGroupParent;
     [SerializeField] private ShipSelectButton buttonPrefab;
 
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -44,17 +45,6 @@ public class ShipSelect : MonoBehaviour
         {
             b.UpdateButtonValidity();
         }
-    }
-
-    public void SetSelectedShip(ShipPreset ship)
-    {
-        if (CurrencyManager.Instance.TrySpend(ship.shipCost))
-        {
-            ShipStats.Instance.SetShip(ship);
-
-            UIManager.Instance.ResumeGame();
-        }
-
     }
 
 }
