@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LookAtTarget : MonoBehaviour
 {
-    public string displayName = "Unknown Object";
+    [HideInInspector] public string displayName = "Unknown Object";
     public float distanceToPlayer
     {
         get
