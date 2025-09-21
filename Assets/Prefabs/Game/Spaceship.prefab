@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304617a7d33e36144be8d8238196d0af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  beamStrength: 5000
+  beamStrength: 10000
   maxPullSpeed: 750
   pullZone: {fileID: 2242552500403060824}
   holdZone: {fileID: 4268097466598882234}
@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 2579048552607548282}
   - component: {fileID: 5837636136545623320}
   - component: {fileID: 9064533274790844372}
+  - component: {fileID: 4572932237709103050}
   m_Layer: 2
   m_Name: Spaceship
   m_TagString: Player
@@ -340,7 +341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePercent: 0
   minImpact: 5
-  damageMultiplier: 0.00565
+  damageMultiplier: 0.5
   hitSFX: CrateHit
 --- !u!114 &2579048552607548282
 MonoBehaviour:
@@ -385,6 +386,19 @@ MonoBehaviour:
   IsInitialised: 0
   OrbitDistance: 0
   OrbitTarget: {fileID: 0}
+--- !u!114 &4572932237709103050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943344323793404352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 527e9c7cae9fc1f449e6c7c7007c37e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preset: {fileID: 11400000, guid: 6ac5dd83bcd43004db305e000ce069c0, type: 2}
 --- !u!1 &6021229833144340315
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,6 +586,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 17540
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 4241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 10601
+      objectReference: {fileID: 0}
     - target: {fileID: 7506325982821374704, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
       propertyPath: m_Name
       value: SpaceShip_Vfx
@@ -674,6 +704,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 17540
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 4241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 10601
+      objectReference: {fileID: 0}
     - target: {fileID: 7506325982821374704, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
       propertyPath: m_Name
       value: SpaceShip_Vfx (2)
@@ -775,6 +821,22 @@ PrefabInstance:
     - target: {fileID: 6795413430212565439, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 17540
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 4241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 10601
       objectReference: {fileID: 0}
     - target: {fileID: 7506325982821374704, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
       propertyPath: m_Name
@@ -956,6 +1018,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 17540
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 4241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 10601
+      objectReference: {fileID: 0}
     - target: {fileID: 7506325982821374704, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
       propertyPath: m_Name
       value: SpaceShip_Vfx (3)
@@ -1057,6 +1135,22 @@ PrefabInstance:
     - target: {fileID: 6795413430212565439, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_MotionVectors
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 17540
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 4241
+      objectReference: {fileID: 0}
+    - target: {fileID: 6857186901897205372, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime1
+      value: 10601
       objectReference: {fileID: 0}
     - target: {fileID: 7506325982821374704, guid: 208c9143904f52745abc24c3548b87d6, type: 3}
       propertyPath: m_Name
