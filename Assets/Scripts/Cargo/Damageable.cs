@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DamageType { Acid, Impact }
+
+
 public class Damageable : MonoBehaviour
 {
     [Header("Damage")]
     public float damagePercent = 0;
     public float minImpact = 5f;
-    [Range(0f, 0.01f)]public float damageMultiplier = 0.001f;
+    public float damageMultiplier = 0.5f; // base fragility
 
     [Header("Sound")]
     public string hitSFX = "CrateHit";
@@ -16,8 +19,8 @@ public class Damageable : MonoBehaviour
     {
         if (impactAmount > minImpact)
         {
-            damagePercent += ((impactAmount - minImpact) * damageMultiplier);
-            damagePercent = Mathf.Clamp01(damagePercent);
+            float impactDamage = ((impactAmount - minImpact) * damageMultiplier);
+            ApplyDamageWithResistance(impactDamage, DamageType.Impact);
         }
     }
 
@@ -25,5 +28,26 @@ public class Damageable : MonoBehaviour
     {
         damagePercent += damageAmount / 100f;
         damagePercent = Mathf.Clamp01(damagePercent);
+    }
+
+    public void ApplyDamageWithResistance(float damageAmount, DamageType type)
+    {
+        float multiplier = 1f;
+
+        if (gameObject.CompareTag("Player"))
+        {
+            switch (type)
+            {
+                case DamageType.Impact:
+                    multiplier = 1f - ShipStats.Instance.ImpactDamageResistance;
+                    break;
+                case DamageType.Acid:
+                    multiplier = 1f - ShipStats.Instance.AcidDamageResistance;
+                    break;
+            }
+        }
+
+        ApplyDamage(multiplier * damageAmount);
+        //Debug.Log($"Applied {multiplier * damageAmount} {type} damage to {gameObject.name}");
     }
 }

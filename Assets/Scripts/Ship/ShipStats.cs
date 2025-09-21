@@ -10,7 +10,6 @@ public class ShipStats : MonoBehaviour
     private InputManager input;
 
     public float Speed => preset.speed;
-    public float Acceleration => preset.acceleration;
     public float Handling => preset.handling;
 
     public float AcidDamageResistance => preset.acidDamageResistance;

@@ -8,12 +8,11 @@ public class ShipPreset : ScriptableObject
     public string shipName;
 
     [Header("Movement")]
-    public float speed; // multiplier for movement force and boost acceleration
-    public float handling; // multiplier for roll force and brake force 
-    internal float acceleration;
+    public float speed = 1; // multiplier for movement force and boost acceleration
+    public float handling = 1; // multiplier for roll force and brake force 
 
     [Header("Damage Resistance")]
-    public float acidDamageResistance;
+    public float acidDamageResistance = 0; // percent resisting acid damage
     public float impactDamageResistance;
 
     [Header("Cargo Holding")]
