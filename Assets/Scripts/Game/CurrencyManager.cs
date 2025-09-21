@@ -18,10 +18,10 @@ public class CurrencyManager : MonoBehaviour
 
         CurrentBalance = 0;
     }
-    public bool TrySpend(int amount)
+    public bool TrySpend(float value)
     {
-        if (!CanAfford(amount)) return false;
-        CurrentBalance -= amount;
+        if (!CanAfford(value)) return false;
+        CurrentBalance -= value;
         CarryingDisplay.Instance.UpdateEarnings();
         SaveManager.Instance.SaveCredits(CurrentBalance);
         return true;
@@ -33,6 +33,8 @@ public class CurrencyManager : MonoBehaviour
     {
         CurrentBalance = SaveManager.Instance.LoadCredits();
         CarryingDisplay.Instance.UpdateEarnings();
+
+        ShipSelect.Instance.RefreshButtons();
     }
 
     internal void AddEarnings(float value)
@@ -40,6 +42,8 @@ public class CurrencyManager : MonoBehaviour
         CurrentBalance += value;
         CarryingDisplay.Instance.UpdateEarnings();
         SaveManager.Instance.SaveCredits(CurrentBalance);
+
+        ShipSelect.Instance.RefreshButtons();
     }
 
     public string CurrencyFormatted(float amount)

@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: BestShip
   m_EditorClassIdentifier: 
   shipName: Adventurer
+  shipCost: 1000
   speed: 5
   handling: 5
   acidDamageResistance: 0.75
   impactDamageResistance: 0.75
-  beamStrength: 0
-  holdStrength: 0

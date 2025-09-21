@@ -1,15 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static Cinemachine.DocumentationSortingAttribute;
 
-public class LevelSelectButton : MonoBehaviour
+public class ShipSelectButton : MonoBehaviour
 {
-    private LevelData myLevel;
+    private ShipPreset myShip;
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private Image buttonImage;
     [SerializeField] private Button button;
@@ -18,12 +15,11 @@ public class LevelSelectButton : MonoBehaviour
 
     private string invalidSound = "Button";
 
-    private bool levelLocked => !LevelSelect.Instance.completedLevels.Contains(myLevel);
 
-    internal void Setup(LevelData level)
+    internal void Setup(ShipPreset ship)
     {
-        myLevel = level;   
-        buttonText.text = level.LevelName;
+        myShip = ship;
+        buttonText.text = $"{ship.shipName}\n{CurrencyManager.Instance.CurrencyFormatted(ship.shipCost)}";
 
         button.onClick.AddListener(() =>
         {
@@ -37,19 +33,19 @@ public class LevelSelectButton : MonoBehaviour
     {
 
         if (buttonImage != null)
-            buttonImage.color = levelLocked ? Color.red : Color.white;
+            buttonImage.color = !CurrencyManager.Instance.CanAfford(myShip.shipCost) ? Color.red : Color.white;
     }
 
     private void OnButtonClicked()
     {
-        if (levelLocked)
+        if (!CurrencyManager.Instance.CanAfford(myShip.shipCost))
         {
             AudioManager.Instance.PlayOneShot(invalidSound);
         }
         else
         {
             AudioManager.Instance.PlayOneShot(validSound);
-            GameManager.Instance.LoadScene(myLevel.SceneIndex);
+            ShipSelect.Instance.SetSelectedShip(myShip);
         }
 
     }

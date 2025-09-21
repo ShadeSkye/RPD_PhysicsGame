@@ -27,4 +27,9 @@ public class ShipStats : MonoBehaviour
         Instance = this;
     }
 
+    public void SetShip(ShipPreset newShip)
+    {
+        preset = newShip;
+    }
+
 }

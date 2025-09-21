@@ -50,6 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1526631528479787776}
   GamePaused: 0
+  Ships:
+  - {fileID: 11400000, guid: 062660b3d9544994dae75fb5d14783be, type: 2}
+  - {fileID: 11400000, guid: 6ac5dd83bcd43004db305e000ce069c0, type: 2}
+  - {fileID: 11400000, guid: a65d203553d15ae4c889fe65afd6c2e0, type: 2}
 --- !u!114 &5972020850601202408
 MonoBehaviour:
   m_ObjectHideFlags: 0
