@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 public class CurrencyManager : MonoBehaviour
 {
     public static CurrencyManager Instance;
@@ -22,16 +23,23 @@ public class CurrencyManager : MonoBehaviour
         if (!CanAfford(amount)) return false;
         CurrentBalance -= amount;
         CarryingDisplay.Instance.UpdateEarnings();
+        SaveManager.Instance.SaveCredits(CurrentBalance);
         return true;
     }
 
     public bool CanAfford(float value) => CurrentBalance >= value;
 
+    public void LoadCredits()
+    {
+        CurrentBalance = SaveManager.Instance.LoadCredits();
+        CarryingDisplay.Instance.UpdateEarnings();
+    }
 
     internal void AddEarnings(float value)
     {
         CurrentBalance += value;
         CarryingDisplay.Instance.UpdateEarnings();
+        SaveManager.Instance.SaveCredits(CurrentBalance);
     }
 
     public string CurrencyFormatted(float amount)

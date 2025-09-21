@@ -9,6 +9,8 @@ public class SaveManager : MonoBehaviour
 
     private string LastCompletedKey = "LastCompletedLevel";
 
+    private string CreditsKey = "Credits";
+
     [SerializeField] private GameObject loadGameButton;
 
     private void Awake()
@@ -26,12 +28,24 @@ public class SaveManager : MonoBehaviour
     public void SaveLastCompletedLevel(int levelIndex)
     {
         PlayerPrefs.SetInt(LastCompletedKey, levelIndex);
+
         PlayerPrefs.Save();
     }
 
     public SceneIndex LoadLastCompletedLevel()
     {
         return (SceneIndex)PlayerPrefs.GetInt(LastCompletedKey, -1);
+    }
+
+    public void SaveCredits(float amount)
+    {
+        PlayerPrefs.SetFloat(CreditsKey, amount);
+        PlayerPrefs.Save();
+    }
+
+    public float LoadCredits()
+    {
+        return PlayerPrefs.GetFloat(CreditsKey, 0f);
     }
 
     public bool IsGameInProgress()
@@ -42,5 +56,12 @@ public class SaveManager : MonoBehaviour
     public void UpdateMainMenu()
     {
         loadGameButton.SetActive(IsGameInProgress());
+    }
+
+    public void ResetProgress()
+    {
+        PlayerPrefs.DeleteKey(LastCompletedKey);
+        PlayerPrefs.DeleteKey(CreditsKey);
+        PlayerPrefs.Save();
     }
 }

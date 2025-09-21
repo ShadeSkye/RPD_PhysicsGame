@@ -99,7 +99,7 @@ public class InputManager : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(rotationSensitivity);
+        //Debug.Log(rotationSensitivity);
 
         // boost
         bool boostInput = controls.Flight.Boost.ReadValue<float>() > 0.1f;
