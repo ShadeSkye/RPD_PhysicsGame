@@ -6,6 +6,7 @@ using UnityEngine;
 public class AcidGas : MonoBehaviour
 {
     [SerializeField] private float damage = 5f;
+
     [SerializeField] private float interval = 0.5f;
 
     private List<Damageable> targets = new List<Damageable>();
@@ -50,10 +51,8 @@ public class AcidGas : MonoBehaviour
             {
                 if (t == null) continue;
 
-                t.damagePercent += (damage * interval) / 100f;
-                t.damagePercent = Mathf.Clamp01(t.damagePercent);
+                t.ApplyDamageWithResistance(damage, DamageType.Acid);
 
-                Debug.Log($"Applied {damage} damage to target {t}");
             }
 
             if (CarryingDisplay.Instance != null && CarryingDisplay.Instance.CurrentCargo != null && targets.Contains(CarryingDisplay.Instance.CurrentCargo.GetComponent<Damageable>()))

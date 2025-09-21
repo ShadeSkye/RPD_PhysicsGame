@@ -15,10 +15,10 @@ public class InputManager : MonoBehaviour
 
     [SerializeField] public GameObject spaceship;
 
-    [Header("Settings")]
-    public float movementForce = 20f;
-    public float rollForce = 10f;
-    public float rotationSensitivity => 1f * UIManager.Instance.sensFromSlider;
+    //[Header("Settings")]
+    [HideInInspector] public float movementForce => 50f * ShipStats.Instance.Speed;
+    [HideInInspector] public float rollForce => 30f * ShipStats.Instance.Handling;
+    public float rotationSensitivity => UIManager.Instance.sensFromSlider * (1.5f * Mathf.Sqrt(ShipStats.Instance.Handling));
 
     [Header("Controls")]
     public bool invertPitch;
@@ -31,8 +31,9 @@ public class InputManager : MonoBehaviour
     private Vector2 lookInput;
 
     [Header("Boost")]
-    public float maxBoost;
-    public float boostRate;
+    public float maxBoost = 3f;
+    [HideInInspector] public float boostRate => 0.5f * ShipStats.Instance.Speed;
+
     private float currentBoost;
     private bool isBoosting = false;
     private Coroutine boostCoroutine;
@@ -40,17 +41,17 @@ public class InputManager : MonoBehaviour
     private float boostDuration;
     private bool previouslyBoosting = false;
 
-    [Header("Brake")]
-    public float brakeForce = 50f;
+    //[Header("Brake")]
+    [HideInInspector] public float brakeForce => 0.5f * ShipStats.Instance.Handling;
+
     public bool isBraking;
     private bool previouslyBraking;
 
     private void Awake()
     {
-        // singleton
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject); // optional: enforce singleton
+            Destroy(gameObject);
             return;
         }
 
@@ -97,6 +98,8 @@ public class InputManager : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(rotationSensitivity);
+
         // boost
         bool boostInput = controls.Flight.Boost.ReadValue<float>() > 0.1f;
         lookInput = controls.Flight.Look.ReadValue<Vector2>();
@@ -184,10 +187,10 @@ public class InputManager : MonoBehaviour
 
     private void HandleBraking()
     {
-        if (isBraking && rb.velocity.magnitude > 0.1f)
+        if (isBraking)
         {
-            Vector3 brakingForce = -rb.velocity.normalized * brakeForce;
-            rb.AddForce(brakingForce, ForceMode.Force);
+            Vector3 brakingForce = -rb.velocity.normalized * rb.velocity.magnitude * brakeForce * Time.fixedDeltaTime;
+            rb.AddForce(brakingForce, ForceMode.VelocityChange);
         }
     }
 

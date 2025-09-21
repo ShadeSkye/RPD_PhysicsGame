@@ -59,8 +59,7 @@ public class Bomb : Cargo
             Damageable dmg = hit.GetComponent<Damageable>();
             if (dmg != null)
             {
-                Debug.Log($"Applying damage {damage} to {hit.name}");
-                dmg.ApplyDamage(damage);
+                dmg.ApplyDamageWithResistance(damage, DamageType.Impact);
             }
 
             Rigidbody rb = hit.attachedRigidbody;
