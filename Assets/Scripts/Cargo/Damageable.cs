@@ -69,14 +69,25 @@ public class Damageable : MonoBehaviour
 
             else
             {
-                GravityObject g = gameObject.GetComponent<GravityObject>();
-                if (g != null)
-                {
-                    GravityManager.Instance.UnregisterObject(g);
-                }
-
-                Destroy(gameObject, 1f);
+                SafeDestroy();
             }
         }
+    }
+
+    private void SafeDestroy()
+    {
+        GravityObject g = gameObject.GetComponent<GravityObject>();
+        if (g != null)
+        {
+            GravityManager.Instance?.UnregisterObject(g);
+        }
+
+        Cargo c = gameObject.GetComponent<Cargo>();
+        if (c != null)
+        {
+            LevelManager.Instance?.UnregisterCargo(c);
+        }
+
+        Destroy(gameObject, 1f);
     }
 }

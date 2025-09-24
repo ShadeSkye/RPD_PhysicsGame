@@ -24,6 +24,11 @@ public class ObjectiveTracker : MonoBehaviour
 
     public void Setup(List<BaseObjective> objectives)
     {
+        foreach (Transform child in layoutGroupParent)
+        {
+            Destroy(child.gameObject);
+        }
+
         objectiveLabels.Clear();
 
         foreach (BaseObjective o in objectives)

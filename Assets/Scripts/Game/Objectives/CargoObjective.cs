@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Cargo Objective", menuName = "Objectives/Cargo")]
@@ -8,6 +9,7 @@ public class CargoObjective : BaseObjective
     public int requiredAmount;
     public CargoType targetType;
     [HideInInspector] public int currentAmount;
+
 
     public override string objectiveName
     {
@@ -81,6 +83,29 @@ public class CargoObjective : BaseObjective
         }
 
         ObjectiveTracker.Instance.UpdateText();
+    }
+
+    public void CheckCargoAvailability()
+    {
+        if (isComplete || isFailed) return;
+
+        int remainingCargo = 0;
+
+        foreach (Cargo c in LevelManager.Instance.activeCargo)
+        {
+            if (c.type == targetType || targetType == CargoType.Any)
+            {
+                remainingCargo ++;
+            }
+        }
+
+        int neededCargo = requiredAmount - currentAmount;
+
+        if (remainingCargo < neededCargo)
+        {
+            Fail();
+            Debug.Log($"{objectiveName} failed: not enough cargo left in the level.");
+        }
     }
 
     public override void ResetObjective()

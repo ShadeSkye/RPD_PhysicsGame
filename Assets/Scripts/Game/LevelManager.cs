@@ -7,7 +7,9 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     public LevelData LevelData;
+
     public List<Cargo> deliveredCargo = new List<Cargo>();
+    public List<Cargo> activeCargo = new List<Cargo>();
 
     public float elapsedTime;
 
@@ -20,14 +22,18 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
-
     }
 
     private void Start()
     {
         foreach (var obj in LevelData.objectives) obj.ResetObjective();
-
         ObjectiveTracker.Instance.Setup(LevelData.objectives.ToList<BaseObjective>());
+
+        Cargo[] prePlacedCargo = FindObjectsOfType<Cargo>();
+        foreach (var c in prePlacedCargo)
+        {
+            RegisterCargo(c);
+        }
     }
 
     private void Update()
@@ -38,6 +44,26 @@ public class LevelManager : MonoBehaviour
         {
             o.UpdateProgress(value: elapsedTime);
         }
+
+        foreach (var o in LevelData.objectives.OfType<CargoObjective>())
+        {
+            o.CheckCargoAvailability();
+
+        }
+
+        //Debug.Log(activeCargo.Count);
+    }
+
+    public void RegisterCargo(Cargo c)
+    {
+        if (!activeCargo.Contains(c))
+            activeCargo.Add(c);
+    }
+
+    public void UnregisterCargo(Cargo c)
+    {
+        if (activeCargo.Contains(c))
+            activeCargo.Remove(c);
     }
 
     public void OnCargoDelivered(Cargo c)
