@@ -9,6 +9,8 @@ public class LevelManager : MonoBehaviour
     public LevelData LevelData;
     public List<Cargo> deliveredCargo = new List<Cargo>();
 
+    public float elapsedTime;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,12 +28,22 @@ public class LevelManager : MonoBehaviour
         foreach (var obj in LevelData.objectives) obj.ResetObjective();
     }
 
+    private void Update()
+    {
+        elapsedTime += Time.deltaTime;
+
+        foreach (var o in LevelData.objectives.OfType<TimeObjective>())
+        {
+            o.UpdateProgress(value: elapsedTime);
+        }
+    }
+
     public void OnCargoDelivered(Cargo c)
     {
         deliveredCargo.Add(c);
 
-        foreach (var obj in LevelData.objectives)
-            obj.AddProgress(c);
+        foreach (var o in LevelData.objectives.OfType<CargoObjective>())
+            o.UpdateProgress(cargo: c);
 
         CheckLevelComplete();
     }
@@ -50,31 +62,68 @@ public class LevelManager : MonoBehaviour
 
     private void CheckLevelComplete()
     {
-        if (LevelData.objectives.Any(o => o.isCritical && o.isFailed))
+        List<BaseObjective> critical = new List<BaseObjective>();
+        int completedCriticalCount = 0;
+
+        foreach (BaseObjective o in LevelData.objectives)
         {
-            OnLevelFail();
-            return;
+            if (o.isCritical) critical.Add(o);
         }
 
-        if (LevelData.objectives
-            .Where(o => o.isCritical)
-            .All(o => o.isComplete))
+        bool anyFailed = false;
+
+        foreach (BaseObjective c in critical)
+        {
+            if (c.isFailed) anyFailed = true;
+            else if (c.isComplete) completedCriticalCount += 1;
+        }
+
+        if (anyFailed)
+        {
+            OnLevelFail();
+            return; 
+        }
+
+        if (completedCriticalCount == critical.Count && critical.Count > 0)
         {
             OnLevelComplete();
         }
     }
 
+
     private void OnLevelFail() 
     {
+        Debug.Log($"{LevelData.LevelName} restarting...");
         GameManager.Instance.RestartLevel();
     }
 
     private void OnLevelComplete()
     {
+        foreach (var o in LevelData.objectives.OfType<TimeObjective>())
+        {
+            o.OnLevelComplete();
+        }
+
+        ObjectiveOverview();
+
         Debug.Log($"{LevelData.LevelName} completed!");
         LevelSelect.Instance.OnLevelComplete(LevelData);
         
         GameManager.Instance.LoadNextScene();
+    }
+
+    private void ObjectiveOverview()
+    {
+        string txt = "";
+
+        foreach (var o in LevelData.objectives)
+        {
+            string status = o.isComplete ? "succeeded" : o.isFailed ? "failed" : "in progress";
+            string prefix = o.isCritical ? "[C] " : "";
+            txt += $"{prefix}{o.objectiveName}: {status}\n";
+        }
+
+        Debug.Log(txt);
     }
 
 }

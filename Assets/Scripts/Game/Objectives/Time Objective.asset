@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 275fffbecbc082447ab97e414b8ab6ec, type: 3}
-  m_Name: Level3
+  m_Script: {fileID: 11500000, guid: 1351ef291ae848242a7c0a95d4d9f28a, type: 3}
+  m_Name: Time Objective
   m_EditorClassIdentifier: 
-  SceneIndex: 3
-  LevelName: Level Three
-  objectives:
-  - {fileID: 11400000, guid: ff10284beae0f26478618d9e7419fbee, type: 2}
-  - {fileID: 11400000, guid: b234ba5ed448af84783b6a3ab7531f00, type: 2}
+  isComplete: 0
+  isFailed: 1
+  isCritical: 0
+  timeLimit: 100

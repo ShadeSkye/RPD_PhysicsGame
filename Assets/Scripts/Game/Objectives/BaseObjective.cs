@@ -4,13 +4,15 @@ using UnityEngine;
 
 public abstract class BaseObjective : ScriptableObject
 {
-    public string objectiveName;
+    public virtual string objectiveName { get; }
+    public virtual string objectiveStatus { get; }
+
     [HideInInspector] public bool isComplete;
     [HideInInspector] public bool isFailed;
     public bool isCritical;
 
     public abstract void ResetObjective();
-    public virtual void AddProgress(Cargo cargo = null, float value = 0f)
+    public virtual void UpdateProgress(Cargo cargo = null, float value = 0f)
     {
         if (isComplete || isFailed) return;
     }

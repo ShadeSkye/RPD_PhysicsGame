@@ -9,7 +9,59 @@ public class CargoObjective : BaseObjective
     public CargoType targetType;
     [HideInInspector] public int currentAmount;
 
-    public override void AddProgress(Cargo cargo = null, float value = 0f)
+    public override string objectiveName
+    {
+        get
+        {
+            string text;
+
+            if(targetType == CargoType.Any)
+            {
+                text = "of any cargo";
+            }
+            else
+            {
+                if (requiredAmount > 1)
+                {
+                    text = targetType.ToString() + "s";
+                }
+                else
+                {
+                    text = targetType.ToString();
+                }
+            }
+
+            return $"Deliver {requiredAmount} {text}";
+        }
+    }
+
+    public override string objectiveStatus
+    {
+        get
+        {
+            string text;
+
+            if (targetType == CargoType.Any)
+            {
+                text = "cargo";
+            }
+            else
+            {
+                if (requiredAmount > 1)
+                {
+                    text = targetType.ToString() + "s";
+                }
+                else
+                {
+                    text = targetType.ToString();
+                }
+            }
+
+            return $"{currentAmount}/{requiredAmount} {text} delivered";
+        }
+    }
+
+    public override void UpdateProgress(Cargo cargo = null, float value = 0f)
     {
         if (isComplete) return;
 
@@ -23,8 +75,9 @@ public class CargoObjective : BaseObjective
         if (currentAmount >= requiredAmount)
         {
             currentAmount = requiredAmount;
-            isComplete = true;
             Debug.Log($"{objectiveName} completed!");
+
+            Complete();
         }
     }
 
@@ -32,6 +85,7 @@ public class CargoObjective : BaseObjective
     {
         currentAmount = 0;
         isComplete = false;
+        isFailed = false;
     }
 }
 

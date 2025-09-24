@@ -153,7 +153,7 @@ public class PullBeam : MonoBehaviour
 
     private void UpdateCargoVisuals()
     {
-        UIManager.Instance.CargoInRange(cargoInBeam.Count > 0);
+        //UIManager.Instance.CargoInRange(cargoInBeam.Count > 0);
     }
 
 }

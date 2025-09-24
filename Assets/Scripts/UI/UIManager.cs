@@ -218,9 +218,27 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void CargoInRange(bool isInRange)
+    /*public void CargoInRange(bool isInRange)
     {
         pullZoneIndicator.color = isInRange ? Color.yellow : Color.white;
 
+    }*/
+
+    public string StringTime(float time)
+    {
+        int totalSeconds = Mathf.CeilToInt(time);
+        int minutes = totalSeconds / 60;
+        int seconds = totalSeconds % 60;
+
+        string txt = "";
+
+        if (minutes > 0)
+        {
+            txt += $"{minutes} min ";
+        }
+
+        txt += $"{seconds} sec";
+
+        return txt;
     }
 }

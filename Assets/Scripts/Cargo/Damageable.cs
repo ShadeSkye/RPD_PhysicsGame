@@ -58,7 +58,7 @@ public class Damageable : MonoBehaviour
 
     private void CheckHealth()
     {
-        Debug.Log(damagePercent + gameObject.name);
+        //Debug.Log(damagePercent + gameObject.name);
 
         if(damagePercent >= 1)
         {
