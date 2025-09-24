@@ -140,8 +140,13 @@ public class LevelManager : MonoBehaviour
         ObjectiveOverview();
 
         Debug.Log($"{LevelData.LevelName} completed!");
+
+        CarryingDisplay.Instance.ClearCarrying();
+
+        SaveManager.Instance.SaveProgress((int)LevelData.SceneIndex);
+
         LevelSelect.Instance.OnLevelComplete(LevelData);
-        
+
         GameManager.Instance.LoadNextScene();
     }
 
@@ -151,6 +156,11 @@ public class LevelManager : MonoBehaviour
 
         foreach (var o in LevelData.objectives)
         {
+            if (o == null)
+            {
+                Debug.LogWarning("Null objective in LevelData.objectives");
+                continue;
+            }
             string status = o.isComplete ? "succeeded" : o.isFailed ? "failed" : "in progress";
             string prefix = o.isCritical ? "[C] " : "";
             txt += $"{prefix}{o.objectiveName}: {status}\n";

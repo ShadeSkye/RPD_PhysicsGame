@@ -115,8 +115,8 @@ public class SaveManager : MonoBehaviour
             return GameManager.Instance.Ships[equippedID];
         }
 
-        Debug.LogWarning($"Equipped ship index {equippedID} is invalid!");
-        return null;
+        //Debug.LogWarning($"Equipped ship index {equippedID} is invalid!");
+        return GameManager.Instance.Ships[0];
     }
 
     public bool IsGameInProgress()
@@ -146,6 +146,13 @@ public class SaveManager : MonoBehaviour
         SaveCredits(CurrencyManager.Instance.CurrentBalance);
         SaveShips(ShipManager.Instance.OwnedShips, ShipManager.Instance.CurrentShip);
 
+    }
+
+    public void SaveProgress(int index)
+    {
+        SaveLastCompletedLevel(index);
+
+        SaveProgress();
     }
 
     internal void LoadProgress()

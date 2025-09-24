@@ -38,7 +38,7 @@ public class Bomb : Cargo
 
     protected override void CollisionDamage(Collision collision)
     {
-        //Debug.Log($"{DamagePercent} vs {impactDamage}");
+        Debug.Log($"{DamagePercent} vs {impactDamage}");
         if (DamagePercent > impactDamage) Explode();
 
     }
