@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour
         {
             LoadScene((int)SceneIndex.MainMenu);
         }
+
+        SaveManager.Instance.SaveLastCompletedLevel(current);
     }
 
     public void LoadScene(SceneIndex scene)

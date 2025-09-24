@@ -40,12 +40,9 @@ public class TimeObjective : BaseObjective
         ObjectiveTracker.Instance.UpdateText();
     }
 
-
     public void OnLevelComplete()
     {
-        if (!isFailed)
-        {
-            Complete();
-        }
+        if(!isFailed) isComplete = true;
     }
+
 }

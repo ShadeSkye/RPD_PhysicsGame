@@ -148,6 +148,13 @@ public class SaveManager : MonoBehaviour
 
     }
 
+    public void SaveProgress(int index)
+    {
+        SaveLastCompletedLevel(index);
+
+        SaveProgress();
+    }
+
     internal void LoadProgress()
     {
         CurrencyManager.Instance.LoadCredits(LoadCredits());
