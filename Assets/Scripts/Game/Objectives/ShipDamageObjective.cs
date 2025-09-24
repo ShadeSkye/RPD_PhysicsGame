@@ -1,15 +1,15 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Objectives/Time")]
-public class TimeObjective : BaseObjective
+[CreateAssetMenu(menuName = "Objectives/ShipDamage")]
+public class ShipDamageObjective : BaseObjective
 {
-    public float timeLimit = 60f; 
+    public float damageThreshold;
 
     public override string objectiveName
     {
         get
         {
-            return $"Finish level within {UIManager.Instance.StringTime(timeLimit)}";
+            return $"Complete level with less than {damageThreshold}% ship damage";
         }
     }
 
@@ -17,7 +17,7 @@ public class TimeObjective : BaseObjective
     {
         get
         {
-            return $"{UIManager.Instance.StringTime(timeLimit-LevelManager.Instance.elapsedTime)} remaining";
+            return $"Taken {PlayerManager.Instance.damagePercent*100:F0}% damage";
         }
     }
 
@@ -32,14 +32,13 @@ public class TimeObjective : BaseObjective
     {
         if (isComplete || isFailed) return;
 
-        if (value > 0f && value >= timeLimit)
+        if (PlayerManager.Instance.damagePercent > damageThreshold)
         {
             Fail();
         }
 
         ObjectiveTracker.Instance.UpdateText();
     }
-
 
     public void OnLevelComplete()
     {

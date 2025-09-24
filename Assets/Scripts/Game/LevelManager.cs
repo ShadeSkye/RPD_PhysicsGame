@@ -51,6 +51,11 @@ public class LevelManager : MonoBehaviour
 
         }
 
+        foreach (var o in LevelData.objectives.OfType<ShipDamageObjective>())
+        {
+            o.UpdateProgress();
+        }
+
         //Debug.Log(activeCargo.Count);
     }
 
