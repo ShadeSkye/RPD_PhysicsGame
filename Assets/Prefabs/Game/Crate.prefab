@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169062bd6d45d7343968df22874b2c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePercent: 0
+  damagePercent: 0.1
   minImpact: 5
-  damageMultiplier: 0.001
+  damageMultiplier: 1
   hitSFX: CrateHit
 --- !u!114 &3528068491972194224
 MonoBehaviour:
@@ -227,8 +227,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   objectName: Crate
   IsInitialised: 0
-  orbitDistance: 0
-  orbitTarget: {fileID: 0}
+  OrbitDistance: 0
+  OrbitTarget: {fileID: 0}
   IsLocked: 0
   LastReleasedTime: 0
   weight: 1

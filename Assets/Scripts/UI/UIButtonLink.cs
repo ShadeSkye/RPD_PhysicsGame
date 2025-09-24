@@ -12,7 +12,8 @@ public enum UIButtonAction
     OpenSettings,
     OpenControls,
     QuitGame,
-    MainMenu
+    MainMenu,
+    RestartLevel
 }
 
 public class UIButtonLink : MonoBehaviour
@@ -53,6 +54,9 @@ public class UIButtonLink : MonoBehaviour
                 break;
             case UIButtonAction.MainMenu:
                 button.onClick.AddListener(UIManager.Instance.MainMenu);
+                break;
+            case UIButtonAction.RestartLevel:
+                button.onClick.AddListener(UIManager.Instance.RestartLevel);
                 break;
             default:
                 Debug.LogWarning("UIButtonLink: Unhandled action on " + gameObject.name);

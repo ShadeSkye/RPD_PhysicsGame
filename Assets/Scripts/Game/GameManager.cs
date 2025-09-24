@@ -43,6 +43,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public SceneIndex GetCurrentScene()
+    {
+        return (SceneIndex)SceneManager.GetActiveScene().buildIndex;
+    }
+
     public void Pause()
     {
         AudioManager.Instance.PauseSFX();
@@ -59,6 +64,11 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         Time.timeScale = 1;
         GamePaused = false;
+    }
+
+    public void RestartLevel()
+    {
+        LoadScene(GameManager.Instance.GetCurrentScene());
     }
 
     public void LoadNextScene()

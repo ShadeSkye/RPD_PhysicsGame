@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Cargo Objective", menuName = "Objectives/Cargo")]
@@ -9,9 +10,62 @@ public class CargoObjective : BaseObjective
     public CargoType targetType;
     [HideInInspector] public int currentAmount;
 
-    public override void AddProgress(Cargo cargo = null, float value = 0f)
+
+    public override string objectiveName
     {
-        if (isComplete) return;
+        get
+        {
+            string text;
+
+            if(targetType == CargoType.Any)
+            {
+                text = "of any cargo";
+            }
+            else
+            {
+                if (requiredAmount > 1)
+                {
+                    text = targetType.ToString() + "s";
+                }
+                else
+                {
+                    text = targetType.ToString();
+                }
+            }
+
+            return $"Deliver {requiredAmount} {text}";
+        }
+    }
+
+    public override string objectiveStatus
+    {
+        get
+        {
+            string text;
+
+            if (targetType == CargoType.Any)
+            {
+                text = "cargo";
+            }
+            else
+            {
+                if (requiredAmount > 1)
+                {
+                    text = targetType.ToString() + "s";
+                }
+                else
+                {
+                    text = targetType.ToString();
+                }
+            }
+
+            return $"{currentAmount}/{requiredAmount} {text} delivered";
+        }
+    }
+
+    public override void UpdateProgress(Cargo cargo = null, float value = 0f)
+    {
+        if (isComplete || isFailed ) return;
 
         bool cargoValid = (cargo != null && (cargo.type == targetType || cargo.type == CargoType.Any));
 
@@ -23,8 +77,34 @@ public class CargoObjective : BaseObjective
         if (currentAmount >= requiredAmount)
         {
             currentAmount = requiredAmount;
-            isComplete = true;
             Debug.Log($"{objectiveName} completed!");
+
+            Complete();
+        }
+
+        ObjectiveTracker.Instance.UpdateText();
+    }
+
+    public void CheckCargoAvailability()
+    {
+        if (isComplete || isFailed) return;
+
+        int remainingCargo = 0;
+
+        foreach (Cargo c in LevelManager.Instance.activeCargo)
+        {
+            if (c.type == targetType || targetType == CargoType.Any)
+            {
+                remainingCargo ++;
+            }
+        }
+
+        int neededCargo = requiredAmount - currentAmount;
+
+        if (remainingCargo < neededCargo)
+        {
+            Fail();
+            Debug.Log($"{objectiveName} failed: not enough cargo left in the level.");
         }
     }
 
@@ -32,6 +112,7 @@ public class CargoObjective : BaseObjective
     {
         currentAmount = 0;
         isComplete = false;
+        isFailed = false;
     }
 }
 

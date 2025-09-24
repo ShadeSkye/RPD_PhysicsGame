@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c5da457567d9147bbcb2a13362f5ad, type: 3}
-  m_Name: Cargo Objective
+  m_Script: {fileID: 11500000, guid: 36bc9ecdad4b67348a1b03cdb0540afa, type: 3}
+  m_Name: New Ship Damage Objective
   m_EditorClassIdentifier: 
-  isComplete: 1
+  isComplete: 0
   isFailed: 0
-  isCritical: 1
-  requiredAmount: 3
-  targetType: 1
-  currentAmount: 3
+  isCritical: 0
+  damageThreshold: 0

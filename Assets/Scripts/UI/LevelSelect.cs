@@ -56,6 +56,8 @@ public class LevelSelect : MonoBehaviour
 
     internal void OnLevelComplete(LevelData levelData)
     {
+        SaveManager.Instance.SaveProgress();
+
         SaveManager.Instance.SaveLastCompletedLevel((int)levelData.SceneIndex);
         completedLevels.Add(levelData);
         RefreshButtons();

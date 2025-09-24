@@ -7,7 +7,11 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
     public LevelData LevelData;
+
     public List<Cargo> deliveredCargo = new List<Cargo>();
+    public List<Cargo> activeCargo = new List<Cargo>();
+
+    public float elapsedTime;
 
     private void Awake()
     {
@@ -18,37 +22,141 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
-
     }
 
     private void Start()
     {
         foreach (var obj in LevelData.objectives) obj.ResetObjective();
+        ObjectiveTracker.Instance.Setup(LevelData.objectives.ToList<BaseObjective>());
+
+        Cargo[] prePlacedCargo = FindObjectsOfType<Cargo>();
+        foreach (var c in prePlacedCargo)
+        {
+            RegisterCargo(c);
+        }
+    }
+
+    private void Update()
+    {
+        elapsedTime += Time.deltaTime;
+
+        foreach (var o in LevelData.objectives.OfType<TimeObjective>())
+        {
+            o.UpdateProgress(value: elapsedTime);
+        }
+
+        foreach (var o in LevelData.objectives.OfType<CargoObjective>())
+        {
+            o.CheckCargoAvailability();
+
+        }
+
+        foreach (var o in LevelData.objectives.OfType<ShipDamageObjective>())
+        {
+            o.UpdateProgress();
+        }
+
+        //Debug.Log(activeCargo.Count);
+    }
+
+    public void RegisterCargo(Cargo c)
+    {
+        if (!activeCargo.Contains(c))
+            activeCargo.Add(c);
+    }
+
+    public void UnregisterCargo(Cargo c)
+    {
+        if (activeCargo.Contains(c))
+            activeCargo.Remove(c);
     }
 
     public void OnCargoDelivered(Cargo c)
     {
         deliveredCargo.Add(c);
 
-        foreach (var obj in LevelData.objectives)
-            obj.AddProgress(c);
+        foreach (var o in LevelData.objectives.OfType<CargoObjective>())
+            o.UpdateProgress(cargo: c);
 
-        if (LevelData.objectives.All(o => o.isComplete))
-            OnLevelComplete();
+        CheckLevelComplete();
     }
 
-    public void OnObjectiveComplete()
+    public void OnObjectiveComplete(BaseObjective o)
     {
-        if (LevelData.objectives.All(o => o.isComplete))
+        Debug.Log($"Objective {o.objectiveName} complete");
+        CheckLevelComplete();
+    }
+
+    public void OnObjectiveFailed(BaseObjective o)
+    {
+        Debug.Log($"Objective {o.objectiveName} failed {(o.isCritical ? "(critical)" : "(optional)")}");
+        CheckLevelComplete();
+    }
+
+    private void CheckLevelComplete()
+    {
+        List<BaseObjective> critical = new List<BaseObjective>();
+        int completedCriticalCount = 0;
+
+        foreach (BaseObjective o in LevelData.objectives)
+        {
+            if (o.isCritical) critical.Add(o);
+        }
+
+        bool anyFailed = false;
+
+        foreach (BaseObjective c in critical)
+        {
+            if (c.isFailed) anyFailed = true;
+            else if (c.isComplete) completedCriticalCount += 1;
+        }
+
+        if (anyFailed)
+        {
+            OnLevelFail();
+            return; 
+        }
+
+        if (completedCriticalCount == critical.Count && critical.Count > 0)
+        {
             OnLevelComplete();
+        }
+    }
+
+
+    private void OnLevelFail() 
+    {
+        Debug.Log($"{LevelData.LevelName} restarting...");
+        GameManager.Instance.RestartLevel();
     }
 
     private void OnLevelComplete()
     {
+        foreach (var o in LevelData.objectives.OfType<TimeObjective>())
+        {
+            o.OnLevelComplete();
+        }
+
+        ObjectiveOverview();
+
         Debug.Log($"{LevelData.LevelName} completed!");
         LevelSelect.Instance.OnLevelComplete(LevelData);
         
         GameManager.Instance.LoadNextScene();
+    }
+
+    private void ObjectiveOverview()
+    {
+        string txt = "";
+
+        foreach (var o in LevelData.objectives)
+        {
+            string status = o.isComplete ? "succeeded" : o.isFailed ? "failed" : "in progress";
+            string prefix = o.isCritical ? "[C] " : "";
+            txt += $"{prefix}{o.objectiveName}: {status}\n";
+        }
+
+        Debug.Log(txt);
     }
 
 }

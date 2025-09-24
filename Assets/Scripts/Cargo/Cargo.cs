@@ -44,7 +44,6 @@ public class Cargo : GravityBody
     public float baseValue;
     public float CurrentValue => baseValue * (1f - DamagePercent);
 
-
     protected override void Awake()
     {
         base.Awake();
@@ -68,12 +67,14 @@ public class Cargo : GravityBody
         if (other.gameObject.CompareTag("Depot"))
         {
             CurrencyManager.Instance.AddEarnings(CurrentValue);
-
             CarryingDisplay.Instance.ClearCarrying();
 
             AudioManager.Instance.PlayOneShot("Deposited");
 
-            if (LevelManager.Instance != null) LevelManager.Instance.OnCargoDelivered(this);
+            GravityManager.Instance.UnregisterObject(this);
+            LevelManager.Instance?.UnregisterCargo(this);
+
+            LevelManager.Instance?.OnCargoDelivered(this);
 
             Destroy(gameObject);
         }
