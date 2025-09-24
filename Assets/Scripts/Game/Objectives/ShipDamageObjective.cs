@@ -32,7 +32,7 @@ public class ShipDamageObjective : BaseObjective
     {
         if (isComplete || isFailed) return;
 
-        if (PlayerManager.Instance.damagePercent > damageThreshold)
+        if (PlayerManager.Instance.damagePercent > damageThreshold+1)
         {
             Fail();
         }

@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2176723639112671427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4872993687658343481}
+  - component: {fileID: 6870764694213182281}
+  m_Layer: 0
+  m_Name: FX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4872993687658343481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176723639112671427}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 121.15046, y: 594.1489, z: -74.164734}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3749945295856818141}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6870764694213182281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176723639112671427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a41e212cbf8d7942b2cdc5f1434c235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExplosionPrefab: {fileID: 2189189568491648042, guid: 2f257e80eae9b6348b40a5818fa495c4, type: 3}
+  particleInstancePrefab: {fileID: 6259025165863679534, guid: 4094257f77448b044b68b6c7905b0808, type: 3}
 --- !u!1 &4400915656362875387
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +81,7 @@ Transform:
   m_Children:
   - {fileID: 994737996805361794}
   - {fileID: 313845006479043273}
+  - {fileID: 4872993687658343481}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4795527120429060649
@@ -94,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OwnedShips: []
-  preset: {fileID: 11400000, guid: 062660b3d9544994dae75fb5d14783be, type: 2}
+  CurrentShip: {fileID: 0}
 --- !u!1001 &3258560537113026530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -685,6 +732,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6072255509336027092, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6126410106398086965, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6126410106398086965, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6126410106398086965, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6126410106398086965, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
