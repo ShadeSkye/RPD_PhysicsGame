@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePercent: 0.1
-  minImpact: 5
+  minImpact: 0.2
   damageMultiplier: 1
   hitSFX: CrateHit
 --- !u!114 &3528068491972194224
