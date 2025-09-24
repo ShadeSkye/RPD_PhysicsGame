@@ -178,6 +178,14 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void RestartLevel()
+    {
+
+        GameManager.Instance.LoadScene(GameManager.Instance.GetCurrentScene());
+
+        AudioManager.Instance.PlayOneShot("Button");
+    }
+
     public void SensitivityFromSlider()
     {
         if (sensSlider == null)

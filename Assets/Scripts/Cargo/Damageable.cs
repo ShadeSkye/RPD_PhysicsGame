@@ -17,10 +17,13 @@ public class Damageable : MonoBehaviour
 
     public void ApplyImpact(float impactAmount)
     {
+        //Debug.Log($"Impact on {gameObject}: {impactAmount} vs threshold {minImpact}");
+
         if (impactAmount > minImpact)
         {
             float impactDamage = ((impactAmount - minImpact) * damageMultiplier);
             ApplyDamageWithResistance(impactDamage, DamageType.Impact);
+
         }
     }
 
@@ -28,6 +31,8 @@ public class Damageable : MonoBehaviour
     {
         damagePercent += damageAmount / 100f;
         damagePercent = Mathf.Clamp01(damagePercent);
+
+        CheckHealth();
     }
 
     public void ApplyDamageWithResistance(float damageAmount, DamageType type)
@@ -49,5 +54,29 @@ public class Damageable : MonoBehaviour
 
         ApplyDamage(multiplier * damageAmount);
         //Debug.Log($"Applied {multiplier * damageAmount} {type} damage to {gameObject.name}");
+    }
+
+    private void CheckHealth()
+    {
+        Debug.Log(damagePercent + gameObject.name);
+
+        if(damagePercent >= 1)
+        {
+            if (gameObject.CompareTag("Player"))
+            {
+                UIManager.Instance.RestartLevel();
+            }
+
+            else
+            {
+                GravityObject g = gameObject.GetComponent<GravityObject>();
+                if (g != null)
+                {
+                    GravityManager.Instance.UnregisterObject(g);
+                }
+
+                Destroy(gameObject, 1f);
+            }
+        }
     }
 }

@@ -50,7 +50,7 @@ public class SaveManager : MonoBehaviour
         return PlayerPrefs.GetFloat(CreditsKey, 0f);
     }
 
-    public void SaveOwnedShips(List<ShipPreset> ownedShips)
+    public void SaveShips(List<ShipPreset> ownedShips, ShipPreset equippedShip)
     {
         List<int> ownedShipIDs = new List<int>();
 
@@ -58,14 +58,29 @@ public class SaveManager : MonoBehaviour
         {
             int id = GameManager.Instance.Ships.IndexOf(s);
             if (id != -1)
+            {
                 ownedShipIDs.Add(id);
+            }
             else
+            {
                 Debug.LogWarning("ShipPreset not found in GameManager.Ships!");
+            }
         }
 
         string data = string.Join(",", ownedShipIDs);
 
         PlayerPrefs.SetString(OwnedShipsKey, data);
+
+        int equippedID = GameManager.Instance.Ships.IndexOf(equippedShip);
+        if (equippedID != -1)
+        {
+            PlayerPrefs.SetInt(EquippedShipKey, equippedID);
+        }
+        else
+        {
+            Debug.LogWarning("Equipped ship not found in GameManager.Ships!");
+        }
+
         PlayerPrefs.Save();
     }
 
@@ -90,6 +105,20 @@ public class SaveManager : MonoBehaviour
         return ownedShips;
     }
 
+    public ShipPreset LoadEquippedShip()
+    {
+        int equippedID = PlayerPrefs.GetInt(EquippedShipKey, -1);
+
+        if (equippedID >= 0 && equippedID < GameManager.Instance.Ships.Count)
+        {
+
+            return GameManager.Instance.Ships[equippedID];
+        }
+
+        Debug.LogWarning($"Equipped ship index {equippedID} is invalid!");
+        return null;
+    }
+
     public bool IsGameInProgress()
     {
         return PlayerPrefs.HasKey(LastCompletedKey);
@@ -112,8 +141,16 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.Save();
     }
 
+    public void SaveProgress()
+    {
+        SaveCredits(CurrencyManager.Instance.CurrentBalance);
+        SaveShips(ShipManager.Instance.OwnedShips, ShipManager.Instance.CurrentShip);
+
+    }
+
     internal void LoadProgress()
     {
-        CurrencyManager.Instance.LoadCredits();
+        CurrencyManager.Instance.LoadCredits(LoadCredits());
+        ShipManager.Instance.LoadShips(LoadOwnedShips(), LoadEquippedShip());   
     }
 }

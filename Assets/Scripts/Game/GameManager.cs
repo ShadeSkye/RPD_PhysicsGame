@@ -43,6 +43,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    public SceneIndex GetCurrentScene()
+    {
+        return (SceneIndex)SceneManager.GetActiveScene().buildIndex;
+    }
+
     public void Pause()
     {
         AudioManager.Instance.PauseSFX();

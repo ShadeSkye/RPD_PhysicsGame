@@ -23,7 +23,7 @@ public class CurrencyManager : MonoBehaviour
         if (!CanAfford(value)) return false;
         CurrentBalance -= value;
         CarryingDisplay.Instance.UpdateEarnings();
-        SaveManager.Instance.SaveCredits(CurrentBalance);
+        //SaveManager.Instance.SaveCredits(CurrentBalance);
         return true;
     }
 
@@ -37,9 +37,9 @@ public class CurrencyManager : MonoBehaviour
         ShipSelect.Instance.RefreshButtons();
     }
 
-    public void LoadCredits()
+    public void LoadCredits(float value)
     {
-        CurrentBalance = SaveManager.Instance.LoadCredits();
+        CurrentBalance = value;
         CarryingDisplay.Instance.UpdateEarnings();
 
         ShipSelect.Instance.RefreshButtons();
@@ -49,7 +49,7 @@ public class CurrencyManager : MonoBehaviour
     {
         CurrentBalance += value;
         CarryingDisplay.Instance.UpdateEarnings();
-        SaveManager.Instance.SaveCredits(CurrentBalance);
+        //SaveManager.Instance.SaveCredits(CurrentBalance);
 
         ShipSelect.Instance.RefreshButtons();
     }

@@ -9,13 +9,13 @@ public class ShipManager : MonoBehaviour
 
     public List<ShipPreset> OwnedShips = new();
 
-    [SerializeField] private ShipPreset preset;
+    public ShipPreset CurrentShip;
 
-    public float Speed => preset.speed;
-    public float Handling => preset.handling;
+    public float Speed => CurrentShip.speed;
+    public float Handling => CurrentShip.handling;
 
-    public float AcidDamageResistance => preset.acidDamageResistance;
-    public float ImpactDamageResistance => preset.impactDamageResistance;
+    public float AcidDamageResistance => CurrentShip.acidDamageResistance;
+    public float ImpactDamageResistance => CurrentShip.impactDamageResistance;
 
     /*public float BeamStrength => preset.beamStrength;
     public float HoldStrength => preset.holdStrength;*/
@@ -31,8 +31,10 @@ public class ShipManager : MonoBehaviour
     }
     public void ClearShips()
     {
-        preset = GameManager.Instance.Ships[0];
+        CurrentShip = GameManager.Instance.Ships[0];
         OwnedShips.Clear();
+
+        ShipSelect.Instance.RefreshButtons();
     }
 
 
@@ -43,7 +45,10 @@ public class ShipManager : MonoBehaviour
             if (!PurchaseShip(ship)) return;
         }
 
-        preset = ship; 
+        CurrentShip = ship;
+
+        //SaveManager.Instance.SaveShips(OwnedShips, CurrentShip);
+
         UIManager.Instance.ResumeGame();
 
     }
@@ -53,7 +58,7 @@ public class ShipManager : MonoBehaviour
         if (CurrencyManager.Instance.TrySpend(ship.shipCost))
         {
             OwnedShips.Add(ship);
-            SaveManager.Instance.SaveOwnedShips(OwnedShips);
+            //SaveManager.Instance.SaveShips(OwnedShips, CurrentShip);
             ShipSelect.Instance.RefreshButtons();
 
             return true;
@@ -61,6 +66,14 @@ public class ShipManager : MonoBehaviour
 
         return false;
         
+    }
+
+    public void LoadShips(List<ShipPreset> ships, ShipPreset equipped)
+    {
+        OwnedShips = ships;
+        CurrentShip = equipped;
+
+        ShipSelect.Instance.RefreshButtons();
     }
 
 }

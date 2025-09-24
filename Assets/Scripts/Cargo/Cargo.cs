@@ -73,6 +73,8 @@ public class Cargo : GravityBody
 
             AudioManager.Instance.PlayOneShot("Deposited");
 
+            GravityManager.Instance.UnregisterObject(this);
+
             if (LevelManager.Instance != null) LevelManager.Instance.OnCargoDelivered(this);
 
             Destroy(gameObject);
