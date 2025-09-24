@@ -1,6 +1,7 @@
 using UnityEngine;
 using Cinemachine;
 using System.Collections;
+using UnityEditor;
 
 public class CameraManager : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class CameraManager : MonoBehaviour
         }
 
         Instance = this;
+
+        if(virtualCamera  == null)
+        {
+            virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+        }
+
 
         if (virtualCamera != null)
         {

@@ -38,16 +38,19 @@ public class Bomb : Cargo
 
     protected override void CollisionDamage(Collision collision)
     {
-        Debug.Log(DamagePercent);
+        //Debug.Log($"{DamagePercent} vs {impactDamage}");
         if (DamagePercent > impactDamage) Explode();
 
     }
     protected void Explode()
     {
+
         if(CarryingDisplay.Instance.CurrentCargo == this)
             CarryingDisplay.Instance.ClearCarrying(); 
 
         center = transform.position;
+
+        ParticleManager.Instance.PlayExplosion(center);
 
         Debug.Log("EXPLODE");
         Collider[] objectsInRange = Physics.OverlapSphere(center, radius);
