@@ -141,6 +141,8 @@ public class LevelManager : MonoBehaviour
 
         Debug.Log($"{LevelData.LevelName} completed!");
 
+        CarryingDisplay.Instance.ClearCarrying();
+
         SaveManager.Instance.SaveProgress((int)LevelData.SceneIndex);
 
         LevelSelect.Instance.OnLevelComplete(LevelData);
