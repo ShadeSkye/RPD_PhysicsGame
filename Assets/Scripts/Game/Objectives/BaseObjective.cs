@@ -14,7 +14,7 @@ public abstract class BaseObjective : ScriptableObject
     public abstract void ResetObjective();
     public virtual void UpdateProgress(Cargo cargo = null, float value = 0f)
     {
-        if (isComplete || isFailed) return;
+
     }
 
     protected void Fail()

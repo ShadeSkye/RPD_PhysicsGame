@@ -36,6 +36,8 @@ public class TimeObjective : BaseObjective
         {
             Fail();
         }
+
+        ObjectiveTracker.Instance.UpdateText();
     }
 
 

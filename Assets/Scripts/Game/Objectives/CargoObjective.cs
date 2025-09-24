@@ -63,7 +63,7 @@ public class CargoObjective : BaseObjective
 
     public override void UpdateProgress(Cargo cargo = null, float value = 0f)
     {
-        if (isComplete) return;
+        if (isComplete || isFailed ) return;
 
         bool cargoValid = (cargo != null && (cargo.type == targetType || cargo.type == CargoType.Any));
 
@@ -79,6 +79,8 @@ public class CargoObjective : BaseObjective
 
             Complete();
         }
+
+        ObjectiveTracker.Instance.UpdateText();
     }
 
     public override void ResetObjective()

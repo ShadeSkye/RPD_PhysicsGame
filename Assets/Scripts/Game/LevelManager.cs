@@ -26,6 +26,8 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         foreach (var obj in LevelData.objectives) obj.ResetObjective();
+
+        ObjectiveTracker.Instance.Setup(LevelData.objectives.ToList<BaseObjective>());
     }
 
     private void Update()
