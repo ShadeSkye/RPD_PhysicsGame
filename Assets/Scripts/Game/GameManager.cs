@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartLevel()
     {
+        SaveManager.Instance.LoadProgress();
         LoadScene(GameManager.Instance.GetCurrentScene());
     }
 

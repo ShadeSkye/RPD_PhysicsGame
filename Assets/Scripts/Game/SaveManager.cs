@@ -115,8 +115,8 @@ public class SaveManager : MonoBehaviour
             return GameManager.Instance.Ships[equippedID];
         }
 
-        Debug.LogWarning($"Equipped ship index {equippedID} is invalid!");
-        return null;
+        //Debug.LogWarning($"Equipped ship index {equippedID} is invalid!");
+        return GameManager.Instance.Ships[0];
     }
 
     public bool IsGameInProgress()
