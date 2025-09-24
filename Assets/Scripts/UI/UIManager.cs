@@ -181,7 +181,7 @@ public class UIManager : MonoBehaviour
     public void RestartLevel()
     {
 
-        GameManager.Instance.LoadScene(GameManager.Instance.GetCurrentScene());
+        GameManager.Instance.RestartLevel();
 
         AudioManager.Instance.PlayOneShot("Button");
     }

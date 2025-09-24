@@ -66,6 +66,11 @@ public class GameManager : MonoBehaviour
         GamePaused = false;
     }
 
+    public void RestartLevel()
+    {
+        LoadScene(GameManager.Instance.GetCurrentScene());
+    }
+
     public void LoadNextScene()
     {
         int current = SceneManager.GetActiveScene().buildIndex;

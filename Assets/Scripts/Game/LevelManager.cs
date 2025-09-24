@@ -33,14 +33,40 @@ public class LevelManager : MonoBehaviour
         foreach (var obj in LevelData.objectives)
             obj.AddProgress(c);
 
-        if (LevelData.objectives.All(o => o.isComplete))
-            OnLevelComplete();
+        CheckLevelComplete();
     }
 
-    public void OnObjectiveComplete()
+    public void OnObjectiveComplete(BaseObjective o)
     {
-        if (LevelData.objectives.All(o => o.isComplete))
+        Debug.Log($"Objective {o.objectiveName} complete");
+        CheckLevelComplete();
+    }
+
+    public void OnObjectiveFailed(BaseObjective o)
+    {
+        Debug.Log($"Objective {o.objectiveName} failed {(o.isCritical ? "(critical)" : "(optional)")}");
+        CheckLevelComplete();
+    }
+
+    private void CheckLevelComplete()
+    {
+        if (LevelData.objectives.Any(o => o.isCritical && o.isFailed))
+        {
+            OnLevelFail();
+            return;
+        }
+
+        if (LevelData.objectives
+            .Where(o => o.isCritical)
+            .All(o => o.isComplete))
+        {
             OnLevelComplete();
+        }
+    }
+
+    private void OnLevelFail() 
+    {
+        GameManager.Instance.RestartLevel();
     }
 
     private void OnLevelComplete()

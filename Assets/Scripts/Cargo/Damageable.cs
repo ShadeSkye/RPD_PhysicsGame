@@ -64,7 +64,7 @@ public class Damageable : MonoBehaviour
         {
             if (gameObject.CompareTag("Player"))
             {
-                UIManager.Instance.RestartLevel();
+                GameManager.Instance.RestartLevel();
             }
 
             else
