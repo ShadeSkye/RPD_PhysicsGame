@@ -32,7 +32,8 @@ public class LookAtDisplay : MonoBehaviour
         {
             //Debug.Log("Hit: " + hit.collider.name);
 
-            if (hit.collider.TryGetComponent<LookAtTarget>(out LookAtTarget target))
+            LookAtTarget target = FindInParents(hit.collider.transform);
+            if (target != null)
             {
                 UpdateLookAtObject(target.displayName, target.distanceToPlayer);
             }
@@ -44,6 +45,17 @@ public class LookAtDisplay : MonoBehaviour
         }
 
         //Debug.Log(dmg.damagePercent);
+    }
+
+    LookAtTarget FindInParents(Transform t)
+    {
+        while (t != null)
+        {
+            if (t.TryGetComponent<LookAtTarget>(out LookAtTarget target))
+                return target;
+            t = t.parent;
+        }
+        return null;
     }
 
     private void UpdateName(string name)
