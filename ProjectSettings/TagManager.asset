@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Depot
   - CollisionIgnore
+  - Hangar
   layers:
   - Default
   - TransparentFX
