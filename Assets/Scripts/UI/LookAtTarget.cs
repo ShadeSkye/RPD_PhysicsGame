@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LookAtTarget : MonoBehaviour
 {
     [HideInInspector] public string displayName = "Unknown Object";
+
     public float distanceToPlayer
     {
         get
