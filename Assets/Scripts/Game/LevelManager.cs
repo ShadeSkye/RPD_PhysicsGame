@@ -34,6 +34,10 @@ public class LevelManager : MonoBehaviour
         {
             RegisterCargo(c);
         }
+
+        List<GameObject> cargoObjects = new(activeCargo.Count);
+        foreach (var c in activeCargo) cargoObjects.Add(c.gameObject);
+        ObjectiveMarkerManager.Instance?.SetCurrentTargets(cargoObjects);
     }
 
     private void Update()
