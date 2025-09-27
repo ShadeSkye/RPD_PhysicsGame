@@ -18,7 +18,7 @@ public class LevelSelectButton : MonoBehaviour
 
     private string invalidSound = "Button";
 
-    private bool levelLocked => !LevelSelect.Instance.completedLevels.Contains(myLevel);
+    private bool levelLocked => !LevelSelect.Instance.availableLevels.Contains(myLevel);
 
     internal void Setup(LevelData level)
     {

@@ -13,7 +13,7 @@ public class LevelSelect : MonoBehaviour
 
     public List<LevelData> levels = new();
     [HideInInspector] public List<LevelSelectButton> buttons = new();
-    [HideInInspector] public HashSet<LevelData> completedLevels = new HashSet<LevelData>();
+    [HideInInspector] public HashSet<LevelData> availableLevels = new HashSet<LevelData>();
 
     private void Awake()
     {
@@ -39,7 +39,7 @@ public class LevelSelect : MonoBehaviour
 
             if(SaveManager.Instance.IsGameInProgress() && (int)l.SceneIndex <= lastCompletedIndex)
             {
-                completedLevels.Add(l);
+                availableLevels.Add(l);
             }
         }
 
@@ -54,10 +54,16 @@ public class LevelSelect : MonoBehaviour
         }
     }
 
-    internal void OnLevelComplete(LevelData levelData)
+    internal void OnLevelLoaded(LevelData levelData)
     {
-        completedLevels.Add(levelData);
 
-        RefreshButtons();
+        if (!availableLevels.Contains(levelData))
+        {
+
+            availableLevels.Add(levelData);
+
+            RefreshButtons();
+        }
+
     }
 }
