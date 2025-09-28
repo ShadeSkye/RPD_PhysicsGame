@@ -10,6 +10,8 @@ public class ObjectiveMarkerManager : MonoBehaviour
     [SerializeField] private RectTransform parent;
     [SerializeField] private RectTransform markerPrefab;
 
+    [SerializeField] private float padding;
+
     private Camera cam;
 
     private Dictionary<LookAtTarget, RectTransform> targetMarkers = new Dictionary<LookAtTarget, RectTransform>();
@@ -40,20 +42,34 @@ public class ObjectiveMarkerManager : MonoBehaviour
             LookAtTarget target = kvp.Key;
             RectTransform marker = kvp.Value;
 
-            if (target == null) return;
+            if (target == null) continue;
 
             Vector3 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
+            Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
 
-            bool isWithinBounds = (screenPos.x >= 0 && screenPos.x <= Screen.width) && (screenPos.y >= 0 && screenPos.y <= Screen.height);
+            bool isWithinBounds = 
+                screenPos.x >= padding && 
+                screenPos.x <= Screen.width - padding && 
+                screenPos.y >= padding && 
+                screenPos.y <= Screen.height - padding;
+
             bool isInFront = screenPos.z > 0;
             bool isOnScreen = isInFront && isWithinBounds;
 
-            marker.gameObject.SetActive(isOnScreen);
+            marker.gameObject.SetActive(true);
 
-            if (isOnScreen)
+            if (!isOnScreen)
             {
-                marker.transform.position = screenPos;
+                screenPos.x = Mathf.Clamp(screenPos.x, padding, Screen.width - padding);
+                screenPos.y = Mathf.Clamp(screenPos.y, padding, Screen.height - padding);
             }
+
+            marker.transform.position = screenPos;
+
+            Vector2 direction = ((Vector2)screenPos - screenCenter).normalized;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+            marker.rotation = Quaternion.Euler(0f, 0f, angle);
         }
 
     }
