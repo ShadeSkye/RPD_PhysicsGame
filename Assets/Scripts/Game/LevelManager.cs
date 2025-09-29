@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
 
     public float elapsedTime;
 
+    [SerializeField] private GameObject spaceStation;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -35,9 +37,7 @@ public class LevelManager : MonoBehaviour
             RegisterCargo(c);
         }
 
-        List<GameObject> cargoObjects = new(activeCargo.Count);
-        foreach (var c in activeCargo) cargoObjects.Add(c.gameObject);
-        ObjectiveMarkerManager.Instance?.SetCurrentTargets(cargoObjects);
+        UpdateMarkers();
     }
 
     private void Update()
@@ -63,16 +63,31 @@ public class LevelManager : MonoBehaviour
         //Debug.Log(activeCargo.Count);
     }
 
+    private void UpdateMarkers()
+    {
+        List<GameObject> markerObjects = new(activeCargo.Count);
+        foreach (var c in activeCargo) markerObjects.Add(c.gameObject);
+
+        markerObjects.Add(spaceStation);
+
+        ObjectiveMarkerManager.Instance?.SetCurrentTargets(markerObjects, spaceStation);
+    }
+
     public void RegisterCargo(Cargo c)
     {
         if (!activeCargo.Contains(c))
             activeCargo.Add(c);
+
+        UpdateMarkers();
     }
 
     public void UnregisterCargo(Cargo c)
     {
         if (activeCargo.Contains(c))
             activeCargo.Remove(c);
+
+
+        UpdateMarkers();
     }
 
     public void OnCargoDelivered(Cargo c)

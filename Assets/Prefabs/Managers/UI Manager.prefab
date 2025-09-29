@@ -3146,6 +3146,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parent: {fileID: 2812659768777906006}
   markerPrefab: {fileID: 1330675060446499210, guid: 6727a7b227df6bf49afe5889b6eb3a88, type: 3}
+  markerSprite: {fileID: 21300000, guid: ccf378acbf0a16644a9c27b491c2196d, type: 3}
+  arrowSprite: {fileID: 21300000, guid: c0a9fd726a59afe438064f539bfcd052, type: 3}
+  stationSprite: {fileID: 21300000, guid: 1c8141640979c7d44a963db713dc0147, type: 3}
+  padding: 50
 --- !u!1 &2551888866270383680
 GameObject:
   m_ObjectHideFlags: 0
