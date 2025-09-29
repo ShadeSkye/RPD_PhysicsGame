@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 using static Cinemachine.DocumentationSortingAttribute;
-
 public class ShipSelect : MonoBehaviour
 {
     public static ShipSelect Instance;

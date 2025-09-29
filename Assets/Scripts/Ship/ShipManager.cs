@@ -49,7 +49,7 @@ public class ShipManager : MonoBehaviour
 
         //SaveManager.Instance.SaveShips(OwnedShips, CurrentShip);
 
-        UIManager.Instance.ResumeGame();
+        UIManager.Instance.ResumeResetPosition();
 
     }
 

@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
 
     public float elapsedTime;
 
-    [SerializeField] private GameObject spaceStation;
+    public GameObject SpaceStation;
 
     private void Awake()
     {
@@ -68,9 +68,9 @@ public class LevelManager : MonoBehaviour
         List<GameObject> markerObjects = new(activeCargo.Count);
         foreach (var c in activeCargo) markerObjects.Add(c.gameObject);
 
-        markerObjects.Add(spaceStation);
+        markerObjects.Add(SpaceStation);
 
-        ObjectiveMarkerManager.Instance?.SetCurrentTargets(markerObjects, spaceStation);
+        ObjectiveMarkerManager.Instance?.SetCurrentTargets(markerObjects, SpaceStation);
     }
 
     public void RegisterCargo(Cargo c)

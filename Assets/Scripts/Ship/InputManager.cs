@@ -115,9 +115,9 @@ public class InputManager : MonoBehaviour
         {
             UIManager.Instance.PauseGame(UIManager.PrimaryUIState.PauseMenu);
         }
-        else if (controls.Flight.MissionMenu.WasPressedThisFrame() && !GameManager.Instance.GamePaused)
+        else if (controls.Flight.ObjectiveSelect.WasPressedThisFrame() && !GameManager.Instance.GamePaused)
         {
-            UIManager.Instance.PauseGame(UIManager.PrimaryUIState.MissionMenu);
+            UIManager.Instance.PauseGame(UIManager.PrimaryUIState.ObjectiveSelect);
         }
         else if (controls.Flight.PauseMenu.WasPressedThisFrame() && GameManager.Instance.GamePaused)
         {

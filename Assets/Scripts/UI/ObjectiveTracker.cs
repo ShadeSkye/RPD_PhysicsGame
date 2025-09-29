@@ -31,6 +31,8 @@ public class ObjectiveTracker : MonoBehaviour
 
         objectiveLabels.Clear();
 
+        GameObject button = Instantiate(UIManager.Instance.HangarResumeButtonPrefab, layoutGroupParent);
+
         foreach (BaseObjective o in objectives)
         {
             TMP_Text text = Instantiate(objectiveTextPrefab, layoutGroupParent);

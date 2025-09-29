@@ -13,7 +13,8 @@ public enum UIButtonAction
     OpenControls,
     QuitGame,
     MainMenu,
-    RestartLevel
+    RestartLevel,
+    ResumeResetPosition
 }
 
 public class UIButtonLink : MonoBehaviour
@@ -39,6 +40,9 @@ public class UIButtonLink : MonoBehaviour
                 break;
             case UIButtonAction.Resume:
                 button.onClick.AddListener(UIManager.Instance.ResumeGame);
+                break;
+            case UIButtonAction.ResumeResetPosition:
+                button.onClick.AddListener(UIManager.Instance.ResumeResetPosition);
                 break;
             case UIButtonAction.LoadGame:
                 button.onClick.AddListener(UIManager.Instance.LoadGame);
