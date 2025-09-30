@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public enum CargoType
 {
+    None,
     Any,
     Crate,
     Bomb

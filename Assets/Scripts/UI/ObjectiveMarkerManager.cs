@@ -22,6 +22,8 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
     private GameObject depotRef;
 
+    private CargoType targetType = CargoType.None;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -50,8 +52,19 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
     private void UpdateMarker(LookAtTarget target, RectTransform marker)
     {
+        Debug.Log(targetType);
 
         if (target == null) return;
+
+        Cargo cargo = target.gameObject.GetComponent<Cargo>();
+        if (cargo != null) // if it is cargo
+        {
+            if (targetType == CargoType.None || cargo.type != targetType)
+            {
+                marker.gameObject.SetActive(false);
+                return; 
+            }
+        }
 
         Image image = marker.GetComponent<Image>();
         bool isDepot = target.gameObject == depotRef;
@@ -119,6 +132,11 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
         marker.rotation = Quaternion.Euler(0f, 0f, angle);
         marker.transform.position = screenPos;
+    }
+
+    public void SetCurrentTargetType(CargoType type)
+    {
+        targetType = type;
     }
 
     public void SetCurrentTargets(List<GameObject> targets, GameObject depot)

@@ -6,10 +6,14 @@ public class ObjectiveTracker : MonoBehaviour
 {
     public static ObjectiveTracker Instance;
 
+    [SerializeField] private TMP_Text trackedObjectiveText;
+    private BaseObjective trackedObjective;
+
     [SerializeField] private RectTransform layoutGroupParent;
     [SerializeField] private ObjectiveSelectButton objectiveButtonPrefab;
     
     private List<ObjectiveSelectButton> buttons = new List<ObjectiveSelectButton>();
+
 
     private void Awake()
     {
@@ -40,6 +44,7 @@ public class ObjectiveTracker : MonoBehaviour
             buttons.Add(b);
         }
 
+        ResetTrackedObjective();
         RefreshButtons();
     }
 
@@ -49,5 +54,26 @@ public class ObjectiveTracker : MonoBehaviour
         {
             b.UpdateButtonState();
         }
+    }
+
+    public void UpdateTrackedObjective(BaseObjective o)
+    {
+        trackedObjective = o;
+        trackedObjectiveText.text = o.GenerateLabel();
+
+        if (trackedObjective is CargoObjective co)
+        {
+            ObjectiveMarkerManager.Instance.SetCurrentTargetType(co.targetType);
+        }
+        else
+        {
+            ObjectiveMarkerManager.Instance.SetCurrentTargetType(CargoType.None);
+        }
+    }
+
+    public void ResetTrackedObjective()
+    {
+        trackedObjective = null;
+        trackedObjectiveText.text = "Press [TAB/SELECT] to open objectives panel\nto track objectives on your HUD";
     }
 }

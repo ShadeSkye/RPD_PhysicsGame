@@ -30,4 +30,29 @@ public abstract class BaseObjective : ScriptableObject
 
         LevelManager.Instance.OnObjectiveComplete(this);
     }
+
+    public string GenerateLabel()
+    {
+        string text = $"{objectiveName}\n{objectiveStatus}";
+
+        switch (State)
+        {
+            case ObjectiveState.Complete:
+                text = $"<color=white><s>{text}</s></color>";
+                break;
+            case ObjectiveState.Failed:
+                text = $"<color=red>{text}</color>";
+                break;
+            case ObjectiveState.InProgress:
+                text = $"<color=white>{text}</color>";
+                break;
+        }
+
+        if (isCritical)
+        {
+            text = $"<b>{text}</b>";
+        }
+
+        return text;
+    }
 }
