@@ -18,8 +18,6 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
     [SerializeField] private float padding;
 
-    private Camera cam;
-
     private Dictionary<LookAtTarget, RectTransform> targetMarkers = new Dictionary<LookAtTarget, RectTransform>();
 
     private GameObject depotRef;
@@ -33,12 +31,6 @@ public class ObjectiveMarkerManager : MonoBehaviour
         }
 
         Instance = this;
-
-    }
-
-    void Start()
-    {
-        cam = Camera.main;
 
     }
 
@@ -65,40 +57,65 @@ public class ObjectiveMarkerManager : MonoBehaviour
         bool isDepot = target.gameObject == depotRef;
 
         float angle = 0f;
-        Vector3 screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
+        Vector3 screenPos = Vector3.zero;
         Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
 
-        bool isWithinBounds =
+        Vector3 toTarget = target.transform.position - Camera.main.transform.position;
+        bool isInFront = Vector3.Dot(Camera.main.transform.forward, toTarget) > 0f;
+
+        marker.gameObject.SetActive(true);
+
+        if (isInFront)
+        {
+            screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
+
+            bool isWithinBounds =
             screenPos.x >= padding &&
             screenPos.x <= Screen.width - padding &&
             screenPos.y >= padding &&
             screenPos.y <= Screen.height - padding;
 
-        bool isInFront = screenPos.z > 0;
-        bool isOnScreen = isInFront && isWithinBounds;
+            if (!isWithinBounds)
+            {
+                image.sprite = isDepot ? stationSprite : arrowSprite;
 
-        marker.gameObject.SetActive(true);
+                // CLAMP
+                screenPos.x = Mathf.Clamp(screenPos.x, padding, Screen.width - padding);
+                screenPos.y = Mathf.Clamp(screenPos.y, padding, Screen.height - padding);
 
-        if (!isOnScreen)
+                // ROTATE
+                Vector2 direction = ((Vector2)screenPos - screenCenter).normalized;
+                angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+                angle += isDepot ? 90f : -90f;
+
+            }
+            else
+            {
+                image.sprite = isDepot ? stationSprite : markerSprite;
+            }
+        }
+        else // if behind player
         {
             image.sprite = isDepot ? stationSprite : arrowSprite;
 
-            // CLAMP
-            screenPos.x = Mathf.Clamp(screenPos.x, padding, Screen.width - padding);
-            screenPos.y = Mathf.Clamp(screenPos.y, padding, Screen.height - padding);
+            Vector3 camRight = Camera.main.transform.right;
+            Vector3 camUp = Camera.main.transform.up;
 
-            // ROTATE
-            Vector2 direction = ((Vector2)screenPos - screenCenter).normalized;
-            angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Vector2 dir2D = new Vector2(Vector3.Dot(toTarget, camRight), Vector3.Dot(toTarget, camUp)).normalized;
 
-            float offset = isDepot ? 90f : -90f;
-            angle += offset;
+            float radiusX = Screen.width / 2f - padding;
+            float radiusY = Screen.height / 2f - padding;
+            screenPos = new Vector3(
+                screenCenter.x + dir2D.x * radiusX,
+                screenCenter.y + dir2D.y * radiusY,
+                0f
+            );
 
+            angle = Mathf.Atan2(dir2D.y, dir2D.x) * Mathf.Rad2Deg;
+            angle += isDepot ? 90f : -90f;
         }
-        else
-        {
-            image.sprite = isDepot ? stationSprite : markerSprite;
-        }
+
 
         marker.rotation = Quaternion.Euler(0f, 0f, angle);
         marker.transform.position = screenPos;
