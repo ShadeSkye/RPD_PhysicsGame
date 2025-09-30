@@ -22,7 +22,7 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
     private GameObject depotRef;
 
-    private CargoType targetType = CargoType.None;
+    private HashSet<CargoType> targetTypes = new HashSet<CargoType>();
 
     private void Awake()
     {
@@ -52,17 +52,16 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
     private void UpdateMarker(LookAtTarget target, RectTransform marker)
     {
-        Debug.Log(targetType);
 
         if (target == null) return;
 
         Cargo cargo = target.gameObject.GetComponent<Cargo>();
         if (cargo != null) // if it is cargo
         {
-            if (targetType == CargoType.None || cargo.type != targetType)
+            if (!targetTypes.Contains(cargo.type))
             {
                 marker.gameObject.SetActive(false);
-                return; 
+                return;
             }
         }
 
@@ -134,9 +133,9 @@ public class ObjectiveMarkerManager : MonoBehaviour
         marker.transform.position = screenPos;
     }
 
-    public void SetCurrentTargetType(CargoType type)
+    public void SetCurrentTargetTypes(HashSet<CargoType> types)
     {
-        targetType = type;
+        targetTypes = types;
     }
 
     public void SetCurrentTargets(List<GameObject> targets, GameObject depot)

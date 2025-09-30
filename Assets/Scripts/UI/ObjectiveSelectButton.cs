@@ -12,6 +12,8 @@ public class ObjectiveSelectButton : MonoBehaviour
     [SerializeField] private Image buttonImage;
     [SerializeField] private Button button;
 
+    private bool isTracked => ObjectiveTracker.Instance.trackedObjectives.ContainsKey(myObjective);
+
     internal void Setup(BaseObjective o)
     {
         myObjective = o;
@@ -28,11 +30,13 @@ public class ObjectiveSelectButton : MonoBehaviour
     {
         buttonText.text = myObjective.GenerateLabel();
 
+        buttonImage.color = isTracked ? Color.blue : Color.white;
+
     }
 
     private void OnButtonClicked()
     {
-        ObjectiveTracker.Instance.UpdateTrackedObjective(myObjective);
+        ObjectiveTracker.Instance.ToggleTrackedObjective(myObjective);
         UIManager.Instance.ResumeGame();
 
     }
