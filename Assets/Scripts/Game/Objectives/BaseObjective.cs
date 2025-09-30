@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum ObjectiveState { InProgress, Complete, Failed }
 
 public abstract class BaseObjective : ScriptableObject
 {
     public virtual string objectiveName { get; }
     public virtual string objectiveStatus { get; }
 
-    [HideInInspector] public bool isComplete;
-    [HideInInspector] public bool isFailed;
+    public ObjectiveState State;
     public bool isCritical;
 
     public abstract void ResetObjective();
@@ -19,16 +19,14 @@ public abstract class BaseObjective : ScriptableObject
 
     protected void Fail()
     {
-        isComplete = false;
-        isFailed = true;
+        State = ObjectiveState.Failed;
 
         LevelManager.Instance.OnObjectiveFailed(this);
     }
 
     protected void Complete()
     {
-        isComplete = true;
-        isFailed = false;
+        State = ObjectiveState.Complete;
 
         LevelManager.Instance.OnObjectiveComplete(this);
     }

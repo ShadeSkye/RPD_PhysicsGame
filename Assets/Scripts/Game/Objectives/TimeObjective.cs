@@ -24,25 +24,24 @@ public class TimeObjective : BaseObjective
 
     public override void ResetObjective()
     {
-        isComplete = false;
-        isFailed = false;
+        State = ObjectiveState.InProgress;
     }
 
     public override void UpdateProgress(Cargo cargo = null, float value = 0f)
     {
-        if (isComplete || isFailed) return;
+        if (State != ObjectiveState.InProgress) return;
 
         if (value > 0f && value >= timeLimit)
         {
             Fail();
         }
 
-        ObjectiveTracker.Instance.UpdateText();
+        ObjectiveTracker.Instance.RefreshButtons();
     }
 
     public void OnLevelComplete()
     {
-        if(!isFailed) isComplete = true;
+        State = ObjectiveState.Complete;
     }
 
 }

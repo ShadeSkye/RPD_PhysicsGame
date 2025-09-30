@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    public GameObject ResumeButtonPrefab;
     public GameObject HangarResumeButtonPrefab;
 
     [Header("Sensitivity")]

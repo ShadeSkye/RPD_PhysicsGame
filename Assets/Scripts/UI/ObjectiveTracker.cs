@@ -7,9 +7,9 @@ public class ObjectiveTracker : MonoBehaviour
     public static ObjectiveTracker Instance;
 
     [SerializeField] private RectTransform layoutGroupParent;
-    [SerializeField] private TMP_Text objectiveTextPrefab;
+    [SerializeField] private ObjectiveSelectButton objectiveButtonPrefab;
     
-    private Dictionary<BaseObjective, TMP_Text> objectiveLabels = new();
+    private List<ObjectiveSelectButton> buttons = new List<ObjectiveSelectButton>();
 
     private void Awake()
     {
@@ -29,29 +29,25 @@ public class ObjectiveTracker : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        objectiveLabels.Clear();
+        buttons.Clear();
 
-        GameObject button = Instantiate(UIManager.Instance.HangarResumeButtonPrefab, layoutGroupParent);
+        GameObject button = Instantiate(UIManager.Instance.ResumeButtonPrefab, layoutGroupParent);
 
         foreach (BaseObjective o in objectives)
         {
-            TMP_Text text = Instantiate(objectiveTextPrefab, layoutGroupParent);
-            objectiveLabels[o] = text;
+            ObjectiveSelectButton b = Instantiate(objectiveButtonPrefab, layoutGroupParent);
+            b.Setup(o);
+            buttons.Add(b);
         }
 
-        UpdateText();
+        RefreshButtons();
     }
 
-    public void UpdateText()
+    public void RefreshButtons()
     {
-        foreach (var kvp in objectiveLabels)
+        foreach (var b in buttons)
         {
-            BaseObjective objective = kvp.Key;
-            TMP_Text label = kvp.Value;
-
-            string prefix = objective.isCritical ? "[C] " : "";
-
-            label.text = $"{prefix}{objective.objectiveName}: {objective.objectiveStatus}";
+            b.UpdateButtonState();
         }
     }
 }

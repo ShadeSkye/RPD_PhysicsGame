@@ -1970,7 +1970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layoutGroupParent: {fileID: 3314424786458140543}
-  objectiveTextPrefab: {fileID: 2279948835077378400, guid: 68860b5e1d5d6de48a50c7de24968b4e, type: 3}
+  objectiveButtonPrefab: {fileID: 0}
 --- !u!1 &1235558250728475889
 GameObject:
   m_ObjectHideFlags: 0
@@ -6600,6 +6600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: badc24e010f1f614dbec7f9493e657ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ResumeButtonPrefab: {fileID: 115961335164607440, guid: fa34080d409585547bd274ed210545a5, type: 3}
   HangarResumeButtonPrefab: {fileID: 115961335164607440, guid: 318b3d73beaf70842b50ee8a6d620c15, type: 3}
   sensSlider: {fileID: 7423172161272164933}
   sensFromSlider: 1
@@ -11749,7 +11750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layoutGroupParent: {fileID: 415587453707338963}
-  objectiveTextPrefab: {fileID: 2279948835077378400, guid: 68860b5e1d5d6de48a50c7de24968b4e, type: 3}
+  objectiveButtonPrefab: {fileID: 961915384530634799, guid: b3904adebd822f94e8e7eb39264146ef, type: 3}
 --- !u!1 &7881335755457533887
 GameObject:
   m_ObjectHideFlags: 0

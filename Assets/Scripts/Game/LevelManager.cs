@@ -28,7 +28,11 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (var obj in LevelData.objectives) obj.ResetObjective();
+        foreach (var obj in LevelData.objectives)
+        {
+            obj.ResetObjective();
+        }
+        
         ObjectiveTracker.Instance.Setup(LevelData.objectives.ToList<BaseObjective>());
 
         Cargo[] prePlacedCargo = FindObjectsOfType<Cargo>();
@@ -103,12 +107,14 @@ public class LevelManager : MonoBehaviour
     public void OnObjectiveComplete(BaseObjective o)
     {
         Debug.Log($"Objective {o.objectiveName} complete");
+
         CheckLevelComplete();
     }
 
     public void OnObjectiveFailed(BaseObjective o)
     {
         Debug.Log($"Objective {o.objectiveName} failed {(o.isCritical ? "(critical)" : "(optional)")}");
+
         CheckLevelComplete();
     }
 
@@ -126,8 +132,9 @@ public class LevelManager : MonoBehaviour
 
         foreach (BaseObjective c in critical)
         {
-            if (c.isFailed) anyFailed = true;
-            else if (c.isComplete) completedCriticalCount += 1;
+            if(c.State == ObjectiveState.Failed) anyFailed = true;
+            else if (c.State == ObjectiveState.Complete) completedCriticalCount += 1;
+
         }
 
         if (anyFailed)
@@ -180,9 +187,8 @@ public class LevelManager : MonoBehaviour
                 Debug.LogWarning("Null objective in LevelData.objectives");
                 continue;
             }
-            string status = o.isComplete ? "succeeded" : o.isFailed ? "failed" : "in progress";
             string prefix = o.isCritical ? "[C] " : "";
-            txt += $"{prefix}{o.objectiveName}: {status}\n";
+            txt += $"{prefix}{o.objectiveName}: {o.State}\n";
         }
 
         Debug.Log(txt);
