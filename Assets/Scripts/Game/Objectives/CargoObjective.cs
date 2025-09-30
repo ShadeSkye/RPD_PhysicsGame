@@ -82,7 +82,7 @@ public class CargoObjective : BaseObjective
             Complete();
         }
 
-        ObjectiveTracker.Instance.RefreshButtons();
+        ObjectiveTracker.Instance.Refresh();
     }
 
     public void CheckCargoAvailability()

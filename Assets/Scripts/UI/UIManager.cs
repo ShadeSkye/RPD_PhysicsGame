@@ -23,16 +23,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject homeScreen;
     [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private GameObject shipSelection;
-    [SerializeField] private GameObject levelSelection;
+    [SerializeField] private GameObject hangarScreen;
     [SerializeField] private GameObject objectiveSelection;
 
     [Header("Secondary Screens")]
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject controlsScreen;
-    [SerializeField] private GameObject shipDetails;
-    [SerializeField] private GameObject levelDetails;
-    [SerializeField] private GameObject objectiveDetails;
+    [SerializeField] private GameObject shipSelect;
+    [SerializeField] private GameObject levelSelect;
 
     private Dictionary<PrimaryUIState, GameObject> primaryScreens;
     private Dictionary<SecondaryUIState, GameObject> secondaryScreens;
@@ -44,8 +42,7 @@ public class UIManager : MonoBehaviour
         HUD,
         Home,
         PauseMenu,
-        ShipSelect,
-        LevelSelect,
+        HangarMenu,
         ObjectiveSelect,
     }
 
@@ -54,9 +51,8 @@ public class UIManager : MonoBehaviour
         None,
         Settings,
         Controls,
-        ShipDetails,
-        LevelDetails,
-        ObjectiveDetails
+        ShipSelect,
+        LevelSelect,
     }
 
     private void Awake()
@@ -80,18 +76,16 @@ public class UIManager : MonoBehaviour
             { PrimaryUIState.HUD, HUD },
             { PrimaryUIState.Home, homeScreen },
             { PrimaryUIState.PauseMenu, pauseScreen },
-            { PrimaryUIState.ShipSelect, shipSelection },
+            { PrimaryUIState.HangarMenu, hangarScreen },
             { PrimaryUIState.ObjectiveSelect, objectiveSelection },
-            { PrimaryUIState.LevelSelect, levelSelection },
         };
 
         secondaryScreens = new Dictionary<SecondaryUIState, GameObject>
         {
             { SecondaryUIState.Settings, settingsScreen },
             { SecondaryUIState.Controls, controlsScreen },
-            { SecondaryUIState.ShipDetails, shipDetails },
-            { SecondaryUIState.ObjectiveDetails, objectiveDetails },
-            { SecondaryUIState.LevelDetails, levelDetails },
+            { SecondaryUIState.ShipSelect, shipSelect },
+            { SecondaryUIState.LevelSelect, levelSelect },
         };
 
         LoadSensitivity();
@@ -124,21 +118,7 @@ public class UIManager : MonoBehaviour
 
         if (primaryScreens.TryGetValue(primaryState, out var screen)) screen.SetActive(true);
 
-        switch (newState)
-        {
-            case PrimaryUIState.ShipSelect:
-                SetSecondary(SecondaryUIState.ShipDetails);
-                break;
-            case PrimaryUIState.LevelSelect:
-                SetSecondary(SecondaryUIState.LevelDetails);
-                break;
-            case PrimaryUIState.ObjectiveSelect:
-                SetSecondary(SecondaryUIState.ObjectiveDetails);
-                break;
-            default:
-                SetSecondary(SecondaryUIState.None);
-                break;
-        }
+        SetSecondary(SecondaryUIState.None);
 
     }
 
@@ -156,22 +136,19 @@ public class UIManager : MonoBehaviour
     public void ShipSelect()
     {
         AudioManager.Instance.PlayOneShot("Button");
-        SetPrimary(PrimaryUIState.ShipSelect);
-        SetSecondary(SecondaryUIState.ShipDetails);
+        SetSecondary(SecondaryUIState.ShipSelect);
     }
 
     public void LevelSelect()
     {
         AudioManager.Instance.PlayOneShot("Button");
-        SetPrimary(PrimaryUIState.LevelSelect);
-        SetSecondary(SecondaryUIState.LevelDetails);
+        SetSecondary(SecondaryUIState.LevelSelect);
     }
 
     public void ObjectiveSelect()
     {
         AudioManager.Instance.PlayOneShot("Button");
         SetPrimary(PrimaryUIState.ObjectiveSelect);
-        SetSecondary(SecondaryUIState.ObjectiveDetails);
     }
 
     public void OpenControls()
@@ -184,6 +161,27 @@ public class UIManager : MonoBehaviour
     {
         AudioManager.Instance.PlayOneShot("Button");
         SetSecondary(SecondaryUIState.Settings);
+    }
+
+    public void OpenShipSelect()
+    {
+        AudioManager.Instance.PlayOneShot("Button");
+        SetSecondary(SecondaryUIState.ShipSelect);
+    }
+
+    public void OpenLevelSelect()
+    {
+        AudioManager.Instance.PlayOneShot("Button");
+        SetSecondary(SecondaryUIState.LevelSelect);
+    }
+
+    public void OpenHangar()
+    {
+        GameManager.Instance.Pause();
+
+        AudioManager.Instance.PlayOneShot("Button");
+
+        SetPrimary(PrimaryUIState.HangarMenu);
     }
 
     public void QuitGame()

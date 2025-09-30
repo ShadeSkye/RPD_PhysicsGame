@@ -36,7 +36,7 @@ public class ShipDamageObjective : BaseObjective
             Fail();
         }
 
-        ObjectiveTracker.Instance.RefreshButtons();
+        ObjectiveTracker.Instance.Refresh();
     }
 
     public void OnLevelComplete()

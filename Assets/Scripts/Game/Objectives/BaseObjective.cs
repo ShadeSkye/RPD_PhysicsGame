@@ -31,9 +31,9 @@ public abstract class BaseObjective : ScriptableObject
         LevelManager.Instance.OnObjectiveComplete(this);
     }
 
-    public string GenerateLabel()
+    public string GenerateLabel(bool condense)
     {
-        string text = $"{objectiveName}\n{objectiveStatus}";
+        string text = !condense? objectiveName : $"{objectiveName}\n{objectiveStatus}";
 
         switch (State)
         {
@@ -50,7 +50,7 @@ public abstract class BaseObjective : ScriptableObject
 
         if (isCritical)
         {
-            text = $"<b>{text}</b>";
+            text = $"<b>[CRITICAL] {text}</b>";
         }
 
         return text;

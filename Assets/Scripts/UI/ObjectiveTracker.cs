@@ -35,6 +35,14 @@ public class ObjectiveTracker : MonoBehaviour
         ResetButtons(objectives);
         ResetTracked();
     }
+
+    public void Refresh()
+    {
+        RefreshButtons();
+        RefreshTracked();
+        UpdatePlaceholder();
+    }
+
     private void UpdatePlaceholder()
     {
         if (trackedObjectives.Count == 0)
@@ -65,8 +73,7 @@ public class ObjectiveTracker : MonoBehaviour
 
         trackedObjectives.Clear();
 
-        RefreshTracked();
-        UpdatePlaceholder();
+        Refresh();
     }
     public void RefreshTracked()
     {
@@ -75,7 +82,7 @@ public class ObjectiveTracker : MonoBehaviour
             BaseObjective objective = kvp.Key;
             TMP_Text label = kvp.Value;
 
-            label.text = objective.GenerateLabel();
+            label.text = objective.GenerateLabel(true);
         }
 
     }
@@ -98,7 +105,7 @@ public class ObjectiveTracker : MonoBehaviour
             buttons.Add(b);
         }
 
-        RefreshButtons();
+        Refresh();
     }
 
     public void RefreshButtons()
@@ -133,9 +140,7 @@ public class ObjectiveTracker : MonoBehaviour
 
         ObjectiveMarkerManager.Instance.SetCurrentTargetTypes(typesToTrack);
 
-        RefreshButtons();
-        RefreshTracked();
-        UpdatePlaceholder();
+        Refresh();
     }
 
 }

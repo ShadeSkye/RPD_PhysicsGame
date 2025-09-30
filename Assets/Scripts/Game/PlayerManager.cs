@@ -57,7 +57,7 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log("Entered hangar");
 
-            UIManager.Instance.PauseGame(UIManager.PrimaryUIState.ShipSelect);
+            UIManager.Instance.OpenHangar();
         }
     }
 

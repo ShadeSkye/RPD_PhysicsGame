@@ -11,6 +11,8 @@ public enum UIButtonAction
     LoadGame,
     OpenSettings,
     OpenControls,
+    OpenShipSelect,
+    OpenLevelSelect,
     QuitGame,
     MainMenu,
     RestartLevel,
@@ -52,6 +54,12 @@ public class UIButtonLink : MonoBehaviour
                 break;
             case UIButtonAction.OpenControls:
                 button.onClick.AddListener(UIManager.Instance.OpenControls);
+                break;
+            case UIButtonAction.OpenShipSelect:
+                button.onClick.AddListener(UIManager.Instance.OpenShipSelect);
+                break;
+            case UIButtonAction.OpenLevelSelect:
+                button.onClick.AddListener(UIManager.Instance.OpenLevelSelect);
                 break;
             case UIButtonAction.QuitGame:
                 button.onClick.AddListener(UIManager.Instance.QuitGame);

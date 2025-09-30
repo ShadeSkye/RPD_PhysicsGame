@@ -28,7 +28,7 @@ public class ObjectiveSelectButton : MonoBehaviour
 
     public void UpdateButtonState()
     {
-        buttonText.text = myObjective.GenerateLabel();
+        buttonText.text = myObjective.GenerateLabel(false);
 
         buttonImage.color = isTracked ? Color.blue : Color.white;
 
@@ -37,7 +37,6 @@ public class ObjectiveSelectButton : MonoBehaviour
     private void OnButtonClicked()
     {
         ObjectiveTracker.Instance.ToggleTrackedObjective(myObjective);
-        UIManager.Instance.ResumeGame();
 
     }
 }

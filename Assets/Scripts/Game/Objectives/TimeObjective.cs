@@ -17,7 +17,12 @@ public class TimeObjective : BaseObjective
     {
         get
         {
-            return $"{UIManager.Instance.StringTime(timeLimit-LevelManager.Instance.elapsedTime)} remaining";
+            float remaining = timeLimit - LevelManager.Instance.elapsedTime;
+
+            if (remaining >= 0f)
+                return $"{UIManager.Instance.StringTime(remaining)} remaining";
+            else
+                return $"{UIManager.Instance.StringTime(-remaining)} over time";
         }
     }
 
@@ -36,12 +41,12 @@ public class TimeObjective : BaseObjective
             Fail();
         }
 
-        ObjectiveTracker.Instance.RefreshButtons();
+        ObjectiveTracker.Instance.Refresh();
     }
 
     public void OnLevelComplete()
     {
-        State = ObjectiveState.Complete;
+        if(State == ObjectiveState.InProgress) State = ObjectiveState.Complete;
     }
 
 }
