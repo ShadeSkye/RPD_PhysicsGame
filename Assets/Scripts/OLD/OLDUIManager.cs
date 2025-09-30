@@ -1,16 +1,12 @@
-using System.Collections.Generic;
+/*using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static System.Collections.Specialized.BitVector32;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-
-    public GameObject ResumeButtonPrefab;
-    public GameObject HangarResumeButtonPrefab;
 
     [Header("Sensitivity")]
     public Slider sensSlider;
@@ -20,39 +16,33 @@ public class UIManager : MonoBehaviour
     private SecondaryUIState secondaryState;
 
     [Header("Primary Screens")]
-    [SerializeField] private GameObject HUD;
     [SerializeField] private GameObject homeScreen;
     [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private GameObject hangarScreen;
-    [SerializeField] private GameObject objectiveSelection;
+    [SerializeField] private GameObject missionScreen;
+    [SerializeField] private GameObject HUD;
 
     [Header("Secondary Screens")]
     [SerializeField] private GameObject settingsScreen;
     [SerializeField] private GameObject controlsScreen;
-    [SerializeField] private GameObject shipSelect;
-    [SerializeField] private GameObject levelSelect;
 
     private Dictionary<PrimaryUIState, GameObject> primaryScreens;
     private Dictionary<SecondaryUIState, GameObject> secondaryScreens;
 
-    //[SerializeField] private Image pullZoneIndicator;
+    [SerializeField] private Image pullZoneIndicator;
     public enum PrimaryUIState
     {
         None,
-        HUD,
         Home,
         PauseMenu,
-        HangarMenu,
-        ObjectiveSelect,
+        MissionMenu,
+        HUD
     }
 
     public enum SecondaryUIState
     {
         None,
         Settings,
-        Controls,
-        ShipSelect,
-        LevelSelect,
+        Controls
     }
 
     private void Awake()
@@ -73,19 +63,16 @@ public class UIManager : MonoBehaviour
     {
         primaryScreens = new Dictionary<PrimaryUIState, GameObject>
         {
-            { PrimaryUIState.HUD, HUD },
             { PrimaryUIState.Home, homeScreen },
             { PrimaryUIState.PauseMenu, pauseScreen },
-            { PrimaryUIState.HangarMenu, hangarScreen },
-            { PrimaryUIState.ObjectiveSelect, objectiveSelection },
+            { PrimaryUIState.MissionMenu, missionScreen },
+            { PrimaryUIState.HUD, HUD }
         };
 
         secondaryScreens = new Dictionary<SecondaryUIState, GameObject>
         {
             { SecondaryUIState.Settings, settingsScreen },
-            { SecondaryUIState.Controls, controlsScreen },
-            { SecondaryUIState.ShipSelect, shipSelect },
-            { SecondaryUIState.LevelSelect, levelSelect },
+            { SecondaryUIState.Controls, controlsScreen }
         };
 
         LoadSensitivity();
@@ -119,7 +106,6 @@ public class UIManager : MonoBehaviour
         if (primaryScreens.TryGetValue(primaryState, out var screen)) screen.SetActive(true);
 
         SetSecondary(SecondaryUIState.None);
-
     }
 
     public void SetSecondary(SecondaryUIState newState)
@@ -132,25 +118,6 @@ public class UIManager : MonoBehaviour
         if (secondaryScreens.TryGetValue(secondaryState, out var screen))
             screen.SetActive(true);
     }
-
-    public void ShipSelect()
-    {
-        AudioManager.Instance.PlayOneShot("Button");
-        SetSecondary(SecondaryUIState.ShipSelect);
-    }
-
-    public void LevelSelect()
-    {
-        AudioManager.Instance.PlayOneShot("Button");
-        SetSecondary(SecondaryUIState.LevelSelect);
-    }
-
-    public void ObjectiveSelect()
-    {
-        AudioManager.Instance.PlayOneShot("Button");
-        SetPrimary(PrimaryUIState.ObjectiveSelect);
-    }
-
     public void OpenControls()
     {
         AudioManager.Instance.PlayOneShot("Button");
@@ -161,27 +128,6 @@ public class UIManager : MonoBehaviour
     {
         AudioManager.Instance.PlayOneShot("Button");
         SetSecondary(SecondaryUIState.Settings);
-    }
-
-    public void OpenShipSelect()
-    {
-        AudioManager.Instance.PlayOneShot("Button");
-        SetSecondary(SecondaryUIState.ShipSelect);
-    }
-
-    public void OpenLevelSelect()
-    {
-        AudioManager.Instance.PlayOneShot("Button");
-        SetSecondary(SecondaryUIState.LevelSelect);
-    }
-
-    public void OpenHangar()
-    {
-        GameManager.Instance.Pause();
-
-        AudioManager.Instance.PlayOneShot("Button");
-
-        SetPrimary(PrimaryUIState.HangarMenu);
     }
 
     public void QuitGame()
@@ -201,19 +147,11 @@ public class UIManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        Debug.Log($"UIMANAGER: Resume game");
         GameManager.Instance.Play();
 
         AudioManager.Instance.PlayOneShot("Button");
 
         SetPrimary(PrimaryUIState.HUD);
-    }
-
-    public void ResumeResetPosition()
-    {
-        PlayerManager.Instance.ResetLocation(LevelManager.Instance.SpaceStation.transform);
-
-        ResumeGame();
     }
 
     public void MainMenu()
@@ -280,11 +218,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*public void CargoInRange(bool isInRange)
+    *//*public void CargoInRange(bool isInRange)
     {
         pullZoneIndicator.color = isInRange ? Color.yellow : Color.white;
 
-    }*/
+    }*//*
 
     public string StringTime(float time)
     {
@@ -303,4 +241,4 @@ public class UIManager : MonoBehaviour
 
         return txt;
     }
-}
+}*/

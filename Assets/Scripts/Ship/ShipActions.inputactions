@@ -87,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MissionMenu",
+                    "name": "ObjectiveSelect",
                     "type": "Button",
                     "id": "4e21cdc4-013e-41cb-81ad-859ab4366f85",
                     "expectedControlType": "",
@@ -533,7 +533,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MissionMenu",
+                    "action": "ObjectiveSelect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -544,7 +544,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MissionMenu",
+                    "action": "ObjectiveSelect",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

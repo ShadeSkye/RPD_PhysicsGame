@@ -173,7 +173,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MissionMenu"",
+                    ""name"": ""ObjectiveSelect"",
                     ""type"": ""Button"",
                     ""id"": ""4e21cdc4-013e-41cb-81ad-859ab4366f85"",
                     ""expectedControlType"": """",
@@ -619,7 +619,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MissionMenu"",
+                    ""action"": ""ObjectiveSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -630,7 +630,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MissionMenu"",
+                    ""action"": ""ObjectiveSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -650,7 +650,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         m_Flight_Release = m_Flight.FindAction("Release", throwIfNotFound: true);
         m_Flight_Brake = m_Flight.FindAction("Brake", throwIfNotFound: true);
         m_Flight_PauseMenu = m_Flight.FindAction("PauseMenu", throwIfNotFound: true);
-        m_Flight_MissionMenu = m_Flight.FindAction("MissionMenu", throwIfNotFound: true);
+        m_Flight_ObjectiveSelect = m_Flight.FindAction("ObjectiveSelect", throwIfNotFound: true);
     }
 
     ~@ShipActions()
@@ -740,7 +740,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Flight_Release;
     private readonly InputAction m_Flight_Brake;
     private readonly InputAction m_Flight_PauseMenu;
-    private readonly InputAction m_Flight_MissionMenu;
+    private readonly InputAction m_Flight_ObjectiveSelect;
     /// <summary>
     /// Provides access to input actions defined in input action map "Flight".
     /// </summary>
@@ -789,9 +789,9 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @PauseMenu => m_Wrapper.m_Flight_PauseMenu;
         /// <summary>
-        /// Provides access to the underlying input action "Flight/MissionMenu".
+        /// Provides access to the underlying input action "Flight/ObjectiveSelect".
         /// </summary>
-        public InputAction @MissionMenu => m_Wrapper.m_Flight_MissionMenu;
+        public InputAction @ObjectiveSelect => m_Wrapper.m_Flight_ObjectiveSelect;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -845,9 +845,9 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
             @PauseMenu.started += instance.OnPauseMenu;
             @PauseMenu.performed += instance.OnPauseMenu;
             @PauseMenu.canceled += instance.OnPauseMenu;
-            @MissionMenu.started += instance.OnMissionMenu;
-            @MissionMenu.performed += instance.OnMissionMenu;
-            @MissionMenu.canceled += instance.OnMissionMenu;
+            @ObjectiveSelect.started += instance.OnObjectiveSelect;
+            @ObjectiveSelect.performed += instance.OnObjectiveSelect;
+            @ObjectiveSelect.canceled += instance.OnObjectiveSelect;
         }
 
         /// <summary>
@@ -886,9 +886,9 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
             @PauseMenu.started -= instance.OnPauseMenu;
             @PauseMenu.performed -= instance.OnPauseMenu;
             @PauseMenu.canceled -= instance.OnPauseMenu;
-            @MissionMenu.started -= instance.OnMissionMenu;
-            @MissionMenu.performed -= instance.OnMissionMenu;
-            @MissionMenu.canceled -= instance.OnMissionMenu;
+            @ObjectiveSelect.started -= instance.OnObjectiveSelect;
+            @ObjectiveSelect.performed -= instance.OnObjectiveSelect;
+            @ObjectiveSelect.canceled -= instance.OnObjectiveSelect;
         }
 
         /// <summary>
@@ -993,11 +993,11 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPauseMenu(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "MissionMenu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ObjectiveSelect" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMissionMenu(InputAction.CallbackContext context);
+        void OnObjectiveSelect(InputAction.CallbackContext context);
     }
 }
