@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -114,7 +115,9 @@ public class ObjectiveMarkerManager : MonoBehaviour
             Vector3 camRight = Camera.main.transform.right;
             Vector3 camUp = Camera.main.transform.up;
 
-            Vector2 dir2D = new Vector2(Vector3.Dot(toTarget, camRight), Vector3.Dot(toTarget, camUp)).normalized;
+            Vector2 dir2D = new Vector2(Vector3.Dot(toTarget, camRight), Vector3.Dot(toTarget, camUp));
+            if (dir2D.sqrMagnitude < 0.001f) dir2D = Vector2.up; 
+            dir2D.Normalize();
 
             float radiusX = Screen.width / 2f - padding;
             float radiusY = Screen.height / 2f - padding;
@@ -130,7 +133,12 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
 
         marker.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        screenPos.z = 0f;
+
         marker.transform.position = screenPos;
+
+
     }
 
     public void SetCurrentTargetTypes(HashSet<CargoType> types)

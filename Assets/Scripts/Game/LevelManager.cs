@@ -65,6 +65,8 @@ public class LevelManager : MonoBehaviour
         }
 
         //Debug.Log(activeCargo.Count);
+
+        
     }
 
     private void UpdateMarkers()
