@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59340f920daf5b44ac7b45609f0cad9, type: 3}
   m_Name: BestShip
   m_EditorClassIdentifier: 
+  shipIcon: {fileID: 21300000, guid: 8e411c6f4eae0a940af3c18bdaa5f5f2, type: 3}
   shipName: Adventurer
   shipCost: 500
   speed: 5
