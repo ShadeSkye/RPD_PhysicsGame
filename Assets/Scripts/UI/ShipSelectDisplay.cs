@@ -43,6 +43,15 @@ public class ShipSelectDisplay : MonoBehaviour
 
     }*/
 
+    private void Awake()
+    {
+
+        purchaseButton.onClick.AddListener(() =>
+        {
+            OnButtonClicked();
+        });
+    }
+
     public void UpdateShip(ShipPreset newShip)
     {
         ship = newShip;
@@ -85,11 +94,6 @@ public class ShipSelectDisplay : MonoBehaviour
             }
 
         }
-
-        purchaseButton.onClick.AddListener(() =>
-        {
-            OnButtonClicked();
-        });
     }
 
     private string Resistances()
@@ -116,7 +120,16 @@ public class ShipSelectDisplay : MonoBehaviour
         if (CurrencyManager.Instance.CanAfford(ship.shipCost) || isAvailable)
         {
             AudioManager.Instance.PlayOneShot(validSound);
-            ShipManager.Instance.EquipShip(ship);
+
+            if (ShipManager.Instance.OwnedShips.Contains(ship))
+            {
+                ShipManager.Instance.EquipShip(ship);
+            }
+            else
+            {
+                ShipManager.Instance.PurchaseShip(ship);
+                UpdateShip(ship);
+            }
         }
         else
         {
