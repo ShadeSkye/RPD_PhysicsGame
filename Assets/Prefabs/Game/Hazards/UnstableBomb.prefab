@@ -128,15 +128,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -220,13 +220,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ab509a90bb1c754ebee45ad7e3903f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cargoName: Bomb
+  rb: {fileID: 0}
+  objectName: 
+  isDynamic: 0
+  IsInitialised: 0
+  OrbitDistance: 0
+  OrbitTarget: {fileID: 0}
+  IsLocked: 0
+  LastReleasedTime: 0
   weight: 5.42
   type: 2
   baseValue: 100
+  impactDamage: 0.05
+  maxSafeSpeed: 300
   radius: 10
   damage: 25
   force: 2500
   torque: 100
   triggerTime: 1
   triggerRadius: 10
+  OnlyAffectsPlayer: 1

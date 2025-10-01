@@ -278,6 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   objectName: Egg
+  isDynamic: 1
   IsInitialised: 0
   OrbitDistance: 0
   OrbitTarget: {fileID: 0}

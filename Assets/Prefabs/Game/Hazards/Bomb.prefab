@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   objectName: 
+  isDynamic: 0
   IsInitialised: 0
   OrbitDistance: 0
   OrbitTarget: {fileID: 0}

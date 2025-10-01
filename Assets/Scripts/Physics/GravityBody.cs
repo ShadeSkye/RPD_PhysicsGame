@@ -25,7 +25,7 @@ public class GravityBody : GravityObject
     {
         if (IsInitialised) return;
 
-        if (OrbitTarget != null)
+        if (OrbitTarget != null && isDynamic)
         {
             CalculateInitialVelocity();
         }

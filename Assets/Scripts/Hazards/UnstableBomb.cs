@@ -9,6 +9,8 @@ public class UnstableBomb : Bomb
     [SerializeField] private float triggerRadius = 5f;
     private int objectsInTrigger = 0;
 
+    public bool OnlyAffectsPlayer = false;
+
     protected override void Awake()
     {
         base.Awake();
