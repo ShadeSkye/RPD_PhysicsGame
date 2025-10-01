@@ -10,10 +10,14 @@ public class GravityBody : GravityObject
     [Header("Orbit Settings")]
     public float OrbitDistance;
     public GravitySource OrbitTarget;
+
+    protected void Reset()
+    {
+        isDynamic = true;
+    }
     protected override void Awake()
     {
         base.Awake();
-        rb.isKinematic = false;
 
     }
 
