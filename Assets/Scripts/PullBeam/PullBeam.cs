@@ -86,7 +86,7 @@ public class PullBeam : MonoBehaviour
             GravityManager.Instance.UnregisterObject(c);
 
             c.transform.SetParent(holdZone.transform);
-            c.transform.localScale = Vector3.one;
+
 
             heldCargo = c;
 
