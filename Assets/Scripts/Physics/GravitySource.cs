@@ -7,7 +7,9 @@ public class GravitySource : GravityObject
     [Header("Gravity Settings")]
     public bool DontPullPlayer = false;
 
-    [SerializeField] private float localGravity = 1f;
+    [SerializeField] private float gravityStrength = 10f;
+    private float localGravity => Mathf.Pow(10, gravityStrength);
+    //[HideInInspector] 
     public float Radius = 1f;
 
     [Header("Rotation Settings")]
@@ -23,11 +25,9 @@ public class GravitySource : GravityObject
     protected override void Awake()
     {
         base.Awake();
+        UpdateRadius();
 
-        localGravity = localGravity == 0 ? 1f : localGravity;
-        Radius = Radius == 0 ? 1f : Radius;
         rb.mass = (localGravity * Radius * Radius) / GravityManager.Instance.gravitationalConstant;
-        transform.localScale = Vector3.one * Radius * 2;
 
         GravityManager.Instance.RegisterObject(this);
 
@@ -41,13 +41,20 @@ public class GravitySource : GravityObject
 
     private void OnValidate()
     {
-        UpdateSize();
+        UpdateRadius();
     }
 
-    private void UpdateSize()
+    private void UpdateRadius()
     {
-        // set size using radius
-        Radius = Radius == 0 ? 1f : Radius;
-        transform.localScale = Vector3.one * Radius * 2;
+        MeshRenderer mr = GetComponent<MeshRenderer>();
+        if (mr != null)
+        {
+            Vector3 worldSize = mr.bounds.size; 
+            Radius = Mathf.Max(worldSize.x, worldSize.y, worldSize.z) * 0.5f;
+        }
+        else
+        {
+            Radius = transform.localScale.x * 0.5f;
+        }
     }
 }

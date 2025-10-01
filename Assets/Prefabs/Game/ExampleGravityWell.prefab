@@ -167,8 +167,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   objectName: GravityWell
+  isDynamic: 0
   DontPullPlayer: 0
-  localGravity: 25
+  gravityStrength: 1
   Radius: 10
   rotate: 1
   rotationSpeed: 5
