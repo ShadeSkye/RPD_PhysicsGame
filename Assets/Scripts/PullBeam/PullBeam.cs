@@ -86,11 +86,14 @@ public class PullBeam : MonoBehaviour
             GravityManager.Instance.UnregisterObject(c);
 
             c.transform.SetParent(holdZone.transform);
+            c.transform.localScale = Vector3.one;
 
             heldCargo = c;
 
             cargoInBeam.Remove(c);
             Debug.Log($"Picked up {c}");
+            Debug.Log(c.DamagePercent);
+            Debug.Log(PlayerManager.Instance.damagePercent);
             AudioManager.Instance.PlayOneShot("Lock");
 
             CarryingDisplay.Instance.SetCarrying(c);

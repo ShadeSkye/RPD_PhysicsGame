@@ -88,6 +88,8 @@ public class GravityManager : MonoBehaviour
                 }
             }
 
+            if(body is Cargo c && c.type == CargoType.Egg) continue;
+
             body.rb.AddForce(totalForce);
         }
     }
