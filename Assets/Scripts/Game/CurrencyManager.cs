@@ -34,7 +34,7 @@ public class CurrencyManager : MonoBehaviour
         CurrentBalance = 0;
         CarryingDisplay.Instance.UpdateEarnings();
 
-        ShipSelect.Instance.RefreshButtons();
+        //ShipSelect.Instance.RefreshButtons();
     }
 
     public void LoadCredits(float value)
@@ -42,7 +42,7 @@ public class CurrencyManager : MonoBehaviour
         CurrentBalance = value;
         CarryingDisplay.Instance.UpdateEarnings();
 
-        ShipSelect.Instance.RefreshButtons();
+        //ShipSelect.Instance.RefreshButtons();
     }
 
     internal void AddEarnings(float value)
@@ -51,7 +51,7 @@ public class CurrencyManager : MonoBehaviour
         CarryingDisplay.Instance.UpdateEarnings();
         //SaveManager.Instance.SaveCredits(CurrentBalance);
 
-        ShipSelect.Instance.RefreshButtons();
+        //ShipSelect.Instance.RefreshButtons();
     }
 
     public string CurrencyFormatted(float amount)

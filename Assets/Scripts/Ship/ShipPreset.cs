@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [CreateAssetMenu(fileName = "ShipPreset", menuName = "Ships/Ship Preset")]
 public class ShipPreset : ScriptableObject
 {
+    public Sprite shipIcon;
+
     [Header("Info")]
     public string shipName;
     public float shipCost;

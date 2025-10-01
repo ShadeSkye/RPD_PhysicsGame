@@ -232,8 +232,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   objectName: Space Station
+  isDynamic: 0
   DontPullPlayer: 1
-  localGravity: 250
+  gravityStrength: 1
   Radius: 25
   rotate: 1
   rotationSpeed: 1

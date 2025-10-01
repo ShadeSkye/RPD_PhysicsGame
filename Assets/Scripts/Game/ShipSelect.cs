@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.XR;
 using static Cinemachine.DocumentationSortingAttribute;
 public class ShipSelect : MonoBehaviour
@@ -11,6 +12,7 @@ public class ShipSelect : MonoBehaviour
     [SerializeField] private RectTransform layoutGroupParent;
     [SerializeField] private ShipSelectButton buttonPrefab;
 
+    [SerializeField] private ShipSelectDisplay shipDisplay;
 
     private void Awake()
     {
@@ -35,15 +37,20 @@ public class ShipSelect : MonoBehaviour
 
         }
 
-        RefreshButtons();
+        //RefreshButtons();
     }
 
-    public void RefreshButtons()
+    /*public void RefreshButtons()
     {
         foreach (var b in buttons)
         {
             b.UpdateButtonValidity();
         }
+    }*/
+
+    public void SetDisplayedShip(ShipPreset selected)
+    {
+        shipDisplay.UpdateShip(selected);
     }
 
 }

@@ -34,7 +34,7 @@ public class ShipManager : MonoBehaviour
         CurrentShip = GameManager.Instance.Ships[0];
         OwnedShips.Clear();
 
-        ShipSelect.Instance.RefreshButtons();
+        //ShipSelect.Instance.RefreshButtons();
     }
 
 
@@ -59,7 +59,7 @@ public class ShipManager : MonoBehaviour
         {
             OwnedShips.Add(ship);
             //SaveManager.Instance.SaveShips(OwnedShips, CurrentShip);
-            ShipSelect.Instance.RefreshButtons();
+            //ShipSelect.Instance.RefreshButtons();
 
             return true;
         }
@@ -73,7 +73,7 @@ public class ShipManager : MonoBehaviour
         OwnedShips = ships;
         CurrentShip = equipped;
 
-        ShipSelect.Instance.RefreshButtons();
+        //ShipSelect.Instance.RefreshButtons();
     }
 
 }
