@@ -7926,10 +7926,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1594514832498556396}
   - {fileID: 2554223834671357860}
   - {fileID: 6229188206980973543}
   - {fileID: 7404258533896194746}
-  - {fileID: 1594514832498556396}
   m_Father: {fileID: 8700599271384118168}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -13290,8 +13290,8 @@ MonoBehaviour:
   layoutGroupParent: {fileID: 2320820325213151983}
   buttonPrefab: {fileID: 1790773511165756370, guid: e9ff45dd500621e4dba241875e15f592, type: 3}
   levels:
-  - {fileID: 11400000, guid: 6fd28724314253f49aad005260d0bd5b, type: 2}
   - {fileID: 11400000, guid: 6c781037f9d589f45b3380f971c7dde5, type: 2}
+  - {fileID: 11400000, guid: f3d599ca739b9174eb045481e0416750, type: 2}
   - {fileID: 11400000, guid: 7333cb6e05daf89499b905534cf3fea9, type: 2}
   buttons: []
 --- !u!1 &9053891936182155032

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test2
   m_EditorClassIdentifier: 
   SceneIndex: 2
-  LevelName: Level Two
+  LevelName: Test Level
   objectives:
   - {fileID: 11400000, guid: ff10284beae0f26478618d9e7419fbee, type: 2}
   - {fileID: 11400000, guid: b234ba5ed448af84783b6a3ab7531f00, type: 2}
