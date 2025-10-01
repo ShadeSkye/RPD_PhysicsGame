@@ -278,14 +278,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   objectName: Egg
-  isDynamic: 1
+  isDynamic: 0
   IsInitialised: 0
   OrbitDistance: 0
   OrbitTarget: {fileID: 0}
   IsLocked: 0
   LastReleasedTime: 0
   weight: 1
-  type: 0
+  type: 3
   baseValue: 2000
 --- !u!114 &5430383204452394965
 MonoBehaviour:

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 275fffbecbc082447ab97e414b8ab6ec, type: 3}
-  m_Name: Level1
+  m_Script: {fileID: 11500000, guid: 65c5da457567d9147bbcb2a13362f5ad, type: 3}
+  m_Name: GetEgg
   m_EditorClassIdentifier: 
-  SceneIndex: 1
-  LevelName: Frog Planet
-  objectives:
-  - {fileID: 11400000, guid: acbf62bd62e9d9340a69c3b1c10d3239, type: 2}
-  - {fileID: 11400000, guid: b234ba5ed448af84783b6a3ab7531f00, type: 2}
+  State: 1
+  isCritical: 1
+  requiredAmount: 1
+  targetType: 3
+  currentAmount: 3

@@ -9,8 +9,7 @@ public class GravitySource : GravityObject
 
     [SerializeField] private float gravityStrength = 10f;
     private float localGravity => Mathf.Pow(10, gravityStrength);
-    //[HideInInspector] 
-    public float Radius = 1f;
+    [HideInInspector] public float Radius = 1f;
 
     [Header("Rotation Settings")]
     public bool rotate = true;
