@@ -37,6 +37,13 @@ public class Damageable : MonoBehaviour
 
     public void ApplyDamageWithResistance(float damageAmount, DamageType type)
     {
+        Cargo cargo = GetComponent<Cargo>();
+        if (cargo != null && cargo.type == CargoType.Egg && type == DamageType.Acid)
+        {
+            //Debug.Log($"Acid damage ignored for Egg cargo on {gameObject.name}");
+            return;
+        }
+
         float multiplier = 1f;
 
         if (gameObject.CompareTag("Player"))
@@ -51,6 +58,9 @@ public class Damageable : MonoBehaviour
                     break;
             }
         }
+
+
+
 
         ApplyDamage(multiplier * damageAmount);
         //Debug.Log($"Applied {multiplier * damageAmount} {type} damage to {gameObject.name}");
