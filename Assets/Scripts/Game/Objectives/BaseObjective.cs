@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum ObjectiveState { InProgress, Complete, Failed }
 
 public abstract class BaseObjective : ScriptableObject
 {
     public virtual string objectiveName { get; }
     public virtual string objectiveStatus { get; }
 
-    [HideInInspector] public bool isComplete;
-    [HideInInspector] public bool isFailed;
+    public ObjectiveState State;
     public bool isCritical;
 
     public abstract void ResetObjective();
@@ -19,17 +19,40 @@ public abstract class BaseObjective : ScriptableObject
 
     protected void Fail()
     {
-        isComplete = false;
-        isFailed = true;
+        State = ObjectiveState.Failed;
 
         LevelManager.Instance.OnObjectiveFailed(this);
     }
 
     protected void Complete()
     {
-        isComplete = true;
-        isFailed = false;
+        State = ObjectiveState.Complete;
 
         LevelManager.Instance.OnObjectiveComplete(this);
+    }
+
+    public string GenerateLabel(bool condense)
+    {
+        string text = !condense? objectiveName : $"{objectiveName}\n{objectiveStatus}";
+
+        switch (State)
+        {
+            case ObjectiveState.Complete:
+                text = $"<color=white><s>{text}</s></color>";
+                break;
+            case ObjectiveState.Failed:
+                text = $"<color=red>{text}</color>";
+                break;
+            case ObjectiveState.InProgress:
+                text = $"<color=white>{text}</color>";
+                break;
+        }
+
+        if (isCritical)
+        {
+            text = $"<b>[CRITICAL] {text}</b>";
+        }
+
+        return text;
     }
 }

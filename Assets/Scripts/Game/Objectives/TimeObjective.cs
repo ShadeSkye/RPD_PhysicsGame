@@ -17,32 +17,36 @@ public class TimeObjective : BaseObjective
     {
         get
         {
-            return $"{UIManager.Instance.StringTime(timeLimit-LevelManager.Instance.elapsedTime)} remaining";
+            float remaining = timeLimit - LevelManager.Instance.elapsedTime;
+
+            if (remaining >= 0f)
+                return $"{UIManager.Instance.StringTime(remaining)} remaining";
+            else
+                return $"{UIManager.Instance.StringTime(-remaining)} over time";
         }
     }
 
 
     public override void ResetObjective()
     {
-        isComplete = false;
-        isFailed = false;
+        State = ObjectiveState.InProgress;
     }
 
     public override void UpdateProgress(Cargo cargo = null, float value = 0f)
     {
-        if (isComplete || isFailed) return;
+        if (State != ObjectiveState.InProgress) return;
 
         if (value > 0f && value >= timeLimit)
         {
             Fail();
         }
 
-        ObjectiveTracker.Instance.UpdateText();
+        ObjectiveTracker.Instance.Refresh();
     }
 
     public void OnLevelComplete()
     {
-        if(!isFailed) isComplete = true;
+        if(State == ObjectiveState.InProgress) State = ObjectiveState.Complete;
     }
 
 }

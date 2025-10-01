@@ -16,10 +16,13 @@ public class GravitySource : GravityObject
 
     private Vector3 rotationAxis;
 
+    protected void Reset()
+    {
+        isDynamic = false;
+    }
     protected override void Awake()
     {
         base.Awake();
-        rb.isKinematic = true;
 
         localGravity = localGravity == 0 ? 1f : localGravity;
         Radius = Radius == 0 ? 1f : Radius;

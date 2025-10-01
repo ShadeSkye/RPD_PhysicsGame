@@ -11,10 +11,13 @@ public class GravityObject : MonoBehaviour
 
     protected LookAtTarget lookAt;
 
+    [SerializeField] protected bool isDynamic;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+        rb.isKinematic = !isDynamic;
         
         if (lookAt == null) lookAt = GetComponent<LookAtTarget>();
         lookAt.displayName = objectName;

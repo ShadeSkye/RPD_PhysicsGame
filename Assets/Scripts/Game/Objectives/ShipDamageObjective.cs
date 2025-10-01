@@ -24,25 +24,24 @@ public class ShipDamageObjective : BaseObjective
 
     public override void ResetObjective()
     {
-        isComplete = false;
-        isFailed = false;
+        State = ObjectiveState.InProgress;
     }
 
     public override void UpdateProgress(Cargo cargo = null, float value = 0f)
     {
-        if (isComplete || isFailed) return;
+        if (State != ObjectiveState.InProgress) return;
 
         if (PlayerManager.Instance.damagePercent > damageThreshold+1)
         {
             Fail();
         }
 
-        ObjectiveTracker.Instance.UpdateText();
+        ObjectiveTracker.Instance.Refresh();
     }
 
     public void OnLevelComplete()
     {
-        if (!isFailed)
+        if (State != ObjectiveState.Failed)
         {
             Complete();
         }

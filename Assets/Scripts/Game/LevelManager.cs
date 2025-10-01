@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
 
     public float elapsedTime;
 
+    public GameObject SpaceStation;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -26,7 +28,11 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (var obj in LevelData.objectives) obj.ResetObjective();
+        foreach (var obj in LevelData.objectives)
+        {
+            obj.ResetObjective();
+        }
+        
         ObjectiveTracker.Instance.Setup(LevelData.objectives.ToList<BaseObjective>());
 
         Cargo[] prePlacedCargo = FindObjectsOfType<Cargo>();
@@ -35,9 +41,7 @@ public class LevelManager : MonoBehaviour
             RegisterCargo(c);
         }
 
-        List<GameObject> cargoObjects = new(activeCargo.Count);
-        foreach (var c in activeCargo) cargoObjects.Add(c.gameObject);
-        ObjectiveMarkerManager.Instance?.SetCurrentTargets(cargoObjects);
+        UpdateMarkers();
     }
 
     private void Update()
@@ -63,16 +67,31 @@ public class LevelManager : MonoBehaviour
         //Debug.Log(activeCargo.Count);
     }
 
+    private void UpdateMarkers()
+    {
+        List<GameObject> markerObjects = new(activeCargo.Count);
+        foreach (var c in activeCargo) markerObjects.Add(c.gameObject);
+
+        markerObjects.Add(SpaceStation);
+
+        ObjectiveMarkerManager.Instance?.SetCurrentTargets(markerObjects, SpaceStation);
+    }
+
     public void RegisterCargo(Cargo c)
     {
         if (!activeCargo.Contains(c))
             activeCargo.Add(c);
+
+        UpdateMarkers();
     }
 
     public void UnregisterCargo(Cargo c)
     {
         if (activeCargo.Contains(c))
             activeCargo.Remove(c);
+
+
+        UpdateMarkers();
     }
 
     public void OnCargoDelivered(Cargo c)
@@ -88,12 +107,14 @@ public class LevelManager : MonoBehaviour
     public void OnObjectiveComplete(BaseObjective o)
     {
         Debug.Log($"Objective {o.objectiveName} complete");
+
         CheckLevelComplete();
     }
 
     public void OnObjectiveFailed(BaseObjective o)
     {
         Debug.Log($"Objective {o.objectiveName} failed {(o.isCritical ? "(critical)" : "(optional)")}");
+
         CheckLevelComplete();
     }
 
@@ -111,8 +132,9 @@ public class LevelManager : MonoBehaviour
 
         foreach (BaseObjective c in critical)
         {
-            if (c.isFailed) anyFailed = true;
-            else if (c.isComplete) completedCriticalCount += 1;
+            if(c.State == ObjectiveState.Failed) anyFailed = true;
+            else if (c.State == ObjectiveState.Complete) completedCriticalCount += 1;
+
         }
 
         if (anyFailed)
@@ -165,9 +187,8 @@ public class LevelManager : MonoBehaviour
                 Debug.LogWarning("Null objective in LevelData.objectives");
                 continue;
             }
-            string status = o.isComplete ? "succeeded" : o.isFailed ? "failed" : "in progress";
             string prefix = o.isCritical ? "[C] " : "";
-            txt += $"{prefix}{o.objectiveName}: {status}\n";
+            txt += $"{prefix}{o.objectiveName}: {o.State}\n";
         }
 
         Debug.Log(txt);

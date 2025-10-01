@@ -65,7 +65,7 @@ public class CargoObjective : BaseObjective
 
     public override void UpdateProgress(Cargo cargo = null, float value = 0f)
     {
-        if (isComplete || isFailed ) return;
+        if (State != ObjectiveState.InProgress) return;
 
         bool cargoValid = (cargo != null && (cargo.type == targetType || cargo.type == CargoType.Any));
 
@@ -82,12 +82,12 @@ public class CargoObjective : BaseObjective
             Complete();
         }
 
-        ObjectiveTracker.Instance.UpdateText();
+        ObjectiveTracker.Instance.Refresh();
     }
 
     public void CheckCargoAvailability()
     {
-        if (isComplete || isFailed) return;
+        if (State != ObjectiveState.InProgress) return;
 
         int remainingCargo = 0;
 
@@ -111,8 +111,7 @@ public class CargoObjective : BaseObjective
     public override void ResetObjective()
     {
         currentAmount = 0;
-        isComplete = false;
-        isFailed = false;
+        State = ObjectiveState.InProgress;
     }
 }
 
