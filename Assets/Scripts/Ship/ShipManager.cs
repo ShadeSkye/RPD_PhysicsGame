@@ -40,31 +40,22 @@ public class ShipManager : MonoBehaviour
 
     public void EquipShip(ShipPreset ship)
     {
-        if (!OwnedShips.Contains(ship))
-        {
-            if (!PurchaseShip(ship)) return;
-        }
 
         CurrentShip = ship;
 
-        //SaveManager.Instance.SaveShips(OwnedShips, CurrentShip);
-
         UIManager.Instance.ResumeResetPosition();
+
+
+        //SaveManager.Instance.SaveShips(OwnedShips, CurrentShip);
 
     }
 
-    public bool PurchaseShip(ShipPreset ship)
+    public void PurchaseShip(ShipPreset ship)
     {  
         if (CurrencyManager.Instance.TrySpend(ship.shipCost))
         {
             OwnedShips.Add(ship);
-            //SaveManager.Instance.SaveShips(OwnedShips, CurrentShip);
-            //ShipSelect.Instance.RefreshButtons();
-
-            return true;
         }
-
-        return false;
         
     }
 
