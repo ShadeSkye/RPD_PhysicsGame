@@ -26,7 +26,6 @@ public class CarryingDisplay : MonoBehaviour
         Instance = this;
 
     }
-
     private void Start()
     {
 

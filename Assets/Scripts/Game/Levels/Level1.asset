@@ -18,3 +18,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: acbf62bd62e9d9340a69c3b1c10d3239, type: 2}
   - {fileID: 11400000, guid: b234ba5ed448af84783b6a3ab7531f00, type: 2}
   - {fileID: 11400000, guid: 806dfd78cc263a74a86a4ff079b09189, type: 2}
+  loadingScreen: {fileID: 11400000, guid: 30bf705aea0158f4287e22f3029bdf2d, type: 2}

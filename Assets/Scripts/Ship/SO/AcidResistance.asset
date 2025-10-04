@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59340f920daf5b44ac7b45609f0cad9, type: 3}
+  m_Name: AcidResistance
+  m_EditorClassIdentifier: 
+  shipIcon: {fileID: 21300000, guid: 8e411c6f4eae0a940af3c18bdaa5f5f2, type: 3}
+  shipName: Science Ship
+  shipCost: 500
+  speed: 3.5
+  handling: 3.5
+  acidDamageResistance: 0.75
+  impactDamageResistance: 0
