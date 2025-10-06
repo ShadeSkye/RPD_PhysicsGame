@@ -93,18 +93,13 @@ public class GameManager : MonoBehaviour
     {
         AudioManager.Instance.StopAllSFX();
 
-        StartCoroutine(FadeAndLoad(scene, true));
+        StartCoroutine(FadeAndLoad(scene));
+
     }
 
-    public void LoadScene(SceneIndex scene, float duration)
+    private IEnumerator FadeAndLoad(SceneIndex scene)
     {
-
-        StartCoroutine(FadeAndLoad(scene, true));
-    }
-
-    private IEnumerator FadeAndLoad(SceneIndex scene, bool doFade)
-    {
-        if(doFade) yield return StartCoroutine(Fade(0f, 1f, scene));
+        yield return StartCoroutine(Fade(0f, 1f, scene)); 
 
         AsyncOperation op = SceneManager.LoadSceneAsync((int)scene);
         while (!op.isDone)
@@ -114,7 +109,49 @@ public class GameManager : MonoBehaviour
 
         OnSceneLoad(scene);
 
-        if (doFade) yield return StartCoroutine(Fade(1f, 0f, scene));
+        // get loading data
+        LoadingScreenData loadingScreen = null;
+        if (LevelManager.Instance != null && LevelManager.Instance.LevelData != null)
+        {
+            loadingScreen = LevelManager.Instance.LevelData.loadingScreen;
+        }
+
+        if (loadingScreen != null)
+        {
+            LoadingScreen.Instance.SetLoadingVisuals(loadingScreen);
+            LoadingScreen.Instance.Show();
+
+            Pause();
+
+            // timer
+            float t = 0f;
+            while (t < loadingScreen.holdTime)
+            {
+                t += Time.unscaledDeltaTime;
+                yield return null;
+            }
+
+            if (loadingScreen.requireContinueButton)
+            {
+                bool clicked = false;
+                LoadingScreen.Instance.ShowContinueButton(() => clicked = true);
+
+                while (!clicked)
+                    yield return null;
+            }
+
+            LoadingScreen.Instance.Hide();
+
+            Play();
+
+            yield return StartCoroutine(Fade(1f, 0f, scene));
+        }
+        else
+        {
+            yield return StartCoroutine(Fade(1f, 0f, scene));
+        }
+
+
     }
 
     private IEnumerator Fade(float startAlpha, float endAlpha, SceneIndex scene)
@@ -122,6 +159,7 @@ public class GameManager : MonoBehaviour
         float t = 0f;
         Color color = fadeImage.color;
 
+        // timer
         while (t < fadeDuration)
         {
             t += Time.unscaledDeltaTime;

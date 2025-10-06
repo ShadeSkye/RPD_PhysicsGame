@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 275fffbecbc082447ab97e414b8ab6ec, type: 3}
-  m_Name: Level2
+  m_Name: Test3
   m_EditorClassIdentifier: 
-  SceneIndex: 2
-  LevelName: Level Two
+  SceneIndex: 3
+  LevelName: Test Level
   objectives:
   - {fileID: 11400000, guid: ff10284beae0f26478618d9e7419fbee, type: 2}
   - {fileID: 11400000, guid: b234ba5ed448af84783b6a3ab7531f00, type: 2}
   - {fileID: 11400000, guid: 129a2cd895f7aa44caec31fa8a330d07, type: 2}
+  loadingScreen: {fileID: 11400000, guid: 30bf705aea0158f4287e22f3029bdf2d, type: 2}

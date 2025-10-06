@@ -22,6 +22,8 @@ public class ShipSelectButton : MonoBehaviour, IPointerEnterHandler
     {
         myShip = ship;
 
+        buttonText.text = $"{myShip.shipName}";
+
         /*button.onClick.AddListener(() =>
         {
             OnButtonClicked();
@@ -32,7 +34,6 @@ public class ShipSelectButton : MonoBehaviour, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         ShipSelect.Instance.SetDisplayedShip(myShip);
-        buttonText.text = $"{myShip.shipName}";
     }
 
     /*public void UpdateButtonValidity()
