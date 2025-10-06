@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -200,6 +201,13 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     {
         SaveManager.Instance.LoadProgress();
-        LoadScene(SaveManager.Instance.LoadLastCompletedLevel());
+
+        int nextLevelIndex = (int)SaveManager.Instance.LoadLastCompletedLevel() + 1;
+        nextLevelIndex = Mathf.Min(nextLevelIndex, (int)LevelSelect.Instance.levels.Max(l => l.SceneIndex));
+
+        Debug.Log($"Loading scene {(SceneIndex)nextLevelIndex}");
+
+        LoadScene((SceneIndex)nextLevelIndex);
+
     }
 }

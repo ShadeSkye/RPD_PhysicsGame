@@ -7,16 +7,16 @@ using UnityEngine.UI;
 
 public class ObjectiveSelectButton : MonoBehaviour
 {
-    private BaseObjective myObjective;
+    public BaseObjective Objective;
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private Image buttonImage;
     [SerializeField] private Button button;
 
-    private bool isTracked => ObjectiveTracker.Instance.trackedObjectives.ContainsKey(myObjective);
+    private bool isTracked => ObjectiveTracker.Instance.trackedObjectives.ContainsKey(Objective);
 
     internal void Setup(BaseObjective o)
     {
-        myObjective = o;
+        Objective = o;
 
         button.onClick.AddListener(() =>
         {
@@ -28,7 +28,7 @@ public class ObjectiveSelectButton : MonoBehaviour
 
     public void UpdateButtonState()
     {
-        buttonText.text = myObjective.GenerateLabel(false);
+        buttonText.text = Objective.GenerateLabel(false);
 
         buttonImage.color = isTracked ? Color.blue : Color.white;
 
@@ -36,7 +36,7 @@ public class ObjectiveSelectButton : MonoBehaviour
 
     private void OnButtonClicked()
     {
-        ObjectiveTracker.Instance.ToggleTrackedObjective(myObjective);
+        ObjectiveTracker.Instance.ToggleTrackedObjective(Objective);
 
     }
 }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ObjectiveTracker : MonoBehaviour
 {
@@ -98,7 +100,9 @@ public class ObjectiveTracker : MonoBehaviour
 
         GameObject button = Instantiate(UIManager.Instance.ResumeButtonPrefab, layoutGroupParent);
 
-        foreach (BaseObjective o in objectives)
+        var sorted = SortObjectives(objectives);
+
+        foreach (BaseObjective o in sorted)
         {
             ObjectiveSelectButton b = Instantiate(objectiveButtonPrefab, layoutGroupParent);
             b.Setup(o);
@@ -112,9 +116,23 @@ public class ObjectiveTracker : MonoBehaviour
     {
         foreach (var b in buttons)
         {
+            int priority;
+
+            if (b.Objective is ExitLevelObjective)
+                priority = 0;                   
+            else if (b.Objective.State == ObjectiveState.Complete)
+                priority = 2;                   
+            else
+                priority = 1;                   
+
+            var layout = b.GetComponent<LayoutElement>();
+            if (layout != null)
+                layout.layoutPriority = priority;
+
             b.UpdateButtonState();
         }
-        
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(layoutGroupParent);
     }
 
 
@@ -141,6 +159,18 @@ public class ObjectiveTracker : MonoBehaviour
         ObjectiveMarkerManager.Instance.SetCurrentTargetTypes(typesToTrack);
 
         Refresh();
+    }
+
+    private List<BaseObjective> SortObjectives(List<BaseObjective> objectives)
+    {
+        return objectives.OrderBy(o =>
+        {
+            if (o is ExitLevelObjective) return 0;
+
+            if (o.State == ObjectiveState.InProgress || o.State == ObjectiveState.Failed) return 1;
+
+            return 2;
+        }).ToList();
     }
 
 }
