@@ -86,10 +86,18 @@ public class Cargo : GravityBody
     {
         if (dmg == null) return;
 
-        float impactAmount = collision.relativeVelocity.magnitude;
-        dmg.ApplyImpact(impactAmount);
+        if (collision.gameObject.CompareTag("LevelBounds"))
+        {
+            LevelBounds.Instance.Teleport(this.gameObject);
+        }
+        else
+        {
+            float impactAmount = collision.relativeVelocity.magnitude;
+            dmg.ApplyImpact(impactAmount);
 
-        CollisionDamage(collision);
+            CollisionDamage(collision);
+        }
+
     }
 
     protected virtual void CollisionDamage(Collision collision)
