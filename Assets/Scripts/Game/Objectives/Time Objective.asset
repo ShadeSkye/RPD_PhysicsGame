@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1351ef291ae848242a7c0a95d4d9f28a, type: 3}
   m_Name: Time Objective
   m_EditorClassIdentifier: 
-  isComplete: 0
-  isFailed: 1
+  objectiveValue: 500
+  State: 0
   isCritical: 0
   timeLimit: 100

@@ -33,7 +33,9 @@ public class CargoObjective : BaseObjective
                 }
             }
 
-            return $"Deliver {requiredAmount} {text}";
+            if (objectiveValue > 0) text += $" [{CurrencyManager.Instance.CurrencyFormatted(objectiveValue)}]";
+
+            return text;
         }
     }
 

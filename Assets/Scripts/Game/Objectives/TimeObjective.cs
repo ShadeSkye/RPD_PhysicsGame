@@ -9,7 +9,11 @@ public class TimeObjective : BaseObjective
     {
         get
         {
-            return $"Finish level within {UIManager.Instance.StringTime(timeLimit)}";
+            string text =  $"Finish level within {UIManager.Instance.StringTime(timeLimit)}";
+
+            if (objectiveValue > 0) text += $" [{CurrencyManager.Instance.CurrencyFormatted(objectiveValue)}]";
+
+            return text;
         }
     }
 
@@ -47,6 +51,7 @@ public class TimeObjective : BaseObjective
     public void OnComplete()
     {
         if(State == ObjectiveState.InProgress) State = ObjectiveState.Complete;
+
     }
 
 }
