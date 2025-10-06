@@ -39,21 +39,29 @@ public class Cargo : GravityBody
     }
 
     [Header("Properties")]
-    [Range(1f, 15f)] public float weight;
+
     public CargoType type;
 
+    public Vector2 WeightRange;
+    public float weight;
+
+    public Vector2 ValueRange;
     public float baseValue;
     public float CurrentValue => baseValue * (1f - DamagePercent);
 
     protected override void Awake()
     {
         base.Awake();
-        rb.mass = Mathf.Clamp(weight, 1f, 15f);
+
+        weight = Mathf.RoundToInt(Random.Range(WeightRange.x, WeightRange.y));
+        rb.mass = weight;
 
         ConnectReferences();
 
         audioSource.spatialBlend = 1f;
         audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+
+        baseValue = Mathf.RoundToInt(Random.Range(ValueRange.x, ValueRange.y));
 
     }
     private void ConnectReferences()
