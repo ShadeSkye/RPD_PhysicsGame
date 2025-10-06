@@ -9,7 +9,7 @@ using static Cinemachine.DocumentationSortingAttribute;
 
 public class LevelSelectButton : MonoBehaviour
 {
-    private LevelData myLevel;
+    public LevelData Level;
     [SerializeField] private TMP_Text buttonText;
     [SerializeField] private Image buttonImage;
     [SerializeField] private Button button;
@@ -18,11 +18,13 @@ public class LevelSelectButton : MonoBehaviour
 
     private string invalidSound = "Button";
 
-    private bool levelLocked => !LevelSelect.Instance.completedLevels.Contains(myLevel);
+    private bool levelLocked => !LevelSelect.Instance.completedLevels.Contains(Level) && !currentLevel;
+    private bool currentLevel => (int)LevelManager.Instance.LevelData.SceneIndex == (int)Level.SceneIndex;
+    private bool nextLevel => (int)Level.SceneIndex == (int)LevelManager.Instance.LevelData.SceneIndex+1 && LevelSelect.Instance.currentLevelComplete;
 
     internal void Setup(LevelData level)
     {
-        myLevel = level;   
+        Level = level;   
         buttonText.text = level.LevelName;
 
         button.onClick.AddListener(() =>
@@ -35,21 +37,29 @@ public class LevelSelectButton : MonoBehaviour
 
     public void UpdateButtonValidity()
     {
-
-        if (buttonImage != null)
-            buttonImage.color = levelLocked ? Color.red : Color.white;
+        if (buttonImage != null && (LevelManager.Instance != null))
+        {
+            if (nextLevel) buttonImage.color = Color.yellow;
+            else if (levelLocked) buttonImage.color = Color.red;
+            else buttonImage.color = Color.white;
+        }
     }
 
     private void OnButtonClicked()
     {
-        if (levelLocked)
+        if (levelLocked && !nextLevel)
         {
             AudioManager.Instance.PlayOneShot(invalidSound);
+        }
+        else if (nextLevel)
+        {
+            AudioManager.Instance.PlayOneShot(validSound);
+            UIManager.Instance.LevelComplete();
         }
         else
         {
             AudioManager.Instance.PlayOneShot(validSound);
-            GameManager.Instance.LoadScene(myLevel.SceneIndex);
+            GameManager.Instance.LoadScene(Level.SceneIndex);
         }
 
     }

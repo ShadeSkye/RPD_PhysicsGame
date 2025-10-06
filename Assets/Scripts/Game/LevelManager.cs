@@ -32,6 +32,8 @@ public class LevelManager : MonoBehaviour
         {
             obj.ResetObjective();
         }
+
+        LevelSelect.Instance.ResetButtons();
         
         ObjectiveTracker.Instance.Setup(LevelData.objectives.ToList<BaseObjective>());
 
@@ -108,6 +110,7 @@ public class LevelManager : MonoBehaviour
 
     public void OnObjectiveComplete(BaseObjective o)
     {
+
         Debug.Log($"Objective {o.objectiveName} complete");
 
         CheckLevelComplete();
@@ -147,7 +150,7 @@ public class LevelManager : MonoBehaviour
 
         if (completedCriticalCount == critical.Count && critical.Count > 0)
         {
-            OnLevelComplete();
+            OnCriticalComplete();
         }
     }
 
@@ -158,12 +161,25 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.RestartLevel();
     }
 
-    private void OnLevelComplete()
+    private void OnCriticalComplete()
     {
         foreach (var o in LevelData.objectives.OfType<TimeObjective>())
         {
-            o.OnLevelComplete();
+            o.OnComplete();
         }
+
+        List<BaseObjective> addExitObjective = new List<BaseObjective>(LevelData.objectives);
+        addExitObjective.Add(LevelData.exitLevelObjective);
+
+        ObjectiveTracker.Instance.Setup(addExitObjective);
+
+        ObjectiveTracker.Instance.ToggleTrackedObjective(LevelData.exitLevelObjective);
+
+        LevelSelect.Instance.OnLevelComplete(LevelData);
+    }
+
+    public void OnLevelComplete()
+    {
 
         ObjectiveOverview();
 
@@ -171,12 +187,14 @@ public class LevelManager : MonoBehaviour
 
         CarryingDisplay.Instance.ClearCarrying();
 
+        Debug.Log($"SaveManager Progress Before Saving: {SaveManager.Instance.LoadLastCompletedLevel()}");
         SaveManager.Instance.SaveProgress((int)LevelData.SceneIndex);
-
-        LevelSelect.Instance.OnLevelComplete(LevelData);
+        Debug.Log($"SaveManager Progress After Saving: {SaveManager.Instance.LoadLastCompletedLevel()}");
 
         GameManager.Instance.LoadNextScene();
     }
+
+    
 
     private void ObjectiveOverview()
     {

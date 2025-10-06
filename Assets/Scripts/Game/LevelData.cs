@@ -7,6 +7,7 @@ public class LevelData : ScriptableObject
     public SceneIndex SceneIndex;
     public string LevelName;
     public BaseObjective[] objectives;
+    public BaseObjective exitLevelObjective;
     public LoadingScreenData loadingScreen;
 
 }

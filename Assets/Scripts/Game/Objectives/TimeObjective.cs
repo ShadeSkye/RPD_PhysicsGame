@@ -44,7 +44,7 @@ public class TimeObjective : BaseObjective
         ObjectiveTracker.Instance.Refresh();
     }
 
-    public void OnLevelComplete()
+    public void OnComplete()
     {
         if(State == ObjectiveState.InProgress) State = ObjectiveState.Complete;
     }

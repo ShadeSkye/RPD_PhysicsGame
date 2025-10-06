@@ -16,7 +16,8 @@ public enum UIButtonAction
     QuitGame,
     MainMenu,
     RestartLevel,
-    ResumeResetPosition
+    ResumeResetPosition,
+    LevelComplete
 }
 
 public class UIButtonLink : MonoBehaviour
@@ -69,6 +70,9 @@ public class UIButtonLink : MonoBehaviour
                 break;
             case UIButtonAction.RestartLevel:
                 button.onClick.AddListener(UIManager.Instance.RestartLevel);
+                break;
+            case UIButtonAction.LevelComplete:
+                button.onClick.AddListener(UIManager.Instance.LevelComplete);
                 break;
             default:
                 Debug.LogWarning("UIButtonLink: Unhandled action on " + gameObject.name);

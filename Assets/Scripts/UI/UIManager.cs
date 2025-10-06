@@ -250,6 +250,13 @@ public class UIManager : MonoBehaviour
         AudioManager.Instance.PlayOneShot("Button");
     }
 
+    public void LevelComplete()
+    {
+        AudioManager.Instance.PlayOneShot("Button");
+
+        LevelManager.Instance.OnLevelComplete();
+    }
+
     public void SensitivityFromSlider()
     {
         if (sensSlider == null)
