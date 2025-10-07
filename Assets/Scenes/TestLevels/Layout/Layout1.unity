@@ -2719,6 +2719,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7862247769690042, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: boundsSize.x
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862247769690042, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: boundsSize.y
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862247769690042, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: boundsSize.z
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 192631738499025273, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.x
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 192631738499025273, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.z
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 415787494316560421, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15002.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 492830340263048528, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.x
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 492830340263048528, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.y
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 696670778085245107, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15002.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808529169624589490, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.y
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808529169624589490, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.z
+      value: 30000
+      objectReference: {fileID: 0}
     - target: {fileID: 2503429181424955079, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.488754
@@ -2746,6 +2790,26 @@ PrefabInstance:
     - target: {fileID: 2503429181424955079, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3916272927876713033, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -15002.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127720581146002939, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.y
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4127720581146002939, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.z
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530142469985730961, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.x
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4530142469985730961, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.z
+      value: 30000
       objectReference: {fileID: 0}
     - target: {fileID: 4798136426196556568, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2795,9 +2859,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 6873916686714130569, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.x
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6873916686714130569, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_Size.y
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6899588177243959258, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15002.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7457551801659300516, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: far clip plane
       value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7577994048154803271, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -15002.5
       objectReference: {fileID: 0}
     - target: {fileID: 8919163916141781828, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: LevelData
@@ -2811,6 +2891,10 @@ PrefabInstance:
       propertyPath: SpaceStation
       value: 
       objectReference: {fileID: 835866069}
+    - target: {fileID: 9123609839815752186, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15002.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5879,6 +5963,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
   m_PrefabInstance: {fileID: 1670343970}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1763708219
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &1777965848
 PrefabInstance:
   m_ObjectHideFlags: 0
