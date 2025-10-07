@@ -34,6 +34,8 @@ public class Bomb : Cargo
         {
             Explode();
         }*/
+
+        Debug.Log(rb.velocity.magnitude);
     }
 
     protected override void CollisionDamage(Collision collision)
