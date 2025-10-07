@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c5da457567d9147bbcb2a13362f5ad, type: 3}
-  m_Name: GetEgg
+  m_Script: {fileID: 11500000, guid: 36bc9ecdad4b67348a1b03cdb0540afa, type: 3}
+  m_Name: Level2DamageThreshold
   m_EditorClassIdentifier: 
-  State: 1
-  isCritical: 1
-  requiredAmount: 1
-  targetType: 3
-  currentAmount: 3
+  State: 0
+  isCritical: 0
+  damageThreshold: 20
