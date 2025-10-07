@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using Unity.VisualScripting;
 using UnityEngine;
 [RequireComponent(typeof(Damageable))]
 public class PlayerManager : MonoBehaviour
@@ -33,7 +32,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("LevelBounds") || collision.gameObject.CompareTag("Cargo")) return;
+        if (collision.gameObject.CompareTag("LevelBounds")) return;
 
         // get hit amount
         float impactAmount = collision.relativeVelocity.magnitude;

@@ -8,7 +8,6 @@ TagManager:
   - CollisionIgnore
   - Hangar
   - LevelBounds
-  - Cargo
   layers:
   - Default
   - TransparentFX

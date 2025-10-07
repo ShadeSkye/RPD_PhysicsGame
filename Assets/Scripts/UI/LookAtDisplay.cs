@@ -37,11 +37,6 @@ public class LookAtDisplay : MonoBehaviour
             {
                 UpdateLookAtObject(target.displayName, target.distanceToPlayer);
             }
-            else
-            {
-                //Debug.Log($"Target {hit.collider.gameObject.name} is null", hit.collider.gameObject);
-                ClearDisplay();
-            }
 
         }
         else
