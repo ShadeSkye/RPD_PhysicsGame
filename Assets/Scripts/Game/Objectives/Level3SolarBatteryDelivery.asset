@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level3SolarBatteryDelivery
   m_EditorClassIdentifier: 
   objectiveValue: 0
-  State: 0
+  State: 2
   isCritical: 1
   requiredAmount: 10
   targetType: 4
