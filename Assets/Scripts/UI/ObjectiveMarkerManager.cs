@@ -5,6 +5,15 @@ using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum MarkerSprites
+{
+    markerMain,
+    arrowMain,
+    markerSide,
+    arrowSide,
+    spaceStation
+}
+
 public class ObjectiveMarkerManager : MonoBehaviour
 {
     public static ObjectiveMarkerManager Instance;
@@ -12,10 +21,7 @@ public class ObjectiveMarkerManager : MonoBehaviour
     [SerializeField] private RectTransform parent;
     [SerializeField] private RectTransform markerPrefab;
 
-    [SerializeField] private Sprite markerSprite;
-    [SerializeField] private Sprite arrowSprite;
-
-    [SerializeField] private Sprite stationSprite;
+    [SerializeField] private Sprite[] markerSprites;
 
     [SerializeField] private float padding;
 
@@ -90,10 +96,18 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
             if (!isWithinBounds)
             {
-                image.sprite = isDepot ? stationSprite : arrowSprite;
 
-                // CLAMP
-                screenPos.x = Mathf.Clamp(screenPos.x, padding, Screen.width - padding);
+                if (isDepot)
+                {
+                    image.sprite = GetSprite(MarkerSprites.spaceStation);
+                }
+                else
+                {
+                    image.sprite = GetSprite(MarkerSprites.arrowMain);
+                }
+
+                    // CLAMP
+                    screenPos.x = Mathf.Clamp(screenPos.x, padding, Screen.width - padding);
                 screenPos.y = Mathf.Clamp(screenPos.y, padding, Screen.height - padding);
 
                 // ROTATE
@@ -105,12 +119,26 @@ public class ObjectiveMarkerManager : MonoBehaviour
             }
             else
             {
-                image.sprite = isDepot ? stationSprite : markerSprite;
+                if (isDepot)
+                {
+                    image.sprite = GetSprite(MarkerSprites.spaceStation);
+                }
+                else
+                {
+                    image.sprite = GetSprite(MarkerSprites.markerMain);
+                }
             }
         }
         else // if behind player
         {
-            image.sprite = isDepot ? stationSprite : arrowSprite;
+            if (isDepot)
+            {
+                image.sprite = GetSprite(MarkerSprites.spaceStation);
+            }
+            else
+            {
+                image.sprite = GetSprite(MarkerSprites.arrowMain);
+            }
 
             Vector3 camRight = Camera.main.transform.right;
             Vector3 camUp = Camera.main.transform.up;
@@ -140,6 +168,11 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
 
     }
+
+    private Sprite GetSprite(MarkerSprites sprite)
+    {
+        return markerSprites[(int)sprite];
+    } 
 
     public void SetCurrentTargetTypes(HashSet<CargoType> types)
     {

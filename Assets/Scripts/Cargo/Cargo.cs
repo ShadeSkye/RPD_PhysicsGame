@@ -39,16 +39,26 @@ public class Cargo : GravityBody
     }
 
     [Header("Properties")]
-    [Range(1f, 15f)] public float weight;
+
     public CargoType type;
 
-    public float baseValue;
+    public Vector2 WeightRange = new Vector2(1,15);
+    public Vector2 ValueRange = new Vector2(10, 150);
+
+    private float baseValue;
+    private float weight;
     public float CurrentValue => baseValue * (1f - DamagePercent);
 
     protected override void Awake()
     {
         base.Awake();
-        rb.mass = Mathf.Clamp(weight, 1f, 15f);
+
+        weight = Mathf.RoundToInt(Random.Range(WeightRange.x, WeightRange.y));
+        rb.mass = weight;
+        weight = Random.Range(WeightRange.x, WeightRange.y);
+        rb.mass = weight;
+        
+        baseValue = Mathf.RoundToInt(Random.Range(ValueRange.x, ValueRange.y));
 
         ConnectReferences();
 
@@ -86,10 +96,18 @@ public class Cargo : GravityBody
     {
         if (dmg == null) return;
 
-        float impactAmount = collision.relativeVelocity.magnitude;
-        dmg.ApplyImpact(impactAmount);
+        if (collision.gameObject.CompareTag("LevelBounds"))
+        {
+            LevelBounds.Instance.Teleport(this.gameObject);
+        }
+        else
+        {
+            float impactAmount = collision.relativeVelocity.magnitude;
+            dmg.ApplyImpact(impactAmount);
 
-        CollisionDamage(collision);
+            CollisionDamage(collision);
+        }
+
     }
 
     protected virtual void CollisionDamage(Collision collision)

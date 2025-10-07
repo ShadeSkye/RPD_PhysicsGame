@@ -8,6 +8,8 @@ public abstract class BaseObjective : ScriptableObject
     public virtual string objectiveName { get; }
     public virtual string objectiveStatus { get; }
 
+    public float objectiveValue;
+
     public ObjectiveState State;
     public bool isCritical;
 
@@ -29,6 +31,8 @@ public abstract class BaseObjective : ScriptableObject
         State = ObjectiveState.Complete;
 
         LevelManager.Instance.OnObjectiveComplete(this);
+
+        CurrencyManager.Instance.AddEarnings(objectiveValue);
     }
 
     public string GenerateLabel(bool condense)

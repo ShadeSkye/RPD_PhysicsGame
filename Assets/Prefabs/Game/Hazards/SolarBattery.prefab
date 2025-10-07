@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 3840208604643365683}
   - component: {fileID: 615581398677898327}
   - component: {fileID: 358843177750917496}
-  - component: {fileID: 8296958503694785016}
   - component: {fileID: 8718945727551884998}
   - component: {fileID: 4805490285979014506}
+  - component: {fileID: 4520695965690730845}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: SolarBattery
   m_TagString: Cargo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 10def30eb09d6744891825f43e40bd0b, type: 2}
+  - {fileID: 2100000, guid: b8e110ff25aa349468400a9c38879c42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,34 +224,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8296958503694785016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6032177473814456095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0da49958f0726394f919b5913340b88e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  objectName: Bomb
-  isDynamic: 1
-  IsInitialised: 0
-  OrbitDistance: 0
-  OrbitTarget: {fileID: 0}
-  IsLocked: 0
-  LastReleasedTime: 0
-  type: 2
-  WeightRange: {x: 1, y: 15}
-  ValueRange: {x: 10, y: 10}
-  impactDamage: 0.05
-  radius: 10
-  damage: 25
-  force: 2500
-  torque: 100
 --- !u!114 &8718945727551884998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,3 +264,33 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4520695965690730845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6032177473814456095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f4d721d59e03c4ea9d7d2d702b4945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  objectName: 
+  isDynamic: 1
+  IsInitialised: 0
+  OrbitDistance: 0
+  OrbitTarget: {fileID: 0}
+  IsLocked: 0
+  LastReleasedTime: 0
+  type: 0
+  WeightRange: {x: 0, y: 0}
+  ValueRange: {x: 0, y: 0}
+  impactDamage: 0.05
+  radius: 10
+  damage: 25
+  force: 2500
+  torque: 100
+  maxVelocity: 60
+  maxAngularVelocity: 6

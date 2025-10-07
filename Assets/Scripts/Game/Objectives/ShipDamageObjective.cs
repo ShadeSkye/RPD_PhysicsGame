@@ -9,7 +9,12 @@ public class ShipDamageObjective : BaseObjective
     {
         get
         {
-            return $"Complete level with less than {damageThreshold}% ship damage";
+
+            string text = $"Complete level with less than {damageThreshold}% ship damage";
+
+            if (objectiveValue > 0) text += $" [{CurrencyManager.Instance.CurrencyFormatted(objectiveValue)}]";
+
+            return text;
         }
     }
 

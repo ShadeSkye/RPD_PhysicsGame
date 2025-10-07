@@ -37,6 +37,10 @@ public class LookAtDisplay : MonoBehaviour
             {
                 UpdateLookAtObject(target.displayName, target.distanceToPlayer);
             }
+            else
+            {
+                ClearDisplay();
+            }
 
         }
         else
