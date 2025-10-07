@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level Data", menuName = "Level/LevelData")]
 public class LevelData : ScriptableObject
 {
-    public SceneIndex SceneIndex;
+    [HideInInspector] public SceneIndex SceneIndex { get; internal set; }
     public string LevelName;
     public BaseObjective[] objectives;
     public BaseObjective exitLevelObjective;

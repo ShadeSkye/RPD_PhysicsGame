@@ -1,12 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
-    public LevelData LevelData;
+
+    private bool initialized = false;
+    public LevelData LevelData { get; private set; } 
 
     public List<Cargo> deliveredCargo = new List<Cargo>();
     public List<Cargo> activeCargo = new List<Cargo>();
@@ -24,30 +28,51 @@ public class LevelManager : MonoBehaviour
         }
 
         Instance = this;
+
+        if (GameManager.Instance != null)
+        {
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            if (sceneIndex > 0 && sceneIndex < GameManager.Instance.Levels.Length)
+                AssignLevelData(GameManager.Instance.Levels[sceneIndex]);
+        }
     }
 
-    private void Start()
+
+    internal void AssignLevelData(LevelData newLevelData)
     {
-        foreach (var obj in LevelData.objectives)
+        LevelData = newLevelData;
+        Debug.Log($"ASSIGNED LEVEL DATA: {LevelData.LevelName}");
+
+        if (!initialized)
+            InitializeLevel();
+    }
+
+    private void InitializeLevel()
+    {
+        if (LevelData == null)
         {
-            obj.ResetObjective();
+            Debug.LogError("LevelData is null!");
+            return;
         }
 
+        foreach (var obj in LevelData.objectives)
+            obj.ResetObjective();
+
         LevelSelect.Instance.ResetButtons();
-        
         ObjectiveTracker.Instance.Setup(LevelData.objectives.ToList<BaseObjective>());
 
         Cargo[] prePlacedCargo = FindObjectsOfType<Cargo>();
         foreach (var c in prePlacedCargo)
-        {
             RegisterCargo(c);
-        }
 
         UpdateMarkers();
+        initialized = true;
     }
 
     private void Update()
     {
+        if (!initialized) return;
+
         elapsedTime += Time.deltaTime;
 
         foreach (var o in LevelData.objectives.OfType<TimeObjective>())

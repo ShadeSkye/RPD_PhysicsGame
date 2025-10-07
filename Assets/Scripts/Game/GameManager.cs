@@ -18,9 +18,12 @@ public enum SceneIndex
     Level3
 }
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public LevelData[] Levels;
 
     [Header("Load Transition")]
     [SerializeField] private Image fadeImage;
@@ -42,6 +45,14 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         DontDestroyOnLoad(gameObject);
+
+        for (int i = 0; i < Levels.Length; i++)
+        {
+            if (Levels[i] != null)
+            {
+                Levels[i].SceneIndex = (SceneIndex)i;
+            }
+        }
     }
 
     public SceneIndex GetCurrentScene()
@@ -186,6 +197,7 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 UIManager.Instance.SetPrimary(PrimaryUIState.HUD);
+                //LevelManager.Instance.AssignLevelData(Levels[(int)scene]);
                 Play();
                 break;
 
