@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3046421779781875794}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4281006, y: 172.34592, z: 132.33759}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 200, y: 200, z: 200}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -89,8 +89,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   objectName: Depot
+  isDynamic: 0
   DontPullPlayer: 1
-  localGravity: 1
+  gravityStrength: 10
   Radius: 100
   rotate: 1
   rotationSpeed: 5
