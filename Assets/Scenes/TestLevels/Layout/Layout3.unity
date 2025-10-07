@@ -208,226 +208,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7921136071669894342, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
   m_PrefabInstance: {fileID: 28877738}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &54309113
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1924470793}
-    m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3202.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 492.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3853.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: objectName
-      value: Solar Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitTarget
-      value: 
-      objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: impactDamage
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitDistance
-      value: 150
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &54309114 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 54309113}
-  m_PrefabAsset: {fileID: 0}
---- !u!21 &80512415
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
---- !u!1001 &109614576
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1924470793}
-    m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3162.7793
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 492.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3890.3652
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: objectName
-      value: Solar Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitTarget
-      value: 
-      objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: impactDamage
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitDistance
-      value: 50
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &109614577 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 109614576}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &135010170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1005,6 +785,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1587316422}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 65.1
       objectReference: {fileID: 0}
@@ -1061,6 +845,112 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
   m_PrefabInstance: {fileID: 509184015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &561004209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &561004210 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 561004209}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &591493189
 GameObject:
@@ -1591,6 +1481,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1857958130}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 36.6
       objectReference: {fileID: 0}
@@ -1665,6 +1559,10 @@ PrefabInstance:
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 755453285}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 130.3
@@ -1833,6 +1731,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1587316422}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 36.6
       objectReference: {fileID: 0}
@@ -1975,96 +1877,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7921136071669894342, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
   m_PrefabInstance: {fileID: 862144912}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &866937172
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1924470793}
-    m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3072.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 492.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3897.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: objectName
-      value: Solar Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitTarget
-      value: 
-      objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: impactDamage
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitDistance
-      value: 20
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &866937173 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 866937172}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &868582845 stripped
 Transform:
@@ -2532,96 +2344,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
---- !u!1001 &988901198
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1924470793}
-    m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2977.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 492.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3774.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: objectName
-      value: Solar Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitTarget
-      value: 
-      objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: impactDamage
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitDistance
-      value: 75
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &988901199 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 988901198}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1003426430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2634,6 +2356,10 @@ PrefabInstance:
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 755453285}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 88
@@ -2997,6 +2723,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1857958130}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 123.7
       objectReference: {fileID: 0}
@@ -3153,6 +2883,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 497392370}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 15.29
       objectReference: {fileID: 0}
@@ -3210,96 +2944,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
   m_PrefabInstance: {fileID: 1168727342}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1255276170
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1924470793}
-    m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3202.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 492.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3853.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: objectName
-      value: Solar Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitTarget
-      value: 
-      objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: impactDamage
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitDistance
-      value: 150
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &1255276171 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 1255276170}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1258052469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3312,6 +2956,10 @@ PrefabInstance:
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 1587316422}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 123.7
@@ -3369,6 +3017,218 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
   m_PrefabInstance: {fileID: 1258052469}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1291693008
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 228.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (11)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1291693009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1291693008}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1307012489
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 30.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1307012490 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1307012489}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1332890071
 PrefabInstance:
@@ -3489,96 +3349,6 @@ Transform:
   - {fileID: 1405870837}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1001 &1367344114
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1924470793}
-    m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3072.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 492.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3897.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: objectName
-      value: Solar Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitTarget
-      value: 
-      objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: impactDamage
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitDistance
-      value: 20
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &1367344115 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 1367344114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1405870835
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,6 +3457,112 @@ MonoBehaviour:
   m_FocusTarget: {fileID: 0}
   m_FocusOffset: 0
   m_Profile: {fileID: 11400000, guid: efefec3a61dcdea41ab46f5d424da4f3, type: 2}
+--- !u!1001 &1458160467
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 111.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (6)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1458160468 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1458160467}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1465222746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3773,6 +3649,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7921136071669894342, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
   m_PrefabInstance: {fileID: 1465222746}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1477362536
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1001 &1521375442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3785,6 +3701,10 @@ PrefabInstance:
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 1857958130}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 146.9
@@ -3919,6 +3839,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 229510491256472730, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 229510491256472730, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 229510491256472730, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 229510491256472730, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 247983166055540697, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3969,7 +3905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 670846062680089255, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.3452454
+      value: -4.3451233
       objectReference: {fileID: 0}
     - target: {fileID: 673473910887394108, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchorMax.x
@@ -3981,6 +3917,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 673473910887394108, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 674067384691266930, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 674067384691266930, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 674067384691266930, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 674067384691266930, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 686592718892153633, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
@@ -4021,7 +3973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 882384822945103130, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25.000732
+      value: -25.000793
       objectReference: {fileID: 0}
     - target: {fileID: 962496036456983579, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4156,6 +4108,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2069723536543036514, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211611101378726702, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211611101378726702, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211611101378726702, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2211611101378726702, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -4533,7 +4501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4943879189022732033, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25.000732
+      value: -25.000793
       objectReference: {fileID: 0}
     - target: {fileID: 4955510860875614366, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4561,7 +4529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6137154987835741003, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25.000732
+      value: -25.000793
       objectReference: {fileID: 0}
     - target: {fileID: 6312080209521263112, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4737,7 +4705,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8687153516487799932, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -25.000732
+      value: -25.000793
       objectReference: {fileID: 0}
     - target: {fileID: 8696280985440490568, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchorMax.y
@@ -4980,6 +4948,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1857958130}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 79.3
       objectReference: {fileID: 0}
@@ -5036,6 +5008,112 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
   m_PrefabInstance: {fileID: 1572724424}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1584802752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 208.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (10)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1584802753 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1584802752}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1587316420
 PrefabInstance:
@@ -5134,6 +5212,112 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f11379c89e170b4c8a7a7ad9a96167a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1597868718
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 93.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (5)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1597868719 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1597868718}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1598361747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5236,6 +5420,10 @@ PrefabInstance:
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 1587316422}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 79.3
@@ -5586,7 +5774,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7921136071669894342, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
   m_PrefabInstance: {fileID: 1712775794}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1799320689
+--- !u!1001 &1716995288
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5594,89 +5782,105 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1924470793}
     m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3162.7793
+      value: 3237.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 492.3
+      value: 503.69604
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3890.3652
+      value: 3885.3
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (5)
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: objectName
       value: Solar Battery
       objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: impactDamage
       value: 0.05
       objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: OrbitDistance
-      value: 50
+      value: 63.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &1799320690 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1716995289 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 1799320689}
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1716995288}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1804697836
+--- !u!1001 &1789689390
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -5684,87 +5888,103 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1924470793}
     m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2991.9
+      value: 3237.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 492.3
+      value: 503.69604
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3843
+      value: 3885.3
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (7)
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: objectName
       value: Solar Battery
       objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: impactDamage
       value: 0.05
       objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: OrbitDistance
-      value: 100
+      value: 186.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &1804697837 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1789689391 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 1804697836}
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1789689390}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1839633436
 PrefabInstance:
@@ -5778,6 +5998,10 @@ PrefabInstance:
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 497392370}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 35.1
@@ -5835,6 +6059,112 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
   m_PrefabInstance: {fileID: 1839633436}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1841448754
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 18.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1841448755 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1841448754}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1857958128
 PrefabInstance:
@@ -5946,6 +6276,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1857958130}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 65.1
       objectReference: {fileID: 0}
@@ -6037,96 +6371,6 @@ Transform:
   - {fileID: 1924470793}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1905633963
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1924470793}
-    m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2991.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 492.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3843
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: objectName
-      value: Solar Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitTarget
-      value: 
-      objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: impactDamage
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: OrbitDistance
-      value: 100
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &1905633964 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 1905633963}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1924470792
 GameObject:
   m_ObjectHideFlags: 0
@@ -6156,16 +6400,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 109614577}
-  - {fileID: 1799320690}
-  - {fileID: 1991698437}
-  - {fileID: 988901199}
-  - {fileID: 1905633964}
-  - {fileID: 1804697837}
-  - {fileID: 54309114}
-  - {fileID: 1255276171}
-  - {fileID: 866937173}
-  - {fileID: 1367344115}
   - {fileID: 1168727343}
   - {fileID: 1839633437}
   - {fileID: 821499801}
@@ -6181,6 +6415,18 @@ Transform:
   - {fileID: 2065074199}
   - {fileID: 1003426431}
   - {fileID: 754311488}
+  - {fileID: 1841448755}
+  - {fileID: 1307012490}
+  - {fileID: 2117922843}
+  - {fileID: 1716995289}
+  - {fileID: 561004210}
+  - {fileID: 1597868719}
+  - {fileID: 1458160468}
+  - {fileID: 1968592602}
+  - {fileID: 2135960693}
+  - {fileID: 1789689391}
+  - {fileID: 1584802753}
+  - {fileID: 1291693009}
   m_Father: {fileID: 1903560578}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1945919069 stripped
@@ -6199,7 +6445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f11379c89e170b4c8a7a7ad9a96167a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1991698436
+--- !u!1001 &1968592601
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -6207,87 +6453,103 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1924470793}
     m_Modifications:
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2977.5
+      value: 3237.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 492.3
+      value: 503.69604
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3774.5
+      value: 3885.3
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Name
-      value: SolarBattery (1)
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 6032177473814456095, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: baseValue
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-      propertyPath: isDynamic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: objectName
       value: Solar Battery
       objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 1945919071}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: impactDamage
       value: 0.05
       objectReference: {fileID: 0}
-    - target: {fileID: 8296958503694785016, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
       propertyPath: OrbitDistance
-      value: 75
+      value: 131
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
---- !u!4 &1991698437 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &1968592602 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
-  m_PrefabInstance: {fileID: 1991698436}
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 1968592601}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2030338307
 PrefabInstance:
@@ -6301,6 +6563,10 @@ PrefabInstance:
       propertyPath: OrbitTarget
       value: 
       objectReference: {fileID: 1587316422}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 146.9
@@ -6372,6 +6638,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 755453285}
     - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
+      propertyPath: ValueRange.y
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 15945241586667816, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
       propertyPath: OrbitDistance
       value: 14.27
       objectReference: {fileID: 0}
@@ -6428,6 +6698,218 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6945836034245232422, guid: 17ffcd94cc213904ea62d29dadbb3f7c, type: 3}
   m_PrefabInstance: {fileID: 2065074198}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2117922842
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &2117922843 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 2117922842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2135960692
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1924470793}
+    m_Modifications:
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3237.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 503.69604
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3885.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: objectName
+      value: Solar Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitTarget
+      value: 
+      objectReference: {fileID: 1945919071}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxVelocity
+      value: 6000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: ValueRange.y
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: impactDamage
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: OrbitDistance
+      value: 156.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: WeightRange.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4520695965690730845, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: maxAngularVelocity
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032177473814456095, guid: 212001eee8e509744a40262d408505c1, type: 3}
+      propertyPath: m_Name
+      value: SolarBattery (8)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212001eee8e509744a40262d408505c1, type: 3}
+--- !u!4 &2135960693 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2136669319906304557, guid: 212001eee8e509744a40262d408505c1, type: 3}
+  m_PrefabInstance: {fileID: 2135960692}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5158158122166323362
 PrefabInstance:

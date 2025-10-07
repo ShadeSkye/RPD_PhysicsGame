@@ -8,6 +8,14 @@ public class SolarBattery : Bomb
     [Header("Velocity Trigger")]
     [SerializeField] private float maxVelocity = 60f;
     [SerializeField] private float maxAngularVelocity = 7f;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        type = CargoType.SolarBattery;
+    }
+
     private void Update()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
