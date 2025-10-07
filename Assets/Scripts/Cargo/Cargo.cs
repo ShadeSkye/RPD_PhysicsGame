@@ -39,6 +39,7 @@ public class Cargo : GravityBody
     }
 
     [Header("Properties")]
+<<<<<<< Updated upstream
 
     public CargoType type;
 
@@ -47,14 +48,30 @@ public class Cargo : GravityBody
 
     public Vector2 ValueRange;
     public float baseValue;
+=======
+    public CargoType type;
+
+    public Vector2 WeightRange;
+    public Vector2 ValueRange;
+
+    private float baseValue;
+    private float weight;
+>>>>>>> Stashed changes
     public float CurrentValue => baseValue * (1f - DamagePercent);
 
     protected override void Awake()
     {
         base.Awake();
+<<<<<<< Updated upstream
 
         weight = Mathf.RoundToInt(Random.Range(WeightRange.x, WeightRange.y));
         rb.mass = weight;
+=======
+        weight = Random.Range(WeightRange.x, WeightRange.y);
+        rb.mass = weight;
+        
+        baseValue = Mathf.RoundToInt(Random.Range(ValueRange.x, ValueRange.y));
+>>>>>>> Stashed changes
 
         ConnectReferences();
 

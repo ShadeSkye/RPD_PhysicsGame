@@ -43,7 +43,7 @@ public class LevelSelect : MonoBehaviour
             LevelSelectButton button = Instantiate(buttonPrefab, layoutGroupParent);
             button.Setup(l);
 
-            Debug.Log($"complete: {(int)l.SceneIndex <= lastCompletedIndex} (this scene {(int)l.SceneIndex} comes before loaded scene {lastCompletedIndex}?");
+            //Debug.Log($"complete: {(int)l.SceneIndex <= lastCompletedIndex} (this scene {(int)l.SceneIndex} comes before loaded scene {lastCompletedIndex}?");
 
             buttons.Add(button);
 

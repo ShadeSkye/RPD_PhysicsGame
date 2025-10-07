@@ -77,6 +77,8 @@ public class PullBeam : MonoBehaviour
         {
             if (Time.time - c.LastReleasedTime < lockCooldown) return;
 
+
+            c.rb.isKinematic = false;
             c.rb.velocity = Vector3.zero;
             c.rb.angularVelocity = Vector3.zero;
 
@@ -109,6 +111,9 @@ public class PullBeam : MonoBehaviour
             c.IsLocked = false;
             c.rb.isKinematic = false;
             c.transform.SetParent(null);
+
+            c.rb.velocity = Vector3.zero;
+            c.rb.angularVelocity = Vector3.zero;
 
             GravityManager.Instance.RegisterObject(c);
 
