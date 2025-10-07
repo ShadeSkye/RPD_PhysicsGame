@@ -15,8 +15,8 @@ MonoBehaviour:
   SceneIndex: 2
   LevelName: Test Level
   objectives:
-  - {fileID: 11400000, guid: ff10284beae0f26478618d9e7419fbee, type: 2}
-  - {fileID: 11400000, guid: b234ba5ed448af84783b6a3ab7531f00, type: 2}
-  - {fileID: 11400000, guid: 129a2cd895f7aa44caec31fa8a330d07, type: 2}
+  - {fileID: 11400000, guid: 832b367e043cc69478befedee27219fa, type: 2}
+  - {fileID: 11400000, guid: 35e8b23b192ac2546919095750fbdce4, type: 2}
+  - {fileID: 11400000, guid: 314ed85e19640df46a89fcc4dfd26394, type: 2}
   exitLevelObjective: {fileID: 11400000, guid: 09b2a813be37a5146b9a8d0056b60c71, type: 2}
-  loadingScreen: {fileID: 11400000, guid: 30bf705aea0158f4287e22f3029bdf2d, type: 2}
+  loadingScreen: {fileID: 11400000, guid: f29cdba894441804f8299966b9056a41, type: 2}

@@ -15,8 +15,8 @@ MonoBehaviour:
   SceneIndex: 1
   LevelName: Level One
   objectives:
-  - {fileID: 11400000, guid: ff10284beae0f26478618d9e7419fbee, type: 2}
-  - {fileID: 11400000, guid: b234ba5ed448af84783b6a3ab7531f00, type: 2}
-  - {fileID: 11400000, guid: 129a2cd895f7aa44caec31fa8a330d07, type: 2}
+  - {fileID: 11400000, guid: acbf62bd62e9d9340a69c3b1c10d3239, type: 2}
+  - {fileID: 11400000, guid: bfbb9d903b26f644cabb7bd09220cdc0, type: 2}
+  - {fileID: 11400000, guid: 69e3ea04ccbc3bd4d88115d6105aa48c, type: 2}
   exitLevelObjective: {fileID: 11400000, guid: 09b2a813be37a5146b9a8d0056b60c71, type: 2}
   loadingScreen: {fileID: 11400000, guid: 30bf705aea0158f4287e22f3029bdf2d, type: 2}
