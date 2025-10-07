@@ -8,7 +8,6 @@ public class Bomb : Cargo
     [Header("Trigger")]
 
     [SerializeField] private float impactDamage = 0.05f;
-    [SerializeField] private float maxSafeSpeed = 300f;
 
     [Header("Explosion")]
     [SerializeField] private float radius = 10f;
@@ -23,18 +22,6 @@ public class Bomb : Cargo
         base.Awake();
 
         type = CargoType.Bomb;
-    }
-
-    private void Update()
-    {
-       /* Rigidbody rb = GetComponent<Rigidbody>();
-        float speed = rb.velocity.magnitude;
-
-        if (speed > maxSafeSpeed)
-        {
-            Explode();
-        }*/
-
     }
 
     protected override void CollisionDamage(Collision collision)

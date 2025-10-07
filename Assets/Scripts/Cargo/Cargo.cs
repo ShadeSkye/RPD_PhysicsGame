@@ -42,8 +42,8 @@ public class Cargo : GravityBody
 
     public CargoType type;
 
-    public Vector2 WeightRange;
-    public Vector2 ValueRange;
+    public Vector2 WeightRange = new Vector2(1,15);
+    public Vector2 ValueRange = new Vector2(10, 150);
 
     private float baseValue;
     private float weight;
