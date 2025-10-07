@@ -140,15 +140,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.474546
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.2949512
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 26.805286
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2136669319906304557, guid: 76a9feb3a2b54234980a7b27519507e3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  objectName: 
+  objectName: Space Mine
   isDynamic: 0
   IsInitialised: 0
   OrbitDistance: 0
