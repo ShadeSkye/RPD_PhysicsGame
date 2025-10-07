@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: 512b51f16f0ab0141bf4a47b500e1e9a
   - enabled: 1
-    path: Assets/Scenes/Levels/Level1.unity
-    guid: eed7a2932d2084f43af1f5d32d7a63df
+    path: Assets/Scenes/TestLevels/Layout/Layout1.unity
+    guid: 7d913241d6feb0548b6cd65b50444ca1
   - enabled: 1
-    path: Assets/Scenes/TestLevels/LevelSelection/Test2.unity
-    guid: 944cdf92293f87f4391dd69fe5f6c0b4
+    path: Assets/Scenes/TestLevels/Layout/Layout2.unity
+    guid: 5f36151fa73c3cf46b5bb7832c158c48
   - enabled: 1
-    path: Assets/Scenes/TestLevels/LevelSelection/Test3.unity
-    guid: 7984add717697ff4aa31554fc705decc
+    path: Assets/Scenes/TestLevels/Layout/Layout3.unity
+    guid: 3a9a6bfc7761923438572086e763ce5e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 8ed32cf59a5bd9541ad1e7abc3efaf73, type: 3}
