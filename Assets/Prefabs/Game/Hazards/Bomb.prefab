@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagePercent: 0
   minImpact: 5
-  damageMultiplier: 0.001
+  damageMultiplier: 0.1
   hitSFX: CrateHit
 --- !u!82 &358843177750917496
 AudioSource:
