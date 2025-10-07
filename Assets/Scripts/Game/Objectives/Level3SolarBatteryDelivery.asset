@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c5da457567d9147bbcb2a13362f5ad, type: 3}
   m_Name: Level3SolarBatteryDelivery
   m_EditorClassIdentifier: 
+  objectiveValue: 0
   State: 0
   isCritical: 1
   requiredAmount: 10
-  targetType: 2
+  targetType: 4
   currentAmount: 0
