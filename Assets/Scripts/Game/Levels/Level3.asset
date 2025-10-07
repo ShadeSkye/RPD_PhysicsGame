@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 275fffbecbc082447ab97e414b8ab6ec, type: 3}
-  m_Name: Test2
+  m_Name: Level3
   m_EditorClassIdentifier: 
-  SceneIndex: 2
+  SceneIndex: 3
   LevelName: Test Level
   objectives:
-  - {fileID: 11400000, guid: 832b367e043cc69478befedee27219fa, type: 2}
-  - {fileID: 11400000, guid: 35e8b23b192ac2546919095750fbdce4, type: 2}
-  - {fileID: 11400000, guid: 314ed85e19640df46a89fcc4dfd26394, type: 2}
+  - {fileID: 11400000, guid: 3767a5b9b4cef8d47a20e1aedd139ad7, type: 2}
+  - {fileID: 11400000, guid: 067049ccf57957142a47520354e2bc8d, type: 2}
+  - {fileID: 11400000, guid: 48632b22383f4174b9d079843d1029f7, type: 2}
   exitLevelObjective: {fileID: 11400000, guid: 09b2a813be37a5146b9a8d0056b60c71, type: 2}
-  loadingScreen: {fileID: 11400000, guid: f29cdba894441804f8299966b9056a41, type: 2}
+  loadingScreen: {fileID: 11400000, guid: 038777581cd89e74eafe6e8e695e7f64, type: 2}

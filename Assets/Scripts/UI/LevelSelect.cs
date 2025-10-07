@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class LevelSelect : MonoBehaviour
 
     [SerializeField] private Button completeLevelButton;
 
-    public List<LevelData> levels = new();
+    public List<LevelData> levels;
     [HideInInspector] public List<LevelSelectButton> buttons = new();
     [HideInInspector] public HashSet<LevelData> completedLevels = new HashSet<LevelData>();
 
@@ -29,11 +30,13 @@ public class LevelSelect : MonoBehaviour
         }
 
         Instance = this;
-
     }
 
     void Start()
     {
+        List<LevelData> levels = GameManager.Instance.Levels.ToList();
+        levels.RemoveAt(0);
+
         lastCompletedIndex = (int)SaveManager.Instance.LoadLastCompletedLevel();
 
         ResetButtons();
@@ -43,7 +46,7 @@ public class LevelSelect : MonoBehaviour
             LevelSelectButton button = Instantiate(buttonPrefab, layoutGroupParent);
             button.Setup(l);
 
-            Debug.Log($"complete: {(int)l.SceneIndex <= lastCompletedIndex} (this scene {(int)l.SceneIndex} comes before loaded scene {lastCompletedIndex}?");
+            //Debug.Log($"complete: {(int)l.SceneIndex <= lastCompletedIndex} (this scene {(int)l.SceneIndex} comes before loaded scene {lastCompletedIndex}?");
 
             buttons.Add(button);
 
