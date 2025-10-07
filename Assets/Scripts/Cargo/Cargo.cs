@@ -9,7 +9,8 @@ public enum CargoType
     Any,
     Crate,
     Bomb,
-    Egg
+    Egg,
+    SolarBattery
 }
 
 [RequireComponent(typeof(Damageable), typeof(AudioSource))]

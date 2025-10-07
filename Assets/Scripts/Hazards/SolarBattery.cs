@@ -7,7 +7,7 @@ public class SolarBattery : Bomb
 {
     [Header("Velocity Trigger")]
     [SerializeField] private float maxVelocity = 60f;
-    [SerializeField] private float maxAngularVelocity = 6f;
+    [SerializeField] private float maxAngularVelocity = 7f;
     private void Update()
     {
         Rigidbody rb = GetComponent<Rigidbody>();
