@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4805490285979014506}
   m_Layer: 0
   m_Name: Bomb
-  m_TagString: Untagged
+  m_TagString: Cargo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,16 +237,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  objectName: 
+  objectName: Bomb
   isDynamic: 0
   IsInitialised: 0
   OrbitDistance: 0
   OrbitTarget: {fileID: 0}
   IsLocked: 0
   LastReleasedTime: 0
-  weight: 1
   type: 2
-  baseValue: 0
+  WeightRange: {x: 1, y: 15}
+  ValueRange: {x: 10, y: 10}
   impactDamage: 0.05
   maxSafeSpeed: 300
   radius: 10
@@ -275,7 +275,7 @@ Rigidbody:
   m_GameObject: {fileID: 6032177473814456095}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

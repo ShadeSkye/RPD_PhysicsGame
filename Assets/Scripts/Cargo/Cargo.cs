@@ -39,16 +39,26 @@ public class Cargo : GravityBody
     }
 
     [Header("Properties")]
-    [Range(1f, 15f)] public float weight;
+
     public CargoType type;
 
-    public float baseValue;
+    public Vector2 WeightRange;
+    public Vector2 ValueRange;
+
+    private float baseValue;
+    private float weight;
     public float CurrentValue => baseValue * (1f - DamagePercent);
 
     protected override void Awake()
     {
         base.Awake();
-        rb.mass = Mathf.Clamp(weight, 1f, 15f);
+
+        weight = Mathf.RoundToInt(Random.Range(WeightRange.x, WeightRange.y));
+        rb.mass = weight;
+        weight = Random.Range(WeightRange.x, WeightRange.y);
+        rb.mass = weight;
+        
+        baseValue = Mathf.RoundToInt(Random.Range(ValueRange.x, ValueRange.y));
 
         ConnectReferences();
 

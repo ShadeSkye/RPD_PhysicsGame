@@ -190,7 +190,7 @@ public class InputManager : MonoBehaviour
     {
         if (isBraking)
         {
-            Debug.Log(brakeForce);
+            //Debug.Log(brakeForce);
             Vector3 brakingForce = -rb.velocity.normalized * rb.velocity.magnitude * brakeForce * Time.fixedDeltaTime;
             rb.AddForce(brakingForce, ForceMode.VelocityChange);
         }

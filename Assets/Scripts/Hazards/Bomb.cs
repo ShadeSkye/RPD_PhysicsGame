@@ -27,19 +27,27 @@ public class Bomb : Cargo
 
     private void Update()
     {
-        Rigidbody rb = GetComponent<Rigidbody>();
+       /* Rigidbody rb = GetComponent<Rigidbody>();
         float speed = rb.velocity.magnitude;
 
         if (speed > maxSafeSpeed)
         {
             Explode();
-        }
+        }*/
     }
 
     protected override void CollisionDamage(Collision collision)
     {
-        Debug.Log($"{DamagePercent} vs {impactDamage}");
-    if (DamagePercent > impactDamage) Explode();
+        if (DamagePercent > impactDamage)
+        {
+
+            Debug.Log($"damage {DamagePercent} more than threshold {impactDamage}");
+            Explode();
+        }
+        else
+        {
+            Debug.Log($"damage {DamagePercent} less than threshold {impactDamage}");
+        }
 
     }
     protected void Explode()

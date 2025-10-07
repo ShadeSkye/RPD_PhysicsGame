@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("LevelBounds")) return;
+        if (collision.gameObject.CompareTag("LevelBounds") || collision.gameObject.CompareTag("Cargo")) return;
 
         // get hit amount
         float impactAmount = collision.relativeVelocity.magnitude;
