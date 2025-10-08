@@ -180,6 +180,24 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Up"",
+                    ""type"": ""Button"",
+                    ""id"": ""f1155fdf-a56f-47e5-a2eb-04dc0f23b9fa"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Down"",
+                    ""type"": ""Button"",
+                    ""id"": ""2bea830b-e3a9-47ce-a3af-a3b02a39c5e8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -571,7 +589,7 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""630d0b84-e2a6-49f6-8e01-db65bda6b3b9"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/b"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -633,6 +651,50 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
                     ""action"": ""ObjectiveSelect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""315919b3-695f-463b-9cee-ef5971ab4240"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a36340e2-fc60-4ba9-a34d-3397cc009df6"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a801523-db86-4f34-8410-7f09811393e6"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""313ee6ba-52de-458e-8225-42b49a41d2c9"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -651,6 +713,8 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         m_Flight_Brake = m_Flight.FindAction("Brake", throwIfNotFound: true);
         m_Flight_PauseMenu = m_Flight.FindAction("PauseMenu", throwIfNotFound: true);
         m_Flight_ObjectiveSelect = m_Flight.FindAction("ObjectiveSelect", throwIfNotFound: true);
+        m_Flight_Up = m_Flight.FindAction("Up", throwIfNotFound: true);
+        m_Flight_Down = m_Flight.FindAction("Down", throwIfNotFound: true);
     }
 
     ~@ShipActions()
@@ -741,6 +805,8 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Flight_Brake;
     private readonly InputAction m_Flight_PauseMenu;
     private readonly InputAction m_Flight_ObjectiveSelect;
+    private readonly InputAction m_Flight_Up;
+    private readonly InputAction m_Flight_Down;
     /// <summary>
     /// Provides access to input actions defined in input action map "Flight".
     /// </summary>
@@ -792,6 +858,14 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Flight/ObjectiveSelect".
         /// </summary>
         public InputAction @ObjectiveSelect => m_Wrapper.m_Flight_ObjectiveSelect;
+        /// <summary>
+        /// Provides access to the underlying input action "Flight/Up".
+        /// </summary>
+        public InputAction @Up => m_Wrapper.m_Flight_Up;
+        /// <summary>
+        /// Provides access to the underlying input action "Flight/Down".
+        /// </summary>
+        public InputAction @Down => m_Wrapper.m_Flight_Down;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -848,6 +922,12 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
             @ObjectiveSelect.started += instance.OnObjectiveSelect;
             @ObjectiveSelect.performed += instance.OnObjectiveSelect;
             @ObjectiveSelect.canceled += instance.OnObjectiveSelect;
+            @Up.started += instance.OnUp;
+            @Up.performed += instance.OnUp;
+            @Up.canceled += instance.OnUp;
+            @Down.started += instance.OnDown;
+            @Down.performed += instance.OnDown;
+            @Down.canceled += instance.OnDown;
         }
 
         /// <summary>
@@ -889,6 +969,12 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
             @ObjectiveSelect.started -= instance.OnObjectiveSelect;
             @ObjectiveSelect.performed -= instance.OnObjectiveSelect;
             @ObjectiveSelect.canceled -= instance.OnObjectiveSelect;
+            @Up.started -= instance.OnUp;
+            @Up.performed -= instance.OnUp;
+            @Up.canceled -= instance.OnUp;
+            @Down.started -= instance.OnDown;
+            @Down.performed -= instance.OnDown;
+            @Down.canceled -= instance.OnDown;
         }
 
         /// <summary>
@@ -999,5 +1085,19 @@ public partial class @ShipActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnObjectiveSelect(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Up" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnUp(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Down" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDown(InputAction.CallbackContext context);
     }
 }

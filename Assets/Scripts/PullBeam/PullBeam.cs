@@ -1,36 +1,65 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Scripting.APIUpdating;
 
+[RequireComponent(typeof(BoxCollider))]
 public class PullBeam : MonoBehaviour
 {
     [Header("Beam Settings")]
-    [SerializeField] private float beamStrength = 500;
-    [SerializeField] private float maxPullSpeed = 500;
-
-    [Header("Zone Settings")]
-    [SerializeField] private Collider pullZone;
-    [SerializeField] private Collider holdZone;
+    [SerializeField] private float beamStrength = 500f;
+    [SerializeField] private float maxPullSpeed = 500f;
+    [SerializeField] private float maxDistance = 50f;
+    [SerializeField] private float ejectForce = 10f;
 
     [Header("Hold Settings")]
+    [SerializeField] private Vector3 holdOffset = Vector3.zero;
+
+    private RectTransform targetMask;
+    private BoxCollider holdZone;
+
+
     private Cargo heldCargo;
     public Cargo HeldCargo => heldCargo;
-    [SerializeField] private float ejectForce;
-    [SerializeField] private Vector3 holdOffset = Vector3.zero;
 
     private Vector3 heldPosition;
     private Quaternion heldRotation;
 
     public bool isPulling;
     private float lockCooldown = 1f;
-    private List<Cargo> cargoInBeam = new List<Cargo>();
+
+    private List<Cargo> allCargo = new List<Cargo>();
+    private HashSet<Cargo> cargoInRange = new HashSet<Cargo>();
+
+    private Camera mainCam;
+
+    private void Awake()
+    {
+        mainCam = Camera.main;
+        allCargo.AddRange(FindObjectsOfType<Cargo>());
+        holdZone = GetComponent<BoxCollider>();
+    }
+
+    private void Update()
+    {
+        if (targetMask == null && UIManager.Instance != null)
+        {
+            targetMask = UIManager.Instance.TargetMask;
+            Debug.Log("Assigned targetMask");
+        }
+    }
 
     private void FixedUpdate()
     {
+        UpdateBeamTargets();
+
+        // Move cargo with ship
         if (heldCargo != null)
         {
-            heldPosition = holdZone.transform.TransformPoint(holdOffset);
+            heldPosition = transform.position + transform.forward + holdOffset;
             heldCargo.rb.MovePosition(heldPosition);
-            heldRotation = holdZone.transform.rotation;
+
+            heldRotation = transform.rotation;
             heldCargo.rb.MoveRotation(heldRotation);
 
             if (heldCargo.rb.velocity.magnitude > maxPullSpeed)
@@ -40,124 +69,145 @@ public class PullBeam : MonoBehaviour
         }
     }
 
-    public void ApplyPull(Cargo target)
+    private void UpdateBeamTargets()
     {
-        if (isPulling)
+        if (targetMask == null) return;
+
+        foreach (var c in allCargo)
         {
-            //Debug.Log($"Attempting pull {target}");
+            if (c.IsLocked || c.CompareTag("Player")) continue;
 
-            if (target != null && !target.IsLocked && !target.CompareTag("Player"))
+            Vector3 screenPos = mainCam.WorldToScreenPoint(c.transform.position);
+
+            //Debug.Log(screenPos.z);
+
+            // Behind camera
+            if (screenPos.z <= 0)
             {
-                //Debug.Log($"Successful pull {target}");
+                //Debug.Log($"{c} behind camera");
+                cargoInRange.Remove(c);
+                continue;
+            }
+            else
+            {
+                // Too far away
+                if (screenPos.z > maxDistance)
+                {
+                    //Debug.Log($"{c} is {screenPos.z:F2}: too far away");
+                    cargoInRange.Remove(c);
+                    continue;
+                }
+                else
+                {
+                    Vector3 maskWorldPos = targetMask.position; // center in screen space
+                    Vector2 maskSize = targetMask.rect.size * targetMask.lossyScale; // scaled size
 
-                if (!cargoInBeam.Contains(target)) cargoInBeam.Add(target);
+                    float left = maskWorldPos.x - maskSize.x / 2;
+                    float right = maskWorldPos.x + maskSize.x / 2;
+                    float bottom = maskWorldPos.y - maskSize.y / 2;
+                    float top = maskWorldPos.y + maskSize.y / 2;
 
-                Vector3 offset = transform.position - target.rb.position;
-                float distance = offset.magnitude;
+                    bool inside = screenPos.x >= left && screenPos.x <= right &&
+                                  screenPos.y >= bottom && screenPos.y <= top;
 
-                if (distance <= 0) distance = 0.1f;
-
-                float forceMagnitude = GravityManager.Instance.gravitationalConstant * ((beamStrength * 1000) * target.rb.mass) / (distance * distance);
-
-                Vector3 direction = offset.normalized;
-
-                target.rb.AddForce(direction * forceMagnitude);
-
-
+                    if (inside)
+                    {
+                        //Debug.Log($"Cargo visually within targetMask: {c.name} | Distance: {screenPos.z:F2}");
+                        cargoInRange.Add(c);
+                        ApplyPull(c);
+                    }
+                    else
+                    {
+                        cargoInRange.Remove(c);
+                    }
+                }
+                    
             }
 
         }
+
+        UpdateCargoVisuals();
     }
 
-    internal void LockCargo(Cargo c)
+
+    private void ApplyPull(Cargo target)
     {
-        if (!cargoInBeam.Contains(c)) return;
-
-        if (c != null && !c.IsLocked && !c.CompareTag("Player") && heldCargo == null)
+        // if is currently pullable
+        if (isPulling && cargoInRange.Contains(target))
         {
-            if (Time.time - c.LastReleasedTime < lockCooldown) return;
+            // if is a valid object to be pulled
+            if (target == null || target.IsLocked || target.CompareTag("Player")) return;
 
+            Vector3 offset = holdZone.transform.position - target.rb.position;
+            float distance = Mathf.Max(offset.magnitude, 0.1f);
 
-            c.transform.SetParent(holdZone.transform);
+            float forceMagnitude = beamStrength * Mathf.Clamp01(1f - (distance / maxDistance));
+            target.rb.AddForce(offset.normalized * forceMagnitude * target.rb.mass);
 
-            c.rb.velocity = Vector3.zero;
-            c.rb.angularVelocity = Vector3.zero;
-
-            c.IsLocked = true;
-            c.rb.isKinematic = false;
-
-            GravityManager.Instance.UnregisterObject(c);
-
-
-            heldCargo = c;
-
-            cargoInBeam.Remove(c);
-            Debug.Log($"Picked up {c}");
-            Debug.Log(c.DamagePercent);
-            Debug.Log(PlayerManager.Instance.damagePercent);
-            AudioManager.Instance.PlayOneShot("Lock");
-
-            CarryingDisplay.Instance.SetCarrying(c);
+            Debug.Log($"Pulling {target} Distance:{distance}");
         }
+    }
+
+    public void LockCargo(Cargo c)
+    {
+
+        if (heldCargo != null) return;
+        if (Time.time - c.LastReleasedTime < lockCooldown) return;
+
+        c.transform.SetParent(transform);
+        c.rb.velocity = Vector3.zero;
+        c.rb.angularVelocity = Vector3.zero;
+
+        c.IsLocked = true;
+        c.rb.isKinematic = false;
+
+        GravityManager.Instance.UnregisterObject(c);
+
+        heldCargo = c;
+        cargoInRange.Remove(c);
+
+        AudioManager.Instance.PlayOneShot("Lock");
+        CarryingDisplay.Instance.SetCarrying(c);
     }
 
     public void UnlockCargo(Cargo c)
     {
-        if (c != null)
-        {
-            c.LastReleasedTime = Time.time;
+        if (c == null) return;
 
-            c.IsLocked = false;
-            c.rb.isKinematic = false;
-            c.transform.SetParent(null);
+        c.LastReleasedTime = Time.time;
+        c.IsLocked = false;
+        c.rb.isKinematic = false;
+        c.transform.SetParent(null);
 
-            GravityManager.Instance.RegisterObject(c);
+        GravityManager.Instance.RegisterObject(c);
 
-            heldCargo = null;
+        heldCargo = null;
 
-            AudioManager.Instance.PlayOneShot("Eject");
-            CarryingDisplay.Instance.ClearCarrying();
-        }
+        AudioManager.Instance.PlayOneShot("Eject");
+        CarryingDisplay.Instance.ClearCarrying();
     }
 
     public void EjectCargo(Cargo c)
     {
-        Debug.Log($"Ejected {c}");
-
-        if (c.rb == null) return;
+        if (c == null || c.rb == null) return;
 
         UnlockCargo(c);
         c.rb.AddForce(transform.forward * ejectForce, ForceMode.Impulse);
     }
 
-    public void OnPullZoneEnter(Cargo c)
-    {
-        if (!cargoInBeam.Contains(c))
-        {
-            cargoInBeam.Add(c);
-            UpdateCargoVisuals();
-        }
-    }
-
-    public void OnPullZoneStay(Cargo c)
-    {
-        ApplyPull(c);    
-    }
-
-    public void OnPullZoneExit(Cargo c)
-    {
-        cargoInBeam.Remove(c);
-        UpdateCargoVisuals();
-    }
-
-    public void OnHoldZoneEnter(Cargo c)
-    {
-        LockCargo(c);
-    }
-
     private void UpdateCargoVisuals()
     {
-        //UIManager.Instance.CargoInRange(cargoInBeam.Count > 0);
+        UIManager.Instance.CargoInRange(cargoInRange.Count > 0);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"OnTriggerEnter fired with {other.name}");
+        Cargo cargo = other.GetComponent<Cargo>();
+        if (cargo != null)
+        {
+            Debug.Log($"Cargo {cargo} entered HoldZone");
+            LockCargo(cargo);
+        }
+    }
 }
