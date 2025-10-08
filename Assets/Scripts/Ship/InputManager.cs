@@ -146,12 +146,16 @@ public class InputManager : MonoBehaviour
     {
         float thrustInput = controls.Flight.Thrust.ReadValue<float>();
         float strafeInput = controls.Flight.Strafe.ReadValue<float>();
+        float upInput = controls.Flight.Up.ReadValue<float>();
+        float downInput = controls.Flight.Down.ReadValue<float>();
 
         float boostFactor = isBoosting ? currentBoost : 1f;
 
         // apply forces
         rb.AddForce(spaceship.transform.forward * thrustInput * movementForce * boostFactor);
         rb.AddForce(spaceship.transform.right * strafeInput * movementForce);
+        rb.AddForce(spaceship.transform.up * upInput * movementForce);
+        rb.AddForce(spaceship.transform.up * -1 * downInput * movementForce);
 
         // calculate and store thrust amount
         ThrustAmount = (Mathf.Abs(thrustInput) + Mathf.Abs(strafeInput)) * movementForce * boostFactor;
