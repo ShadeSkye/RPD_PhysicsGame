@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 21300000, guid: ab9b73fee08d9134aa186722139a8c4e, type: 3}
-  loadingText: Loading...
+  loadingText: '-Solorax-
+
+    Sector 0
+
+    Mighty Solorax. This is where we source
+    our power from. Everything is powered by solar energy. Which is why we need you
+    to get some for us. You said you heard they''re unstable? Don''t worry, they
+    will only explode if you''re an idiot.'
   holdTime: 2
   requireContinueButton: 1
