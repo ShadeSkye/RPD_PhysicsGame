@@ -79,7 +79,8 @@ public class Damageable : MonoBehaviour
 
             else
             {
-                SafeDestroy();
+                //SafeDestroy();
+                Respawn();
             }
         }
     }
@@ -99,5 +100,11 @@ public class Damageable : MonoBehaviour
         }
 
         Destroy(gameObject, 1f);
+    }
+
+    private void Respawn()
+    {
+        LevelBounds.Instance.Teleport(this.gameObject);
+        damagePercent = 0f;
     }
 }
