@@ -10,8 +10,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    [Header("Button Prefabs")]
     public GameObject ResumeButtonPrefab;
     public GameObject HangarResumeButtonPrefab;
+
+    [Header("Pull Area")]
+    public RectTransform TargetMask;
 
     [Header("Sensitivity")]
     public Slider sensSlider;
@@ -36,7 +40,7 @@ public class UIManager : MonoBehaviour
     private Dictionary<PrimaryUIState, GameObject> primaryScreens;
     private Dictionary<SecondaryUIState, GameObject> secondaryScreens;
 
-    //[SerializeField] private Image pullZoneIndicator;
+    [SerializeField] private Image pullZoneIndicator;
     public enum PrimaryUIState
     {
         None,
@@ -289,11 +293,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    /*public void CargoInRange(bool isInRange)
+    public void CargoInRange(bool isInRange)
     {
         pullZoneIndicator.color = isInRange ? Color.yellow : Color.white;
 
-    }*/
+    }
 
     public string StringTime(float time)
     {
