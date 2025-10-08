@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275fffbecbc082447ab97e414b8ab6ec, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  SceneIndex: 2
-  LevelName: Test Level
+  LevelName: Bellona
   objectives:
   - {fileID: 11400000, guid: 832b367e043cc69478befedee27219fa, type: 2}
   - {fileID: 11400000, guid: 35e8b23b192ac2546919095750fbdce4, type: 2}

@@ -150,13 +150,23 @@ public class ObjectiveTracker : MonoBehaviour
         }
 
         HashSet<CargoType> typesToTrack = new HashSet<CargoType>();
+        HashSet<CargoType> criticalTypes = new HashSet<CargoType>();
+
         foreach (var o in trackedObjectives.Keys)
         {
             if (o is CargoObjective co)
+            {
                 typesToTrack.Add(co.targetType);
+
+                if (o.isCritical)
+                {
+                    criticalTypes.Add(co.targetType);
+                }
+            }
         }
 
         ObjectiveMarkerManager.Instance.SetCurrentTargetTypes(typesToTrack);
+        ObjectiveMarkerManager.Instance.SetCurrentCriticalTypes(criticalTypes);
 
         Refresh();
     }

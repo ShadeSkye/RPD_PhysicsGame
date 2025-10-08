@@ -204,7 +204,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -907.3387, z: -301.67432, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1481,7 +1481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.554717, g: 0.554717, b: 0.554717, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3388,6 +3388,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 76e513f343e6c0148a7535993698f939, type: 3}
   - {fileID: 21300000, guid: 1c8141640979c7d44a963db713dc0147, type: 3}
   padding: 50
+  maxPerType: 10
+  defaultScale: 0.5
+  minScale: 0.2
+  closeDistance: 100
+  maxDistance: 10000
 --- !u!1 &2551888866270383680
 GameObject:
   m_ObjectHideFlags: 0

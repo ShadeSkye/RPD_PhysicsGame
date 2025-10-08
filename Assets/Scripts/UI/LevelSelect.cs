@@ -87,4 +87,33 @@ public class LevelSelect : MonoBehaviour
 
         RefreshButtons();
     }
+
+    public void OnUnlockAllLevels()
+    {
+        completedLevels.Clear();
+
+        var levels = GameManager.Instance.Levels;
+        if (levels == null)
+        {
+            Debug.LogWarning("No levels found in GameManager.Instance.Levels!");
+            return;
+        }
+
+        foreach (var l in levels)
+        {
+            if (l == null)
+                continue;
+
+            // Skip menu scene if needed
+            if (l.SceneIndex == SceneIndex.MainMenu)
+                continue;
+
+            completedLevels.Add(l);
+        }
+
+        lastCompletedIndex = (int)SaveManager.Instance.LoadLastCompletedLevel();
+
+        RefreshButtons();
+    }
+
 }

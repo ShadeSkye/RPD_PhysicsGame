@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36bc9ecdad4b67348a1b03cdb0540afa, type: 3}
   m_Name: Level3DamageThreshold
   m_EditorClassIdentifier: 
+  objectiveValue: 100
   State: 0
   isCritical: 0
   damageThreshold: 10
