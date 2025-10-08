@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 6273970870002526566}
   - component: {fileID: 1136796322056611501}
   - component: {fileID: 8055730051050330224}
-  m_Layer: 3
+  m_Layer: 2
   m_Name: CargoHolder
   m_TagString: CollisionIgnore
   m_Icon: {fileID: 0}
@@ -81,8 +81,6 @@ MonoBehaviour:
   maxDistance: 200
   ejectForce: 100
   holdOffset: {x: 0, y: 0, z: 0}
-  targetMask: {fileID: 0}
-  holdZone: {fileID: 8055730051050330224}
   isPulling: 0
 --- !u!65 &8055730051050330224
 BoxCollider:

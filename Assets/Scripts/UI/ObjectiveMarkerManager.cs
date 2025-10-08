@@ -7,10 +7,9 @@ using UnityEngine.UI;
 
 public enum MarkerSprites
 {
-    markerMain,
-    arrowMain,
-    markerSide,
-    arrowSide,
+    marker,
+    sideMarker,
+    arrow,
     spaceStation
 }
 
@@ -103,11 +102,12 @@ public class ObjectiveMarkerManager : MonoBehaviour
                 }
                 else
                 {
-                    image.sprite = GetSprite(MarkerSprites.arrowMain);
+                    image.sprite = GetSprite(MarkerSprites.arrow);
+                    image.color = Color.white;
                 }
 
-                    // CLAMP
-                    screenPos.x = Mathf.Clamp(screenPos.x, padding, Screen.width - padding);
+                // CLAMP
+                screenPos.x = Mathf.Clamp(screenPos.x, padding, Screen.width - padding);
                 screenPos.y = Mathf.Clamp(screenPos.y, padding, Screen.height - padding);
 
                 // ROTATE
@@ -125,7 +125,8 @@ public class ObjectiveMarkerManager : MonoBehaviour
                 }
                 else
                 {
-                    image.sprite = GetSprite(MarkerSprites.markerMain);
+                    image.sprite = GetSprite(MarkerSprites.sideMarker);
+                    image.color = Color.white;
                 }
             }
         }
@@ -137,7 +138,8 @@ public class ObjectiveMarkerManager : MonoBehaviour
             }
             else
             {
-                image.sprite = GetSprite(MarkerSprites.arrowMain);
+                image.sprite = GetSprite(MarkerSprites.arrow);
+                image.color = Color.white;
             }
 
             Vector3 camRight = Camera.main.transform.right;
