@@ -27,6 +27,14 @@ public class SaveManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            UnlockAllLevels();
+        }
+    }
+
     public void SaveLastCompletedLevel(int levelIndex)
     {
         PlayerPrefs.SetInt(LastCompletedKey, levelIndex);
@@ -159,5 +167,16 @@ public class SaveManager : MonoBehaviour
     {
         CurrencyManager.Instance.LoadCredits(LoadCredits());
         ShipManager.Instance.LoadShips(LoadOwnedShips(), LoadEquippedShip());   
+    }
+
+    private void UnlockAllLevels()
+    {
+        int lastLevel = Enum.GetValues(typeof(SceneIndex)).Length - 1;
+        SaveLastCompletedLevel(lastLevel);
+        PlayerPrefs.Save();
+
+        Debug.Log($"All levels unlocked up to index {lastLevel}");
+        UpdateMainMenu();
+        LevelSelect.Instance.OnUnlockAllLevels();
     }
 }

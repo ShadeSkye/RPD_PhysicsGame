@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c5da457567d9147bbcb2a13362f5ad, type: 3}
   m_Name: Level1EggDelivery
   m_EditorClassIdentifier: 
-  objectiveValue: 0
+  objectiveValue: 200
   State: 0
   isCritical: 1
   requiredAmount: 3
   targetType: 3
-  currentAmount: 3
+  currentAmount: 0

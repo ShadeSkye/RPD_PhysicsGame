@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c5da457567d9147bbcb2a13362f5ad, type: 3}
   m_Name: Level2CrateDelivery
   m_EditorClassIdentifier: 
-  State: 0
+  objectiveValue: 100
+  State: 2
   isCritical: 0
   requiredAmount: 15
   targetType: 1
