@@ -7,7 +7,7 @@ public class LoadingScreenData : ScriptableObject
 {
     [Header("Visuals")]
     public Sprite backgroundImage;
-    public string loadingText = "Loading...";
+    [TextArea] public string loadingText = "Loading...";
 
     [Header("Options")]
     public float holdTime = 2f;
