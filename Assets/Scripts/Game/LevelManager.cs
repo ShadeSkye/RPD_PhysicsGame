@@ -103,6 +103,7 @@ public class LevelManager : MonoBehaviour
 
         markerObjects.Add(SpaceStation);
 
+        //Debug.Log("Setting targets with depot:", SpaceStation);
         ObjectiveMarkerManager.Instance?.SetCurrentTargets(markerObjects, SpaceStation);
     }
 
