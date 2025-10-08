@@ -6500,7 +6500,7 @@ MonoBehaviour:
   controlsScreen: {fileID: 9054563125559757894}
   shipSelect: {fileID: 5628547090064790844}
   levelSelect: {fileID: 9042452819833061501}
-  pullZoneIndicator: {fileID: 0}
+  pullZoneIndicator: {fileID: 6920672729915891194}
 --- !u!1 &4184828790359193544
 GameObject:
   m_ObjectHideFlags: 0
