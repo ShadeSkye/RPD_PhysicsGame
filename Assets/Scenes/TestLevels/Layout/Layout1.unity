@@ -1139,6 +1139,10 @@ PrefabInstance:
       propertyPath: DontPullPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2946520871098680643, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
+      propertyPath: m_Name
+      value: Rock4
+      objectReference: {fileID: 0}
     - target: {fileID: 6996043857097833927, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
       propertyPath: m_LocalScale.x
       value: 1000
@@ -1194,10 +1198,6 @@ PrefabInstance:
     - target: {fileID: 6996043857097833927, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2946520871098680643, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
-      propertyPath: m_Name
-      value: Rock4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1683,46 +1683,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7921136071669894342, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
   m_PrefabInstance: {fileID: 1317477313}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &566336128
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &569277130
 GameObject:
   m_ObjectHideFlags: 0
@@ -3440,6 +3400,10 @@ PrefabInstance:
       propertyPath: DontPullPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
+      propertyPath: m_Name
+      value: Rock2
+      objectReference: {fileID: 0}
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_LocalScale.x
       value: 461
@@ -3495,10 +3459,6 @@ PrefabInstance:
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
-      propertyPath: m_Name
-      value: Rock2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5096,7 +5056,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 15.069305, y: -57.409027}
+  m_AnchoredPosition: {x: 15.069275, y: -57.409058}
   m_SizeDelta: {x: -133.93451, y: -185.18176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1259229160
@@ -5283,6 +5243,10 @@ PrefabInstance:
       propertyPath: DontPullPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 415023546430105764, guid: 4eb9b8c99c2ed4640a3e1d74288b6f11, type: 3}
+      propertyPath: m_Name
+      value: Rock5
+      objectReference: {fileID: 0}
     - target: {fileID: 4023221101804291416, guid: 4eb9b8c99c2ed4640a3e1d74288b6f11, type: 3}
       propertyPath: m_LocalScale.x
       value: 445.87988
@@ -5338,10 +5302,6 @@ PrefabInstance:
     - target: {fileID: 4023221101804291416, guid: 4eb9b8c99c2ed4640a3e1d74288b6f11, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 415023546430105764, guid: 4eb9b8c99c2ed4640a3e1d74288b6f11, type: 3}
-      propertyPath: m_Name
-      value: Rock5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6651,7 +6611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 670846062680089255, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.345276
+      value: -4.345215
       objectReference: {fileID: 0}
     - target: {fileID: 673473910887394108, guid: 74e65ca0c1ea7764d8f3fcfa0a87cd61, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9012,6 +8972,10 @@ PrefabInstance:
       propertyPath: DontPullPlayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 520157932943181457, guid: 2ab85abe04165b14ab4dc0a696b6b225, type: 3}
+      propertyPath: m_Name
+      value: Rock1
+      objectReference: {fileID: 0}
     - target: {fileID: 3949627327757328405, guid: 2ab85abe04165b14ab4dc0a696b6b225, type: 3}
       propertyPath: m_LocalScale.x
       value: 522.86
@@ -9067,10 +9031,6 @@ PrefabInstance:
     - target: {fileID: 3949627327757328405, guid: 2ab85abe04165b14ab4dc0a696b6b225, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 520157932943181457, guid: 2ab85abe04165b14ab4dc0a696b6b225, type: 3}
-      propertyPath: m_Name
-      value: Rock1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
