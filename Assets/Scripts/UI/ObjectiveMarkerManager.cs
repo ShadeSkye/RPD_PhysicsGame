@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 
 public enum MarkerSprites
@@ -24,11 +26,20 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
     [SerializeField] private float padding;
 
+    [SerializeField] int maxPerType = 10;
+
+    [Header("Scale")]
+    [SerializeField] float defaultScale = 1f;
+    [SerializeField] float minScale = 0.5f;
+    [SerializeField] float closeDistance = 100f;
+    [SerializeField] float maxDistance = 5000f;
+
     private Dictionary<LookAtTarget, RectTransform> targetMarkers = new Dictionary<LookAtTarget, RectTransform>();
 
     private GameObject depotRef;
 
     private HashSet<CargoType> targetTypes = new HashSet<CargoType>();
+    private HashSet<CargoType> criticalTargetTypes = new HashSet<CargoType>();
 
     private void Awake()
     {
@@ -71,6 +82,8 @@ public class ObjectiveMarkerManager : MonoBehaviour
             }
         }
 
+        bool isWithinBounds;
+
         Image image = marker.GetComponent<Image>();
         bool isDepot = target.gameObject == depotRef;
 
@@ -79,6 +92,8 @@ public class ObjectiveMarkerManager : MonoBehaviour
         Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
 
         Vector3 toTarget = target.transform.position - Camera.main.transform.position;
+        float distance = toTarget.magnitude;
+
         bool isInFront = Vector3.Dot(Camera.main.transform.forward, toTarget) > 0f;
 
         marker.gameObject.SetActive(true);
@@ -87,7 +102,7 @@ public class ObjectiveMarkerManager : MonoBehaviour
         {
             screenPos = Camera.main.WorldToScreenPoint(target.transform.position);
 
-            bool isWithinBounds =
+            isWithinBounds =
             screenPos.x >= padding &&
             screenPos.x <= Screen.width - padding &&
             screenPos.y >= padding &&
@@ -95,16 +110,6 @@ public class ObjectiveMarkerManager : MonoBehaviour
 
             if (!isWithinBounds)
             {
-
-                if (isDepot)
-                {
-                    image.sprite = GetSprite(MarkerSprites.spaceStation);
-                }
-                else
-                {
-                    image.sprite = GetSprite(MarkerSprites.arrow);
-                    image.color = Color.white;
-                }
 
                 // CLAMP
                 screenPos.x = Mathf.Clamp(screenPos.x, padding, Screen.width - padding);
@@ -117,30 +122,10 @@ public class ObjectiveMarkerManager : MonoBehaviour
                 angle += isDepot ? 90f : -90f;
 
             }
-            else
-            {
-                if (isDepot)
-                {
-                    image.sprite = GetSprite(MarkerSprites.spaceStation);
-                }
-                else
-                {
-                    image.sprite = GetSprite(MarkerSprites.sideMarker);
-                    image.color = Color.white;
-                }
-            }
         }
         else // if behind player
         {
-            if (isDepot)
-            {
-                image.sprite = GetSprite(MarkerSprites.spaceStation);
-            }
-            else
-            {
-                image.sprite = GetSprite(MarkerSprites.arrow);
-                image.color = Color.white;
-            }
+            isWithinBounds = false;
 
             Vector3 camRight = Camera.main.transform.right;
             Vector3 camUp = Camera.main.transform.up;
@@ -162,44 +147,134 @@ public class ObjectiveMarkerManager : MonoBehaviour
         }
 
 
+        // rotation
         marker.rotation = Quaternion.Euler(0f, 0f, angle);
-
+        // position
         screenPos.z = 0f;
-
         marker.transform.position = screenPos;
+        // scale
+        float farScale = Mathf.Lerp(defaultScale, minScale, Mathf.Clamp01(distance / maxDistance));
+        float closeScale = distance < closeDistance
+            ? Mathf.Lerp(minScale, defaultScale, distance / closeDistance)
+            : defaultScale;
+        float finalScale = Mathf.Min(farScale, closeScale);
+        marker.localScale = new Vector3(finalScale, finalScale, 1f);
 
-
+        // sprite
+        SetSprite(target, image, isWithinBounds, isDepot);
     }
 
-    private Sprite GetSprite(MarkerSprites sprite)
+    private void SetSprite(LookAtTarget target, Image image, bool isOnScreen, bool isDepot)
     {
-        return markerSprites[(int)sprite];
-    } 
+        // default
+        MarkerSprites sprite = MarkerSprites.sideMarker;
+        Color color = Color.white;
+
+        if(target.gameObject.GetComponent<Cargo>() != null)
+        {
+            CargoType type = target.gameObject.GetComponent<Cargo>().type;
+
+            if (!isOnScreen)
+            {
+                sprite = MarkerSprites.arrow;
+            }
+            else if (criticalTargetTypes.Contains(type))
+            {
+                sprite = MarkerSprites.marker;
+            }
+            else
+            {
+                sprite = MarkerSprites.sideMarker;
+            }
+
+
+            // set color
+            if (criticalTargetTypes.Contains(type))
+            {
+                color = Color.yellow;
+            }
+            else
+            {
+                color = Color.blue;
+            }
+
+        }
+        else
+        {
+
+            if (isDepot)
+            {
+                sprite = MarkerSprites.spaceStation;
+                color = Color.white;
+            }
+        }
+
+        image.sprite = markerSprites[(int)sprite];
+        image.color = color;
+
+    }
 
     public void SetCurrentTargetTypes(HashSet<CargoType> types)
     {
         targetTypes = types;
     }
 
+    public void SetCurrentCriticalTypes(HashSet<CargoType> types)
+    {
+        criticalTargetTypes = types;
+    }
+
     public void SetCurrentTargets(List<GameObject> targets, GameObject depot)
     {
         foreach (RectTransform m in targetMarkers.Values) Destroy(m.gameObject);
-
         targetMarkers.Clear();
+
+        Dictionary<CargoType, int> typeCounts = new Dictionary<CargoType, int>();
+
+        if (depot != null)
+        {
+            LookAtTarget depotTarget = depot.GetComponentInChildren<LookAtTarget>();
+            if (depotTarget != null)
+            {
+                RectTransform depotMarker = Instantiate(markerPrefab, parent);
+                targetMarkers.Add(depotTarget, depotMarker);
+            }
+        }
+
+        targets.Sort((a, b) =>
+        {
+            float distA = (a.transform.position - Camera.main.transform.position).sqrMagnitude;
+            float distB = (b.transform.position - Camera.main.transform.position).sqrMagnitude;
+            return distA.CompareTo(distB);
+        });
 
         foreach (GameObject go in targets)
         {
-            LookAtTarget target = go.GetComponentInChildren<LookAtTarget>();
+            if (go == depot) continue;
 
+            Cargo cargo = go.GetComponent<Cargo>();
+            CargoType type = cargo != null ? cargo.type : default;
+
+            if (!typeCounts.ContainsKey(type))
+                typeCounts[type] = 0;
+
+            if (typeCounts[type] >= maxPerType)
+                continue; 
+
+            LookAtTarget target = go.GetComponentInChildren<LookAtTarget>();
             if (target == null)
+            {
                 Debug.Log($"{go.name}'s LookAtTarget is null", go);
+                continue;
+            }
 
             RectTransform marker = Instantiate(markerPrefab, parent);
             targetMarkers.Add(target, marker);
+
+            typeCounts[type]++;
         }
 
         depotRef = depot;
-
     }
 
 }

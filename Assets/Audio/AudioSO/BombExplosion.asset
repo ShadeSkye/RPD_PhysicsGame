@@ -9,12 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65c5da457567d9147bbcb2a13362f5ad, type: 3}
-  m_Name: Level3SolarBatteryDelivery
+  m_Script: {fileID: 11500000, guid: 44a4dd267399c2e4f9d6c1c542a27ebe, type: 3}
+  m_Name: BombExplosion
   m_EditorClassIdentifier: 
-  objectiveValue: 200
-  State: 0
-  isCritical: 1
-  requiredAmount: 10
-  targetType: 4
-  currentAmount: 0
+  mixerGroup: {fileID: 2130947796719358961, guid: be51724ba3e3e7f408386242dea02a7f, type: 2}
+  clip: {fileID: 8300000, guid: 218c5db1c8b451749929d59e8ac8e0b6, type: 3}
+  source: {fileID: 0}

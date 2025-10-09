@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 275fffbecbc082447ab97e414b8ab6ec, type: 3}
   m_Name: Level3
   m_EditorClassIdentifier: 
-  SceneIndex: 3
-  LevelName: Test Level
+  LevelName: Solorax
   objectives:
   - {fileID: 11400000, guid: 3767a5b9b4cef8d47a20e1aedd139ad7, type: 2}
   - {fileID: 11400000, guid: 067049ccf57957142a47520354e2bc8d, type: 2}

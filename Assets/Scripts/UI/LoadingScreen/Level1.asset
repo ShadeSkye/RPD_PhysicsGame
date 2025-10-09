@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 000b78e11d5e5104dbdf4152040532ed, type: 3}
   m_Name: Level1
   m_EditorClassIdentifier: 
-  backgroundImage: {fileID: 21300000, guid: ab9b73fee08d9134aa186722139a8c4e, type: 3}
-  loadingText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. '
+  backgroundImage: {fileID: 21300000, guid: dcc3893154fe4394c98bee53e2105c05, type: 3}
+  loadingText: "MANTELLA [Sector 3]\r\nMantella is one big ball of acid, it's home
+    to the frogs. Your mission is to collect eggs picked up by our gravity wells
+    so we can figure out what makes these things tick. These frog eggs are immune
+    to the acid, unlike you, don't stay in it for too long. Why do we need to know
+    how they tick? You're paid to do your job, not ask questions. \r\n"
   holdTime: 2
   requireContinueButton: 1
