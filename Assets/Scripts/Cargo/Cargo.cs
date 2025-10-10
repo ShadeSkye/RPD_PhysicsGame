@@ -67,6 +67,13 @@ public class Cargo : GravityBody
         audioSource.rolloffMode = AudioRolloffMode.Logarithmic;
 
     }
+
+    private void Update()
+    {
+        
+        if (Input.GetKey(KeyCode.Alpha3)) dmg.Remove(this);
+    }
+
     private void ConnectReferences()
     {
         if (dmg == null) dmg = GetComponent<Damageable>();
@@ -78,6 +85,8 @@ public class Cargo : GravityBody
     {
         if (other.gameObject.CompareTag("Depot"))
         {
+            dmg.Remove(this);
+
             CurrencyManager.Instance.AddEarnings(CurrentValue);
             CarryingDisplay.Instance.ClearCarrying();
 
@@ -85,11 +94,15 @@ public class Cargo : GravityBody
 
             GravityManager.Instance.UnregisterObject(this);
             LevelManager.Instance?.UnregisterCargo(this);
-
-            LevelManager.Instance?.OnCargoDelivered(this);
-
-            Destroy(gameObject);
+            
         }
+    }
+
+    public void OnDeliver()
+    {
+        LevelManager.Instance?.OnCargoDelivered(this);
+
+        Destroy(gameObject);
     }
 
 
@@ -99,7 +112,7 @@ public class Cargo : GravityBody
 
         if (collision.gameObject.CompareTag("LevelBounds"))
         {
-            LevelBounds.Instance.Teleport(this.gameObject);
+            dmg.Respawn();
         }
         else
         {
