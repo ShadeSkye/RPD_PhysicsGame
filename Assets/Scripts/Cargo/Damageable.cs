@@ -71,9 +71,16 @@ public class Damageable : MonoBehaviour
 
     private void CheckHealth()
     {
+
+        if (this.gameObject.CompareTag("Player"))
+        {
+            ShipDamageFlash.Instance.TriggerFlash();
+        }
+            
+
         //Debug.Log(damagePercent + gameObject.name);
 
-        if(damagePercent >= 1)
+        if (damagePercent >= 1)
         {
             if (gameObject.CompareTag("Player"))
             {
