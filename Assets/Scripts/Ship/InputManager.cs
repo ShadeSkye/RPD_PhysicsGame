@@ -30,6 +30,7 @@ public class InputManager : MonoBehaviour
     public int RollMultiplier => invertRoll ? -1 : 1;
 
     private Vector2 lookInput;
+    public Vector2 LookInput => lookInput;
 
     [Header("Boost")]
     public float maxBoost = 3f;
@@ -163,7 +164,6 @@ public class InputManager : MonoBehaviour
         // use for audio
         AudioManager.Instance.UpdateContinuous("Thrust", ThrustAmount);
     }
-
 
     private void HandleRotation()
     {
