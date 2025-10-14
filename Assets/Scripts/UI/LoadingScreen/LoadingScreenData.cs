@@ -7,6 +7,7 @@ public class LoadingScreenData : ScriptableObject
 {
     [Header("Visuals")]
     public Sprite backgroundImage;
+    [TextArea(5, 5)] public string loadingTitle = "TITLE";
     [TextArea(5,5)] public string loadingText = "Loading...";
 
     [Header("Options")]

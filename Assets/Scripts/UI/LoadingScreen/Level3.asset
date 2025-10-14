@@ -13,13 +13,12 @@ MonoBehaviour:
   m_Name: Level3
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 21300000, guid: 24d9cd8900e106747ae94f55b3e6e59b, type: 3}
-  loadingText: 'SOLORAX [Sector 0]
-
-    Mighty Solorax. This is where we source
-    our power from, our successful crusades wouldn''t be possible without these solar
-    batteries. They collect and store raw solar energy, but all our successful crusades
-    are draining our resources. Which is why we need you to collect and deliver some
-    more. You heard they''re unstable? Yeah, they''re practically like bombs - but
-    worse. Just don''t be an idiot and fly too fast if you''re carrying one.'
+  loadingTitle: SOLORAX [Sector 0]
+  loadingText: "Mighty Solorax. This is where we source our power from, our campaigns
+    wouldn't be possible without these solar batteries. \nThey collect and store
+    raw solar energy, but all our successful crusades are draining our resources.
+    Which is why we need you to collect and deliver some more. \nYou heard they're
+    unstable? Yeah, they're practically like bombs - but worse. Just don't be an
+    idiot and fly too fast if you're carrying one."
   holdTime: 2
   requireContinueButton: 1
