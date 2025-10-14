@@ -54,7 +54,7 @@ public abstract class BaseObjective : ScriptableObject
 
         if (isCritical)
         {
-            text = $"<b>[CRITICAL] {text}</b>";
+            text = $"<b><color=yellow>[CRITICAL] {text}</b></color>";
         }
 
         return text;

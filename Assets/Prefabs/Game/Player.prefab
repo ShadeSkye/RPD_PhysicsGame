@@ -313,6 +313,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spaceship
       objectReference: {fileID: 0}
+    - target: {fileID: 7793821128756690000, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.15686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793821128756690000, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: InitialModule.startColor.minColor.a
+      value: 0.15686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793821128756690000, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793821128756690000, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.3754716
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793821128756690000, guid: 216fe0f12d7465b4bbe7ee4391eed5c1, type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.60149133
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

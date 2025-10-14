@@ -13,14 +13,13 @@ MonoBehaviour:
   m_Name: Level2
   m_EditorClassIdentifier: 
   backgroundImage: {fileID: 21300000, guid: 90a2fb1494bfac24fa5ea3c263c6a254, type: 3}
-  loadingText: 'BELLONA [Sector 5]
-
-    This war torn air space belongs to Bellona.
-    The scum that remain of that rebel group we''ve been at odds with are hiding
-    out here. They may be planning a big retaliation, and we got some intel that
-    they''re stashing some bombs nearby. You must take anything that could be used
-    against us, so maybe we can make use of them instead. Yes, these are active space
-    mines, and no, we don''t care. You''re expendable, remember? If you really care
-    that much, just make sure not to hit them too hard. '
+  loadingTitle: BELLONA [Sector 5]
+  loadingText: "This war torn air space belongs to Bellona. The scum that remain
+    of that rebel group we've been at odds with are hiding out here. \nThey may be
+    planning a big retaliation, and we got some intel that they're stashing some
+    bombs nearby. You must take anything that could be used against us, so maybe
+    we can make use of them instead. \nYes, these are active space mines, and no,
+    we don't care. You're expendable, remember? If you really care that much, just
+    make sure not to hit them too hard. "
   holdTime: 2
   requireContinueButton: 1

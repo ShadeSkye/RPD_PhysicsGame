@@ -13,6 +13,7 @@ public class ObjectiveSelectButton : MonoBehaviour
     [SerializeField] private Button button;
 
     private bool isTracked => ObjectiveTracker.Instance.trackedObjectives.ContainsKey(Objective);
+    
 
     internal void Setup(BaseObjective o)
     {
@@ -30,7 +31,14 @@ public class ObjectiveSelectButton : MonoBehaviour
     {
         buttonText.text = Objective.GenerateLabel(false);
 
-        buttonImage.color = isTracked ? Color.blue : Color.white;
+        if (isTracked)
+        {
+            buttonImage.color = Objective.isCritical? Color.yellow : Color.blue;
+        }
+        else
+        {
+            buttonImage.color = Color.white;
+        }
 
     }
 

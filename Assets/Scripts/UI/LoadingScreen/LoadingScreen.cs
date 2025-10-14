@@ -21,6 +21,7 @@ public class LoadingScreen : MonoBehaviour
     }
 
     [SerializeField] private Image img;
+    [SerializeField] private TMP_Text title;
     [SerializeField] private TMP_Text text;
     [SerializeField] private Button continueButton;
 
@@ -28,6 +29,7 @@ public class LoadingScreen : MonoBehaviour
     {
         img.sprite = data.backgroundImage;
         text.text = data.loadingText;
+        title.text = data.loadingTitle;
         continueButton.gameObject.SetActive(data.requireContinueButton);
     }
 
