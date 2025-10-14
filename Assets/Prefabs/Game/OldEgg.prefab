@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8013192262739913965}
   - component: {fileID: 5430383204452394965}
   - component: {fileID: 919164346415276139}
+  - component: {fileID: 6022068906036741989}
   m_Layer: 0
   m_Name: OldEgg
   m_TagString: Untagged
@@ -79,6 +80,7 @@ MonoBehaviour:
   minImpact: 5
   damageMultiplier: 0.5
   hitSFX: CrateHit
+  dissolve: {fileID: 6022068906036741989}
 --- !u!82 &6715452354832260848
 AudioSource:
   m_ObjectHideFlags: 0
@@ -254,6 +256,7 @@ MonoBehaviour:
   minImpact: 5
   damageMultiplier: 0
   hitSFX: CrateHit
+  dissolve: {fileID: 0}
 --- !u!114 &919164346415276139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +270,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Unknown Object
+--- !u!114 &6022068906036741989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8485333729309159773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e52d277ab74e3d4a837c81e5fd5d7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderers:
+  - {fileID: 5186474153211690343}
+  Duration: 2
 --- !u!1001 &5781385394827289059
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -344,6 +362,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43ba6a68fc99656489c6bf861c6f34f8, type: 3}
+--- !u!23 &5186474153211690343 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 43ba6a68fc99656489c6bf861c6f34f8, type: 3}
+  m_PrefabInstance: {fileID: 5781385394827289059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6318869272188847624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 43ba6a68fc99656489c6bf861c6f34f8, type: 3}

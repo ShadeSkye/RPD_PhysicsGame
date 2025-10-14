@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public enum DamageType { Acid, Impact }
-
 
 public class Damageable : MonoBehaviour
 {
@@ -14,6 +14,9 @@ public class Damageable : MonoBehaviour
 
     [Header("Sound")]
     public string hitSFX = "CrateHit";
+
+    [Header("Dissolve")]
+    [SerializeField] private Dissolve dissolve;
 
     public void ApplyImpact(float impactAmount)
     {
@@ -68,9 +71,16 @@ public class Damageable : MonoBehaviour
 
     private void CheckHealth()
     {
+
+        if (this.gameObject.CompareTag("Player"))
+        {
+            ShipDamageFlash.Instance.TriggerFlash();
+        }
+            
+
         //Debug.Log(damagePercent + gameObject.name);
 
-        if(damagePercent >= 1)
+        if (damagePercent >= 1)
         {
             if (gameObject.CompareTag("Player"))
             {
@@ -102,9 +112,32 @@ public class Damageable : MonoBehaviour
         Destroy(gameObject, 1f);
     }
 
-    private void Respawn()
+    public void Respawn()
     {
-        LevelBounds.Instance.Teleport(this.gameObject);
-        damagePercent = 0f;
+        StartCoroutine(DissolveRoutine(() =>
+        {
+            LevelBounds.Instance.Teleport(this.gameObject);
+            damagePercent = 0f;
+
+            dissolve.ResetMaterials();
+        }));
     }
+
+    public void Remove(Cargo cargo)
+    {
+        StartCoroutine(DissolveRoutine(() =>
+        {
+            cargo.OnDeliver();
+        }));
+    }
+
+    private IEnumerator DissolveRoutine(Action onComplete)
+    {
+        dissolve.DoEffect();
+
+        yield return new WaitForSeconds(dissolve.Duration);
+
+        onComplete?.Invoke();
+    }
+
 }

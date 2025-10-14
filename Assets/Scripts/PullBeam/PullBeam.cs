@@ -75,7 +75,7 @@ public class PullBeam : MonoBehaviour
 
         foreach (var c in allCargo)
         {
-            if (c.IsLocked || c.CompareTag("Player")) continue;
+            if (c.IsLocked || c.CompareTag("Player") || c!=null) continue;
 
             Vector3 screenPos = mainCam.WorldToScreenPoint(c.transform.position);
 
