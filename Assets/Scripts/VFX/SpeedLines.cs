@@ -19,6 +19,10 @@ public class SpeedLines : MonoBehaviour
         var emission = ps.emission;
         emission.rateOverTime = Mathf.Lerp(0, maxEmission, Mathf.Clamp01((speed - speedRange.x) / (speedRange.y - speedRange.x)));
 
-        transform.rotation = Quaternion.LookRotation(-velocity.normalized, transform.up);
+        if (velocity != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(-velocity.normalized, transform.up);
+        }
+
     }
 }

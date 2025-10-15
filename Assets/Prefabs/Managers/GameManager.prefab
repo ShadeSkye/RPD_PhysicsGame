@@ -2219,8 +2219,40 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2182758161449712266, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182758161449712266, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8622011
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182758161449712266, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+      propertyPath: m_Color.r
+      value: 0.48867923
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182758161449712266, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
       propertyPath: m_Intensity
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247656560712419496, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 4666394425264053525}
+    - target: {fileID: 2247656560712419496, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+      propertyPath: pointLight
+      value: 
+      objectReference: {fileID: 4666394425264053525}
+    - target: {fileID: 2247656560712419496, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+      propertyPath: lightTint.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247656560712419496, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+      propertyPath: lightTint.g
+      value: 0.8966185
+      objectReference: {fileID: 0}
+    - target: {fileID: 2247656560712419496, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+      propertyPath: lightTint.r
+      value: 0.51886785
       objectReference: {fileID: 0}
     - target: {fileID: 3486281955220951793, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
       propertyPath: m_Name
@@ -2282,6 +2314,11 @@ PrefabInstance:
 --- !u!4 &2690505075036087772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8925698944912589379, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
+  m_PrefabInstance: {fileID: 6811953896319182751}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &4666394425264053525 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 2182758161449712266, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
   m_PrefabInstance: {fileID: 6811953896319182751}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5146325305758473574 stripped

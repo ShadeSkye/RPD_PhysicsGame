@@ -19,6 +19,8 @@ public class LevelManager : MonoBehaviour
 
     public GameObject SpaceStation;
 
+    bool cargoInitialized = false;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -61,40 +63,39 @@ public class LevelManager : MonoBehaviour
         LevelSelect.Instance.ResetButtons();
         ObjectiveTracker.Instance.Setup(LevelData.objectives.ToList<BaseObjective>());
 
-        Cargo[] prePlacedCargo = FindObjectsOfType<Cargo>();
-        foreach (var c in prePlacedCargo)
-            RegisterCargo(c);
-
         UpdateMarkers();
         initialized = true;
     }
 
     private void Update()
     {
-        if (!initialized) return;
+        if (!initialized)
+            return;
+
+        if (!cargoInitialized || activeCargo.Count == 0)
+        {
+            Cargo[] prePlacedCargo = FindObjectsOfType<Cargo>(includeInactive: true);
+            foreach (var c in prePlacedCargo)
+                RegisterCargo(c);
+
+            if (activeCargo.Count > 0)
+                cargoInitialized = true;
+
+            return;
+        }
 
         elapsedTime += Time.deltaTime;
 
         foreach (var o in LevelData.objectives.OfType<TimeObjective>())
-        {
             o.UpdateProgress(value: elapsedTime);
-        }
 
         foreach (var o in LevelData.objectives.OfType<CargoObjective>())
-        {
             o.CheckCargoAvailability();
 
-        }
-
         foreach (var o in LevelData.objectives.OfType<ShipDamageObjective>())
-        {
             o.UpdateProgress();
-        }
-
-        //Debug.Log(activeCargo.Count);
-
-        
     }
+
 
     private void UpdateMarkers()
     {

@@ -37,12 +37,12 @@ public class Bomb : Cargo
         if (DamagePercent > impactDamage)
         {
 
-            Debug.Log($"damage {DamagePercent} more than threshold {impactDamage}");
+            //Debug.Log($"damage {DamagePercent} more than threshold {impactDamage}");
             Explode();
         }
         else
         {
-            Debug.Log($"damage {DamagePercent} less than threshold {impactDamage}");
+            //Debug.Log($"damage {DamagePercent} less than threshold {impactDamage}");
         }
 
     }

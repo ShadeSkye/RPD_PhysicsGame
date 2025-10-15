@@ -89,6 +89,9 @@ public class CargoObjective : BaseObjective
 
     public void CheckCargoAvailability()
     {
+        if (currentAmount <= 0)
+            return;
+
         if (State != ObjectiveState.InProgress) return;
 
         int remainingCargo = 0;

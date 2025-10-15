@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 [RequireComponent(typeof(Damageable))]
 public class PlayerManager : MonoBehaviour
@@ -16,6 +17,10 @@ public class PlayerManager : MonoBehaviour
         get => dmg.damagePercent;
         set => dmg.damagePercent = value;
     }
+
+    private void OnEnable() => SceneManager.sceneLoaded += (_, __) => OnSceneLoaded();
+    private void OnDisable() => SceneManager.sceneLoaded -= (_, __) => OnSceneLoaded();
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,6 +33,12 @@ public class PlayerManager : MonoBehaviour
         dmg = GetComponent<Damageable>();
         pullBeam = GetComponentInChildren<PullBeam>();
 
+    }
+
+    void OnSceneLoaded()
+    {
+        dmg.damagePercent = 0;
+        ResetLocation(LevelManager.Instance.SpaceStation.transform);
     }
 
     private void OnCollisionEnter(Collision collision)

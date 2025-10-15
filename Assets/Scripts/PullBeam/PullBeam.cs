@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.SceneManagement;
 using UnityEngine.Scripting.APIUpdating;
 
 [RequireComponent(typeof(BoxCollider))]
 public class PullBeam : MonoBehaviour
 {
+    [SerializeField] private Light pointLight;
+
     [Header("Beam Settings")]
     [SerializeField] private float beamStrength = 500f;
     [SerializeField] private float maxPullSpeed = 500f;
@@ -61,6 +64,7 @@ public class PullBeam : MonoBehaviour
 
     private void FixedUpdate()
     {
+        UpdateLight();
         UpdateBeamTargets();
 
         // Move cargo with ship
@@ -76,6 +80,18 @@ public class PullBeam : MonoBehaviour
             {
                 heldCargo.rb.velocity = heldCargo.rb.velocity.normalized * maxPullSpeed;
             }
+        }
+    }
+
+    private void UpdateLight()
+    {
+        if (isPulling)
+        {
+            pointLight.intensity = 15;
+        }
+        else
+        {
+            pointLight.intensity = 10;
         }
     }
 
@@ -205,7 +221,7 @@ public class PullBeam : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"OnTriggerEnter fired with {other.name}");
+        Debug.Log($"OnTriggerEnter fired with {other.name}", other);
         Cargo cargo = other.GetComponent<Cargo>();
         if (cargo != null)
         {

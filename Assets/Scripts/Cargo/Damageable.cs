@@ -90,6 +90,7 @@ public class Damageable : MonoBehaviour
             else
             {
                 //SafeDestroy();
+                Debug.Log($"{this.gameObject} took damage and died");
                 Respawn();
             }
         }

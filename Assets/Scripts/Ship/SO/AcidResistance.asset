@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59340f920daf5b44ac7b45609f0cad9, type: 3}
   m_Name: AcidResistance
   m_EditorClassIdentifier: 
-  shipIcon: {fileID: 21300000, guid: 8e411c6f4eae0a940af3c18bdaa5f5f2, type: 3}
-  shipName: Science Ship
-  shipCost: 500
+  shipIcon: {fileID: 21300000, guid: 3fc5bb13cc3a1b94a994e97cea063bf7, type: 3}
+  shipName: Adventurer
+  shipCost: 600
   speed: 3.5
   handling: 3.5
   acidDamageResistance: 0.75
-  impactDamageResistance: 0
+  impactDamageResistance: 0.5
   mesh: {fileID: 401037659536485348, guid: b4fbbfe1a5d43aa4592eaece581cfa73, type: 3}
   material: {fileID: 2100000, guid: 5ba0fc70d2b4a72498334733938eaeb9, type: 2}
