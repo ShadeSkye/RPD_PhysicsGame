@@ -22,7 +22,7 @@ public class SolarBattery : Bomb
         float velocity = rb.velocity.magnitude;
         float angularVelocity = rb.angularVelocity.magnitude;
 
-        Debug.Log($"Velocity: {velocity}/{maxVelocity} Angular velocity: {angularVelocity}/{maxAngularVelocity}");
+        //Debug.Log($"Velocity: {velocity}/{maxVelocity} Angular velocity: {angularVelocity}/{maxAngularVelocity}");
 
         if (velocity > maxVelocity || angularVelocity > maxAngularVelocity)
         {
