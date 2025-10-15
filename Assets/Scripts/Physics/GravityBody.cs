@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GravityBody : GravityObject
 {
-    [HideInInspector] public bool IsInitialised;
+    [HideInInspector] public bool IsInitialised = false;
 
     [Header("Orbit Settings")]
     public float OrbitDistance;
@@ -24,6 +24,8 @@ public class GravityBody : GravityObject
     private void LateUpdate()
     {
         if (IsInitialised) return;
+
+        if (GravityManager.Instance == null) return;
 
         if (OrbitTarget != null && isDynamic)
         {

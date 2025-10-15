@@ -32,6 +32,7 @@ public class SaveManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             UnlockAllLevels();
+            CurrencyManager.Instance.AddEarnings(1000);
         }
     }
 

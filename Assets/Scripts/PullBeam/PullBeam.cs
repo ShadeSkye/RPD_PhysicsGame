@@ -14,7 +14,7 @@ public class PullBeam : MonoBehaviour
     [SerializeField] private float ejectForce = 10f;
 
     [Header("Hold Settings")]
-    [SerializeField] private Vector3 holdOffset = Vector3.zero;
+    [SerializeField] private Vector3 holdOffset = new Vector3(0,0,2);
 
     private RectTransform targetMask;
     private BoxCollider holdZone;
@@ -130,7 +130,7 @@ public class PullBeam : MonoBehaviour
 
     private void UpdateCargoVisuals()
     {
-        Debug.Log($"Cargo in range: {cargoInRange.Count}");
+        //Debug.Log($"Cargo in range: {cargoInRange.Count}");
         if (UIManager.Instance != null)
             UIManager.Instance.CargoInRange(cargoInRange.Count > 0);
     }
