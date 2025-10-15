@@ -19,3 +19,5 @@ MonoBehaviour:
   handling: 2
   acidDamageResistance: 0
   impactDamageResistance: 0.75
+  mesh: {fileID: -2574124734533197802, guid: c80792862f72348409d05a0fc187f678, type: 3}
+  material: {fileID: 2100000, guid: 064325129a3afb7459890b7966146e74, type: 2}

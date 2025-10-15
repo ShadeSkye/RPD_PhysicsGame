@@ -20,6 +20,10 @@ public class ShipManager : MonoBehaviour
     /*public float BeamStrength => preset.beamStrength;
     public float HoldStrength => preset.holdStrength;*/
 
+    [SerializeField] private GameObject shipModel;
+    private MeshFilter meshFilter;
+    private MeshRenderer meshRenderer;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -28,7 +32,11 @@ public class ShipManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        meshFilter = shipModel?.GetComponent<MeshFilter>();
+        meshRenderer = shipModel?.GetComponent<MeshRenderer>();
     }
+
 
     private void Start()
     {
@@ -37,7 +45,7 @@ public class ShipManager : MonoBehaviour
 
     public void ClearShips()
     {
-        CurrentShip = GameManager.Instance.Ships[0];
+        EquipShip(GameManager.Instance.Ships[0]);
         OwnedShips.Clear();
         OwnedShips.Add(CurrentShip);
 
@@ -47,11 +55,12 @@ public class ShipManager : MonoBehaviour
 
     public void EquipShip(ShipPreset ship)
     {
-
         CurrentShip = ship;
+        meshFilter.mesh = ship.mesh;
+        meshRenderer.material = ship.material;
 
-        UIManager.Instance.ResumeResetPosition();
-
+        if(LevelManager.Instance !=null)
+            UIManager.Instance.ResumeResetPosition();
 
         //SaveManager.Instance.SaveShips(OwnedShips, CurrentShip);
 
