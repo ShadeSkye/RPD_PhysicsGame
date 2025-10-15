@@ -9,6 +9,7 @@ TagManager:
   - Hangar
   - LevelBounds
   - Cargo
+  - ShipModel
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,7 @@ public class InputManager : MonoBehaviour
     private Rigidbody rb;
     private PullBeam pb;
 
-    [SerializeField] public GameObject spaceship;
+    public GameObject spaceship;
 
     //[Header("Settings")]
     [HideInInspector] public float movementForce => 50f * (ShipManager.Instance?.Speed ?? 1f);
@@ -63,6 +63,7 @@ public class InputManager : MonoBehaviour
             controls = new ShipActions();
 
         spaceship = GameObject.FindGameObjectWithTag("Player");
+
         if (spaceship == null)
         {
             Debug.LogError("Spaceship is not assigned in InputManager!");

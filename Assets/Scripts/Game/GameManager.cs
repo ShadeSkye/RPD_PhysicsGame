@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Ships")]
     public List<ShipPreset> Ships = new();
+    //public GameObject Player;
+    //public GameObject PlayerShip;
 
     private void Awake()
     {
@@ -192,11 +194,13 @@ public class GameManager : MonoBehaviour
         switch (scene)
         {
             case SceneIndex.MainMenu:
+                //Player.SetActive(false); 
                 SaveManager.Instance.UpdateMainMenu();
                 UIManager.Instance.SetPrimary(PrimaryUIState.Home);
                 Pause();
                 break;
             default:
+                //Player.SetActive(true);
                 UIManager.Instance.SetPrimary(PrimaryUIState.HUD);
                 //LevelManager.Instance.AssignLevelData(Levels[(int)scene]);
                 Play();

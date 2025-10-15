@@ -1123,22 +1123,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665658287}
     m_Modifications:
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: Radius
-      value: 688.0812
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: objectName
-      value: SpaceRocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: localGravity
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2946520871098680643, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
       propertyPath: m_Name
       value: Rock4
@@ -1197,6 +1181,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6996043857097833927, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: Radius
+      value: 688.0812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: objectName
+      value: SpaceRocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: localGravity
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: DontPullPlayer
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3379,22 +3379,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665658287}
     m_Modifications:
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: Radius
-      value: 688.0812
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: objectName
-      value: SpaceRocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: localGravity
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_Name
       value: Rock2
@@ -3453,6 +3437,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: Radius
+      value: 688.0812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: objectName
+      value: SpaceRocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: localGravity
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: DontPullPlayer
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5222,22 +5222,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665658287}
     m_Modifications:
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: Radius
-      value: 688.0812
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: objectName
-      value: SpaceRocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: localGravity
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 415023546430105764, guid: 4eb9b8c99c2ed4640a3e1d74288b6f11, type: 3}
       propertyPath: m_Name
       value: Rock5
@@ -5296,6 +5280,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4023221101804291416, guid: 4eb9b8c99c2ed4640a3e1d74288b6f11, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: Radius
+      value: 688.0812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: objectName
+      value: SpaceRocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: localGravity
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: DontPullPlayer
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8600,22 +8600,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665658287}
     m_Modifications:
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: Radius
-      value: 688.0812
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: objectName
-      value: SpaceRocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: localGravity
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3430113935172138369, guid: f55aa156394c2614dbcdc411dce874f4, type: 3}
       propertyPath: m_LocalScale.x
       value: 265.3513
@@ -8676,6 +8660,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock3
       objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: Radius
+      value: 688.0812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: objectName
+      value: SpaceRocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: localGravity
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8694,22 +8694,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1665658287}
     m_Modifications:
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: Radius
-      value: 688.0812
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: objectName
-      value: SpaceRocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: localGravity
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 520157932943181457, guid: 2ab85abe04165b14ab4dc0a696b6b225, type: 3}
       propertyPath: m_Name
       value: Rock1
@@ -8768,6 +8752,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949627327757328405, guid: 2ab85abe04165b14ab4dc0a696b6b225, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: Radius
+      value: 688.0812
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: objectName
+      value: SpaceRocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: localGravity
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: DontPullPlayer
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -9429,7 +9429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3486281955220951793, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8925698944912589379, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
       propertyPath: m_LocalPosition.x

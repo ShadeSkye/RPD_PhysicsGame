@@ -1220,30 +1220,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3430113935172138369, guid: f55aa156394c2614dbcdc411dce874f4, type: 3}
       propertyPath: m_LocalScale.x
       value: 500
@@ -1307,6 +1283,30 @@ PrefabInstance:
     - target: {fileID: 6037523451466047715, guid: f55aa156394c2614dbcdc411dce874f4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
@@ -1380,30 +1380,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 415023546430105764, guid: 4eb9b8c99c2ed4640a3e1d74288b6f11, type: 3}
       propertyPath: m_Name
       value: Rock5
@@ -1466,6 +1442,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4023221101804291416, guid: 4eb9b8c99c2ed4640a3e1d74288b6f11, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -1879,7 +1879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3486281955220951793, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8925698944912589379, guid: a97dad72d3da7f24f84eeb309bd3a2ba, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2255,30 +2255,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_Name
       value: Rock2 (3)
@@ -2341,6 +2317,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -2757,30 +2757,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3430113935172138369, guid: f55aa156394c2614dbcdc411dce874f4, type: 3}
       propertyPath: m_LocalScale.x
       value: 500
@@ -2844,6 +2820,30 @@ PrefabInstance:
     - target: {fileID: 6037523451466047715, guid: f55aa156394c2614dbcdc411dce874f4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
@@ -3096,30 +3096,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_Name
       value: Rock2 (1)
@@ -3182,6 +3158,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -3503,30 +3503,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_Name
       value: Rock2 (5)
@@ -3589,6 +3565,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -3656,15 +3656,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2503429181424955079, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 35.205666
+      value: 17.301577
       objectReference: {fileID: 0}
     - target: {fileID: 2503429181424955079, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 540.9033
+      value: 535.05615
       objectReference: {fileID: 0}
     - target: {fileID: 2503429181424955079, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -35.355854
+      value: -2.3758612
       objectReference: {fileID: 0}
     - target: {fileID: 2503429181424955079, guid: 49f8f92db9113a0458cf385dccfdf951, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4136,30 +4136,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 520157932943181457, guid: 2ab85abe04165b14ab4dc0a696b6b225, type: 3}
       propertyPath: m_Name
       value: Rock1
@@ -4222,6 +4198,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3949627327757328405, guid: 2ab85abe04165b14ab4dc0a696b6b225, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -4461,30 +4461,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_Name
       value: Rock2 (2)
@@ -4547,6 +4523,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -4643,30 +4643,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_Name
       value: Rock2
@@ -4729,6 +4705,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -4895,30 +4895,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 600363806}
     m_Modifications:
-    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: Radius
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: objectName
-      value: Space Rocks
-      objectReference: {fileID: 0}
-    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
-      propertyPath: DontPullPlayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2946520871098680643, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
       propertyPath: m_Name
       value: Rock4
@@ -4983,25 +4959,6 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
---- !u!4 &1354821667 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6996043857097833927, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
-  m_PrefabInstance: {fileID: 1354821666}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1364464721
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 600363806}
-    m_Modifications:
     - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -5026,6 +4983,25 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3121630860702846148, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
+--- !u!4 &1354821667 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6996043857097833927, guid: 94cddaaae5c597d4b97143d22038f85d, type: 3}
+  m_PrefabInstance: {fileID: 1354821666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1364464721
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 600363806}
+    m_Modifications:
     - target: {fileID: 5056599268522071752, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_Name
       value: Rock2 (4)
@@ -5088,6 +5064,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5774809010231975333, guid: 5be9528ada2411748a547b6ac9f03114, type: 3}
       propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 277715868266878301, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5da9fd3d20412c448a758abd60476e5e, type: 2}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: Radius
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: objectName
+      value: Space Rocks
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121630860702846148, guid: 62e3270b26b41694ebbc12f5c30947e6, type: 3}
+      propertyPath: DontPullPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772864095940464941, guid: a58ab9497b7aa394ba177580798cde05, type: 3}
+      propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:

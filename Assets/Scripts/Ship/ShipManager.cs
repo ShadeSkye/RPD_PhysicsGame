@@ -32,9 +32,6 @@ public class ShipManager : MonoBehaviour
             return;
         }
         Instance = this;
-
-        meshFilter = shipModel?.GetComponent<MeshFilter>();
-        meshRenderer = shipModel?.GetComponent<MeshRenderer>();
     }
 
 
@@ -56,8 +53,17 @@ public class ShipManager : MonoBehaviour
     public void EquipShip(ShipPreset ship)
     {
         CurrentShip = ship;
-        meshFilter.mesh = ship.mesh;
-        meshRenderer.material = ship.material;
+
+        shipModel = GameObject.FindGameObjectWithTag("ShipModel");
+        if (shipModel != null)
+        {
+
+            meshFilter = shipModel?.GetComponent<MeshFilter>();
+            meshRenderer = shipModel?.GetComponent<MeshRenderer>();
+
+            meshFilter.mesh = ship.mesh;
+            meshRenderer.material = ship.material;
+        }
 
         if(LevelManager.Instance !=null)
             UIManager.Instance.ResumeResetPosition();
