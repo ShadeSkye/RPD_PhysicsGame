@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShipSelectButton : MonoBehaviour, IPointerEnterHandler
+public class ShipSelectButton : DefaultButton
 {
     private ShipPreset myShip;
     [SerializeField] private TMP_Text buttonText;
@@ -31,8 +31,9 @@ public class ShipSelectButton : MonoBehaviour, IPointerEnterHandler
 
         UpdateButtonValidity();*/
     }
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void OnPointerEnter(PointerEventData eventData)
     {
+        base.OnPointerEnter(eventData);
         ShipSelect.Instance.SetDisplayedShip(myShip);
     }
 

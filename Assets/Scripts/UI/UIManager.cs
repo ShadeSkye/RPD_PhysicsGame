@@ -10,9 +10,15 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [Header("Button Prefabs")]
+    [Header("Buttons")]
     public GameObject ResumeButtonPrefab;
     public GameObject HangarResumeButtonPrefab;
+    public Sprite DefaultButtonImage;
+    public Color DefaultButtonTint;
+
+    [Header("Audio")]
+    public string ValidSound = "Button";
+    public string InvalidSound = "WrongButton";
 
     [Header("Pull Area")]
     public RectTransform TargetMask;

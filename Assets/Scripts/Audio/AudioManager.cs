@@ -38,7 +38,6 @@ public class AudioManager : MonoBehaviour
 
         foreach (AudioData sound in sounds)
         {
-
             AudioSource source = gameObject.AddComponent<AudioSource>();
             source.clip = sound.clip;
             source.playOnAwake = false;
@@ -92,6 +91,28 @@ public class AudioManager : MonoBehaviour
         }
 
         sound.source.PlayOneShot(sound.clip);
+    }
+
+    public void PlayPositional(string soundName, Vector3 position)
+    {
+        if (!audioLookup.TryGetValue(soundName, out AudioData sound))
+        {
+            Debug.LogWarning($"Audio key not found: {soundName}");
+            return;
+        }
+
+        GameObject temp = new GameObject($"TempAudio_{soundName}");
+        temp.transform.position = position;
+
+        AudioSource tempSource = temp.AddComponent<AudioSource>();
+        tempSource.clip = sound.clip;
+        tempSource.spatialBlend = 1f;
+        tempSource.minDistance = 50f;
+        tempSource.maxDistance = 150f;
+        tempSource.rolloffMode = AudioRolloffMode.Logarithmic;
+
+        tempSource.Play();
+        Destroy(temp, sound.clip.length);
     }
 
     public void PauseSFX()

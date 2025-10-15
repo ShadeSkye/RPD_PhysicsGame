@@ -1090,6 +1090,18 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1118964921482728956, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: da496b7fc302e074580d551f1c97ce82, type: 3}
+    - target: {fileID: 1118964921482728956, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118964921482728956, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.27058825
+      objectReference: {fileID: 0}
     - target: {fileID: 1260871745331225633, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
       propertyPath: levels.Array.data[0]
       value: 
@@ -1539,6 +1551,22 @@ PrefabInstance:
     - target: {fileID: 8306060568345062490, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 82.32605
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417534558790104455, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: DefaultButtonTint.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417534558790104455, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: DefaultButtonTint.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417534558790104455, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: DefaultButtonTint.g
+      value: 0.7411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417534558790104455, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
+      propertyPath: DefaultButtonTint.r
+      value: 0.4392157
       objectReference: {fileID: 0}
     - target: {fileID: 8513177427115798455, guid: 5e8483db63ae538428a90b0813c63a4b, type: 3}
       propertyPath: m_AnchorMax.y

@@ -16,7 +16,7 @@ public enum CargoType
 [RequireComponent(typeof(Damageable), typeof(AudioSource))]
 public class Cargo : GravityBody
 {
-    private AudioSource audioSource;
+    protected AudioSource audioSource;
     protected Damageable dmg;
 
     [HideInInspector] 

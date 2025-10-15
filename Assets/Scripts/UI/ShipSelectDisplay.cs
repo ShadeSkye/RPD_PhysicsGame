@@ -31,11 +31,6 @@ public class ShipSelectDisplay : MonoBehaviour
     [SerializeField] private Button purchaseButton;
     [SerializeField] private TMP_Text purchaseButtonText;
     private bool isAvailable => (ShipManager.Instance.OwnedShips.Contains(ship) || GameManager.Instance.Ships[0] == ship || ship.shipCost == 0);
-    
-    [Header("Audio")]
-    private string validSound = "Button";
-
-    private string invalidSound = "Button";
 
     /*private void OnValidate()
     {
@@ -68,9 +63,9 @@ public class ShipSelectDisplay : MonoBehaviour
         if (isAvailable)
         {
             locked.SetActive(false);
-            displayImage.color = Color.white;
+            displayImage.color = UIManager.Instance.DefaultButtonTint;
 
-            purchaseButton.image.color = Color.white;
+            purchaseButton.image.color = UIManager.Instance.DefaultButtonTint;
             purchaseButtonText.text = "Equip";
 
             cost.text = "";
@@ -84,8 +79,8 @@ public class ShipSelectDisplay : MonoBehaviour
 
             if (CurrencyManager.Instance.CanAfford(ship.shipCost))
             {
-                purchaseButton.image.color = Color.white;
-                cost.color = Color.white;
+                purchaseButton.image.color = UIManager.Instance.DefaultButtonTint;
+                cost.color = UIManager.Instance.DefaultButtonTint;
             }
             else
             {
@@ -119,7 +114,7 @@ public class ShipSelectDisplay : MonoBehaviour
     {
         if (CurrencyManager.Instance.CanAfford(ship.shipCost) || isAvailable)
         {
-            AudioManager.Instance.PlayOneShot(validSound);
+            AudioManager.Instance.PlayOneShot(UIManager.Instance.ValidSound);
 
             if (ShipManager.Instance.OwnedShips.Contains(ship))
             {
@@ -133,7 +128,7 @@ public class ShipSelectDisplay : MonoBehaviour
         }
         else
         {
-            AudioManager.Instance.PlayOneShot(invalidSound);
+            AudioManager.Instance.PlayOneShot(UIManager.Instance.InvalidSound);
         }
 
     }

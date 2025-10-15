@@ -24,6 +24,14 @@ public class Bomb : Cargo
         type = CargoType.Bomb;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            AudioManager.Instance.PlayPositional("BombExplosion", this.transform.position);
+        }
+    }
+
     protected override void CollisionDamage(Collision collision)
     {
         if (DamagePercent > impactDamage)
@@ -47,6 +55,8 @@ public class Bomb : Cargo
         center = transform.position;
 
         ParticleManager.Instance.PlayExplosion(center);
+
+        AudioManager.Instance.PlayPositional("BombExplosion", this.transform.position);
 
         Debug.Log("EXPLODE");
         Collider[] objectsInRange = Physics.OverlapSphere(center, radius);
