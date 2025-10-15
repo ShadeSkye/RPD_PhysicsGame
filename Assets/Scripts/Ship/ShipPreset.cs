@@ -19,6 +19,10 @@ public class ShipPreset : ScriptableObject
     public float acidDamageResistance = 0; // percent resisting acid damage
     public float impactDamageResistance = 0; // percent resisting impact damage
 
+    [Header("Visuals")]
+    public Mesh mesh;
+    public Material material;
+
     /*[Header("Cargo Holding")]
     public float beamStrength;
     public float holdStrength;*/

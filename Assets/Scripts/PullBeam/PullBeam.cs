@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Scripting.APIUpdating;
 
 [RequireComponent(typeof(BoxCollider))]
@@ -35,8 +36,6 @@ public class PullBeam : MonoBehaviour
 
     private void Awake()
     {
-        mainCam = Camera.main;
-        allCargo.AddRange(FindObjectsOfType<Cargo>());
         holdZone = GetComponent<BoxCollider>();
     }
 
@@ -45,8 +44,19 @@ public class PullBeam : MonoBehaviour
         if (targetMask == null && UIManager.Instance != null)
         {
             targetMask = UIManager.Instance.TargetMask;
-            Debug.Log("Assigned targetMask");
+            //Debug.Log("Assigned targetMask");
         }
+    }
+
+    private void OnEnable() => SceneManager.sceneLoaded += (_, __) => RefreshCargoList();
+    private void OnDisable() => SceneManager.sceneLoaded -= (_, __) => RefreshCargoList();
+
+    private void RefreshCargoList()
+    {
+        mainCam = Camera.main;
+
+        allCargo = new List<Cargo>(FindObjectsOfType<Cargo>());
+        //Debug.Log($"Refreshed cargo list. Total cargo: {allCargo.Count}");
     }
 
     private void FixedUpdate()
@@ -75,59 +85,57 @@ public class PullBeam : MonoBehaviour
 
         foreach (var c in allCargo)
         {
-            if (c.IsLocked || c.CompareTag("Player") || c!=null) continue;
+            if (c == null || c.IsLocked || c.CompareTag("Player")) continue;
 
             Vector3 screenPos = mainCam.WorldToScreenPoint(c.transform.position);
-
-            //Debug.Log(screenPos.z);
 
             // Behind camera
             if (screenPos.z <= 0)
             {
-                //Debug.Log($"{c} behind camera");
                 cargoInRange.Remove(c);
                 continue;
             }
-            else
+
+            // Too far away
+            if (screenPos.z > maxDistance)
             {
-                // Too far away
-                if (screenPos.z > maxDistance)
-                {
-                    //Debug.Log($"{c} is {screenPos.z:F2}: too far away");
-                    cargoInRange.Remove(c);
-                    continue;
-                }
-                else
-                {
-                    Vector3 maskWorldPos = targetMask.position; // center in screen space
-                    Vector2 maskSize = targetMask.rect.size * targetMask.lossyScale; // scaled size
-
-                    float left = maskWorldPos.x - maskSize.x / 2;
-                    float right = maskWorldPos.x + maskSize.x / 2;
-                    float bottom = maskWorldPos.y - maskSize.y / 2;
-                    float top = maskWorldPos.y + maskSize.y / 2;
-
-                    bool inside = screenPos.x >= left && screenPos.x <= right &&
-                                  screenPos.y >= bottom && screenPos.y <= top;
-
-                    if (inside)
-                    {
-                        //Debug.Log($"Cargo visually within targetMask: {c.name} | Distance: {screenPos.z:F2}");
-                        cargoInRange.Add(c);
-                        ApplyPull(c);
-                    }
-                    else
-                    {
-                        cargoInRange.Remove(c);
-                    }
-                }
-                    
+                cargoInRange.Remove(c);
+                continue;
             }
 
+            Vector3 maskWorldPos = targetMask.position; // center in world space
+            Vector2 maskSize = targetMask.rect.size * targetMask.lossyScale; // scaled size
+
+            float left = maskWorldPos.x - maskSize.x / 2;
+            float right = maskWorldPos.x + maskSize.x / 2;
+            float bottom = maskWorldPos.y - maskSize.y / 2;
+            float top = maskWorldPos.y + maskSize.y / 2;
+
+            bool inside = screenPos.x >= left && screenPos.x <= right &&
+                          screenPos.y >= bottom && screenPos.y <= top;
+
+            if (inside)
+            {
+                cargoInRange.Add(c);
+                ApplyPull(c);
+            }
+            else
+            {
+                cargoInRange.Remove(c);
+            }
         }
 
         UpdateCargoVisuals();
     }
+
+    private void UpdateCargoVisuals()
+    {
+        Debug.Log($"Cargo in range: {cargoInRange.Count}");
+        if (UIManager.Instance != null)
+            UIManager.Instance.CargoInRange(cargoInRange.Count > 0);
+    }
+
+
 
 
     private void ApplyPull(Cargo target)
@@ -193,11 +201,6 @@ public class PullBeam : MonoBehaviour
 
         UnlockCargo(c);
         c.rb.AddForce(transform.forward * ejectForce, ForceMode.Impulse);
-    }
-
-    private void UpdateCargoVisuals()
-    {
-        UIManager.Instance.CargoInRange(cargoInRange.Count > 0);
     }
 
     private void OnTriggerEnter(Collider other)
