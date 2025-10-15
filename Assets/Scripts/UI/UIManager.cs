@@ -10,9 +10,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [Header("Button Prefabs")]
+    [Header("Buttons")]
     public GameObject ResumeButtonPrefab;
     public GameObject HangarResumeButtonPrefab;
+    public Sprite DefaultButtonImage;
+    public Color DefaultButtonTint;
 
     [Header("Pull Area")]
     public RectTransform TargetMask;

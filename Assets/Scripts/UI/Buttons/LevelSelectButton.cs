@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static Cinemachine.DocumentationSortingAttribute;
 
-public class LevelSelectButton : MonoBehaviour
+public class LevelSelectButton : DefaultButton
 {
     public LevelData Level;
     [SerializeField] private TMP_Text buttonText;
@@ -41,7 +41,7 @@ public class LevelSelectButton : MonoBehaviour
         {
             if (nextLevel) buttonImage.color = Color.yellow;
             else if (levelLocked) buttonImage.color = Color.red;
-            else buttonImage.color = Color.white;
+            else buttonImage.color = UIManager.Instance.DefaultButtonTint;
         }
     }
 

@@ -6075,6 +6075,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ResumeButtonPrefab: {fileID: 115961335164607440, guid: fa34080d409585547bd274ed210545a5, type: 3}
   HangarResumeButtonPrefab: {fileID: 115961335164607440, guid: 318b3d73beaf70842b50ee8a6d620c15, type: 3}
+  DefaultButtonImage: {fileID: 21300000, guid: da496b7fc302e074580d551f1c97ce82, type: 3}
+  DefaultButtonTint: {r: 0.41850471, g: 0.60325146, b: 0.7132075, a: 0}
   TargetMask: {fileID: 5198853775550044613}
   sensSlider: {fileID: 7423172161272164933}
   sensFromSlider: 1

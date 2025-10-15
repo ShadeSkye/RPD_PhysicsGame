@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectiveSelectButton : MonoBehaviour
+public class ObjectiveSelectButton : DefaultButton
 {
     public BaseObjective Objective;
     [SerializeField] private TMP_Text buttonText;
@@ -37,7 +37,7 @@ public class ObjectiveSelectButton : MonoBehaviour
         }
         else
         {
-            buttonImage.color = Color.white;
+            buttonImage.color = UIManager.Instance.DefaultButtonTint;
         }
 
     }

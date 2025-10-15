@@ -20,14 +20,15 @@ public enum UIButtonAction
     LevelComplete
 }
 
-public class UIButtonLink : MonoBehaviour
+public class UIButtonLink : DefaultButton
 {
     public UIButtonAction action;
 
     private Button button;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         button = GetComponent<Button>();
 
         if (UIManager.Instance  == null)

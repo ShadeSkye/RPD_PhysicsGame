@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ShipSelectButton : MonoBehaviour, IPointerEnterHandler
+public class ShipSelectButton : DefaultButton
 {
     private ShipPreset myShip;
     [SerializeField] private TMP_Text buttonText;
