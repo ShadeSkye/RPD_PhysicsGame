@@ -17,11 +17,8 @@ public class DefaultButton : MonoBehaviour, IPointerEnterHandler
         image.sprite = UIManager.Instance.DefaultButtonImage;
         image.color = UIManager.Instance.DefaultButtonTint;
 
-        var btn = GetComponent<Button>();
-        Debug.Log(btn.targetGraphic);
-
     }
-    public void OnPointerEnter(PointerEventData eventData) 
+    public virtual void OnPointerEnter(PointerEventData eventData) 
     { 
         AudioManager.Instance?.PlayOneShot("ButtonHover"); 
     }

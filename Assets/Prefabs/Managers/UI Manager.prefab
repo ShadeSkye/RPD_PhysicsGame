@@ -6077,6 +6077,8 @@ MonoBehaviour:
   HangarResumeButtonPrefab: {fileID: 115961335164607440, guid: 318b3d73beaf70842b50ee8a6d620c15, type: 3}
   DefaultButtonImage: {fileID: 21300000, guid: da496b7fc302e074580d551f1c97ce82, type: 3}
   DefaultButtonTint: {r: 0.41850471, g: 0.60325146, b: 0.7132075, a: 0}
+  ValidSound: Button
+  InvalidSound: WrongButton
   TargetMask: {fileID: 5198853775550044613}
   sensSlider: {fileID: 7423172161272164933}
   sensFromSlider: 1
@@ -13610,7 +13612,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6206097751671179334, guid: fbd06fd07c57ebd4b8a1b17ebf7d9e18, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6661938894249745067}
   m_SourcePrefab: {fileID: 100100000, guid: fbd06fd07c57ebd4b8a1b17ebf7d9e18, type: 3}
 --- !u!114 &3419552657979385424 stripped
 MonoBehaviour:
@@ -13621,6 +13626,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98ce64fbd91c44e49bd8a32342062883, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3544679472836600119 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6206097751671179334, guid: fbd06fd07c57ebd4b8a1b17ebf7d9e18, type: 3}
+  m_PrefabInstance: {fileID: 7426794454708480369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6661938894249745067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544679472836600119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21d779933d122474cb371105110ba469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &7404258533896194746 stripped

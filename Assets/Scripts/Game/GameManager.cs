@@ -153,6 +153,7 @@ public class GameManager : MonoBehaviour
             }
 
             LoadingScreen.Instance.Hide();
+            AudioManager.Instance.PlayOneShot(UIManager.Instance.ValidSound);
 
             Play();
 

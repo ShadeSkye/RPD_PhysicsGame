@@ -14,10 +14,6 @@ public class LevelSelectButton : DefaultButton
     [SerializeField] private Image buttonImage;
     [SerializeField] private Button button;
 
-    private string validSound = "Button";
-
-    private string invalidSound = "Button";
-
     private bool levelLocked => !LevelSelect.Instance.completedLevels.Contains(Level) && !currentLevel;
     private bool currentLevel => (int)LevelManager.Instance.LevelData.SceneIndex == (int)Level.SceneIndex;
     private bool nextLevel => (int)Level.SceneIndex == (int)LevelManager.Instance.LevelData.SceneIndex+1 && LevelSelect.Instance.currentLevelComplete;
@@ -35,6 +31,12 @@ public class LevelSelectButton : DefaultButton
         UpdateButtonValidity();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        UpdateButtonValidity();
+    }
+
     public void UpdateButtonValidity()
     {
         if (buttonImage != null && (LevelManager.Instance != null))
@@ -49,16 +51,16 @@ public class LevelSelectButton : DefaultButton
     {
         if (levelLocked && !nextLevel)
         {
-            AudioManager.Instance.PlayOneShot(invalidSound);
+            AudioManager.Instance.PlayOneShot(UIManager.Instance.InvalidSound);
         }
         else if (nextLevel)
         {
-            AudioManager.Instance.PlayOneShot(validSound);
+            AudioManager.Instance.PlayOneShot(UIManager.Instance.ValidSound);
             UIManager.Instance.LevelComplete();
         }
         else
         {
-            AudioManager.Instance.PlayOneShot(validSound);
+            AudioManager.Instance.PlayOneShot(UIManager.Instance.ValidSound);
             GameManager.Instance.LoadScene(Level.SceneIndex);
         }
 

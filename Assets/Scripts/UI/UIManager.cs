@@ -16,6 +16,10 @@ public class UIManager : MonoBehaviour
     public Sprite DefaultButtonImage;
     public Color DefaultButtonTint;
 
+    [Header("Audio")]
+    public string ValidSound = "Button";
+    public string InvalidSound = "WrongButton";
+
     [Header("Pull Area")]
     public RectTransform TargetMask;
 

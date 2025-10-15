@@ -29,10 +29,17 @@ public class ShipManager : MonoBehaviour
         }
         Instance = this;
     }
+
+    private void Start()
+    {
+        LoadShips(OwnedShips, OwnedShips[0]);
+    }
+
     public void ClearShips()
     {
         CurrentShip = GameManager.Instance.Ships[0];
         OwnedShips.Clear();
+        OwnedShips.Add(CurrentShip);
 
         //ShipSelect.Instance.RefreshButtons();
     }

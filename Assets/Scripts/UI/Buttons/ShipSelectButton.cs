@@ -31,8 +31,9 @@ public class ShipSelectButton : DefaultButton
 
         UpdateButtonValidity();*/
     }
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void OnPointerEnter(PointerEventData eventData)
     {
+        base.OnPointerEnter(eventData);
         ShipSelect.Instance.SetDisplayedShip(myShip);
     }
 
